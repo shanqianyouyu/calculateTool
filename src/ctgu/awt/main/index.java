@@ -1,16 +1,30 @@
 package ctgu.awt.main;
 
+import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.MenuItem;
+import java.awt.PopupMenu;
+import java.awt.SystemTray;
+import java.awt.Toolkit;
+import java.awt.TrayIcon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.URL;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -23,6 +37,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import ctgu.awt.entity.Config;
 import ctgu.awt.main.calFrame.FatherTabbedPane;
 import ctgu.awt.main.component.TopMenu;
+import ctgu.awt.main.component.TopTool;
 
 /**
  * @author Chase
@@ -71,15 +86,19 @@ public class index extends JFrame {
 		// 窗体大小设置
 		setBounds(100, 100, 1294, 800);
 		this.setMinimumSize(new Dimension(500, 770));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		// 生成顶部的菜单栏
 		TopMenu topMenu = new TopMenu();
+		// 生成顶部的工具栏
+		TopTool topTool = new TopTool();
 		// 生成head盒子 jpanel默认流式布局
-		JPanel top = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JPanel top = new JPanel(new GridLayout(2, 1));
+
 		top.add(topMenu);
+		top.add(topTool);
 		// 添加到整体border布局的North位置
 		contentPane.add(top, BorderLayout.NORTH);
 		// 设置默认选项卡 从 0 开始
@@ -88,6 +107,95 @@ public class index extends JFrame {
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		Config.fatherTabbedPane = tabbedPane;
 		setContentPane(contentPane);
+
+		/*
+		 * 添加系统托盘
+		 */
+		if (SystemTray.isSupported()) {
+			// 获取当前平台的系统托盘
+			SystemTray tray = SystemTray.getSystemTray();
+
+			URL imgUrl = index.class.getClassLoader().getResource("tray.png");
+			// 加载一个图片用于托盘图标的显示
+			Image image = Toolkit.getDefaultToolkit().getImage(imgUrl);
+
+			// 创建点击图标时的弹出菜单
+			PopupMenu popupMenu = new PopupMenu();
+
+			MenuItem openItem = new MenuItem("open");
+			MenuItem exitItem = new MenuItem("exit");
+
+			openItem.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// 点击打开菜单时显示窗口
+//					if (!isShowing()) {
+					setVisible(true);
+					setAlwaysOnTop(true);
+					setAlwaysOnTop(false);
+//					}
+				}
+			});
+			exitItem.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// 点击退出菜单时退出程序
+					System.exit(0);
+				}
+			});
+
+			popupMenu.add(openItem);
+			popupMenu.add(exitItem);
+
+			// 创建一个托盘图标
+			TrayIcon trayIcon = new TrayIcon(image, "抱杆程序计算", popupMenu);
+
+			// 托盘图标自适应尺寸
+			trayIcon.setImageAutoSize(true);
+
+			trayIcon.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					System.out.println("托盘图标被右键点击");
+				}
+			});
+			trayIcon.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					switch (e.getButton()) {
+					case MouseEvent.BUTTON1: {
+						setVisible(true);
+						setAlwaysOnTop(true);
+						setAlwaysOnTop(false);
+//						System.out.println("托盘图标被鼠标左键被点击");
+						break;
+					}
+					case MouseEvent.BUTTON2: {
+						System.out.println("托盘图标被鼠标中键被点击");
+						break;
+					}
+					case MouseEvent.BUTTON3: {
+						System.out.println("托盘图标被鼠标右键被点击");
+						break;
+					}
+					default: {
+						break;
+					}
+					}
+				}
+			});
+
+			// 添加托盘图标到系统托盘
+			try {
+				tray.add(trayIcon);
+			} catch (AWTException e) {
+				e.printStackTrace();
+			}
+
+		} else {
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		}
+
 		// 添加面板切换监听事件
 		tabbedPane.addChangeListener(new ChangeListener() {
 			@Override
