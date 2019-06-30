@@ -1,4 +1,4 @@
-package ctgu.awt.main;
+package ctgu.awt.frame.load;
 
 import java.awt.Image;
 
@@ -8,8 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import ctgu.awt.main.component.LoadBar;
-import ctgu.awt.main.load.LoadObs;
+import ctgu.awt.frame.load.component.LoadBar;
+
 
 /**
  * Copyright © 2019 eSunny Info. Tech Ltd. All rights reserved.

@@ -1,4 +1,4 @@
-package ctgu.awt.main.calFrame.derrickCal.square;
+package ctgu.awt.frame.homepage.calFrame.derrickCal;
 
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-import ctgu.awt.main.calFrame.FatherFrame;
+import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 
 public class AbusoluteSquare1 extends FatherFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;

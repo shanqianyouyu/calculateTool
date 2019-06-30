@@ -16,7 +16,7 @@ import org.junit.Test;
 
 import ctgu.awt.entity.Config;
 import ctgu.awt.entity.PageBean;
-import ctgu.awt.main.item.Default;
+import ctgu.awt.frame.homepage.item.Default;
 
 /*
  * pagebean由此发出，传入MainScrollPane中

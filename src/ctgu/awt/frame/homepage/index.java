@@ -1,10 +1,9 @@
-package ctgu.awt.main;
+package ctgu.awt.frame.homepage;
 
 import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.MenuItem;
@@ -14,20 +13,20 @@ import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 //import entity.Config;
 //import main.calFrame.FatherTabbedPane;
@@ -35,9 +34,9 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 //import main.item.derrickCal.Square;
 
 import ctgu.awt.entity.Config;
-import ctgu.awt.main.calFrame.FatherTabbedPane;
-import ctgu.awt.main.component.TopMenu;
-import ctgu.awt.main.component.TopTool;
+import ctgu.awt.frame.homepage.calFrame.FatherTabbedPane;
+import ctgu.awt.frame.homepage.component.TopMenu;
+import ctgu.awt.frame.homepage.component.TopTool;
 
 /**
  * @author Chase
@@ -128,12 +127,9 @@ public class index extends JFrame {
 			openItem.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// 点击打开菜单时显示窗口
-//					if (!isShowing()) {
 					setVisible(true);
 					setAlwaysOnTop(true);
 					setAlwaysOnTop(false);
-//					}
 				}
 			});
 			exitItem.addActionListener(new ActionListener() {

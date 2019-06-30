@@ -1,4 +1,4 @@
-package ctgu.awt.main.component;
+package ctgu.awt.frame.load.component;
 
 import java.awt.Dimension;
 import java.util.Timer;
@@ -8,8 +8,8 @@ import java.util.Vector;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
-import ctgu.awt.main.Load;
-import ctgu.awt.main.load.LoadObs;
+import ctgu.awt.frame.load.Load;
+
 
 /**
  * Copyright © 2019 eSunny Info. Tech Ltd. All rights reserved.

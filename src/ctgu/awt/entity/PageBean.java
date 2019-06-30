@@ -2,7 +2,7 @@ package ctgu.awt.entity;
 
 import java.util.List;
 
-import ctgu.awt.main.item.Default;
+import ctgu.awt.frame.homepage.item.Default;
 
 
 /*

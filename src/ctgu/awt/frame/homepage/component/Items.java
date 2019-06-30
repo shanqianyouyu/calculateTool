@@ -1,17 +1,18 @@
-package ctgu.awt.main.component;
+package ctgu.awt.frame.homepage.component;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.JPanel;
 //import entity.PageBean;
 //import main.item.Default;
 //import service.PageService;
 
 import ctgu.awt.entity.PageBean;
-import ctgu.awt.main.item.Default;
+import ctgu.awt.frame.homepage.item.Default;
 import ctgu.awt.service.PageService;
 
 public class Items extends JPanel {

@@ -1,4 +1,4 @@
-package ctgu.awt.main.load;
+package ctgu.awt.frame.load;
 
 /**
  * Copyright © 2019 eSunny Info. Tech Ltd. All rights reserved.

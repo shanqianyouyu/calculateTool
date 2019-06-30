@@ -1,4 +1,4 @@
-package ctgu.awt.main.item;
+package ctgu.awt.frame.homepage.item;
 
 import java.awt.Font;
 import java.awt.GridLayout;

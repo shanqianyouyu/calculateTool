@@ -1,4 +1,4 @@
-package ctgu.awt.main.calFrame;
+package ctgu.awt.frame.homepage.calFrame;
 
 import javax.swing.JFrame;
 

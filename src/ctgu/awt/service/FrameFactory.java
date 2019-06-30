@@ -1,12 +1,12 @@
 package ctgu.awt.service;
 
 import ctgu.awt.entity.Config;
-import ctgu.awt.main.calFrame.FatherFrame;
-import ctgu.awt.main.calFrame.TestJFrame;
-import ctgu.awt.main.calFrame.derrickCal.square.AbusoluteSquare;
-import ctgu.awt.main.component.MainScrollPane;
-import ctgu.awt.main.item.Default;
-import ctgu.awt.main.item.derrickCal.Square;
+import ctgu.awt.frame.homepage.calFrame.FatherFrame;
+import ctgu.awt.frame.homepage.calFrame.TestJFrame;
+import ctgu.awt.frame.homepage.calFrame.derrickCal.AbusoluteSquare;
+import ctgu.awt.frame.homepage.component.MainScrollPane;
+import ctgu.awt.frame.homepage.item.Default;
+import ctgu.awt.frame.homepage.item.derrickCal.Square;
 import ctgu.awt.util.Util;
 
 //import entity.Config;

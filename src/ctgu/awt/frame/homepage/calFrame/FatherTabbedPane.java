@@ -1,8 +1,8 @@
-package ctgu.awt.main.calFrame;
+package ctgu.awt.frame.homepage.calFrame;
 
 import javax.swing.JTabbedPane;
 
-import ctgu.awt.main.component.MainScrollPane;
+import ctgu.awt.frame.homepage.component.MainScrollPane;
 
 
 /*

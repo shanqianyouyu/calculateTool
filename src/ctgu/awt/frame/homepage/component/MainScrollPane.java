@@ -1,4 +1,4 @@
-package ctgu.awt.main.component;
+package ctgu.awt.frame.homepage.component;
 
 import javax.swing.JScrollPane;
 

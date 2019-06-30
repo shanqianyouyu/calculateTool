@@ -6,8 +6,8 @@ import java.util.TreeMap;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ctgu.awt.main.calFrame.FatherFrame;
-import ctgu.awt.main.calFrame.FatherTabbedPane;
+import ctgu.awt.frame.homepage.calFrame.FatherFrame;
+import ctgu.awt.frame.homepage.calFrame.FatherTabbedPane;
 import ctgu.awt.util.Util;
 
 //import main.calFrame.FatherFrame;
