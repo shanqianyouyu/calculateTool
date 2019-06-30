@@ -8,7 +8,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import ctgu.awt.service.FrameFactory;
+import ctgu.awt.frame.homepage.component.handlerlistener.ToolMenuHandlerListener;
 import ctgu.awt.util.filewriter;
 
 /**
@@ -111,21 +111,10 @@ public class TopMenu extends JMenuBar {
 			}
 		});
 
-		test.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("TopMenu: " + test.getText());
-				FrameFactory.createFrame(test.getText());
-			}
-		});
-
-		squre.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("TopMenu: " + squre.getText());
-				FrameFactory.createFrame(squre.getText());
-			}
-		});
+		// test按钮的点击的
+		test.addActionListener(new ToolMenuHandlerListener(test));
+		// 正方形抱杆的点击
+		squre.addActionListener(new ToolMenuHandlerListener(squre));
 
 	}
 }

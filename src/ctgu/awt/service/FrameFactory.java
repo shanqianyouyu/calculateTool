@@ -9,15 +9,11 @@ import ctgu.awt.frame.homepage.item.Default;
 import ctgu.awt.frame.homepage.item.derrickCal.Square;
 import ctgu.awt.util.Util;
 
-//import entity.Config;
-//import main.MainScrollPane;
-//import main.calFrame.FatherFrame;
-//import main.calFrame.TestJFrame;
-//import main.calFrame.derrickCal.square.AbusoluteSquare;
-//import main.item.Default;
-//import main.item.derrickCal.Square;
-//import util.Util;
-
+/**
+ * 
+ * @author 拉布拉多
+ *
+ */
 public class FrameFactory {
 	private static boolean flat = true;
 
@@ -25,7 +21,7 @@ public class FrameFactory {
 		// 获取当前选项卡的数量
 		int tabSizeOld = Config.fatherTabbedPane.getTabCount();
 		// 获取主页总项目数
-		int SizeOld = Config.calJpanel.size();
+		int sizeOld = Config.calJpanel.size();
 
 		// 生成递增且唯一id
 		Util util = Config.id;
@@ -70,7 +66,7 @@ public class FrameFactory {
 			flat = true;
 		}
 
-		if ((SizeOld + 1) % 8 == 0) {
+		if ((sizeOld + 1) % 8 == 0) {
 			flat = false;
 		}
 	}

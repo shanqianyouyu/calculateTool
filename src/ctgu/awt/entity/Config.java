@@ -10,9 +10,6 @@ import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.calFrame.FatherTabbedPane;
 import ctgu.awt.util.Util;
 
-//import main.calFrame.FatherFrame;
-//import main.calFrame.FatherTabbedPane;
-//import util.Util;
 
 //用来记录一共有多少个窗体
 public class Config {

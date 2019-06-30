@@ -1,18 +1,16 @@
 package ctgu.awt.frame.homepage.component;
 
-import java.awt.Button;
-import java.awt.Dimension;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
+
+import ctgu.awt.frame.homepage.component.handlerlistener.ToolMenuHandlerListener;
 
 /**
  * Copyright © 2019 eSunny Info. Tech Ltd. All rights reserved.
  * 
- * 功能描述：抱杆快捷方式
+ * 功能描述：工具栏
  * 
  * @Package: ctgu.awt.main.component
  * @author: 拉布拉多
@@ -31,15 +29,19 @@ public class TopTool extends JToolBar {
 	public TopTool() {
 		// 设置绘制边框
 		setBorderPainted(true);
+		// 添加按钮的事件
+		init();
 		// 添加分隔符
 //		addSeparator();
 		// 是否可拖动
-		setFloatable(true);
-
+		setFloatable(false);
 		setOrientation(SwingConstants.HORIZONTAL);
 		add(DerrickSquareBtn);
 		add(btn1);
 		add(btn2);
+	}
 
+	private void init() {
+		DerrickSquareBtn.addActionListener(new ToolMenuHandlerListener("正方形抱杆"));
 	}
 }
