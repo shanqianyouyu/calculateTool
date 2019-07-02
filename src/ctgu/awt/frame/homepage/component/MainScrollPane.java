@@ -14,6 +14,5 @@ public class MainScrollPane extends JScrollPane {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 }

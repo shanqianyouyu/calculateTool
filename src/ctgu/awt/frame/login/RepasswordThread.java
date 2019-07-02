@@ -2,8 +2,6 @@ package ctgu.awt.frame.login;
 
 import javax.swing.JOptionPane;
 
-
-
 public class RepasswordThread extends Thread {
 	private UserMsg usmg;
 
@@ -15,7 +13,6 @@ public class RepasswordThread extends Thread {
 	// 修改事件
 	// @Override
 	public void start() {
-		// TODO Auto-generated method stub
 		boolean[] result = usmg.repassword();
 		boolean pass = result[0];
 		boolean[] result1 = usmg.readUserPass();
@@ -24,7 +21,7 @@ public class RepasswordThread extends Thread {
 		// 修改成功判断״̬
 		if (user == true) {
 			if (pass == true)
-				JOptionPane.showMessageDialog(null, "修改成功", "提示", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "修改成功", "提示", JOptionPane.INFORMATION_MESSAGE);
 			else
 				JOptionPane.showMessageDialog(null, "修改失败", "提示", JOptionPane.ERROR_MESSAGE);
 		} else {

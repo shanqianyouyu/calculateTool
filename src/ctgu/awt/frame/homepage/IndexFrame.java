@@ -46,7 +46,7 @@ import ctgu.awt.frame.homepage.component.TopTool;
  * 打开程序： 提示行：“开始您的计算” 分页为一页 新建计算窗口： 存一个窗口记录进入 Config.calFrame 打开界面
  * 存一个列表记录进入Config.calJpanel
  */
-public class index extends JFrame {
+public class IndexFrame extends JFrame {
 	static {
 		try {
 			// 设置边框样式为强立体半透明
@@ -68,7 +68,7 @@ public class index extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					index frame = new index();
+					IndexFrame frame = new IndexFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -80,10 +80,10 @@ public class index extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public index() {
+	public IndexFrame() {
 		setTitle("抱杆程序计算");
 		// 窗体大小设置
-		setBounds(100, 100, 1294, 800);
+		setBounds(100, 100, 1294, 900);
 		this.setMinimumSize(new Dimension(500, 770));
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		contentPane = new JPanel();
@@ -114,7 +114,7 @@ public class index extends JFrame {
 			// 获取当前平台的系统托盘
 			SystemTray tray = SystemTray.getSystemTray();
 
-			URL imgUrl = index.class.getClassLoader().getResource("tray.png");
+			URL imgUrl = IndexFrame.class.getClassLoader().getResource("tray.png");
 			// 加载一个图片用于托盘图标的显示
 			Image image = Toolkit.getDefaultToolkit().getImage(imgUrl);
 

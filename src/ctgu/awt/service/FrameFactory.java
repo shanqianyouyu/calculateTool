@@ -41,20 +41,20 @@ public class FrameFactory {
 			jPanel.setId(id);
 			jPanel.setName(name);
 
-			System.out.println("FrameFactory(生成的id): " + id);
+//			System.out.println("FrameFactory(生成的id): " + id);
 		} else if (name.equals("正方形抱杆")) {
 			frame = new AbusoluteSquare();
 			frame.setId(id);
 			jPanel = new Square();
 			jPanel.setId(id);
 			jPanel.setName(name);
-			System.out.println("FrameFactory(生成的id): " + id);
+//			System.out.println("FrameFactory(生成的id): " + id);
 		}
 
 		// 将窗口记录到后台
 		Config.addFrame(frame.getId(), frame);
 		Config.addPanel(jPanel.getId(), jPanel);
-		System.out.println("FrameFactory (总数据量)" + Config.calJpanel.size());
+//		System.out.println("FrameFactory (总数据量)" + Config.calJpanel.size());
 		/*
 		 * 如果达到边界则增加面板的页数
 		 * 
