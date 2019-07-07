@@ -19,28 +19,17 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 public class MainFrame extends JFrame implements WindowListener {
 
 	private static final long serialVersionUID = 4223018726246644075L;
-	static {
-		try {
-			// 设置边框样式为强立体半透明
-			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencyAppleLike;
-			// 引入apple的皮肤包
-			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			System.out.println("皮肤软件抛出异常");
-		}
-	}
-	public JLabel jIcon, acc, pas, topicture;
-	public JTextField accField, pasField, Field;
+
+	public JLabel jIcon,acc,pas,topicture;
+	public JTextField accField,pasField,Field;
 	public Icon icon;
-	public JButton jSure, jRegist, jrepass;
+	public JButton jSure,jRegist,jrepass;
 	public Captcha db;
 
 	public MainFrame() {
 		db = new Captcha();
 	}
-
-	private void mainView() {
+	public void mainView() {
 		this.setTitle("登录界面");
 		int width = 600;
 		int height = 500;
@@ -99,14 +88,14 @@ public class MainFrame extends JFrame implements WindowListener {
 		// 设置页面可见
 		this.setResizable(false);
 		jIcon.addMouseListener(new Change());
-		this.setVisible(true);
+		this.setVisible(false);
 	}
 
-	public static void main(String[] args) {
-		MainFrame d = new MainFrame();
-		d.mainView();
-	}
-
+//	public static void main(String[] args) {
+//		MainFrame d = new MainFrame();
+//		d.mainView();
+//	}
+	
 	@Override
 	public void windowOpened(WindowEvent e) {
 

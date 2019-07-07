@@ -27,7 +27,8 @@ public class LoginerThread {
 			return false;
 		} else if (user == true && pass == true) {
 			System.out.println("登录成功");
-			new AbusoluteSquare("正方形抱杆");
+//			new AbusoluteSquare("正方形抱杆");
+			
 			return true;
 		}
 		return false;

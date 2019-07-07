@@ -3,8 +3,13 @@ package ctgu.awt.frame.login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+import ctgu.awt.frame.homepage.HomePageFrame;
+
 public class jSureLisenter extends myActionlistenerLogin implements ActionListener {
 
+	HomePageFrame index = new HomePageFrame();
+	
 	public jSureLisenter(MainFrame demoC) {
 		super(demoC);
 	}
@@ -17,6 +22,7 @@ public class jSureLisenter extends myActionlistenerLogin implements ActionListen
 			LoginerThread LoginerThread = new LoginerThread(new UserMsg(loginStr, registStr));
 			if (LoginerThread.start()) {
 				J1.dispose();
+				index.setVisible(true);
 			}
 		}
 	}
