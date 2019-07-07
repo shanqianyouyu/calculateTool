@@ -26,12 +26,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
-//import entity.Config;
-//import main.calFrame.FatherTabbedPane;
-//import main.item.Default;
-//import main.item.derrickCal.Square;
-
 import ctgu.awt.entity.Config;
 import ctgu.awt.frame.homepage.calFrame.FatherTabbedPane;
 import ctgu.awt.frame.homepage.component.TopMenu;

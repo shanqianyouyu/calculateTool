@@ -12,7 +12,6 @@ import java.util.TreeMap;
 
 import javax.swing.JPanel;
 
-import org.junit.Test;
 
 import ctgu.awt.entity.Config;
 import ctgu.awt.entity.PageBean;
@@ -78,7 +77,6 @@ public class PageService {
 		return pageBean;
 	}
 
-	@Test
 	public void test1() {
 		Map<String, String> map = new HashMap();
 		map.put("1", "schase");
@@ -97,7 +95,6 @@ public class PageService {
 
 	}
 
-	@Test
 	public void test2() {
 		Map<Integer, String> map = new TreeMap<Integer, String>(new Comparator<Integer>() {
 			public int compare(Integer obj1, Integer obj2) {

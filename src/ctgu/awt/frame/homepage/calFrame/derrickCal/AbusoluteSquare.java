@@ -22,17 +22,17 @@ import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 
 public class AbusoluteSquare extends FatherFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	static {
-		try {
-			// 设置边框样式为强立体半透明
-			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencyAppleLike;
-			// 引入apple的皮肤包
-			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			System.out.println("皮肤软件抛出异常");
-		}
-	}
+//	static {
+//		try {
+//			// 设置边框样式为强立体半透明
+//			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencyAppleLike;
+//			// 引入apple的皮肤包
+//			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+//			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//		} catch (Exception e) {
+//			System.out.println("皮肤软件抛出异常");
+//		}
+//	}
 	private int i = 0;
 	// 主窗体
 	private JLabel picture1 = null;
