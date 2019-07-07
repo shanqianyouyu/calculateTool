@@ -36,18 +36,6 @@ import ctgu.awt.frame.homepage.component.bolFrame.BolTableDialog3;
 
 public class BolFrame extends FatherFrame {
 
-	static {
-		try {
-			// 设置边框样式为强立体半透明
-			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencyAppleLike;
-			// 引入apple的皮肤包
-			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			System.out.println("皮肤软件抛出异常");
-		}
-	}
-
 	private JPanel contentPane;
 	private JTextField txtNv;
 	private JTextField txtD;
@@ -129,7 +117,8 @@ public class BolFrame extends FatherFrame {
 	public BolFrame() {
 		setTitle("螺栓计算");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1314, 760);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
@@ -458,20 +447,20 @@ public class BolFrame extends FatherFrame {
 		button_2.setFont(new Font("宋体", Font.PLAIN, 13));
 		button_2.setBounds(179, 407, 123, 27);
 		panel_4.add(button_2);
-		
+
 		panel_6 = new JPanel();
 		panel_6.setBounds(24, 653, 1232, 59);
 		contentPane.add(panel_6);
 		panel_6.setLayout(null);
-		
+
 		button_3 = new JButton("保存");
 		button_3.setBounds(14, 13, 113, 27);
 		panel_6.add(button_3);
-		
+
 		button_4 = new JButton("计算");
 		button_4.setBounds(515, 13, 113, 27);
 		panel_6.add(button_4);
-		
+
 		button_5 = new JButton("打印");
 		button_5.setBounds(1073, 13, 113, 27);
 		panel_6.add(button_5);

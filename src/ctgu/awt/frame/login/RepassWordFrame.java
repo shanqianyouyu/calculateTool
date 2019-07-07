@@ -40,6 +40,7 @@ public class RepassWordFrame extends JFrame implements WindowListener {
 
 	public RepassWordFrame() {
 		db = new Captcha();
+		mainView();
 	}
 
 	private void mainView() {
@@ -98,11 +99,12 @@ public class RepassWordFrame extends JFrame implements WindowListener {
 		this.setResizable(false);
 		jIcon.addMouseListener(new Change());
 		this.setVisible(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
 		RepassWordFrame d = new RepassWordFrame();
-		d.mainView();
+//		d.mainView();
 	}
 
 	@Override
@@ -112,8 +114,8 @@ public class RepassWordFrame extends JFrame implements WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		System.exit(0);
-		;
+//		System.exit(0);
+//		;
 	}
 
 	@Override

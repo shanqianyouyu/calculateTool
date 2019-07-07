@@ -1,11 +1,16 @@
 package ctgu.awt.frame.homepage.component;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
 import ctgu.awt.frame.homepage.component.handlerlistener.ToolMenuHandlerListener;
+import ctgu.awt.frame.login.RepassWordFrame;
 
 /**
  * Copyright © 2019 eSunny Info. Tech Ltd. All rights reserved.
@@ -21,8 +26,8 @@ public class TopTool extends JToolBar {
 
 	// 正方形抱杆
 	private JButton DerrickSquareBtn = new JButton(new ImageIcon(this.getClass().getResource("derrickSquare.png")));
-	private JButton btn1 = new JButton(new ImageIcon(this.getClass().getResource("1.png")));
-	private JButton btn2 = new JButton(new ImageIcon(this.getClass().getResource("2.png")));
+	private JButton bolBtn = new JButton(new ImageIcon(this.getClass().getResource("bol.png")));
+	private JButton updatePassword = new JButton(new ImageIcon(this.getClass().getResource("password.png")));
 	private JButton btn3 = new JButton();
 	private JButton btn4 = new JButton();
 
@@ -37,11 +42,21 @@ public class TopTool extends JToolBar {
 		setFloatable(false);
 		setOrientation(SwingConstants.HORIZONTAL);
 		add(DerrickSquareBtn);
-		add(btn1);
-		add(btn2);
+		add(bolBtn);
+		add(updatePassword);
 	}
 
 	private void init() {
 		DerrickSquareBtn.addActionListener(new ToolMenuHandlerListener("正方形抱杆"));
+		bolBtn.addActionListener(new ToolMenuHandlerListener("螺栓计算"));
+		updatePassword.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RepassWordFrame frame = new RepassWordFrame();
+//				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
+		});
 	}
+
 }
