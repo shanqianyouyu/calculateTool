@@ -25,6 +25,8 @@ public class LoadBar extends JPanel {
 	private Vector<Load> obs = new Vector<Load>();
 	private static final int MIN_PROGRESS = 0;
 	private static final int MAX_PROGRESS = 100;
+	private Timer timer = new Timer();
+	
 
 	private static int currentProgress = MIN_PROGRESS;
 
@@ -57,7 +59,7 @@ public class LoadBar extends JPanel {
 		add(progressBar);
 
 //		java.util.Timer timer = new java.util.Timer();
-		Timer timer = new Timer();
+//		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 
 			@Override
@@ -73,6 +75,6 @@ public class LoadBar extends JPanel {
 //					Thread.sleep(50);
 				}
 			}
-		}, 500, 50);// 半秒后执行，每50ms执行一次
+		}, 500, 30);// 半秒后执行，每50ms执行一次
 	}
 }

@@ -6,10 +6,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import ctgu.awt.frame.load.component.LoadBar;
+import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import ctgu.awt.frame.load.component.LoadBar;
+import ctgu.awt.frame.login.MainFrame;
 
 /**
  * Copyright © 2019 eSunny Info. Tech Ltd. All rights reserved.
@@ -23,6 +26,20 @@ import ctgu.awt.frame.load.component.LoadBar;
 
 public class Load extends JFrame implements LoadObs {
 	private JPanel contentPane;
+
+	// 登录界面
+	private static MainFrame loginFrame;
+	static {
+		try {
+			// 设置边框样式为强立体半透明
+			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencyAppleLike;
+			// 引入apple的皮肤包
+			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			System.out.println("皮肤软件抛出异常");
+		}
+	}
 
 	public Load() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,7 +63,7 @@ public class Load extends JFrame implements LoadObs {
 		logo.setIcon(ico);
 		panel.add(logo);
 		JPanel text = new JPanel();
-		text.setBounds(30, 298, 72, 40);
+		text.setBounds(40, 298, 92, 40);
 		contentPane.add(text);
 		JLabel label = new JLabel("加载中 . . .");
 		text.add(label);
@@ -58,10 +75,15 @@ public class Load extends JFrame implements LoadObs {
 	public static void main(String[] args) {
 		Load load = new Load();
 		load.setVisible(true);
+		// 登录界面
+		loginFrame = new MainFrame();
+		loginFrame.mainView();
+
 	}
 
 	@Override
 	public void update() {
 		this.setVisible(false);
+		loginFrame.setVisible(true);
 	}
 }

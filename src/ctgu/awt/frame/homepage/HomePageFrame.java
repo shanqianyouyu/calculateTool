@@ -46,17 +46,17 @@ import ctgu.awt.frame.homepage.component.TopTool;
  * 打开程序： 提示行：“开始您的计算” 分页为一页 新建计算窗口： 存一个窗口记录进入 Config.calFrame 打开界面
  * 存一个列表记录进入Config.calJpanel
  */
-public class index extends JFrame {
-	static {
-		try {
-			// 设置边框样式为强立体半透明
-			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencyAppleLike;
-			// 引入apple的皮肤包
-			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-		} catch (Exception e) {
-			System.out.println("皮肤软件抛出异常");
-		}
-	}
+public class HomePageFrame extends JFrame {
+//	static {
+//		try {
+//			// 设置边框样式为强立体半透明
+//			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencyAppleLike;
+//			// 引入apple的皮肤包
+//			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+//		} catch (Exception e) {
+//			System.out.println("皮肤软件抛出异常");
+//		}
+//	}
 
 	private JPanel contentPane;
 	FatherTabbedPane tabbedPane = new FatherTabbedPane();
@@ -64,26 +64,26 @@ public class index extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					index frame = new index();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					index frame = new index();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public index() {
+	public HomePageFrame() {
 		setTitle("抱杆程序计算");
 		// 窗体大小设置
-		setBounds(100, 100, 1294, 800);
+		setBounds(100, 100, 1294, 870);
 		this.setMinimumSize(new Dimension(500, 770));
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		contentPane = new JPanel();
@@ -114,7 +114,7 @@ public class index extends JFrame {
 			// 获取当前平台的系统托盘
 			SystemTray tray = SystemTray.getSystemTray();
 
-			URL imgUrl = index.class.getClassLoader().getResource("tray.png");
+			URL imgUrl = HomePageFrame.class.getClassLoader().getResource("tray.png");
 			// 加载一个图片用于托盘图标的显示
 			Image image = Toolkit.getDefaultToolkit().getImage(imgUrl);
 
