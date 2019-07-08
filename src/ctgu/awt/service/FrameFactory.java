@@ -3,10 +3,12 @@ package ctgu.awt.service;
 import ctgu.awt.entity.Config;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.calFrame.TestJFrame;
+import ctgu.awt.frame.homepage.calFrame.across.AcrossFrameCalAbusolute;
 import ctgu.awt.frame.homepage.calFrame.bol.BolFrame;
 import ctgu.awt.frame.homepage.calFrame.derrickCal.AbusoluteSquare;
 import ctgu.awt.frame.homepage.component.MainScrollPane;
 import ctgu.awt.frame.homepage.item.Default;
+import ctgu.awt.frame.homepage.item.acrossCal.Across;
 import ctgu.awt.frame.homepage.item.bolCal.Bol;
 import ctgu.awt.frame.homepage.item.derrickCal.Square;
 import ctgu.awt.util.Util;
@@ -57,6 +59,13 @@ public class FrameFactory {
 			jPanel.setId(id);
 			jPanel.setName(name);
 
+		} else if (name.equals("跨越架计算")) {
+			frame = new AcrossFrameCalAbusolute();
+			frame.setVisible(true);
+			frame.setId(id);
+			jPanel = new Across();
+			jPanel.setId(id);
+			jPanel.setName(name);
 		}
 
 		// 将窗口记录到后台

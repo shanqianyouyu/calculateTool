@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
@@ -28,6 +27,7 @@ public class TopTool extends JToolBar {
 	private JButton DerrickSquareBtn = new JButton(new ImageIcon(this.getClass().getResource("derrickSquare.png")));
 	private JButton bolBtn = new JButton(new ImageIcon(this.getClass().getResource("bol.png")));
 	private JButton updatePassword = new JButton(new ImageIcon(this.getClass().getResource("password.png")));
+	private JButton acrossBtn = new JButton(new ImageIcon(this.getClass().getResource("across.png")));
 	private JButton btn3 = new JButton();
 	private JButton btn4 = new JButton();
 
@@ -43,12 +43,16 @@ public class TopTool extends JToolBar {
 		setOrientation(SwingConstants.HORIZONTAL);
 		add(DerrickSquareBtn);
 		add(bolBtn);
+		add(acrossBtn);
 		add(updatePassword);
+		;
 	}
 
 	private void init() {
+		// 注册工具栏的点击事件
 		DerrickSquareBtn.addActionListener(new ToolMenuHandlerListener("正方形抱杆"));
 		bolBtn.addActionListener(new ToolMenuHandlerListener("螺栓计算"));
+		acrossBtn.addActionListener(new ToolMenuHandlerListener("跨越架计算"));
 		updatePassword.addActionListener(new ActionListener() {
 
 			@Override

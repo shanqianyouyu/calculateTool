@@ -3,8 +3,6 @@ package ctgu.awt.frame.login;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -17,7 +15,7 @@ import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-public class RepassWordFrame extends JFrame implements WindowListener {
+public class RepassWordFrame extends JFrame {
 
 	private static final long serialVersionUID = 4223018726246644075L;
 	static {
@@ -48,7 +46,7 @@ public class RepassWordFrame extends JFrame implements WindowListener {
 		int width = 600;
 		int height = 500;
 		this.setBounds(800, 200, width, height);
-		this.addWindowListener(this);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		// 获取图片
 		ImageIcon icon1 = new ImageIcon(this.getClass().getResource("user.png"));
 		ImageIcon icon2 = new ImageIcon(this.getClass().getResource("write.png"));
@@ -99,43 +97,12 @@ public class RepassWordFrame extends JFrame implements WindowListener {
 		this.setResizable(false);
 		jIcon.addMouseListener(new Change());
 		this.setVisible(true);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
 	}
 
 	public static void main(String[] args) {
 		RepassWordFrame d = new RepassWordFrame();
 //		d.mainView();
-	}
-
-	@Override
-	public void windowOpened(WindowEvent e) {
-
-	}
-
-	@Override
-	public void windowClosing(WindowEvent e) {
-//		System.exit(0);
-//		;
-	}
-
-	@Override
-	public void windowClosed(WindowEvent e) {
-	}
-
-	@Override
-	public void windowIconified(WindowEvent e) {
-	}
-
-	@Override
-	public void windowDeiconified(WindowEvent e) {
-	}
-
-	@Override
-	public void windowActivated(WindowEvent e) {
-	}
-
-	@Override
-	public void windowDeactivated(WindowEvent e) {
 	}
 
 	class Change implements MouseListener {

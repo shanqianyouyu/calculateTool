@@ -51,6 +51,7 @@ public class TopMenu extends JMenuBar {
 	private JMenuItem test = new JMenuItem("测试生成新窗口");
 	private JMenuItem squre = new JMenuItem("正方形抱杆");
 	private JMenuItem bol = new JMenuItem("螺栓计算");
+	private JMenuItem across = new JMenuItem("跨越架计算");
 
 	public TopMenu() {
 		init();
@@ -89,6 +90,7 @@ public class TopMenu extends JMenuBar {
 		file1.add(test);
 		file1.add(squre);
 		file3.add(bol);
+		file6.add(across);
 
 	}
 
@@ -117,8 +119,12 @@ public class TopMenu extends JMenuBar {
 		test.addActionListener(new ToolMenuHandlerListener(test));
 		// 正方形抱杆的点击
 		squre.addActionListener(new ToolMenuHandlerListener(squre));
-		//螺栓计算
+		// 螺栓计算
 		bol.addActionListener(new ToolMenuHandlerListener(bol));
+		// 焊缝计算
+
+		// 跨越架计算
+		across.addActionListener(new ToolMenuHandlerListener(across));
 
 	}
 }

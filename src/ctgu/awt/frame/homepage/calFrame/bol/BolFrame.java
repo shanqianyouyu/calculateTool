@@ -13,11 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-
-import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.component.bolFrame.BolTableDialog;
