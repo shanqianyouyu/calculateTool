@@ -23,6 +23,7 @@ import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.component.bolFrame.BolTableDialog;
 import ctgu.awt.frame.homepage.component.bolFrame.BolTableDialog2;
 import ctgu.awt.frame.homepage.component.bolFrame.BolTableDialog3;
+import ctgu.awt.util.Filewriter;
 import ctgu.awt.util.ResponseCode;
 
 /**
@@ -101,6 +102,7 @@ public class BolFrame extends FatherFrame {
 	private JLabel label_31 = new JLabel();
 	private JLabel label_32;
 	private JLabel label_33;
+	private String outPutTxt = "";
 
 	/**
 	 * Launch the application.
@@ -564,6 +566,30 @@ public class BolFrame extends FatherFrame {
 		});
 
 		button_5 = new JButton("打印");
+		// 打印功能
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s1 = "  ";
+				String s2 = "      ";
+				outPutTxt = "螺栓计算\n" + s1;
+				if (highStrength.o1 != null) {
+					outPutTxt += "普通螺栓受剪力: \n" + s2 + "受剪面数目:  " + highStrength.nv + "\n" + s2 + "螺栓杆直径:  "
+							+ highStrength.d + "\n" + s2 + "在不同手里方向中一个受力方向承压构件总厚度的较小值:  " + highStrength.t + "\n" + s2
+							+ "螺栓的抗剪设计值:  " + highStrength.fbv + "\n" + s2 + "螺栓承压强度设计值: " + highStrength.fbc + "\n"
+							+ s2 + "普通螺栓受剪承载力设计值: " + highStrength.o1 + "\n" + s2 + "普通螺栓承压载力设计值:  " + highStrength.o2
+							+ "\n" + s1;
+				}
+				if (highStrength.o3 != null) {
+					outPutTxt += "普通螺栓受杆轴方向拉力: \n" + s2 + "螺纹处的有效直径: " + highStrength.Hd + "\n" + "";
+				}
+				if (outPutTxt.length() == 7) {
+					JOptionPane.showConfirmDialog(null, "内容为空！");
+				} else {
+					Filewriter.printToTxt(outPutTxt);
+				}
+			}
+		});
+
 		button_5.setBounds(1073, 13, 113, 27);
 		panel_6.add(button_5);
 

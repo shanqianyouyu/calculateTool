@@ -9,7 +9,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import ctgu.awt.frame.homepage.component.handlerlistener.ToolMenuHandlerListener;
-import ctgu.awt.util.filewriter;
+import ctgu.awt.util.Filewriter;
 
 /**
  * 主页的顶部菜单栏
@@ -111,7 +111,7 @@ public class TopMenu extends JMenuBar {
 		download1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				filewriter.fileChooser();
+				Filewriter.fileChooser();
 			}
 		});
 
