@@ -20,6 +20,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import com.sun.org.apache.bcel.internal.generic.ACONST_NULL;
+
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 
 public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListener, ItemListener {
@@ -363,7 +365,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		// 示意图
 		picture.setBorder(new TitledBorder("示意图："));
 		picture.setBounds(0, 0, 390, 280);
-		image.setImage(image.getImage().getScaledInstance(380, 250, Image.SCALE_DEFAULT));
+		image.setImage(image.getImage().getScaledInstance(375, 245, Image.SCALE_DEFAULT));
 		picture1.setIcon(image);
 		picture.add(picture1);
 		left.add(picture);
@@ -805,6 +807,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		JPanel J72 = new JPanel();
 		JPanel J73 = new JPanel();
 		JPanel J74 = new JPanel();
+		JPanel J75 = new JPanel();
 
 		// 输出结果
 		result.setBorder(new TitledBorder("计算结果:"));
@@ -883,21 +886,28 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		tank74.setHorizontalAlignment(JTextField.RIGHT);
 		JTextField oneTxt74 = new JTextField("0", 10);
 
+		JLabel tank75 = new JLabel("两幅跨越架之间的跨距");
+		tank75.setHorizontalAlignment(JTextField.RIGHT);
+		JTextField oneTxt75 = new JTextField("0", 10);
 		// 设置内部布局
 		fengp.setLayout(null);
 		J71.setBounds(0, 20, 390, 38);
 		J72.setBounds(0, 58, 390, 38);
 		J74.setBounds(0, 96, 390, 38);
+		J75.setBounds(0, 137, 390, 38);
 		J71.add(tank71);
 		J72.add(tank72);
 		J74.add(tank74);
+		J75.add(tank75);
 		J71.add(oneTxt71);
 		J72.add(oneTxt72);
 		J73.add(table1);
 		J74.add(oneTxt74);
+		J75.add(oneTxt75);
 		fengp.add(J71);
 		fengp.add(J72);
 		fengp.add(J74);
+		fengp.add(J75);
 		result.add(fengp);
 
 		// 添加进右边
@@ -932,7 +942,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 			picture1.setVisible(false);
 			ImageIcon IC = new ImageIcon(this.getClass().getResource("1.png"));
 			picture1 = new JLabel(IC);
-			IC.setImage(IC.getImage().getScaledInstance(345, 190, Image.SCALE_DEFAULT));
+			IC.setImage(IC.getImage().getScaledInstance(375, 245, Image.SCALE_DEFAULT));
 			picture1.setIcon(IC);
 			picture.add(picture1);
 			picture1.setVisible(true);
@@ -943,7 +953,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 			picture1.setVisible(false);
 			ImageIcon icon = new ImageIcon(this.getClass().getResource("2.png"));
 			picture1 = new JLabel(icon);
-			icon.setImage(icon.getImage().getScaledInstance(345, 190, Image.SCALE_DEFAULT));
+			icon.setImage(icon.getImage().getScaledInstance(375, 245, Image.SCALE_DEFAULT));
 			picture1.setIcon(icon);
 			picture.add(picture1);
 			picture1.setVisible(true);
@@ -972,4 +982,9 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 			System.out.println("选中: " + comboBox.getSelectedIndex() + " = " + comboBox.getSelectedItem());
 		}
 	}
+	
+	
+	
 }
+
+

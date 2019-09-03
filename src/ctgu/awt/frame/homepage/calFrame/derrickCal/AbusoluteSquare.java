@@ -12,12 +12,19 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import javax.swing.plaf.metal.MetalIconFactory.FileIcon16;
+import javax.xml.transform.Result;
 
+import ctgu.Entity.SquareCal;
+import ctgu.awt.controller.XMLData;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
+import javafx.scene.control.Alert;
+import jxl.demo.XML;
 
 public class AbusoluteSquare extends FatherFrame implements ActionListener, FocusListener {
 	/**
@@ -25,7 +32,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 	 */
 	private static final long serialVersionUID = 1L;
 	private int i = 0;
-//	private JFrame jfSquare;
+	// private JFrame jfSquare;
 	private JLabel picture1 = null;
 	private JButton table1 = new JButton("显示表一");
 	JPanel picture = new JPanel();
@@ -46,7 +53,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 	}
 
 	private void initSquare(String name2) {
-//		jfSquare = new JFrame(name2);
+		// jfSquare = new JFrame(name2);
 		setSize(1610, 1000);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);// 关闭等功能
 		dispose();
@@ -61,11 +68,11 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		JPanel end = new JPanel();
 
 		// 设置长宽
-		left.setBounds(0, 0, 350, 890);
-		middle.setBounds(355, 5, 410, 890);
-		right1.setBounds(775, 5, 410, 890);
-		right.setBounds(1190, 0, 415, 890);
-		end.setBounds(0, 890, 1610, 110);
+		left.setBounds(0, 0, 350, 910);
+		middle.setBounds(355, 5, 410, 910);
+		right1.setBounds(775, 5, 410, 910);
+		right.setBounds(1190, 0, 415, 910);
+		end.setBounds(0, 900, 1610, 100);
 
 		add(left);
 		add(right);
@@ -87,6 +94,166 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		initend(end);
 	}
 
+	// 获取参数
+	private int F1;
+	private int F2;
+	private int F3;
+	private int F4;
+
+	// 参数
+	JTextField oneTxt1 = new JTextField("0", 10);
+	private double one1;
+	JTextField oneTxt2 = new JTextField("0", 10);
+	private double one2;
+	JTextField oneTxt3 = new JTextField("0", 10);
+	private double one3;
+	JTextField oneTxt4 = new JTextField("0", 10);
+	private double one4;
+	JTextField oneTxt5 = new JTextField("0", 10);
+	private double one5;
+	JTextField oneTxt6 = new JTextField("0", 10);
+	private double one6;
+
+	JTextField oneTxt21 = new JTextField("0", 10);
+	private double one21;
+	JTextField oneTxt22 = new JTextField("0", 10);
+	private double one22;
+	JTextField oneTxt23 = new JTextField("0", 10);
+	private double one23;
+	JTextField oneTxt24 = new JTextField("0", 10);
+	private double one24;
+	JTextField oneTxt25 = new JTextField("0", 10);
+	private double one25;
+	JTextField oneTxt26 = new JTextField("0", 10);
+	private double one26;
+	JTextField oneTxt27 = new JTextField("0", 10);
+	private double one27;
+	JTextField oneTxt28 = new JTextField("0", 10);
+	private double one28;
+	JTextField oneTxtk21 = new JTextField("0", 10);
+	private double onek21;
+	JTextField oneTxtk22 = new JTextField("0", 10);
+	private double onek22;
+
+	JTextField oneTxt31 = new JTextField("0", 10);
+	private double one31;
+	JTextField oneTxt32 = new JTextField("0", 10);
+	private double one32;
+	JTextField oneTxt33 = new JTextField("0", 10);
+	private double one33;
+	JTextField oneTxt34 = new JTextField("0", 10);
+	private double one34;
+
+	JTextField oneTxt42 = new JTextField("0", 10);
+	private double one41;
+	JTextField oneTxt41 = new JTextField("0", 10);
+	private double one42;
+	JTextField oneTxt43 = new JTextField("0", 10);
+	private double one43;
+	JTextField oneTxt44 = new JTextField("0", 10);
+	private double one44;
+
+	JTextField oneTxtR21 = new JTextField("0", 10);
+	private double oneR21;
+	JTextField oneTxtR22 = new JTextField("0", 10);
+	private double oneR22;
+	JTextField oneTxtR23 = new JTextField("0", 10);
+	private double oneR23;
+
+	JTextField oneTxtC21 = new JTextField("0", 10);
+	private double oneC21;
+	JTextField oneTxtC22 = new JTextField("0", 10);
+	private double oneC22;
+	JTextField oneTxtC23 = new JTextField("0", 10);
+	private double oneC23;
+
+	JTextField oneTxtC31 = new JTextField("0", 10);
+	private double oneC31;
+	JTextField oneTxtC32 = new JTextField("0", 10);
+	private double oneC32;
+	JTextField oneTxtC33 = new JTextField("0", 10);
+	private double oneC33;
+	JTextField oneTxtC34 = new JTextField("0", 10);
+	private double oneC34;
+	JTextField oneTxtC35 = new JTextField("0", 10);
+	private double oneC35;
+	JTextField oneTxtC36 = new JTextField("0", 10);
+	private double oneC36;
+
+	JTextField oneTxtC41 = new JTextField("0", 7);
+	private double oneC41;
+	JTextField oneTxtC42 = new JTextField("0", 7);
+	private double oneC42;
+	JTextField oneTxtC43 = new JTextField("0", 7);
+	private double oneC43;
+	JTextField oneTxtC44 = new JTextField("0", 7);
+	private double oneC44;
+	JTextField oneTxtC45 = new JTextField("0", 7);
+	private double oneC45;
+	
+	private double As;
+	private double BL;
+	private double DBc;
+	private double DBx;
+	private double BBc;
+	private double BBx;
+
+	private double QG;
+	private double FZ1;
+	private double FZd;
+	private double FQ1;
+	private double FQ2;
+	private double FD1;
+	private double FL1;
+	private double DL1;
+	private double FZ2;
+	private double FC1;
+	private double FZ3;
+	private double FM1;
+	private double FAM1;
+	private double FAY;
+	private double FAZ;
+
+	
+	//输出参数
+	JTextField oneTxt61 = new JTextField("0", 10);
+	JTextField oneTxt62 = new JTextField("0", 10);
+	JTextField oneTxt63 = new JTextField("0", 10);
+	JTextField oneTxt64 = new JTextField("0", 10);
+	JTextField oneTxt65 = new JTextField("0", 10);
+	JTextField oneTxt66 = new JTextField("0", 10);
+	JTextField oneTxt71 = new JTextField("0", 10);
+	JTextField oneTxt72 = new JTextField("0", 10);
+	JTextField oneTxt74 = new JTextField("0", 10);
+	JTextField oneTxt75 = new JTextField("0", 10);
+	JTextField oneTxt76 = new JTextField("0", 10);
+	JTextField oneTxt77 = new JTextField("0", 10);
+	JTextField oneTxt78 = new JTextField("0", 10);
+	JTextField oneTxt79 = new JTextField("0", 10);
+	JTextField oneTxt80 = new JTextField("0", 10);
+	JTextField oneTxt81 = new JTextField("0", 10);
+	JTextField oneTxt82 = new JTextField("0", 10);
+	JTextField oneTxt83 = new JTextField("0", 10);
+	
+	String S61;
+	String S62;
+	String S63;
+	String S64;
+	String S65;
+	String S66;
+	String S71;
+	String S72;
+	String S74;
+	String S75;
+	String S76;
+	String S77;
+	String S78;
+	String S79;
+	String S80;
+	String S81;
+	String S82;
+	String S83;
+	
 	private void initright1(JPanel right1) {
 		// 设置空布局，即绝对布局
 		right1.setOpaque(false);
@@ -108,6 +275,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		JPanel J21 = new JPanel();
 		JPanel J22 = new JPanel();
 		JPanel J23 = new JPanel();
+
 		// R3
 		JPanel J31 = new JPanel();
 		JPanel J32 = new JPanel();
@@ -131,15 +299,12 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 		JLabel tankR21 = new JLabel("受压杆件的稳定系数 :");
 		tankR21.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxtR21 = new JTextField("0", 10);
 
 		JLabel tankR22 = new JLabel("抱杆主材截面面积 :");
 		tankR22.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxtR22 = new JTextField("0", 10);
 
 		JLabel tankR23 = new JLabel("抱杆主材的容许应力:");
 		tankR23.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxtR23 = new JTextField("0", 10);
 		JLabel tankR24 = new JLabel();
 		JR4.setLayout(null);
 		tankR24.setBounds(20, 0, 400, 30);
@@ -180,15 +345,12 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 		JLabel tank21 = new JLabel("抱杆中部断面的惯性矩:");
 		tank21.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt21 = new JTextField("0", 10);
 
 		JLabel tank22 = new JLabel("中部断面的抗弯断面系数:");
 		tank22.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt22 = new JTextField("0", 10);
 
 		JLabel tank23 = new JLabel("压杆承受压力的偏心距:");
 		tank23.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt23 = new JTextField("0", 10);
 
 		J21.setBounds(0, 20, 400, 40);
 		J22.setBounds(0, 60, 400, 40);
@@ -196,9 +358,9 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		J21.add(tank21);
 		J22.add(tank22);
 		J23.add(tank23);
-		J21.add(oneTxt21);
-		J22.add(oneTxt22);
-		J23.add(oneTxt23);
+		J21.add(oneTxtC21);
+		J22.add(oneTxtC22);
+		J23.add(oneTxtC23);
 		R2.add(J21);
 		R2.add(J22);
 		R2.add(J23);
@@ -211,31 +373,25 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 		JLabel tank31 = new JLabel("钢丝绳的工作绳数:");
 		tank31.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt31 = new JTextField("0", 10);
 
 		JLabel tank32 = new JLabel("合力线与抱杆轴间夹角(辅助拉线):");
 		tank32.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt32 = new JTextField("0", 10);
 
 		JLabel tank33 = new JLabel("起吊滑车组轴线与铅垂线间的夹角:");
 		tank33.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt33 = new JTextField("0", 10);
 
 		JLabel tank34 = new JLabel("控制绳对地夹角:");
 		tank34.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt34 = new JTextField("0", 10);
 
 		JLabel tank35 = new JLabel("被吊构件的重力:");
 		tank35.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt35 = new JTextField("0", 10);
 
 		JLabel tank36 = new JLabel("  滑车的效率:");
 		tank36.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt36 = new JTextField("0", 10);
 		JLabel tank37 = new JLabel();
 		J37.setLayout(null);
 		tank37.setBounds(215, 0, 300, 30);
-		oneTxt36.addFocusListener(new FocusListener() {
+		oneTxtC36.addFocusListener(new FocusListener() {
 			@Override
 			public void focusLost(FocusEvent e) {
 				tank37.setText("");
@@ -261,12 +417,12 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		J35.add(tank35);
 		J36.add(tank36);
 		J37.add(tank37);
-		J31.add(oneTxt31);
-		J32.add(oneTxt32);
-		J33.add(oneTxt33);
-		J34.add(oneTxt34);
-		J35.add(oneTxt35);
-		J36.add(oneTxt36);
+		J31.add(oneTxtC31);
+		J32.add(oneTxtC32);
+		J33.add(oneTxtC33);
+		J34.add(oneTxtC34);
+		J35.add(oneTxtC35);
+		J36.add(oneTxtC36);
 		R3.add(J31);
 		R3.add(J32);
 		R3.add(J33);
@@ -282,23 +438,18 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 		JLabel tank41 = new JLabel("        单条承托绳与抱杆轴线的夹角:");
 		tank41.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt41 = new JTextField("0", 7);
 
 		JLabel tank42 = new JLabel("单条承托绳与相邻承托绳合力线间夹角:");
 		tank42.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt42 = new JTextField("0", 7);
 
 		JLabel tank43 = new JLabel("                  抱杆及索具的重力:");
 		tank43.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt43 = new JTextField("0", 7);
 
 		JLabel tank44 = new JLabel("主要受力拉线的合力与抱杆轴线的夹角:");
 		tank44.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt44 = new JTextField("0", 7);
 
 		JLabel tank45 = new JLabel("  两拉线合力线与抱杆轴线间的夹角:");
 		tank45.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt45 = new JTextField("0", 7);
 
 		// 设置内部布局
 		R4.setLayout(null);
@@ -312,11 +463,11 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		J43.add(tank43);
 		J44.add(tank44);
 		J45.add(tank45);
-		J41.add(oneTxt41);
-		J42.add(oneTxt42);
-		J43.add(oneTxt43);
-		J44.add(oneTxt44);
-		J45.add(oneTxt45);
+		J41.add(oneTxtC41);
+		J42.add(oneTxtC42);
+		J43.add(oneTxtC43);
+		J44.add(oneTxtC44);
+		J45.add(oneTxtC45);
 		R4.add(J41);
 		R4.add(J42);
 		R4.add(J43);
@@ -330,10 +481,13 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		// 设置空布局，即绝对布局
 		end.setOpaque(false);
 		end.setLayout(null);
-
 		JButton button01 = new JButton("保存");
 		JButton button02 = new JButton("打印");
 		JButton button03 = new JButton("计算");
+		button03.setActionCommand("计算");
+		button03.addActionListener(this);
+		button01.setActionCommand("保存");
+		button01.addActionListener(this);
 
 		button01.setBounds(200, 5, 150, 40);
 		button02.setBounds(700, 5, 150, 40);
@@ -399,7 +553,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		picturecheck.add(checkBox10);
 		picturecheck.add(checkBox11);
 		listenerge lis1 = new listenerge();
-		lis1.listenerge1(checkBox06, checkBox07, checkBox08, checkBox09, checkBox10, checkBox11);
+		F1 = lis1.listenerge1(checkBox06, checkBox07, checkBox08, checkBox09, checkBox10, checkBox11);
 		middle.add(picturecheck);
 
 		// 设置监听
@@ -425,7 +579,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		tankcheck.add(checkBox04);
 		tankcheck.add(checkBox05);
 		listenerge lis = new listenerge();
-		lis.listenergek(checkBox01, checkBox02, checkBox03, checkBox04, checkBox05);
+		F2 = lis.listenergek(checkBox01, checkBox02, checkBox03, checkBox04, checkBox05);
 		middle.add(tankcheck);
 
 		// 钢材选择
@@ -436,6 +590,8 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		cailiao.add(checkboxc1);
 		cailiao.add(checkboxc2);
 		checkboxc2.setBounds(190, 30, 150, 40);
+		listenerge lisc = new listenerge();
+		F3 = lisc.listenergeC(checkboxc1, checkboxc2);
 		middle.add(cailiao);
 
 		// 输入参数2
@@ -444,19 +600,16 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 		JLabel tank42 = new JLabel("    抱杆倾斜角为:");
 		tank42.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt42 = new JTextField("0", 10);
 
 		JLabel tank41 = new JLabel("    拉线对地夹角:");
 		tank41.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt41 = new JTextField("0", 10);
 
 		JLabel tank43 = new JLabel("起吊滑车组的受力绳数为:");
 		tank43.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt43 = new JTextField("0", 10);
 
 		JLabel tank44 = new JLabel("起吊滑车组的效率:");
 		tank44.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt44 = new JTextField("0", 10);
+
 		JLabel tank45 = new JLabel();
 		J45.setLayout(null);
 		tank45.setBounds(220, 0, 300, 30);
@@ -521,6 +674,9 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		JPanel J27 = new JPanel();
 		JPanel J28 = new JPanel();
 		JPanel J29 = new JPanel();
+		JPanel Jk21 = new JPanel();
+		JPanel Jk22 = new JPanel();
+		JPanel Jk23 = new JPanel();
 		// j3
 		JPanel J31 = new JPanel();
 		JPanel J32 = new JPanel();
@@ -530,39 +686,33 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 		// 塔型输入参数
 		J1.setBorder(new TitledBorder("塔型参数："));
-		J1.setBounds(0, 0, 345, 265);
+		J1.setBounds(0, 0, 345, 245);
 		J1.setLayout(null);
 
 		JLabel tank1 = new JLabel("酒杯型塔窗口高度 :");
 		tank1.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt1 = new JTextField("0", 10);
 
 		JLabel tank2 = new JLabel("横担断面最大高度 :");
 		tank2.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt2 = new JTextField("0", 10);
 
 		JLabel tank3 = new JLabel("耐张塔头断面边宽 :");
 		tank3.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt3 = new JTextField("0", 10);
 
 		JLabel tank4 = new JLabel("     吊点绳的高度:");
 		tank4.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt4 = new JTextField("0", 10);
 
 		JLabel tank5 = new JLabel("起吊滑车组预留长度:");
 		tank5.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt5 = new JTextField("0", 10);
 
 		JLabel tank6 = new JLabel("     单边横担长度:");
 		tank6.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt6 = new JTextField("0", 10);
 
-		J11.setBounds(0, 20, 340, 40);
-		J12.setBounds(0, 60, 340, 40);
-		J13.setBounds(0, 100, 340, 40);
-		J14.setBounds(0, 140, 340, 40);
-		J15.setBounds(0, 180, 340, 40);
-		J16.setBounds(0, 220, 340, 40);
+		J11.setBounds(0, 20, 340, 36);
+		J12.setBounds(0, 56, 340, 36);
+		J13.setBounds(0, 92, 340, 36);
+		J14.setBounds(0, 128, 340, 36);
+		J15.setBounds(0, 164, 340, 36);
+		J16.setBounds(0, 200, 340, 36);
 		J11.add(tank1);
 		J12.add(tank2);
 		J13.add(tank3);
@@ -585,40 +735,32 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 		// 压杆参数
 		J2.setBorder(new TitledBorder("压杆参数："));
-		J2.setBounds(0, 263, 345, 373);
+		J2.setBounds(0, 248, 345, 453);
 		J2.setLayout(null);
 
 		JLabel tank21 = new JLabel("  等截面压杆的长度 :");
 		tank21.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt21 = new JTextField("0", 10);
 
 		JLabel tank22 = new JLabel("  压杆截面的惯性矩 :");
 		tank22.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt22 = new JTextField("0", 10);
 
 		JLabel tank23 = new JLabel(" 单肢主材对x轴的惯性矩:");
 		tank23.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt23 = new JTextField("0", 10);
 
 		JLabel tank24 = new JLabel("   单肢主材截面面积:");
 		tank4.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt24 = new JTextField("0", 10);
 
 		JLabel tank25 = new JLabel(" 起吊滑车组预留长度:");
 		tank25.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt25 = new JTextField("0", 10);
 
 		JLabel tank26 = new JLabel(" 单肢主材的重心距离:");
 		tank26.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt26 = new JTextField("0", 10);
 
 		JLabel tank27 = new JLabel("       抱杆断面边宽:");
 		tank27.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt27 = new JTextField("0", 10);
 
 		JLabel tank28 = new JLabel("压杆长度系数(支承方式):");
 		tank28.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt28 = new JTextField("0", 10);
 		JLabel tank29 = new JLabel();
 		J29.setLayout(null);
 		tank29.setBounds(220, 5, 300, 30);
@@ -634,15 +776,40 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 				tank29.setForeground(Color.RED);
 			}
 		});
-		J21.setBounds(0, 20, 340, 40);
-		J22.setBounds(0, 60, 340, 40);
-		J23.setBounds(0, 100, 340, 40);
-		J24.setBounds(0, 140, 340, 40);
-		J25.setBounds(0, 180, 340, 40);
-		J26.setBounds(0, 220, 340, 40);
-		J27.setBounds(0, 260, 340, 40);
-		J28.setBounds(0, 300, 340, 40);
-		J29.setBounds(0, 330, 340, 30);
+		JLabel tankk21 = new JLabel("    单斜材截面面积:");
+		tankk21.setHorizontalAlignment(JTextField.RIGHT);
+		
+
+		JLabel tankk22 = new JLabel("  压杆长度修正系数:");
+		tankk22.setHorizontalAlignment(JTextField.RIGHT);
+		Jk23.setLayout(null);
+		JLabel tankk29 = new JLabel();
+		tankk29.setBounds(200, 2, 300, 30);
+		oneTxtk22.addFocusListener(new FocusListener() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				tankk29.setText("");
+			}
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				tankk29.setText("建议值为1.02");
+				tankk29.setForeground(Color.RED);
+			}
+		});
+
+		J21.setBounds(0, 20, 340, 36);
+		J22.setBounds(0, 56, 340, 36);
+		J23.setBounds(0, 92, 340, 36);
+		J24.setBounds(0, 128, 340, 36);
+		J25.setBounds(0, 164, 340, 36);
+		J26.setBounds(0, 200, 340, 36);
+		J27.setBounds(0, 236, 340, 36);
+		J28.setBounds(0, 272, 340, 36);
+		J29.setBounds(0, 308, 340, 32);
+		Jk21.setBounds(0, 340, 340, 36);
+		Jk22.setBounds(0, 376, 340, 36);
+		Jk23.setBounds(0, 412, 340, 32);
 		J21.add(tank21);
 		J22.add(tank22);
 		J23.add(tank23);
@@ -652,6 +819,9 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		J27.add(tank27);
 		J28.add(tank28);
 		J29.add(tank29);
+		Jk21.add(tankk21);
+		Jk22.add(tankk22);
+		Jk23.add(tankk29);
 		J21.add(oneTxt21);
 		J22.add(oneTxt22);
 		J23.add(oneTxt23);
@@ -660,6 +830,8 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		J26.add(oneTxt26);
 		J27.add(oneTxt27);
 		J28.add(oneTxt28);
+		Jk21.add(oneTxtk21);
+		Jk22.add(oneTxtk22);
 		J2.add(J21);
 		J2.add(J22);
 		J2.add(J23);
@@ -669,28 +841,27 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		J2.add(J27);
 		J2.add(J28);
 		J2.add(J29);
+		J2.add(Jk21);
+		J2.add(Jk22);
+		J2.add(Jk23);
 		left.add(J2);
 
 		// 起吊参数1
 		J3.setBorder(new TitledBorder("起吊参数1："));
-		J3.setBounds(0, 642, 345, 215);
+		J3.setBounds(0, 702, 345, 198);
 		J3.setLayout(null);
 
 		JLabel tank31 = new JLabel("        被吊构件质量 :");
 		tank31.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt31 = new JTextField("0", 10);
 
 		JLabel tank32 = new JLabel("    攀根绳与地面夹角 :");
 		tank32.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt32 = new JTextField("0", 10);
 
 		JLabel tank33 = new JLabel("起吊绳中心线与铅垂线夹角:");
 		tank33.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt33 = new JTextField("0", 10);
 
 		JLabel tank34 = new JLabel("       构件的增重系数:");
 		tank34.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt34 = new JTextField("0", 10);
 		JLabel tank35 = new JLabel();
 		J35.setLayout(null);
 		tank35.setBounds(220, 0, 300, 30);
@@ -706,11 +877,11 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 				tank35.setForeground(Color.RED);
 			}
 		});
-		J31.setBounds(0, 20, 340, 40);
-		J32.setBounds(0, 60, 340, 40);
-		J33.setBounds(0, 100, 340, 40);
-		J34.setBounds(0, 140, 340, 40);
-		J35.setBounds(0, 180, 340, 30);
+		J31.setBounds(0, 20, 340, 36);
+		J32.setBounds(0, 56, 340, 36);
+		J33.setBounds(0, 92, 340, 36);
+		J34.setBounds(0, 128, 340, 36);
+		J35.setBounds(0, 164, 340, 30);
 		J31.add(tank31);
 		J32.add(tank32);
 		J33.add(tank33);
@@ -766,6 +937,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		JPanel J80 = new JPanel();
 		JPanel J81 = new JPanel();
 		JPanel J82 = new JPanel();
+		JPanel J83 = new JPanel();
 
 		// 工况选择
 		tankcheck1.setBorder(new TitledBorder("吊装工况："));
@@ -775,12 +947,12 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		tankcheck1.add(checkBox13);
 		tankcheck1.add(checkBox14);
 		listenerge lis = new listenerge();
-		lis.listenergek1(checkBox11, checkBox12, checkBox13, checkBox14);
+		F4 = lis.listenergek1(checkBox11, checkBox12, checkBox13, checkBox14);
 		right.add(tankcheck1);
 
 		// 输出结果
 		result.setBorder(new TitledBorder("计算结果:"));
-		result.setBounds(0, 105, 410, 787);
+		result.setBounds(0, 105, 410, 792);
 
 		// 设置内部布局
 		result.setLayout(null);
@@ -789,31 +961,26 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		// 抱杆长度和长细比
 		TitledBorder T1 = new TitledBorder("抱杆长度和长细比:");
 		baoganlong.setBorder(T1);
-		baoganlong.setBounds(5, 25, 395, 272);
+		baoganlong.setBounds(9, 20, 395, 272);
 
 		JLabel tank61 = new JLabel("  抱杆长度(多种):");
 		tank61.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt61 = new JTextField("0", 10);
 
 		JLabel tank62 = new JLabel("等截面抱杆长细比:");
 		tank62.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt62 = new JTextField("0", 10);
 
 		JLabel tank63 = new JLabel("等截面抱杆惯性矩:");
 		tank63.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt63 = new JTextField("0", 10);
 
 		JLabel tank64 = new JLabel("变截面抱杆长细比:");
 		tank64.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt64 = new JTextField("0", 10);
 
 		JLabel tank65 = new JLabel("变截面抱杆长细比:");
 		tank65.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt65 = new JTextField("0", 10);
 
 		JLabel tank66 = new JLabel("变截面抱杆的折算长细比:");
 		tank66.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt66 = new JTextField("0", 10);
+
 		// 设置内部布局
 		baoganlong.setLayout(null);
 		J61.setBounds(0, 20, 390, 40);
@@ -845,15 +1012,13 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		// 张力和轴向压力
 		TitledBorder T2 = new TitledBorder("张力和压力:");
 		zhangli.setBorder(T2);
-		zhangli.setBounds(7, 300, 395, 485);
+		zhangli.setBounds(9, 290, 395, 495);
 
 		JLabel tank71 = new JLabel("               攀根绳的静张力:");
 		tank71.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt71 = new JTextField("0", 10);
 
 		JLabel tank72 = new JLabel("   起吊滑车组及牵引绳的静张力:");
 		tank72.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt72 = new JTextField("0", 10);
 
 		JLabel tank73 = new JLabel("               吊点绳的静张力:");
 		tank73.setHorizontalAlignment(JButton.RIGHT);
@@ -862,54 +1027,49 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 		JLabel tank74 = new JLabel("             抱杆拉线的静张力:");
 		tank74.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt74 = new JTextField("0", 10);
 
 		JLabel tank75 = new JLabel("           吊装辅助拉线静张力:");
 		tank75.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt75 = new JTextField("0", 10);
 
 		JLabel tank76 = new JLabel("               抱杆的轴心压力:");
 		tank76.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt76 = new JTextField("0", 10);
 
 		JLabel tank77 = new JLabel("               承托绳的静张力:");
 		tank77.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt77 = new JTextField("0", 10);
 
 		JLabel tank78 = new JLabel(" 引至地面时抱杆轴向压力(多种):");
 		tank77.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt78 = new JTextField("0", 10);
 
 		JLabel tank79 = new JLabel("                 中心压力计算:");
 		tank79.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt79 = new JTextField("0", 10);
 
 		JLabel tank80 = new JLabel("   按压弯杆件计算容许中心压力:");
 		tank80.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt80 = new JTextField("0", 10);
 
 		JLabel tank81 = new JLabel("               牵引绳的静张力:");
 		tank81.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt81 = new JTextField("0", 10);
 
 		JLabel tank82 = new JLabel(" 沿铅垂线引下时增加的拉线张力:");
 		tank82.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt82 = new JTextField("0", 10);
+
+		JLabel tank83 = new JLabel("                  综合静拉力:");
+		tank83.setHorizontalAlignment(JTextField.RIGHT);
 
 		// 设置内部布局
 		zhangli.setLayout(null);
-		J71.setBounds(0, 20, 390, 38);
-		J72.setBounds(0, 58, 390, 38);
-		J81.setBounds(0, 96, 390, 38);
-		J73.setBounds(0, 135, 390, 38);
-		J74.setBounds(0, 173, 390, 38);
-		J75.setBounds(0, 211, 390, 38);
-		J76.setBounds(0, 249, 390, 38);
-		J77.setBounds(0, 287, 390, 38);
-		J78.setBounds(0, 325, 390, 38);
-		J79.setBounds(0, 364, 390, 38);
-		J80.setBounds(0, 402, 390, 38);
-		J82.setBounds(0, 440, 390, 38);
+		J71.setBounds(0, 20, 390, 36);
+		J72.setBounds(0, 56, 390, 36);
+		J81.setBounds(0, 92, 390, 36);
+		J73.setBounds(0, 128, 390, 36);
+		J74.setBounds(0, 164, 390, 36);
+		J75.setBounds(0, 200, 390, 36);
+		J76.setBounds(0, 236, 390, 36);
+		J77.setBounds(0, 272, 390, 36);
+		J78.setBounds(0, 308, 390, 36);
+		J79.setBounds(0, 344, 390, 36);
+		J80.setBounds(0, 380, 390, 36);
+		J82.setBounds(0, 416, 390, 36);
+		J83.setBounds(0, 452, 390, 36);
 		J71.add(tank71);
 		J72.add(tank72);
 		J73.add(tank73);
@@ -922,6 +1082,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		J80.add(tank80);
 		J81.add(tank81);
 		J82.add(tank82);
+		J83.add(tank83);
 		J71.add(oneTxt71);
 		J72.add(oneTxt72);
 		J73.add(table1);
@@ -934,6 +1095,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		J80.add(oneTxt80);
 		J81.add(oneTxt81);
 		J82.add(oneTxt82);
+		J83.add(oneTxt83);
 		zhangli.add(J71);
 		zhangli.add(J72);
 		zhangli.add(J81);
@@ -946,6 +1108,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		zhangli.add(J79);
 		zhangli.add(J80);
 		zhangli.add(J82);
+		zhangli.add(J83);
 		result.add(zhangli);
 
 		// 添加进右边
@@ -1022,6 +1185,196 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		if (e.getActionCommand().equals("显示表一")) {
 			String name = "表1";
 			pictureWindowk1 window1 = new pictureWindowk1(name);
+		}
+		
+		if (e.getActionCommand().equals("计算")) {
+			one1 = Double.parseDouble(oneTxt1.getText());
+			one2 = Double.parseDouble(oneTxt2.getText());
+			one3 = Double.parseDouble(oneTxt3.getText());
+			one4 = Double.parseDouble(oneTxt4.getText());
+			one5 = Double.parseDouble(oneTxt5.getText());
+			one6 = Double.parseDouble(oneTxt6.getText());
+			
+			one21 = Double.parseDouble(oneTxt21.getText());
+			one22 = Double.parseDouble(oneTxt22.getText());
+			one23 = Double.parseDouble(oneTxt23.getText());
+			one24 = Double.parseDouble(oneTxt24.getText());
+			one25 = Double.parseDouble(oneTxt25.getText());
+			one26 = Double.parseDouble(oneTxt26.getText());
+			one27 = Double.parseDouble(oneTxt27.getText());
+			one28 = Double.parseDouble(oneTxt28.getText());
+			
+			one31 = Double.parseDouble(oneTxt31.getText());
+			one32 = Double.parseDouble(oneTxt32.getText());
+			one33 = Double.parseDouble(oneTxt33.getText());
+			one34 = Double.parseDouble(oneTxt34.getText());
+			
+			one41 = Double.parseDouble(oneTxt41.getText());
+			one42 = Double.parseDouble(oneTxt42.getText());
+			one43 = Double.parseDouble(oneTxt43.getText());
+			one44 = Double.parseDouble(oneTxt44.getText());
+			
+			oneR21 = Double.parseDouble(oneTxtR21.getText());
+			oneR22 = Double.parseDouble(oneTxtR22.getText());
+			oneR23 = Double.parseDouble(oneTxtR23.getText());
+			
+			oneC21 = Double.parseDouble(oneTxtC21.getText());
+			oneC22 = Double.parseDouble(oneTxtC22.getText());
+			oneC22 = Double.parseDouble(oneTxtC22.getText());
+			
+			oneC31 = Double.parseDouble(oneTxtC31.getText());
+			oneC32 = Double.parseDouble(oneTxtC32.getText());
+			oneC33 = Double.parseDouble(oneTxtC33.getText());
+			oneC34 = Double.parseDouble(oneTxtC34.getText());
+			oneC35 = Double.parseDouble(oneTxtC35.getText());
+			oneC36 = Double.parseDouble(oneTxtC36.getText());
+			
+			oneC41 = Double.parseDouble(oneTxtC41.getText());
+			oneC42 = Double.parseDouble(oneTxtC42.getText());
+			oneC43 = Double.parseDouble(oneTxtC43.getText());
+			oneC44 = Double.parseDouble(oneTxtC44.getText());
+			oneC45 = Double.parseDouble(oneTxtC45.getText());
+			
+			SquareCal sq1 = new SquareCal(one1, one2, one3, one4, one5, one6, one21, one22, one23, one24, one25, one26, one27, one28, onek21, onek22, one31, one32, one33, one34, one43, one42, one41, one44, oneR21, oneR22, oneR23, oneC21, oneC22, oneC23, oneC31, oneC32, oneC33, oneC34, oneC35, oneC36, oneC41, oneC42, oneC43, oneC44, oneC45);
+			
+			//抱杆主材截面面积
+			As = sq1.setS();
+			
+			//抱杆长度
+			if(F2 < 4){
+				BL = sq1.setHrodLength();
+			}else if(F2 == 4){
+				BL = sq1.setHrodLengthCat();
+			}else{
+				BL = sq1.setHrodLengthTen();
+			}
+			
+			//等截面抱杆的长细比
+			DBc = sq1.setDslendernessRatio();
+			
+			//等截面抱杆的惯性矩
+			DBx = sq1.setDmomenToFinertia();
+			
+			//变截面抱杆长细比
+			BBc = sq1.setBmomenToFinertia();
+			
+			//变截面抱杆的折算长细比
+			BBx = sq1.setOneMomenToFinertia();
+			
+			//起吊重力
+			QG = sq1.setWeight();
+			
+			//攀根绳的静张力
+			FZ1 = sq1.setPstatictension();
+			
+			//起吊和牵引绳
+			FQ1 = sq1.setDstatictension();
+			
+			//牵引绳的静张力
+			FQ2 = sq1.setQstatictension();
+			
+			//抱杆拉线的静张力
+			if(F4 == 1){
+				FL1 = sq1.setLstatictension1();
+			}else if(F4 == 2){
+				FL1 = sq1.setLstatictension2();
+			}else if(F4 == 3){
+				FL1 = sq1.setLstatictension3();
+			}else{
+				FL1 = sq1.setLstatictension4();
+			}
+				
+			//吊装辅助拉线静张力
+			DL1 = sq1.setZwireTension();
+			
+			//抱杆的轴心压力,AFZ变化
+			if(F4 == 1){
+				FZ2 = sq1.setAxisPressure();
+			}else if(F4 == 2){
+				FZ2 = sq1.setAxisPressure1();
+			}
+			
+			//承托绳的静张力
+			if(F4 == 1){
+				FC1 = sq1.setCstatictension();
+			}else if(F4 == 2){
+				FC1 = sq1.setCstatictension1();
+			}
+			
+			if(F1 == 3){
+				FZ3 = sq1.setYaxialPressure1();
+			}else if(F1 == 4){
+				FZ3 = sq1.setYaxialPressure2();
+			}else if(F1 == 6){
+				FZ3 = sq1.setYaxialPressure3();
+			}else{
+				FZ3 = sq1.setYaxialPressure4();
+			}
+			
+			//中心压力的计算
+			FM1 = sq1.setCentralPressure();
+			
+			//按压弯件中心压力的计算
+			FAM1 = sq1.setPermissibleCentralPressure();
+			
+			
+			//向下增加的拉力
+			FAY = sq1.setZstatictension1();
+			
+			//综合静拉力
+			FAZ = sq1.setZstatictensionZ();
+			
+			S61 = String.format("%.2f", BL);
+			oneTxt61.setText(S61);
+			S62 = String.format("%.2f", DBc);
+			oneTxt62.setText(S62);
+			S63 = String.format("%.2f", DBx);
+			oneTxt63.setText(S63);
+			S64 = String.format("%.2f", BBc);
+			oneTxt64.setText(S64);
+			S65 = String.format("%.2f", BBc);
+			oneTxt65.setText(S65);
+			S66 = String.format("%.2f", BBx);
+			oneTxt66.setText(S66);
+			S71 = String.format("%.2f", FZ1);
+			oneTxt71.setText(S71);
+			S72 = String.format("%.2f", FQ1);
+			oneTxt72.setText(S71);
+			S74 = String.format("%.2f", FQ2);
+			oneTxt74.setText(S74);
+			S75 = String.format("%.2f", FL1);
+			oneTxt75.setText(S75);
+			S76 = String.format("%.2f", DL1);
+			oneTxt76.setText(S76);
+			S77 = String.format("%.2f", FZ2);
+			oneTxt77.setText(S77);
+			S78 = String.format("%.2f", FC1);
+			oneTxt78.setText(S78);
+			S79 = String.format("%.2f", FZ3);
+			oneTxt79.setText(S79);
+			S80 = String.format("%.2f", FM1);
+			oneTxt80.setText(S80);
+			S81 = String.format("%.2f", FAM1);
+			oneTxt81.setText(S81);
+			S82 = String.format("%.2f", FAY);
+			oneTxt82.setText(S82);
+			S83 = String.format("%.2f", FAZ);
+			oneTxt83.setText(S83);	
+			
+		}
+		
+		if (e.getActionCommand().equals("保存")) {
+			XMLData data1 = new XMLData(one1, one2, one3, one4, one5, one6, one21, one22, one23, one24, one25, one26, one27, one28, onek21, onek22, one31, one32, one33, one34, one43, one42, one41, one44, oneR21, oneR22, oneR23, oneC21, oneC22, oneC23, oneC31, oneC32, oneC33, oneC34, oneC35, oneC36, oneC41, oneC42, oneC43, oneC44, oneC45, As, BL, DBc, DBx, BBc, BBc, BBx, QG, FZ1, FQ1, FQ2, FL1, DL1, FZ2, FC1, FZ3, FM1, FAM1, FAY, FAZ);
+			try {
+				Result result = data1.add();
+				if (result != null) {
+					JOptionPane.showMessageDialog(null, "保存成功", "提示",JOptionPane.WARNING_MESSAGE);  
+				}
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		}
 	}
 
