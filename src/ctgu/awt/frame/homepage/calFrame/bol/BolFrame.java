@@ -580,8 +580,27 @@ public class BolFrame extends FatherFrame {
 							+ "\n" + s1;
 				}
 				if (highStrength.o3 != null) {
-					outPutTxt += "普通螺栓受杆轴方向拉力: \n" + s2 + "螺纹处的有效直径: " + highStrength.Hd + "\n" + "";
+					outPutTxt += "普通螺栓受杆轴方向拉力: \n" + s2 + "螺纹处的有效直径: " + highStrength.de + "\n" + s2 + "抗拉强度设计值: "
+							+ highStrength.ftb + "\n" + s2 + "承载力设计值: " + highStrength.o3 + "\n" + s1;
 				}
+				if (highStrength.o4 != null) {
+					outPutTxt += "普通螺栓同时承受剪力和杆轴方向拉力:\n" + s2 + "承受剪力: " + highStrength.Cnv + "\n" + s2 + "承受拉力: "
+							+ highStrength.Nt + "\n" + s2 + "承剪继承力设计值: " + highStrength.Nvb + "\n" + s2 + "承拉继承力设计值: "
+							+ highStrength.Ntb + "\n" + s2 + "成压继承力设计值: " + highStrength.Nbc + "\n" + s2
+							+ "同时承受剪力和杆轴方向拉力: " + highStrength.o4 + "\n" + s1;
+				}
+				if (highStrength.o5 != null) {
+					outPutTxt += "高强度螺栓承压型连接: \n" + s2 + "螺栓杆直径: " + highStrength.Hd + "\n" + s2 + "受剪面数: "
+							+ highStrength.Hnv + "\n" + s2 + "螺栓的抗剪设计值: " + highStrength.Fbv + "\n" + s2 + "螺栓承压强度设计值: "
+							+ highStrength.Fbc + "\n" + s2 + "受剪承载力: " + highStrength.o5 + "\n" + s2 + "受压承载力: "
+							+ highStrength.o6 + "\n" + s2 + "受剪承载力设计值: " + highStrength.o7 + "\n" + s1;
+				}
+				if (highStrength.o8 != null) {
+					outPutTxt += "高强度螺栓摩擦型连接: \n" + s2 + "摩擦面数: " + highStrength.nf + "\n" + s2 + "摩擦面的抗滑移系数: "
+							+ highStrength.y + "\n" + s2 + "预拉力: " + highStrength.nvb + "\n" + s2 + "承载力: "
+							+ highStrength.o8;
+				}
+//				if(highStrength.)
 				if (outPutTxt.length() == 7) {
 					JOptionPane.showConfirmDialog(null, "内容为空！");
 				} else {
