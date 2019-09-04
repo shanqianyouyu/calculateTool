@@ -15,17 +15,21 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import javax.xml.transform.Result;
 
 import com.sun.org.apache.bcel.internal.generic.ACONST_NULL;
 
+import ctgu.Entity.AcrossCal;
+import ctgu.awt.controller.XMLData;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 
 public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListener, ItemListener {
-	
+
 	public static void main(String[] args) {
 		AcrossFrameCalAbusolute abusolute = new AcrossFrameCalAbusolute();
 	}
@@ -37,6 +41,10 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 	private JButton model = new JButton("显示规范");
 	private JButton table1 = new JButton("显示表一");
 	private JButton table2 = new JButton("显示表二");
+
+	// 获取下拉列表的值
+	private String list1;
+	private String list2;
 
 	// 定义初始图片
 	private JLabel picture1 = null;
@@ -105,6 +113,115 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		add(end);
 	}
 
+	private int B1;
+	private int B2;
+
+	// 输入参数
+	JTextField oneTxt51 = new JTextField("0", 7);
+	private double two51;
+	JTextField oneTxt52 = new JTextField("0", 10);
+	private double two52;
+	JTextField oneTxt53 = new JTextField("0", 10);
+	private double two53;
+	JTextField oneTxt54 = new JTextField("0", 10);
+	private double two54;
+	JTextField oneTxt55 = new JTextField("0", 10);
+	private double two55;
+	JTextField oneTxt56 = new JTextField("0", 7);
+	private double two56;
+	JTextField oneTxt57 = new JTextField("0", 5);
+	private double two57;
+	JTextField oneTxt58 = new JTextField("0", 5);
+	private double two58;
+	JTextField oneTxt59 = new JTextField("0", 10);
+	private double two59;
+
+	JTextField oneTxt81 = new JTextField("0", 7);
+	private double two81;
+	JTextField oneTxt82 = new JTextField("0", 10);
+	private double two82;
+	JTextField oneTxt83 = new JTextField("0", 10);
+	private double two83;
+	JTextField oneTxt84 = new JTextField("0", 6);
+	private double two84;
+	JTextField oneTxt85 = new JTextField("0", 10);
+	private double two85;
+	JTextField oneTxt86 = new JTextField("0", 7);
+	private double two86;
+	JTextField oneTxt87 = new JTextField("0", 10);
+	private double two87;
+	JTextField oneTxt88 = new JTextField("0", 10);
+	private double two88;
+
+	JTextField oneTxt1 = new JTextField("0", 10);
+	private double two1;
+	JTextField oneTxt3 = new JTextField("0", 10);
+	private double two3;
+	private double two2;
+	JTextField oneTxt7 = new JTextField("0", 10);
+	private double two7;
+	JTextField oneTxt4 = new JTextField("0", 10);
+	private double two4;
+	JTextField oneTxt5 = new JTextField("0", 10);
+	private double two5;
+	JTextField oneTxt6 = new JTextField("0", 10);
+	private double two6;
+
+	JTextField oneTxt21 = new JTextField("0", 10);
+	private double two21;
+
+	JTextField oneTxt31 = new JTextField("0", 10);
+	private double two31;
+	JTextField oneTxt32 = new JTextField("0", 10);
+	private double two32;
+	JTextField oneTxt34 = new JTextField("0", 10);
+	private double two34;
+	JTextField oneTxt37 = new JTextField("0", 10);
+	private double two37;
+	JTextField oneTxt39 = new JTextField("0", 10);
+	private double two39;
+
+	JTextField oneTxt41 = new JTextField("0", 10);
+	private double two41;
+	JTextField oneTxt42 = new JTextField("0", 10);
+	private double two42;
+	JTextField oneTxt43 = new JTextField("0", 10);
+	private double two43;
+	JTextField oneTxt44 = new JTextField("0", 8);
+	private double two44;
+
+	JTextField oneTxt61 = new JTextField("0", 10);
+	private String two61;
+	JTextField oneTxt62 = new JTextField("0", 10);
+	private String two62;
+	JTextField oneTxt64 = new JTextField("0", 10);
+	private String two64;
+	JTextField oneTxt65 = new JTextField("0", 10);
+	private String two65;
+	JTextField oneTxt66 = new JTextField("0", 10);
+	private String two66;
+
+	JTextField oneTxt71 = new JTextField("0", 10);
+	private String two71;
+	JTextField oneTxt72 = new JTextField("0", 10);
+	private String two72;
+	JTextField oneTxt74 = new JTextField("0", 10);
+	private String two74;
+	JTextField oneTxt75 = new JTextField("0", 10);
+	private String two75;
+
+	// 输出参数
+	private double WLS;
+	private double ULWP;
+	private double HLS;
+	private double MHC;
+	private double MWS;
+
+	private double MSS;
+	private double Rpl;
+	private double TRpl;
+	private double WDD;
+
 	private void initright1(JPanel right1) {
 		// 跨越架选择
 		JPanel framecheck = new JPanel();
@@ -151,7 +268,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		framecheck.add(checkboxk2);
 		checkboxk2.setBounds(190, 30, 150, 40);
 		listenerGe2 lis1 = new listenerGe2();
-		lis1.listenergek2(checkboxk1, checkboxk2);
+		B1 = lis1.listenergek2(checkboxk1, checkboxk2);
 		right1.add(framecheck);
 
 		J4.setBorder(new TitledBorder("单侧跨越架:"));
@@ -159,39 +276,30 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 
 		JLabel tank51 = new JLabel("最小安全距离要求的跨距:");
 		tank51.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt51 = new JTextField("0", 7);
 
 		JLabel tank52 = new JLabel("在建线路的交叉角引起的跨距:");
 		tank52.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt52 = new JTextField("0", 10);
 
 		JLabel tank53 = new JLabel("上层拉线挂点至地面的高度:");
 		tank53.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt53 = new JTextField("0", 10);
 
 		JLabel tank54 = new JLabel("运行电力线的下导线至地面高度:");
 		tank54.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt54 = new JTextField("0", 10);
 
 		JLabel tank55 = new JLabel("             拉线对地面夹角:");
 		tank55.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt55 = new JTextField("0", 10);
 
 		JLabel tank56 = new JLabel("拉线与跨越架横担轴线间的水平夹角:");
 		tank56.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt56 = new JTextField("0", 7);
 
 		JLabel tank57 = new JLabel("上拉线挂点至运行电力线的垂直距离:");
 		tank57.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt57 = new JTextField("0", 5);
 
 		JLabel tank58 = new JLabel("上拉线与运行电力线的最小安全距离:");
 		tank58.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt58 = new JTextField("0", 5);
 
 		JLabel tank59 = new JLabel(" 拉线位置引起的跨距:");
 		tank59.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt59 = new JTextField("0", 10);
 
 		// 设置内部布局
 		J4.setLayout(null);
@@ -237,41 +345,33 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		J5.setBorder(new TitledBorder("单侧跨越架:"));
 		J5.setBounds(0, 483, 390, 385);
 
-		JLabel tank61 = new JLabel("与施工线路任一相邻杆塔的距离:");
-		tank61.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt61 = new JTextField("0", 7);
+		JLabel tank81 = new JLabel("与施工线路任一相邻杆塔的距离:");
+		tank81.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank62 = new JLabel("               水平放线张力:");
-		tank62.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt62 = new JTextField("0", 10);
+		JLabel tank82 = new JLabel("               水平放线张力:");
+		tank82.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank63 = new JLabel("施工线路的跨越档档距跨越:");
-		tank63.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt63 = new JTextField("0", 10);
+		JLabel tank83 = new JLabel("施工线路的跨越档档距跨越:");
+		tank83.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank64 = new JLabel("两端悬垂绝缘子串或滑车挂具长度:");
-		tank64.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt64 = new JTextField("0", 6);
+		JLabel tank84 = new JLabel("两端悬垂绝缘子串或滑车挂具长度:");
+		tank84.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank65 = new JLabel("     导线、地线的单位长度重量:");
-		tank65.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt65 = new JTextField("0", 10);
+		JLabel tank85 = new JLabel("     导线、地线的单位长度重量:");
+		tank85.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank66 = new JLabel("导线或地线安装的单位长度风荷重:");
-		tank66.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt66 = new JTextField("0", 7);
+		JLabel tank86 = new JLabel("导线或地线安装的单位长度风荷重:");
+		tank86.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank67 = new JLabel("导线或地线直径:");
-		tank67.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt67 = new JTextField("0", 10);
+		JLabel tank87 = new JLabel("导线或地线直径:");
+		tank87.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank68 = new JLabel("风载体型系数:");
-		tank68.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt68 = new JTextField("0", 10);
+		JLabel tank88 = new JLabel("风载体型系数:");
+		tank88.setHorizontalAlignment(JTextField.RIGHT);
 		JLabel tankK13 = new JLabel();
 		J69.setLayout(null);
 		tankK13.setBounds(0, 0, 390, 30);
-		oneTxt68.addFocusListener(new FocusListener() {
+		oneTxt88.addFocusListener(new FocusListener() {
 			@Override
 			public void focusLost(FocusEvent e) {
 				tankK13.setText("");
@@ -296,23 +396,23 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		J67.setBounds(0, 260, 380, 40);
 		J68.setBounds(0, 300, 380, 40);
 		J69.setBounds(0, 340, 380, 40);
-		J61.add(tank61);
-		J62.add(tank62);
-		J63.add(tank63);
-		J64.add(tank64);
-		J65.add(tank65);
-		J66.add(tank66);
-		J67.add(tank67);
-		J68.add(tank68);
+		J61.add(tank81);
+		J62.add(tank82);
+		J63.add(tank83);
+		J64.add(tank84);
+		J65.add(tank85);
+		J66.add(tank86);
+		J67.add(tank87);
+		J68.add(tank88);
 		J69.add(tankK13);
-		J61.add(oneTxt61);
-		J62.add(oneTxt62);
-		J63.add(oneTxt63);
-		J64.add(oneTxt64);
-		J65.add(oneTxt65);
-		J66.add(oneTxt66);
-		J67.add(oneTxt67);
-		J68.add(oneTxt68);
+		J61.add(oneTxt81);
+		J62.add(oneTxt82);
+		J63.add(oneTxt83);
+		J64.add(oneTxt84);
+		J65.add(oneTxt85);
+		J66.add(oneTxt86);
+		J67.add(oneTxt87);
+		J68.add(oneTxt88);
 		J5.add(J61);
 		J5.add(J62);
 		J5.add(J63);
@@ -376,7 +476,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		picturecheck.add(checkBox01);
 		picturecheck.add(checkBox02);
 		listenerGe2 lis1 = new listenerGe2();
-		lis1.listenerge2(checkBox01, checkBox02);
+		B2 = lis1.listenerge2(checkBox01, checkBox02);
 		left.add(picturecheck);
 
 		// 设置监听
@@ -391,7 +491,6 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 
 		JLabel tank1 = new JLabel("       导线线密度，N/m:");
 		tank1.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt1 = new JTextField("0", 10);
 
 		JLabel tank2 = new JLabel("        风载体型系数:");
 		comboBox.addItemListener(this);
@@ -399,13 +498,14 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		// 设置默认选中的条目
 		comboBox.setSelectedIndex(1);
 
-		JLabel tank3 = new JLabel("            子导数根数:");
+		list1 = comboBox.getSelectedItem().toString();
+
+		JLabel tank3 = new JLabel("            子导线根数:");
 		tank3.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt3 = new JTextField("0", 10);
 
 		JLabel tank7 = new JLabel("          风荷调整系数:");
 		tank7.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt7 = new JTextField("0", 10);
+
 		JLabel tankK1 = new JLabel();
 		J18.setLayout(null);
 		tankK1.setBounds(100, 0, 400, 30);
@@ -424,7 +524,6 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 
 		JLabel tank4 = new JLabel("      路线设计最大风速:");
 		tank4.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt4 = new JTextField("0", 10);
 		JLabel tankK2 = new JLabel();
 		J19.setLayout(null);
 		tankK2.setBounds(200, 0, 400, 30);
@@ -443,7 +542,6 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 
 		JLabel tank5 = new JLabel("  架面1m范围的投影面积:");
 		tank5.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt5 = new JTextField("0", 10);
 		JLabel tankK3 = new JLabel();
 		J20.setLayout(null);
 		tankK3.setBounds(20, 0, 400, 30);
@@ -462,7 +560,6 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 
 		JLabel tank6 = new JLabel("              冲击系数:");
 		tank6.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt6 = new JTextField("0", 10);
 		JLabel tankK4 = new JLabel();
 		J21.setLayout(null);
 		tankK4.setBounds(200, 0, 400, 30);
@@ -565,9 +662,12 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		J2.setBounds(0, 0, 405, 230);
 
 		JLabel tank21 = new JLabel("摩擦系数:");
-		// 设置默认选中的条目
-		comboBox1.setSelectedIndex(1);
-		comboBox1.addItemListener(this);
+		// // 设置默认选中的条目
+		// comboBox1.setSelectedIndex(1);
+		// comboBox1.addItemListener(this);
+		tank21.setHorizontalAlignment(JTextField.RIGHT);
+
+		// list2 = comboBox1.getSelectedItem().toString();
 
 		JLabel tank22 = new JLabel("架顶宽度规范:");
 		model.setActionCommand("显示规范");
@@ -585,7 +685,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		J22.add(tank22);
 		J23.add(tank23);
 		J24.add(tank24);
-		J21.add(comboBox1);
+		J21.add(oneTxt21);
 		J22.add(model);
 		J23.add(table1);
 		J24.add(table2);
@@ -601,11 +701,9 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 
 		JLabel tank31 = new JLabel("  被跨电力线最高点的对地距离:");
 		tank31.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt31 = new JTextField("0", 10);
 
 		JLabel tank32 = new JLabel("    与封顶架面的最小垂直距离:");
 		tank32.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt32 = new JTextField("0", 10);
 		JLabel tankK5 = new JLabel();
 		J33.setLayout(null);
 		tankK5.setBounds(50, 0, 380, 30);
@@ -624,7 +722,6 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 
 		JLabel tank34 = new JLabel("         跨越架封顶网的弧垂:");
 		tank34.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt34 = new JTextField("0", 10);
 		JLabel tankK6 = new JLabel();
 		JLabel tankK7 = new JLabel();
 		J35.setLayout(null);
@@ -648,7 +745,6 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 
 		JLabel tank37 = new JLabel("         施工线路的线间距离:");
 		tank37.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt37 = new JTextField("0", 10);
 		JLabel tankK8 = new JLabel();
 		JLabel tankK9 = new JLabel();
 		J38.setLayout(null);
@@ -671,7 +767,6 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		});
 		JLabel tank39 = new JLabel("跨越架顶面超出施工线路的宽度:");
 		tank39.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt39 = new JTextField("0", 10);
 		JLabel tankK10 = new JLabel();
 		JLabel tankK11 = new JLabel();
 		J40.setLayout(null);
@@ -694,19 +789,15 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		});
 		JLabel tank41 = new JLabel("施工线路与别跨电力线的交叉角:");
 		tank41.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt41 = new JTextField("0", 10);
 
 		JLabel tank42 = new JLabel("     跨越架顶面的最小跨距:");
 		tank42.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt42 = new JTextField("0", 10);
 
 		JLabel tank43 = new JLabel("被跨电力线两边线间的水平距离:");
 		tank43.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt43 = new JTextField("0", 10);
 
 		JLabel tank44 = new JLabel("金属架至被跨电力线最小水平距离:");
 		tank44.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt44 = new JTextField("0", 8);
 		JLabel tankK12 = new JLabel();
 		J45.setLayout(null);
 		tankK12.setBounds(20, 0, 380, 30);
@@ -824,24 +915,19 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 
 		JLabel tank61 = new JLabel("跨越架的垂直载荷:");
 		tank61.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt61 = new JTextField("0", 10);
 
 		JLabel tank62 = new JLabel("架面风压的均布载荷:");
 		tank62.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt62 = new JTextField("0", 10);
 
 		JLabel tank63 = new JLabel("滑道绳水平张力,每条绳最大张力值取2500N");
 		JLabel tank64 = new JLabel("跨越架的水平荷载:");
 		tank64.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt64 = new JTextField("0", 10);
 
 		JLabel tank65 = new JLabel("跨越架的最小高度:");
 		tank65.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt65 = new JTextField("0", 10);
 
 		JLabel tank66 = new JLabel("跨越架的最小宽度:");
 		tank66.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt66 = new JTextField("0", 10);
 		// 设置内部布局
 		jichu.setLayout(null);
 		J61.setBounds(0, 20, 390, 40);
@@ -876,19 +962,15 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 
 		JLabel tank71 = new JLabel("       跨越架顶面的最小跨距:");
 		tank71.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt71 = new JTextField("0", 10);
 
 		JLabel tank72 = new JLabel("架外侧至运行电力线的水平距离为:");
 		tank72.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt72 = new JTextField("0", 10);
 
 		JLabel tank74 = new JLabel("                      风偏距离:");
 		tank74.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt74 = new JTextField("0", 10);
 
 		JLabel tank75 = new JLabel("两幅跨越架之间的跨距");
 		tank75.setHorizontalAlignment(JTextField.RIGHT);
-		JTextField oneTxt75 = new JTextField("0", 10);
 		// 设置内部布局
 		fengp.setLayout(null);
 		J71.setBounds(0, 20, 390, 38);
@@ -972,6 +1054,91 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 			String name2 = "宽度规范";
 			pictureWindow3 window3 = new pictureWindow3(name2);
 		}
+
+		if (e.getActionCommand().equals("计算")) {
+			two51 = Double.parseDouble(oneTxt51.getText());
+			two52 = Double.parseDouble(oneTxt52.getText());
+			two53 = Double.parseDouble(oneTxt53.getText());
+			two54 = Double.parseDouble(oneTxt54.getText());
+			two55 = Double.parseDouble(oneTxt55.getText());
+			two56 = Double.parseDouble(oneTxt56.getText());
+			two57 = Double.parseDouble(oneTxt57.getText());
+			two58 = Double.parseDouble(oneTxt58.getText());
+			two59 = Double.parseDouble(oneTxt59.getText());
+
+			two81 = Double.parseDouble(oneTxt81.getText());
+			two82 = Double.parseDouble(oneTxt82.getText());
+			two83 = Double.parseDouble(oneTxt83.getText());
+			two84 = Double.parseDouble(oneTxt84.getText());
+			two85 = Double.parseDouble(oneTxt85.getText());
+			two86 = Double.parseDouble(oneTxt86.getText());
+			two87 = Double.parseDouble(oneTxt87.getText());
+			two88 = Double.parseDouble(oneTxt88.getText());
+
+			two1 = Double.parseDouble(oneTxt1.getText());
+			two3 = Double.parseDouble(oneTxt3.getText());
+			two7 = Double.parseDouble(oneTxt7.getText());
+			two4 = Double.parseDouble(oneTxt4.getText());
+			two5 = Double.parseDouble(oneTxt5.getText());
+			two6 = Double.parseDouble(oneTxt6.getText());
+
+			two21 = Double.parseDouble(oneTxt21.getText());
+
+			two31 = Double.parseDouble(oneTxt31.getText());
+			two32 = Double.parseDouble(oneTxt32.getText());
+			two34 = Double.parseDouble(oneTxt34.getText());
+			two37 = Double.parseDouble(oneTxt37.getText());
+			two39 = Double.parseDouble(oneTxt39.getText());
+
+			two41 = Double.parseDouble(oneTxt41.getText());
+			two41 = Double.parseDouble(oneTxt41.getText());
+			two41 = Double.parseDouble(oneTxt41.getText());
+			two41 = Double.parseDouble(oneTxt41.getText());
+
+
+			AcrossCal sq2 = new AcrossCal(two1, two2, two3, two7, two4, two5, two6, two21, two31, two32, two34, two37,
+					two39, two41, two42, two43, two44, two51, two52, two53, two54, two55, two56, two57, two58, two59,
+					two81, two82, two83, two84, two85, two86, two87, two88);
+
+			two61 = String.format("%.2f", WLS);
+			oneTxt61.setText(two61);
+			two62 = String.format("%.2f", ULWP);
+			oneTxt62.setText(two62);
+			two64 = String.format("%.2f", HLS);
+			oneTxt64.setText(two64);
+			two65 = String.format("%.2f", MHC);
+			oneTxt65.setText(two65);
+			two66 = String.format("%.2f", MWS);
+			oneTxt66.setText(two66);
+			two71 = String.format("%.2f", MSS);
+			oneTxt71.setText(two71);
+			two72 = String.format("%.2f", Rpl);
+			oneTxt72.setText(two72);
+			two74 = String.format("%.2f", TRpl);
+			oneTxt74.setText(two74);
+			two75 = String.format("%.2f", WDD);
+			oneTxt75.setText(two75);
+			// if (e.getActionCommand().equals("保存")) {
+			//// XMLData data1 = new XMLData(one1, one2, one3, one4, one5, one6,
+			// one21, one22, one23, one24, one25, one26, one27, one28, onek21,
+			// onek22, one31, one32, one33, one34, one43, one42, one41, one44,
+			// oneR21, oneR22, oneR23, oneC21, oneC22, oneC23, oneC31, oneC32,
+			// oneC33, oneC34, oneC35, oneC36, oneC41, oneC42, oneC43, oneC44,
+			// oneC45, As, BL, DBc, DBx, BBc, BBc, BBx, QG, FZ1, FQ1, FQ2, FL1,
+			// DL1, FZ2, FC1, FZ3, FM1, FAM1, FAY, FAZ);
+			// try {
+			// Result result = data1.add();
+			// if (result != null) {
+			// JOptionPane.showMessageDialog(null, "保存成功",
+			// "提示",JOptionPane.WARNING_MESSAGE);
+			// }
+			// } catch (Exception e1) {
+			// // TODO Auto-generated catch block
+			// e1.printStackTrace();
+			// }
+			//
+			// }
+		}
 	}
 
 	// 添加条目选中状态改变的监听器
@@ -982,9 +1149,5 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 			System.out.println("选中: " + comboBox.getSelectedIndex() + " = " + comboBox.getSelectedItem());
 		}
 	}
-	
-	
-	
+
 }
-
-

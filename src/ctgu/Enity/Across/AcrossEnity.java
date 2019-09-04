@@ -39,7 +39,9 @@ public class AcrossEnity {
 		 *  OPL		上拉线挂点至运行电力线的垂直距离
 		 *  MSD		上拉线与运行电力线的最小安全距离
 		 *  SCD		拉线位置引起的跨距
+		 *  
 		 *  DCL		与施工线路任一相邻杆塔的距离
+		 *  HST		水平放线张力
 		 *  SSC		施工线路的跨越档档距跨越
 		 *  LOPT	两端悬垂绝缘子串或滑车挂具长度
 		 *  ULW		导线、地线的单位长度重量
@@ -96,7 +98,9 @@ public class AcrossEnity {
 	private double OPL;
 	private double MSD;
 	private double SCD;
+		
 	private double DCL;
+	private double HST;
 	private double SSC;
 	private double LOPT;
 	private double ULW;

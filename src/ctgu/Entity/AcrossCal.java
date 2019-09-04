@@ -43,7 +43,9 @@ public class AcrossCal {
 	private double OPL;
 	private double MSD;
 	private double SCD;
+	
 	private double DCL;
+	private double HSt;
 	private double SSC;
 	private double LOPT;
 	private double ULW;
@@ -72,8 +74,8 @@ public class AcrossCal {
 			double WS,double PC,double PA,double IC,double HP,double MVD,double VA,double LS,
 			double CW,double IWP,double Ms,double Hd,double Mhd,double RS
 			,double SC,double HHP,double RPL,double ADP,double ACB,double OPL
-			,double MSD,double SCD,double DCL,double SSC,double LOPT,double ULW,double ULWL
-			,double DWG,double WCTC,double WLS,double ULWP,double HLS,double MHC,double MWS,double MSS,double Rpl,double WDD){
+			,double MSD,double SCD,double DCL,double HSt,double SSC,double LOPT,double ULW,double ULWL
+			,double DWG,double WCTC){
 		super();
 		this.WLD = WLD;
 		this.WCSC = WCSC;
@@ -102,20 +104,13 @@ public class AcrossCal {
 		this.MSD = MSD;
 		this.SCD = SCD;
 		this.DCL = DCL;
+		this.HSt = HSt;
 		this.SSC = SSC;
 		this.LOPT = LOPT;
 		this.ULW = ULW;
 		this.ULWL = ULWL;
 		this.DWG = DWG;
 		this.WCTC = WCTC;	
-		this.WLS = WLS;
-		this.ULWP = ULWP;
-		this.HLS = HLS;
-		this.MHC = MHC;
-		this.WLD = MWS;
-		this.MSS = MSS;
-		this.Rpl = Rpl;
-		this.WDD = WDD;	
 	}
 	
 	
