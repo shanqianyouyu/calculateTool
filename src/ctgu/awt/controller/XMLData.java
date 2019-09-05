@@ -1,10 +1,8 @@
 package ctgu.awt.controller;
 
-
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,7 +13,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -28,10 +25,9 @@ import ctgu.awt.frame.homepage.item.derrickCal.Square;
  * 
  */
 public class XMLData {
- 
-	
+
 	private double A;
-	
+
 	private double HM1;
 	private double HM2;
 	private double WM1;
@@ -103,15 +99,17 @@ public class XMLData {
 	private double FAM1;
 	private double FAY;
 	private double FAZ;
-	
-	//分类参数
+
+	// 分类参数
 	private double FF1;
 
 	public XMLData(double HM1, double HM2, double WM1, double HD, double PL, double RL, double DL, double GXJ,
-			double DGXJ, double SDZ, double PLQ, double GL, double WL, double YX,double YXX,double SDc, double WG, double AL, double AJ,
-			double ZG, double N1, double AX, double ALA, double AF, double aWD, double SAn, double FY, double Mj,
-			double MDk, double PXj, double WN, double AFZ, double AFQ, double AKK, double WG2, double HV, double ADb,
-			double ADn, double BSg, double AZz, double ABt,double As,double BL, double DBc, double DBx, double BBc, double BBc1, double BBx, double QG, double FZ1, double FQ1, double FQ2, double FL1, double DL1, double FZ2, double FC1,double FZ3,double FM1,double FAM1,double FAY,double FAZ) {
+			double DGXJ, double SDZ, double PLQ, double GL, double WL, double YX, double YXX, double SDc, double WG,
+			double AL, double AJ, double ZG, double N1, double AX, double ALA, double AF, double aWD, double SAn,
+			double FY, double Mj, double MDk, double PXj, double WN, double AFZ, double AFQ, double AKK, double WG2,
+			double HV, double ADb, double ADn, double BSg, double AZz, double ABt, double As, double BL, double DBc,
+			double DBx, double BBc, double BBc1, double BBx, double QG, double FZ1, double FQ1, double FQ2, double FL1,
+			double DL1, double FZ2, double FC1, double FZ3, double FM1, double FAM1, double FAY, double FAZ) {
 		super();
 		this.HM1 = HM1;
 		this.HM2 = HM2;
@@ -173,29 +171,27 @@ public class XMLData {
 		this.FM1 = FM1;
 		this.FAM1 = FAM1;
 		this.FAY = FAY;
-		this.FAZ= FAZ;
+		this.FAZ = FAZ;
 
-		
 	}
-	
-	
-	static File file = new File("D:/javaWeb/workspaces/calculator_gui/src/Square.xml");// Persons.xml文件绝对路径
- 
+
+	static File file = new File("./src/Square.xml");// Persons.xml文件绝对路径
+
 	public static void main(String[] args) throws Exception {
 ////		add();// 添加数据
 ////		delete();// 删除数据
 ////		update();// 修改数据
 		select();// 查找数据
 	}
- 
+
 	public Result add() throws Exception {
 		// ①获得解析器DocumentBuilder的工厂实例DocumentBuilderFactory 然后拿到DocumentBuilder对象
 		DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 		// ②获取一个与磁盘文件关联的非空Document对象
-		Document doc =  newDocumentBuilder.parse(file);
+		Document doc = newDocumentBuilder.parse(file);
 		// ③通过文档对象获得该文档对象的根节点
 		Element root = doc.getDocumentElement();
- 
+
 		// 创建一个新的person节点
 		Element Square = doc.createElement("Square");
 		// 创建person的几个子节点
@@ -205,7 +201,7 @@ public class XMLData {
 		Element EPL = doc.createElement("EPL");
 		Element ERL = doc.createElement("ERL");
 		Element EDL = doc.createElement("EDL");
-		Element EGXJ= doc.createElement("EGXJ");
+		Element EGXJ = doc.createElement("EGXJ");
 		Element EDGXJ = doc.createElement("EDGXJ");
 		Element ESDZ = doc.createElement("ESDZ");
 		Element EPLQ = doc.createElement("EPLQ");
@@ -378,7 +374,7 @@ public class XMLData {
 		Square.setAttribute("date", formatter.format(date));
 		// 将person追加到根节点
 		root.appendChild(Square);
- 
+
 		// 注意：XML文件是被加载到内存中 修改也是在内存中 ==》因此需要将内存中的数据同步到磁盘中
 		/*
 		 * static TransformerFactory newInstance():获取 TransformerFactory 的新实例。 abstract
@@ -393,7 +389,7 @@ public class XMLData {
 		transformer.transform(source, result);// 将 XML==>Source 转换为 Result
 		return result;
 	}
- 
+
 	public static void delete() throws Exception {
 		// ①获得解析器DocumentBuilder的工厂实例DocumentBuilderFactory 然后拿到DocumentBuilder对象
 		DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -401,7 +397,7 @@ public class XMLData {
 		Document doc = newDocumentBuilder.parse(file);
 		// ③通过文档对象获得该文档对象的根节点
 		Element root = doc.getDocumentElement();
- 
+
 		// 查找指定节点
 		// 通过根节点获得子节点
 		NodeList personList = root.getElementsByTagName("person");
@@ -409,7 +405,7 @@ public class XMLData {
 		Node item = personList.item(1);
 		// 移出节点
 		root.removeChild(item);
- 
+
 		// 注意：XML文件是被加载到内存中 修改也是在内存中 ==》因此需要将内存中的数据同步到磁盘中
 		/*
 		 * static TransformerFactory newInstance():获取 TransformerFactory 的新实例。 abstract
@@ -423,7 +419,7 @@ public class XMLData {
 		Result result = new StreamResult(file);// 获取磁盘上的文件
 		transformer.transform(source, result);// 将 XML==>Source 转换为 Result
 	}
- 
+
 	public static void update() throws Exception {
 		// ①获得解析器DocumentBuilder的工厂实例DocumentBuilderFactory 然后拿到DocumentBuilder对象
 		DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -431,7 +427,7 @@ public class XMLData {
 		Document doc = newDocumentBuilder.parse(file);
 		// ③通过文档对象获得该文档对象的根节点
 		Element root = doc.getDocumentElement();
- 
+
 		// 查找指定节点
 		// 通过根节点获得子节点
 		NodeList personList = root.getElementsByTagName("person");
@@ -444,7 +440,7 @@ public class XMLData {
 		// System.out.println(nameList.item(0).getTextContent());
 		// 修改
 		nameList.item(0).setTextContent("这里是我修改的名字");
- 
+
 		// 注意：XML文件是被加载到内存中 修改也是在内存中 ==》因此需要将内存中的数据同步到磁盘中
 		/*
 		 * static TransformerFactory newInstance():获取 TransformerFactory 的新实例。 abstract
@@ -458,7 +454,7 @@ public class XMLData {
 		Result result = new StreamResult(file);// 获取磁盘上的文件
 		transformer.transform(source, result);// 将 XML==>Source 转换为 Result
 	}
- 
+
 	public static void select() throws Exception {
 		// ①获得解析器DocumentBuilder的工厂实例DocumentBuilderFactory 然后拿到DocumentBuilder对象
 		DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -466,29 +462,28 @@ public class XMLData {
 		Document doc = newDocumentBuilder.parse(file);
 		// ③通过文档对象获得该文档对象的根节点
 		Element root = doc.getDocumentElement();
- 
+
 		// 通过根节点获得子节点
 		NodeList personList = root.getElementsByTagName("Square");
 		// System.out.println(personList);
- 
+
 		Node node = null;
-		for (int i = 0; i < personList.getLength(); i++) { 
-			      node = personList.item(i);
-			      Element element = (Element) node;
-			      System.out.println(element.getAttribute("date"));
-			      String a = "02092019115106";
-			          if (element.getAttribute("date").equals(a)){
-			        	  System.out.println(node.getTextContent());
-			        	  System.out.println(element.getElementsByTagName("EHM1").item(0).getTextContent());
-			          }             
-			      }
+		for (int i = 0; i < personList.getLength(); i++) {
+			node = personList.item(i);
+			Element element = (Element) node;
+			System.out.println(element.getAttribute("date"));
+			String a = "02092019115106";
+			if (element.getAttribute("date").equals(a)) {
+				System.out.println(node.getTextContent());
+				System.out.println(element.getElementsByTagName("EHM1").item(0).getTextContent());
+			}
+		}
 	}
 //		// 这里获取第1个节点
 //		Node item = personList.item(0);
 //		System.out.println(item.getTextContent());// 获取第一个节点的所有子节点值
-		
-		
-		// 这里转换成子类类型 ==》原因：父类没有对应的方法 这里只看类型不看值
+
+	// 这里转换成子类类型 ==》原因：父类没有对应的方法 这里只看类型不看值
 //		System.out.println(element.getAttribute("date"));	
- 
+
 }

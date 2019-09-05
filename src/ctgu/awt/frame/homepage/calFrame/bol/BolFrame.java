@@ -23,6 +23,7 @@ import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.component.bolFrame.BolTableDialog;
 import ctgu.awt.frame.homepage.component.bolFrame.BolTableDialog2;
 import ctgu.awt.frame.homepage.component.bolFrame.BolTableDialog3;
+import ctgu.awt.frame.homepage.search.service.AnalysisXML;
 import ctgu.awt.util.Filewriter;
 import ctgu.awt.util.ResponseCode;
 
@@ -97,6 +98,7 @@ public class BolFrame extends FatherFrame {
 	private JButton button_5;
 	// 方框内的所有值
 	private HighStrength highStrength = new HighStrength();
+
 	private JTextField textField_7;
 	private JTextField textField_8;
 	private JLabel label_31 = new JLabel();
@@ -509,6 +511,11 @@ public class BolFrame extends FatherFrame {
 		panel_6.setLayout(null);
 
 		button_3 = new JButton("保存");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AnalysisXML.frameToXMl(highStrength);
+			}
+		});
 		button_3.setBounds(14, 13, 113, 27);
 		panel_6.add(button_3);
 

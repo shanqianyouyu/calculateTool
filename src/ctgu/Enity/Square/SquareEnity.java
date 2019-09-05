@@ -1,5 +1,9 @@
 package ctgu.Enity.Square;
 
+import java.lang.reflect.Field;
+
+import org.junit.Test;
+
 /**
  * 
  * @author 陈煜昆
@@ -171,4 +175,15 @@ public class SquareEnity {
 	private double FAM1;
 	private double FAY;
 	private double FAZ;
+	
+	@Test
+	public void test() {
+		SquareEnity enity = new SquareEnity();
+		Field[] fields = enity.getClass().getDeclaredFields();
+		for (Field field : fields) {
+			System.out.println(field);
+			
+		}
+		
+	}
 }

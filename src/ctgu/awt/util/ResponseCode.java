@@ -12,6 +12,10 @@ package ctgu.awt.util;
 public class ResponseCode {
 	// 正确
 	public static int OK = 100;
+
+	/*
+	 * 计算反馈
+	 */
 	// 参数不合法
 	public static int DataERR = 101;
 	// 数据不全
@@ -20,4 +24,12 @@ public class ResponseCode {
 	public static int CalculationERR = 103;
 	// 全部为空
 	public static int NULL = 200;
+
+	/*
+	 * 生成xml
+	 */
+	// 生成错误
+	public static int GenerateERR = 301;
+	// 解析错误
+	public static int ParseERR = 302;
 }
