@@ -16,7 +16,7 @@ import lombok.Data;
 public class Item {
 	// year mouth day
 	private String YMD;
-	//minutes second
+	// hour minutes second
 	private String MS;
 	private String Name;
 	private Map<String, Double> Dom;

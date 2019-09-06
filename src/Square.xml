@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Frame> 
-  <Date date="20190904"></Date>  
+  <Date date="20190904"/>  
   <Date date="20190905"> 
-    <螺栓计算 date="1555"> 
+    <螺栓计算 date="2020"> 
       <de>0</de>  
       <Fbc>0</Fbc>  
       <nv>0</nv>  
@@ -31,111 +31,27 @@
       <fbv>0</fbv>  
       <Nvb>0</Nvb>  
       <Ntb>0</Ntb> 
-    </螺栓计算>  
-    <螺栓计算 date="1947"> 
-      <de>0</de>  
-      <Fbc>0</Fbc>  
-      <nv>0</nv>  
-      <Cnv>0</Cnv>  
-      <Nbc>0</Nbc>  
-      <Hnv>0</Hnv>  
-      <ftb>0</ftb>  
-      <Fbv>0</Fbv>  
-      <nvb>0</nvb>  
-      <Hd>0</Hd>  
-      <o1>0</o1>  
-      <o2>0</o2>  
-      <d>0</d>  
-      <o3>0</o3>  
-      <o4>0</o4>  
-      <fbc>0</fbc>  
-      <Nt>0</Nt>  
-      <o5>0</o5>  
-      <o6>0</o6>  
-      <o7>0</o7>  
-      <o8>0</o8>  
-      <t>0</t>  
-      <nf>0</nf>  
-      <y>0</y>  
-      <fbv>0</fbv>  
-      <Nvb>0</Nvb>  
-      <Ntb>0</Ntb> 
-    </螺栓计算>  
-    <螺栓计算 date="1959"> 
-      <de>0</de>  
-      <Fbc>1.0</Fbc>  
-      <Cnv>0</Cnv>  
-      <Nbc>0</Nbc>  
-      <Hnv>0</Hnv>  
-      <ftb>0</ftb>  
-      <Fbv>1.0</Fbv>  
-      <nvb>0</nvb>  
-      <Hd>0</Hd>  
-      <o1>0.79</o1>  
-      <o2>1.0</o2>  
-      <d>1.0</d>  
-      <o3>0</o3>  
-      <o4>0</o4>  
-      <fbc>1.0</fbc>  
-      <Nt>0</Nt>  
-      <o5>0</o5>  
-      <o6>0</o6>  
-      <o7>0</o7>  
-      <o8>0</o8>  
-      <t>1.0</t>  
-      <nf>0</nf>  
-      <y>0</y>  
-      <fbv>1.0</fbv>  
-      <Nvb>0</Nvb>  
-      <Ntb>0</Ntb> 
-    </螺栓计算>  
-    <螺栓计算 date="2005"> 
-      <de>0</de>  
-      <Fbc>1.0</Fbc>  
-      <nv>1.0</nv>  
-      <Cnv>0</Cnv>  
-      <Nbc>0</Nbc>  
-      <Hnv>0</Hnv>  
-      <ftb>0</ftb>  
-      <Fbv>1.0</Fbv>  
-      <nvb>0</nvb>  
-      <Hd>0</Hd>  
-      <o1>0.79</o1>  
-      <o2>1.0</o2>  
-      <d>1.0</d>  
-      <o3>0</o3>  
-      <o4>0</o4>  
-      <fbc>1.0</fbc>  
-      <Nt>0</Nt>  
-      <o5>0</o5>  
-      <o6>0</o6>  
-      <o7>0</o7>  
-      <o8>0</o8>  
-      <t>1.0</t>  
-      <nf>0</nf>  
-      <y>0</y>  
-      <fbv>1.0</fbv>  
-      <Nvb>0</Nvb>  
-      <Ntb>0</Ntb> 
-    </螺栓计算>  
-    <螺栓计算 date="2020">
+    </螺栓计算> 
+  </Date>  
+  <Date date="20190906">
+    <螺栓计算 date="144439">
       <de>0</de>
       <Fbc>0</Fbc>
       <nv>0</nv>
-      <Cnv>0</Cnv>
-      <Nbc>0</Nbc>
+      <Cnv>12.0</Cnv>
+      <Nbc>4.0</Nbc>
       <Hnv>0</Hnv>
       <ftb>0</ftb>
       <Fbv>0</Fbv>
-      <nvb>0</nvb>
+      <nvb>3.0</nvb>
       <Hd>0</Hd>
       <o1>0</o1>
       <o2>0</o2>
       <d>0</d>
       <o3>0</o3>
-      <o4>0</o4>
+      <o4>8.65</o4>
       <fbc>0</fbc>
-      <Nt>0</Nt>
+      <Nt>23.0</Nt>
       <o5>0</o5>
       <o6>0</o6>
       <o7>0</o7>
@@ -144,8 +60,8 @@
       <nf>0</nf>
       <y>0</y>
       <fbv>0</fbv>
-      <Nvb>0</Nvb>
-      <Ntb>0</Ntb>
+      <Nvb>3.0</Nvb>
+      <Ntb>3.0</Ntb>
     </螺栓计算>
-  </Date> 
+  </Date>
 </Frame>

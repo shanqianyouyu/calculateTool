@@ -135,7 +135,7 @@ public class AnalysisXML {
 		}
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
 		item.setYMD(formatter.format(new Date()));
-		formatter = new SimpleDateFormat("HHmm");
+		formatter = new SimpleDateFormat("HHmmss");
 		item.setMS(formatter.format(new Date()));
 		item.setDom(Tool.fieldToMap(object));
 		return item;
@@ -215,11 +215,9 @@ public class AnalysisXML {
 	public void test3() {
 		Element element = AnalysisXML.getChildsItem("20190905");
 		Iterator it = element.elementIterator();
-		int a = 0;
 		while (it.hasNext()) {
 			Element itt = (Element) it.next();
 			System.out.println(itt.getName());
-
 			Iterator iterator = itt.elementIterator();
 			while (iterator.hasNext()) {
 				Element e = (Element) iterator.next();
@@ -229,6 +227,7 @@ public class AnalysisXML {
 
 	}
 
+	// 一个查找实例
 	@Test
 	public void test4() {
 		Element e = AnalysisXML.getChildsItem("20190905");
