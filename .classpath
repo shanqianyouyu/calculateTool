@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="lib" path="lib/beautyeye_lnf.jar"/>
-	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar" sourcepath="C:/Users/拉布拉多/.m2/repository/org/zenframework/z8/dependencies/commons/dom4j-1.6.1/2.0/dom4j-1.6.1-2.0-sources.jar"/>
 	<classpathentry kind="lib" path="lib/jxl.jar"/>
 	<classpathentry kind="lib" path="lib/poi-3.9.jar"/>
 	<classpathentry kind="lib" path="lib/poi-examples-3.8-20120326.jar"/>

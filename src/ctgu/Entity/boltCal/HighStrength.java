@@ -1,7 +1,6 @@
 package ctgu.Entity.boltCal;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 import ctgu.awt.util.Tool;
 import lombok.Data;
@@ -40,7 +39,6 @@ public class HighStrength {
 	public Double o2;
 
 	public void part1() {
-
 		DecimalFormat df = new DecimalFormat("#.##");
 		// 2是显示的小数点后的显示的最多位,显示的最后位是舍入的
 		o1 = nv * Math.PI * d * d * fbv / 4;
@@ -133,6 +131,10 @@ public class HighStrength {
 
 	public void part5() {
 		o8 = Tool.forMat(0.9 * nf * y * nvb);
+	}
+
+	public String getEntityName() {
+		return "螺栓计算";
 	}
 
 }

@@ -9,6 +9,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import ctgu.awt.frame.homepage.component.handlerlistener.ToolMenuHandlerListener;
+import ctgu.awt.frame.homepage.search.frame.SearchFrame;
 import ctgu.awt.util.Filewriter;
 
 /**
@@ -42,6 +43,8 @@ public class TopMenu extends JMenuBar {
 	private JMenu file6 = new JMenu("跨越架计算");
 	private JMenuItem download1 = new JMenuItem("说明书");
 	private JMenuItem download2 = new JMenuItem("标准参数");
+
+	private JMenuItem history = new JMenuItem("保存记录");
 
 	/*
 	 * 三级计算菜单
@@ -78,6 +81,7 @@ public class TopMenu extends JMenuBar {
 		File.add(file6);
 		download.add(download1);
 		download.add(download2);
+		edit.add(history);
 
 		/*
 		 * 三级菜单添加
@@ -125,6 +129,17 @@ public class TopMenu extends JMenuBar {
 
 		// 跨越架计算
 		across.addActionListener(new ToolMenuHandlerListener(across));
+
+		history.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("12312");
+				SearchFrame frame = new SearchFrame();
+				frame.setVisible(true);
+
+			}
+		});
 
 	}
 }
