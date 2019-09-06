@@ -27,6 +27,7 @@ import com.sun.org.apache.bcel.internal.generic.ACONST_NULL;
 import ctgu.Entity.AcrossCal;
 import ctgu.awt.controller.XMLData;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
+import ctgu.awt.util.Filewriter;
 
 public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListener, ItemListener {
 
@@ -41,10 +42,9 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 	private JButton model = new JButton("显示规范");
 	private JButton table1 = new JButton("显示表一");
 	private JButton table2 = new JButton("显示表二");
-
-	// 获取下拉列表的值
-	private String list1;
-	private String list2;
+	
+	//打印
+	private String outPutTxt = "";
 
 	// 定义初始图片
 	private JLabel picture1 = null;
@@ -116,6 +116,12 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 	private int B1;
 	private int B2;
 
+	
+	// 获取下拉列表的值
+	private String list1;
+	private String list2;
+	
+	
 	// 输入参数
 	JTextField oneTxt51 = new JTextField("0", 7);
 	private double two51;
@@ -221,6 +227,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 	private double Rpl;
 	private double TRpl;
 	private double WDD;
+	private Object highStrength;
 
 	private void initright1(JPanel right1) {
 		// 跨越架选择
@@ -274,10 +281,10 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		J4.setBorder(new TitledBorder("单侧跨越架:"));
 		J4.setBounds(0, 93, 390, 385);
 
-		JLabel tank51 = new JLabel("最小安全距离要求的跨距:");
+		JLabel tank51 = new JLabel("上拉线挂点至运行电力线的垂直距离:");
 		tank51.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank52 = new JLabel("在建线路的交叉角引起的跨距:");
+		JLabel tank52 = new JLabel("上拉线与运行电力线的最小安全距离:");
 		tank52.setHorizontalAlignment(JTextField.RIGHT);
 
 		JLabel tank53 = new JLabel("上层拉线挂点至地面的高度:");
@@ -292,10 +299,10 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		JLabel tank56 = new JLabel("拉线与跨越架横担轴线间的水平夹角:");
 		tank56.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank57 = new JLabel("上拉线挂点至运行电力线的垂直距离:");
+		JLabel tank57 = new JLabel("最小安全距离要求的跨距:");
 		tank57.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank58 = new JLabel("上拉线与运行电力线的最小安全距离:");
+		JLabel tank58 = new JLabel("在建线路的交叉角引起的跨距:");
 		tank58.setHorizontalAlignment(JTextField.RIGHT);
 
 		JLabel tank59 = new JLabel(" 拉线位置引起的跨距:");
@@ -958,7 +965,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		// 安装与风偏计算
 		TitledBorder T2 = new TitledBorder("安装与风偏计算:");
 		fengp.setBorder(T2);
-		fengp.setBounds(7, 300, 395, 155);
+		fengp.setBounds(7, 300, 395, 185);
 
 		JLabel tank71 = new JLabel("       跨越架顶面的最小跨距:");
 		tank71.setHorizontalAlignment(JTextField.RIGHT);
@@ -1006,6 +1013,13 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		JButton button02 = new JButton("打印");
 		JButton button03 = new JButton("计算");
 
+		button03.setActionCommand("计算");
+		button03.addActionListener(this);
+		button02.setActionCommand("打印");
+		button02.addActionListener(this);
+		button01.setActionCommand("保存");
+		button01.addActionListener(this);
+		
 		button01.setBounds(200, 5, 150, 40);
 		button02.setBounds(700, 5, 150, 40);
 		button03.setBounds(1300, 5, 150, 40);
@@ -1137,9 +1151,66 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 			// e1.printStackTrace();
 			// }
 			//
-			// }
+			// }		
+			if(list1.equals("圆形杆件")){
+				two2 = 0.7;
+			}
+			else{
+				two2 = 1.3;
+			}
 		}
-	}
+			
+			
+			if (e.getActionCommand().equals("打印")) {
+				String s1 = "  ";
+				String s2 = "      ";
+				outPutTxt = "跨越架计算: " + System.getProperty("line.separator") + s1;
+				if (oneTxt61.getText() != null) {
+					outPutTxt += "垂直载荷和均匀载荷: "+ System.getProperty("line.separator") + s2 + "导线密度:  " + oneTxt1.getText() + System.getProperty("line.separator") + s2 + "风载体型系数:  "
+							+ String.valueOf(two2) + System.getProperty("line.separator") + s2 + "子导线根数:  " + oneTxt3.getText() + System.getProperty("line.separator") + s2
+							+ "风荷调整系数:  " + oneTxt7.getText() + System.getProperty("line.separator") + s2 + "路线设计最大风速: " + oneTxt4.getText() + System.getProperty("line.separator")
+							+ s2 + "架面1m范围内的投影面积: " + oneTxt5.getText() + System.getProperty("line.separator") + s2 + "冲击系数:  " + oneTxt6.getText()
+							+  System.getProperty("line.separator") + s2 + "跨越架的垂直载荷:  " + oneTxt61.getText() + System.getProperty("line.separator") + s2 + "架面风压的均匀载荷:  " + oneTxt62.getText()+ System.getProperty("line.separator") + s1;
+				}
+				if (oneTxt64.getText() != null) {
+					outPutTxt += "跨越架的水平载荷: "+ System.getProperty("line.separator") + s2 + "冲击系数:  " + oneTxt6.getText() + System.getProperty("line.separator") + s2 + "导线或牵引绳对跨越架的摩擦系数: "
+							+ oneTxt21.getText() + System.getProperty("line.separator") + s1;
+				}
+				if (oneTxt65.getText() != null) {
+					outPutTxt += "竹木跨越架的安装:" + System.getProperty("line.separator") + s2 + "被跨电力线最高点的对地距离: " + oneTxt31.getText() + System.getProperty("line.separator") + s2 + "不同电压等级的电力线与封顶架面的最小垂直距离: "
+							+ oneTxt32.getText()  + System.getProperty("line.separator") + s2 + "跨越架封顶网的弧垂: " + oneTxt34.getText()  + System.getProperty("line.separator") + s2 + "施工线路的线间距离: "
+							+ oneTxt37.getText() + System.getProperty("line.separator") + s2 + "跨越架顶面超出施工线路的宽度: " + oneTxt39.getText() + System.getProperty("line.separator") + s2
+							+ "施工线路与别跨电力线的交叉角: " + oneTxt41.getText() + System.getProperty("line.separator") + s2 + "被跨电力线两边线间的水平距离: " + oneTxt43.getText()
+							+ System.getProperty("line.separator") + s2 + "跨越架内侧主杆或主柱外缘（金属架）至被跨电力线的最小水平距离: " + oneTxt44.getText() + System.getProperty("line.separator") + s2 + "跨越架的最小高度: " + oneTxt65.getText()
+							+ System.getProperty("line.separator") + s2 + "跨越架的最小宽度: " + oneTxt66.getText() + System.getProperty("line.separator") + s2 + "跨越架顶面的最小跨距: " + oneTxt71.getText()
+							+ System.getProperty("line.separator") + s1;
+				}
+				if (oneTxt72.getText() != null) {
+					outPutTxt += "单侧跨越架: " + System.getProperty("line.separator") + s2 + "跨越家上层拉线挂点至地面的高度: " + oneTxt53.getText()  + System.getProperty("line.separator") + s2 + "上拉线与运行电力线的最小安全距离: "
+							+ oneTxt54.getText()  + System.getProperty("line.separator") + s2 + "拉线对地面夹角: " + oneTxt55.getText()  + System.getProperty("line.separator") + s2 + "拉线与跨越架横担轴线间的水平夹角: "
+							+ oneTxt56.getText() + System.getProperty("line.separator") + s2 + "跨越架的上拉线挂点至运行电力线的垂直距离: " + oneTxt51.getText() + System.getProperty("line.separator") + s2 + "内侧上拉线与运行电力线的最小安全距离: "
+							+ oneTxt52.getText() + System.getProperty("line.separator") + s2 + "拉线至运行线路最小安全距离要求的跨距: " + oneTxt57.getText() + System.getProperty("line.separator") + s2 + "运行电力线与在建线路的交叉角引起的跨距: " + oneTxt58.getText()
+							+ System.getProperty("line.separator") + s2 + "拉线位置引起的跨距: " + oneTxt59.getText() + System.getProperty("line.separator") + s2 + "被跨越物与施工线路任一相邻杆塔的距离: " + oneTxt81.getText()
+							+ System.getProperty("line.separator") + s2 + "水平放线张力: " + oneTxt82.getText()
+							+ System.getProperty("line.separator") + s2 + "施工线路的跨越档档距跨越: " + oneTxt83.getText()
+							+ System.getProperty("line.separator") + s2 + "施工线路跨越档两端悬垂绝缘子串或滑车挂具长度: " + oneTxt84.getText() + System.getProperty("line.separator") + s2 + "施工线路跨越档两端悬垂绝缘子串或滑车挂具长度: " + oneTxt84.getText() 
+							+ System.getProperty("line.separator") + s2 + "导线、地线的单位长度重量: " + oneTxt85.getText()
+							+ System.getProperty("line.separator") + s2 + "导线或地线的单位长度风荷重: " + oneTxt86.getText()
+							+ System.getProperty("line.separator") + s2 + "导线或地线直径: " + oneTxt87.getText()
+							+ System.getProperty("line.separator") + s2 + "跨越架跨越架外侧至运行电力线的水平距离: " + oneTxt72.getText()
+							+ System.getProperty("line.separator") + s2 + "两副跨越架间的跨距: " + oneTxt74.getText()
+							+ System.getProperty("line.separator") + s2 + "风偏距离: " + oneTxt75.getText() + System.getProperty("line.separator") + s1;
+				}
+//				if(highStrength.)
+				if (outPutTxt.length() == 7) {
+					JOptionPane.showConfirmDialog(null, "内容为空！");
+				} else {
+					Filewriter.printToTxt(outPutTxt);
+				}
+			}
+		}
+		
+		
 
 	// 添加条目选中状态改变的监听器
 	@Override

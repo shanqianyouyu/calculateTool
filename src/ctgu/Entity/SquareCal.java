@@ -10,7 +10,6 @@ import com.sun.org.apache.bcel.internal.generic.RETURN;
  *
  */
 public class SquareCal {
-	private double A;
 	
 	private double HM1;
 	private double HM2;
@@ -23,7 +22,7 @@ public class SquareCal {
 	private double GXJ;
 	private double DGXJ;
 	private double SDZ;
-	private double PLQ;
+	private double A;
 	private double GL;
 	private double WL;
 	private double YX;
@@ -87,7 +86,7 @@ public class SquareCal {
 	private double FF1;
 
 	public SquareCal(double HM1, double HM2, double WM1, double HD, double PL, double RL, double DL, double GXJ,
-			double DGXJ, double SDZ, double PLQ, double GL, double WL, double YX,double YXX,double SDc, double WG, double AL, double AJ,
+			double DGXJ, double SDZ, double A, double GL, double WL, double YX,double YXX,double SDc, double WG, double AL, double AJ,
 			double ZG, double N1, double AX, double ALA, double AF, double aWD, double SAn, double FY, double Mj,
 			double MDk, double PXj, double WN, double AFZ, double AFQ, double AKK, double WG2, double HV, double ADb,
 			double ADn, double BSg, double AZz, double ABt) {
@@ -102,7 +101,7 @@ public class SquareCal {
 		this.GXJ = GXJ;
 		this.DGXJ = DGXJ;
 		this.SDZ = SDZ;
-		this.PLQ = PLQ;
+		this.A = A;
 		this.GL = GL;
 		this.WL = WL;
 		this.YX = YX;

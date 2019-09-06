@@ -1,5 +1,6 @@
 package ctgu.awt.frame.homepage.calFrame.bol;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -11,24 +12,27 @@ import java.awt.event.FocusEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import ctgu.Entity.boltCal.HighStrength;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.component.bolFrame.BolTableDialog;
 import ctgu.awt.frame.homepage.component.bolFrame.BolTableDialog2;
 import ctgu.awt.frame.homepage.component.bolFrame.BolTableDialog3;
+import ctgu.awt.util.Filewriter;
+import ctgu.awt.util.ResponseCode;
 
 /**
  * Copyright © 2019 eSunny Info. Tech Ltd. All rights reserved.
  * 
- * 功能描述：螺栓界面
+ * 功能描述：螺栓
  * 
  * @Package: ctgu.awt.frame.homepage.calFrame.bol
  * @author: 拉布拉多
- * @date: 2019年7月7日 上午10:12:12
  */
 
 public class BolFrame extends FatherFrame {
@@ -91,6 +95,14 @@ public class BolFrame extends FatherFrame {
 	private JButton button_3;
 	private JButton button_4;
 	private JButton button_5;
+	// 方框内的所有值
+	private HighStrength highStrength = new HighStrength();
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JLabel label_31 = new JLabel();
+	private JLabel label_32;
+	private JLabel label_33;
+	private String outPutTxt = "";
 
 	/**
 	 * Launch the application.
@@ -112,9 +124,9 @@ public class BolFrame extends FatherFrame {
 	 * Create the frame.
 	 */
 	public BolFrame() {
+
 		setTitle("螺栓计算");
 		setResizable(false);
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1314, 760);
 		setLocationRelativeTo(null);
@@ -135,7 +147,10 @@ public class BolFrame extends FatherFrame {
 		panel.add(label);
 
 		txtNv = new JTextField();
+
 		txtNv.setText("nv");
+		txtNv.setText(highStrength.nv == null ? "" : String.valueOf(highStrength.nv));
+
 		txtNv.setBounds(130, 47, 160, 24);
 		panel.add(txtNv);
 		txtNv.setColumns(10);
@@ -146,6 +161,7 @@ public class BolFrame extends FatherFrame {
 
 		txtD = new JTextField();
 		txtD.setText("d");
+		txtD.setText(highStrength.d == null ? "" : String.valueOf(highStrength.d));
 		txtD.setColumns(10);
 		txtD.setBounds(130, 98, 160, 24);
 		panel.add(txtD);
@@ -156,6 +172,7 @@ public class BolFrame extends FatherFrame {
 
 		txtT = new JTextField();
 		txtT.setText("t");
+		txtT.setText(highStrength.t == null ? "" : String.valueOf(highStrength.t));
 		txtT.setBounds(24, 177, 160, 24);
 		panel.add(txtT);
 		txtT.setColumns(10);
@@ -166,6 +183,7 @@ public class BolFrame extends FatherFrame {
 
 		txtFbv = new JTextField();
 		txtFbv.setText("Fbv");
+		txtFbv.setText(highStrength.fbv == null ? "" : String.valueOf(highStrength.fbv));
 		txtFbv.setColumns(10);
 		txtFbv.setBounds(188, 241, 160, 24);
 		panel.add(txtFbv);
@@ -176,6 +194,7 @@ public class BolFrame extends FatherFrame {
 
 		txtFbc = new JTextField();
 		txtFbc.setText("Fbc");
+		txtFbc.setText(highStrength.fbc == null ? "" : String.valueOf(highStrength.fbc));
 		txtFbc.setColumns(10);
 		txtFbc.setBounds(188, 284, 160, 24);
 		panel.add(txtFbc);
@@ -185,7 +204,8 @@ public class BolFrame extends FatherFrame {
 		panel.add(label_6);
 
 		label_7 = new JLabel("输出");
-		label_7.setBounds(253, 338, 72, 18);
+		label_7.setText(highStrength.o1 == null ? "" : String.valueOf(highStrength.o1));
+		label_7.setBounds(253, 338, 200, 18);
 		panel.add(label_7);
 
 		label_8 = new JLabel("普通螺栓承压承载力设计值 :");
@@ -193,7 +213,8 @@ public class BolFrame extends FatherFrame {
 		panel.add(label_8);
 
 		label_9 = new JLabel("输出");
-		label_9.setBounds(253, 380, 72, 18);
+		label_9.setText(highStrength.o2 == null ? "" : String.valueOf(highStrength.o2));
+		label_9.setBounds(253, 380, 200, 18);
 		panel.add(label_9);
 
 		panel_1 = new JPanel();
@@ -207,7 +228,7 @@ public class BolFrame extends FatherFrame {
 		panel_1.add(label_4);
 
 		txtDe = new JTextField();
-		txtDe.setText("De");
+		txtDe.setText(highStrength.de == null ? "" : String.valueOf(highStrength.de));
 		txtDe.setColumns(10);
 		txtDe.setBounds(188, 39, 160, 24);
 		panel_1.add(txtDe);
@@ -217,6 +238,7 @@ public class BolFrame extends FatherFrame {
 		panel_1.add(label_5);
 
 		textField_6 = new JTextField();
+		textField_6.setText(highStrength.ftb == null ? "" : String.valueOf(highStrength.ftb));
 		textField_6.setColumns(10);
 		textField_6.setBounds(188, 76, 160, 24);
 		panel_1.add(textField_6);
@@ -246,12 +268,14 @@ public class BolFrame extends FatherFrame {
 
 		txtNv_1 = new JTextField();
 		txtNv_1.setText("Nv");
+		txtNv_1.setText(highStrength.Cnv == null ? "" : String.valueOf(highStrength.Cnv));
 		txtNv_1.setBounds(188, 34, 207, 24);
 		panel_2.add(txtNv_1);
 		txtNv_1.setColumns(10);
 
 		txtNt = new JTextField();
 		txtNt.setText("Nt");
+		txtNt.setText(highStrength.Nt == null ? "" : String.valueOf(highStrength.Nt));
 		txtNt.setColumns(10);
 		txtNt.setBounds(188, 76, 207, 24);
 		panel_2.add(txtNt);
@@ -270,29 +294,37 @@ public class BolFrame extends FatherFrame {
 
 		txtNvb = new JTextField();
 		txtNvb.setText("Nvb");
+		txtNvb.setText(highStrength.Nvb == null ? "" : String.valueOf(highStrength.Nvb));
 		txtNvb.setColumns(10);
 		txtNvb.setBounds(188, 117, 207, 24);
 		panel_2.add(txtNvb);
 
 		txtNtb = new JTextField();
 		txtNtb.setText("Ntb");
+		txtNtb.setText(highStrength.Ntb == null ? "" : String.valueOf(highStrength.Ntb));
 		txtNtb.setColumns(10);
 		txtNtb.setBounds(188, 155, 207, 24);
 		panel_2.add(txtNtb);
 
 		txtNbc = new JTextField();
 		txtNbc.setText("Nbc");
+		txtNbc.setText(highStrength.Nbc == null ? "" : String.valueOf(highStrength.Nbc));
 		txtNbc.setColumns(10);
 		txtNbc.setBounds(188, 197, 207, 24);
 		panel_2.add(txtNbc);
 
 		label_16 = new JLabel("同时承受剪力和杆轴方向拉力 :");
-		label_16.setBounds(14, 260, 212, 18);
+		label_16.setBounds(14, 244, 212, 18);
 		panel_2.add(label_16);
 
 		lblnvnbc = new JLabel("输出小于1并且Nv小于等于Nbc");
-		lblnvnbc.setBounds(240, 260, 212, 18);
+		lblnvnbc.setBounds(240, 244, 212, 18);
 		panel_2.add(lblnvnbc);
+
+		label_31.setForeground(Color.RED);
+		label_31.setFont(new Font("宋体", Font.PLAIN, 13));
+		label_31.setBounds(39, 275, 335, 18);
+		panel_2.add(label_31);
 
 		panel_3 = new JPanel();
 		panel_3.setBorder(new TitledBorder("高强度螺栓承压型连接"));
@@ -342,41 +374,59 @@ public class BolFrame extends FatherFrame {
 		lblInfo.setFont(new Font("宋体", Font.PLAIN, 13));
 
 		label_18 = new JLabel("受剪面数 :");
-		label_18.setBounds(34, 99, 91, 18);
+		label_18.setBounds(59, 99, 91, 18);
 		panel_5.add(label_18);
 
 		textField_2 = new JTextField();
-		textField_2.setBounds(144, 96, 181, 24);
+		textField_2.setBounds(178, 96, 181, 24);
 		panel_5.add(textField_2);
 		textField_2.setColumns(10);
 
 		label_21 = new JLabel("受剪承载力 :");
-		label_21.setBounds(14, 143, 98, 18);
+		label_21.setBounds(14, 192, 98, 18);
 		panel_5.add(label_21);
 
 		label_23 = new JLabel("取两值得较小值");
-		label_23.setBounds(154, 143, 177, 18);
+		label_23.setBounds(158, 192, 177, 18);
 		panel_5.add(label_23);
 
 		label_22 = new JLabel("受压承载力 :");
-		label_22.setBounds(14, 174, 98, 18);
+		label_22.setBounds(14, 208, 98, 18);
 		panel_5.add(label_22);
 
 		label_24 = new JLabel("取两值得较小值");
-		label_24.setBounds(154, 174, 177, 18);
+		label_24.setBounds(158, 208, 177, 18);
 		panel_5.add(label_24);
 
 		label_19 = new JLabel("受剪承载力设计值 :");
-		label_19.setBounds(14, 212, 136, 18);
+		label_19.setBounds(14, 225, 136, 18);
 		panel_5.add(label_19);
 
 		label_20 = new JLabel("取两值得较小值");
-		label_20.setBounds(154, 212, 177, 18);
+		label_20.setBounds(159, 225, 177, 18);
 		panel_5.add(label_20);
+
+		JLabel label_29 = new JLabel("螺栓的抗剪设计值:");
+		label_29.setBounds(0, 130, 181, 18);
+		panel_5.add(label_29);
+
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		textField_7.setBounds(178, 133, 181, 24);
+		panel_5.add(textField_7);
+
+		JLabel label_30 = new JLabel("螺栓承压强度设计值 :");
+		label_30.setBounds(0, 161, 164, 18);
+		panel_5.add(label_30);
+
+		textField_8 = new JTextField();
+		textField_8.setColumns(10);
+		textField_8.setBounds(178, 161, 181, 24);
+		panel_5.add(textField_8);
 
 		panel_4 = new JPanel();
 		panel_4.setBorder(new TitledBorder("高强度螺栓摩擦型连接"));
-		panel_4.setBounds(945, 55, 336, 473);
+		panel_4.setBounds(945, 55, 336, 585);
 		contentPane.add(panel_4);
 		panel_4.setLayout(null);
 
@@ -431,7 +481,7 @@ public class BolFrame extends FatherFrame {
 			}
 		});
 		button_1.setFont(new Font("宋体", Font.PLAIN, 13));
-		button_1.setBounds(179, 367, 123, 27);
+		button_1.setBounds(24, 365, 123, 27);
 		panel_4.add(button_1);
 
 		button_2 = new JButton("其他");
@@ -442,8 +492,16 @@ public class BolFrame extends FatherFrame {
 			}
 		});
 		button_2.setFont(new Font("宋体", Font.PLAIN, 13));
-		button_2.setBounds(179, 407, 123, 27);
+		button_2.setBounds(179, 365, 123, 27);
 		panel_4.add(button_2);
+
+		label_32 = new JLabel("承载力 :");
+		label_32.setBounds(101, 405, 72, 18);
+		panel_4.add(label_32);
+
+		label_33 = new JLabel("");
+		label_33.setBounds(179, 405, 143, 24);
+		panel_4.add(label_33);
 
 		panel_6 = new JPanel();
 		panel_6.setBounds(24, 653, 1232, 59);
@@ -457,9 +515,233 @@ public class BolFrame extends FatherFrame {
 		button_4 = new JButton("计算");
 		button_4.setBounds(515, 13, 113, 27);
 		panel_6.add(button_4);
+		// 计算按钮
+		button_4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int result = checkOne();
+				if (result == ResponseCode.DataERR) {
+					JOptionPane.showConfirmDialog(null, "参数不合法");
+					return;
+				} else if (result == ResponseCode.NoData) {
+					JOptionPane.showConfirmDialog(null, "参数不全");
+					return;
+				}
+
+				result = checkTwo();
+				if (result == ResponseCode.DataERR) {
+					JOptionPane.showConfirmDialog(null, "参数不合法");
+					return;
+				} else if (result == ResponseCode.NoData) {
+					JOptionPane.showConfirmDialog(null, "参数不全");
+					return;
+				}
+
+				result = checkThree();
+				if (result == ResponseCode.DataERR) {
+					JOptionPane.showConfirmDialog(null, "参数不合法");
+					return;
+				} else if (result == ResponseCode.NoData) {
+					JOptionPane.showConfirmDialog(null, "参数不全");
+					return;
+				}
+				result = checkFour();
+				if (result == ResponseCode.DataERR) {
+					JOptionPane.showConfirmDialog(null, "参数不合法");
+					return;
+				} else if (result == ResponseCode.NoData) {
+					JOptionPane.showConfirmDialog(null, "参数不全");
+					return;
+				}
+				result = checkFive();
+				if (result == ResponseCode.DataERR) {
+					JOptionPane.showConfirmDialog(null, "参数不合法");
+					return;
+				} else if (result == ResponseCode.NoData) {
+					JOptionPane.showConfirmDialog(null, "参数不全");
+					return;
+				}
+			}
+		});
 
 		button_5 = new JButton("打印");
+		// 打印功能
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s1 = "  ";
+				String s2 = "      ";
+				outPutTxt = "螺栓计算\n" + s1;
+				if (highStrength.o1 != null) {
+					outPutTxt += "普通螺栓受剪力: \n" + s2 + "受剪面数目:  " + highStrength.nv + "\n" + s2 + "螺栓杆直径:  "
+							+ highStrength.d + "\n" + s2 + "在不同手里方向中一个受力方向承压构件总厚度的较小值:  " + highStrength.t + "\n" + s2
+							+ "螺栓的抗剪设计值:  " + highStrength.fbv + "\n" + s2 + "螺栓承压强度设计值: " + highStrength.fbc + "\n"
+							+ s2 + "普通螺栓受剪承载力设计值: " + highStrength.o1 + "\n" + s2 + "普通螺栓承压载力设计值:  " + highStrength.o2
+							+ "\n" + s1;
+				}
+				if (highStrength.o3 != null) {
+					outPutTxt += "普通螺栓受杆轴方向拉力: \n" + s2 + "螺纹处的有效直径: " + highStrength.de + "\n" + s2 + "抗拉强度设计值: "
+							+ highStrength.ftb + "\n" + s2 + "承载力设计值: " + highStrength.o3 + "\n" + s1;
+				}
+				if (highStrength.o4 != null) {
+					outPutTxt += "普通螺栓同时承受剪力和杆轴方向拉力:\n" + s2 + "承受剪力: " + highStrength.Cnv + "\n" + s2 + "承受拉力: "
+							+ highStrength.Nt + "\n" + s2 + "承剪继承力设计值: " + highStrength.Nvb + "\n" + s2 + "承拉继承力设计值: "
+							+ highStrength.Ntb + "\n" + s2 + "成压继承力设计值: " + highStrength.Nbc + "\n" + s2
+							+ "同时承受剪力和杆轴方向拉力: " + highStrength.o4 + "\n" + s1;
+				}
+				if (highStrength.o5 != null) {
+					outPutTxt += "高强度螺栓承压型连接: \n" + s2 + "螺栓杆直径: " + highStrength.Hd + "\n" + s2 + "受剪面数: "
+							+ highStrength.Hnv + "\n" + s2 + "螺栓的抗剪设计值: " + highStrength.Fbv + "\n" + s2 + "螺栓承压强度设计值: "
+							+ highStrength.Fbc + "\n" + s2 + "受剪承载力: " + highStrength.o5 + "\n" + s2 + "受压承载力: "
+							+ highStrength.o6 + "\n" + s2 + "受剪承载力设计值: " + highStrength.o7 + "\n" + s1;
+				}
+				if (highStrength.o8 != null) {
+					outPutTxt += "高强度螺栓摩擦型连接: \n" + s2 + "摩擦面数: " + highStrength.nf + "\n" + s2 + "摩擦面的抗滑移系数: "
+							+ highStrength.y + "\n" + s2 + "预拉力: " + highStrength.nvb + "\n" + s2 + "承载力: "
+							+ highStrength.o8;
+				}
+//				if(highStrength.)
+				if (outPutTxt.length() == 7) {
+					JOptionPane.showConfirmDialog(null, "内容为空！");
+				} else {
+					Filewriter.printToTxt(outPutTxt);
+				}
+			}
+		});
+
 		button_5.setBounds(1073, 13, 113, 27);
 		panel_6.add(button_5);
+
+	}
+
+	// 计算第一部分
+	int checkOne() {
+		if (txtNv.getText().trim().length() != 0 && txtD.getText().trim().length() != 0
+				&& txtT.getText().trim().length() != 0 && txtFbv.getText().trim().length() != 0
+				&& txtFbc.getText().trim().length() != 0) {
+			try {
+				highStrength.setNv(Integer.valueOf(txtNv.getText().trim()));
+				highStrength.setD(Double.valueOf(txtD.getText().trim()));
+				highStrength.setT(Double.valueOf(txtT.getText().trim()));
+				highStrength.setFbv(Double.valueOf(txtFbv.getText().trim()));
+				highStrength.setFbc(Double.valueOf(txtFbc.getText().trim()));
+			} catch (NumberFormatException e) {
+				// 参数转化异常
+				return ResponseCode.DataERR;
+			}
+			highStrength.part1();
+			label_7.setText(String.valueOf(highStrength.o1));
+			label_9.setText(String.valueOf(highStrength.o2));
+			return ResponseCode.OK;
+		} else if (txtNv.getText().trim().length() != 0 || txtD.getText().trim().length() != 0
+				|| txtT.getText().trim().length() != 0 || txtFbv.getText().trim().length() != 0
+				|| txtFbc.getText().trim().length() != 0) {
+			// 数据缺失
+			return ResponseCode.NoData;
+		}
+		// 数据全空
+		return ResponseCode.NULL;
+	}
+
+	// 计算第二部分
+	int checkTwo() {
+		if (txtDe.getText().trim().length() != 0 && textField_6.getText().trim().length() != 0) {
+			try {
+				highStrength.setDe(Double.valueOf(txtDe.getText().trim()));
+				highStrength.setFtb(Double.valueOf(textField_6.getText().trim()));
+			} catch (NumberFormatException e) {
+				return ResponseCode.DataERR;
+			}
+			highStrength.part2();
+			textField.setText(String.valueOf(highStrength.o3));
+			return ResponseCode.OK;
+		} else if (txtDe.getText().trim().length() != 0 || textField_6.getText().trim().length() != 0) {
+			return ResponseCode.NoData;
+		}
+		return ResponseCode.NULL;
+	}
+
+	// 计算第三部分
+	int checkThree() {
+		if (txtNv_1.getText().trim().length() != 0 && txtNt.getText().trim().length() != 0
+				&& txtNvb.getText().trim().length() != 0 && txtNtb.getText().trim().length() != 0
+				&& txtNbc.getText().trim().length() != 0) {
+
+			try {
+				highStrength.Cnv = Double.valueOf(txtNv_1.getText().trim());
+				highStrength.Nt = Double.valueOf(txtNt.getText().trim());
+				highStrength.Nvb = Double.valueOf(txtNvb.getText().trim());
+				highStrength.Ntb = Double.valueOf(txtNtb.getText().trim());
+				highStrength.Nbc = Double.valueOf(txtNbc.getText().trim());
+			} catch (NumberFormatException e) {
+				return ResponseCode.DataERR;
+			}
+			highStrength.part3();
+			lblnvnbc.setText(String.valueOf(highStrength.o4));
+			if (highStrength.o4 < 1 && highStrength.o4 <= highStrength.Nbc) {
+				lblnvnbc.setForeground(Color.BLACK);
+			} else {
+				label_31.setText("输出小于1并且小于等于承压承载力设计值");
+				lblnvnbc.setForeground(Color.RED);
+			}
+			return ResponseCode.OK;
+		} else if (txtNv_1.getText().trim().length() != 0 || txtNt.getText().trim().length() != 0
+				|| txtNvb.getText().trim().length() != 0 || txtNtb.getText().trim().length() != 0
+				|| txtNbc.getText().trim().length() != 0) {
+			return ResponseCode.NoData;
+		}
+		return ResponseCode.NULL;
+	}
+
+	// 计算第四部分
+	int checkFour() {
+		if (textField_1.getText().trim().length() != 0 && textField_2.getText().trim().length() != 0
+				&& textField_7.getText().trim().length() != 0 && textField_8.getText().trim().length() != 0) {
+			try {
+				highStrength.Hd = Double.valueOf(textField_1.getText().trim());
+				highStrength.Hnv = Double.valueOf(textField_2.getText().trim());
+				highStrength.Fbv = Double.valueOf(textField_7.getText().trim());
+				highStrength.Fbc = Double.valueOf(textField_8.getText().trim());
+			} catch (NumberFormatException e) {
+				return ResponseCode.DataERR;
+			}
+			highStrength.part4();
+			/*
+			 * label_23 label_24 label_20
+			 */
+			label_23.setText(String.valueOf(highStrength.o5));
+			label_24.setText(String.valueOf(highStrength.o6));
+			label_20.setText(String.valueOf(highStrength.o7));
+			return ResponseCode.OK;
+		} else if (textField_1.getText().trim().length() != 0 || textField_2.getText().trim().length() != 0
+				|| textField_7.getText().trim().length() != 0 || textField_8.getText().trim().length() != 0) {
+			return ResponseCode.NoData;
+		}
+		return ResponseCode.NULL;
+	}
+
+	// 计算第五部分
+	int checkFive() {
+		/*
+		 * textField_3 textField_4 textField_5
+		 */
+		if (textField_3.getText().trim().length() != 0 && textField_4.getText().trim().length() != 0
+				&& textField_5.getText().trim().length() != 0) {
+			try {
+				highStrength.nf = Double.valueOf(textField_3.getText().trim());
+				highStrength.y = Double.valueOf(textField_4.getText().trim());
+				highStrength.nvb = Double.valueOf(textField_5.getText().trim());
+			} catch (NumberFormatException e) {
+				return ResponseCode.DataERR;
+			}
+			highStrength.part5();
+			// label_33
+			label_33.setText(String.valueOf(highStrength.o8));
+			return ResponseCode.OK;
+		} else if (textField_3.getText().trim().length() != 0 || textField_4.getText().trim().length() != 0
+				|| textField_5.getText().trim().length() != 0) {
+			return ResponseCode.NoData;
+		}
+		return ResponseCode.NULL;
 	}
 }

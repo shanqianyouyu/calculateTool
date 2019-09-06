@@ -23,6 +23,7 @@ import javax.xml.transform.Result;
 import ctgu.Entity.SquareCal;
 import ctgu.awt.controller.XMLData;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
+import ctgu.awt.util.Filewriter;
 import javafx.scene.control.Alert;
 import jxl.demo.XML;
 
@@ -52,6 +53,9 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 	}
 
+	//打印
+	private String outPutTxt = "";
+		
 	private void initSquare(String name2) {
 		// jfSquare = new JFrame(name2);
 		setSize(1610, 1000);
@@ -448,7 +452,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		JLabel tank44 = new JLabel("主要受力拉线的合力与抱杆轴线的夹角:");
 		tank44.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank45 = new JLabel("  两拉线合力线与抱杆轴线间的夹角:");
+		JLabel tank45 = new JLabel("内与辅拉线合力线与抱杆轴线间的夹角:");
 		tank45.setHorizontalAlignment(JTextField.RIGHT);
 
 		// 设置内部布局
@@ -486,6 +490,8 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		JButton button03 = new JButton("计算");
 		button03.setActionCommand("计算");
 		button03.addActionListener(this);
+		button02.setActionCommand("打印");
+		button02.addActionListener(this);
 		button01.setActionCommand("保存");
 		button01.addActionListener(this);
 
@@ -750,7 +756,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		JLabel tank24 = new JLabel("   单肢主材截面面积:");
 		tank4.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank25 = new JLabel(" 起吊滑车组预留长度:");
+		JLabel tank25 = new JLabel(" 抱杆主材截面面积:");
 		tank25.setHorizontalAlignment(JTextField.RIGHT);
 
 		JLabel tank26 = new JLabel(" 单肢主材的重心距离:");
@@ -975,7 +981,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		JLabel tank64 = new JLabel("变截面抱杆长细比:");
 		tank64.setHorizontalAlignment(JTextField.RIGHT);
 
-		JLabel tank65 = new JLabel("变截面抱杆长细比:");
+		JLabel tank65 = new JLabel("变截面抱杆惯性矩:");
 		tank65.setHorizontalAlignment(JTextField.RIGHT);
 
 		JLabel tank66 = new JLabel("变截面抱杆的折算长细比:");
@@ -1375,6 +1381,78 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 				e1.printStackTrace();
 			}
 			
+		}
+		
+		if (e.getActionCommand().equals("打印")) {
+			String s1 = "  ";
+			String s2 = "      ";
+			outPutTxt = "抱杆计算: " + System.getProperty("line.separator") + s1;
+			if (oneTxt61.getText() != null) {
+				outPutTxt += "塔型参数: "+ System.getProperty("line.separator") + s2 + "酒杯型塔的窗口高度:  " + oneTxt1.getText() + System.getProperty("line.separator") + s2 + "横担断面的最大高度:  "
+						+ oneTxt2.getText() + System.getProperty("line.separator") + s2 + "耐张塔头断面边宽:  " + oneTxt3.getText() + System.getProperty("line.separator") + s2
+						+ "吊点绳的高度:  " + oneTxt4.getText() + System.getProperty("line.separator") + s2 + "起吊滑车组预留长度: " + oneTxt5.getText() + System.getProperty("line.separator")
+						+ s2 + "单边横担长度: " + oneTxt6.getText() + System.getProperty("line.separator") + s2 + "抱杆长度:  " + oneTxt61.getText()
+						+ System.getProperty("line.separator") + s1;
+			}
+			if (oneTxt62.getText() != null) {
+				outPutTxt += "压杆参数: "+ System.getProperty("line.separator") + s2 + "等截面压杆长度:  " + oneTxt21.getText() + System.getProperty("line.separator") + s2 + "压杆截面惯性矩: "
+						+ oneTxt22.getText() + System.getProperty("line.separator") + s2 + "单肢主材对X轴惯性矩:  " + oneTxt23.getText()+ System.getProperty("line.separator") + s2 + "单肢主材截面面积:  " + oneTxt24.getText()
+						+ System.getProperty("line.separator") + s2 + "抱杆主材截面面积:  " + oneTxt25.getText()
+						+ System.getProperty("line.separator") + s2 + "单肢主材重心距离:  " + oneTxt26.getText()
+						+ System.getProperty("line.separator") + s2 + "抱杆断面边宽:  " + oneTxt27.getText()
+						+ System.getProperty("line.separator") + s2 + "压杆长度系数:  " + oneTxt28.getText()
+						+ System.getProperty("line.separator") + s2 + "抱杆斜面为单斜材布置是的单斜材截面面积:  " + oneTxtk21.getText()
+						+ System.getProperty("line.separator") + s2 + "压杆截面变化有关的压杆长度修正系数:  " + oneTxtk22.getText()
+						+ System.getProperty("line.separator") + s2 + "等截面抱杆长细比:  " + oneTxt62.getText()
+						+ System.getProperty("line.separator") + s2 + "等截面抱杆惯性矩:  " + oneTxt63.getText()
+						+ System.getProperty("line.separator") + s2 + "变截面抱杆长细比:  " + oneTxt64.getText()
+						+ System.getProperty("line.separator") + s2 + "变截面抱杆惯性矩:  " + oneTxt65.getText()
+						+ System.getProperty("line.separator") + s2 + "变截面抱杆的折算长细比:  " + oneTxt66.getText()
+						+ System.getProperty("line.separator") + s1;
+			}
+			if (oneTxt71.getText() != null) {
+				outPutTxt += "张力和轴心轴向压力:" + System.getProperty("line.separator") + s2 + "被吊构件的质量: " + oneTxt31.getText() + System.getProperty("line.separator") + s2 + "攀根绳与地面的夹角: "
+						+ oneTxt32.getText()  + System.getProperty("line.separator") + s2 + "起吊绳中心线与铅垂线之间的夹角: " + oneTxt33.getText()  + System.getProperty("line.separator") + s2 + "构件的增重系数: "
+						+ oneTxt34.getText() + System.getProperty("line.separator") + s2 + "起吊滑车组的受力绳数: " + oneTxt43.getText() + System.getProperty("line.separator") + s2
+						+ "抱杆倾斜角: " + oneTxt42.getText() + System.getProperty("line.separator") + s2 + "拉线对地夹角: " + oneTxt41.getText()
+						+ System.getProperty("line.separator") + s2 + "起吊滑车组的效率: " + oneTxt44.getText() + System.getProperty("line.separator") + s2 + "钢丝绳的工作绳数: " + oneTxtC31.getText()
+						+ System.getProperty("line.separator") + s2 + "合力线与抱杆轴间夹角(辅助拉线): " + oneTxtC32.getText() + System.getProperty("line.separator") + s2 + "起吊滑车组轴线与铅垂线之间的夹角: " + oneTxtC33.getText()
+						+ System.getProperty("line.separator") + s2 + "控制绳对地夹角: " + oneTxtC34.getText()
+						+ System.getProperty("line.separator") + s2 + "被吊构件的重力: " + oneTxtC35.getText()
+						+ System.getProperty("line.separator") + s2 + "滑车的效率: " + oneTxtC36.getText()
+						+ System.getProperty("line.separator") + s2 + "单条承托绳与抱杆轴线间的夹角: " + oneTxtC41.getText()
+						+ System.getProperty("line.separator") + s2 + "单条承托绳与相邻承托绳合力线间夹角: " + oneTxtC42.getText()
+						+ System.getProperty("line.separator") + s2 + "抱杆及锁具的重力: " + oneTxtC43.getText()
+						+ System.getProperty("line.separator") + s2 + "主要受力拉线的合力与抱杆轴线的夹角: " + oneTxtC44.getText()
+						+ System.getProperty("line.separator") + s2 + "内与辅拉线合力线与抱杆轴线间的夹角: " + oneTxtC45.getText()
+						+ System.getProperty("line.separator") + s2 + "攀根绳的静张力: " + oneTxt71.getText()
+						+ System.getProperty("line.separator") + s2 + "起吊滑车组及牵引绳的静张力: " + oneTxt72.getText()
+						+ System.getProperty("line.separator") + s2 + "牵引绳的静张力: " + oneTxt74.getText()
+						+ System.getProperty("line.separator") + s2 + "抱杆拉线的静张力: " + oneTxt75.getText()
+						+ System.getProperty("line.separator") + s2 + "吊装辅助拉线静张力: " + oneTxt76.getText()
+						+ System.getProperty("line.separator") + s2 + "抱杆的轴心压力: " + oneTxt77.getText()
+						+ System.getProperty("line.separator") + s2 + "承托绳的静张力: " + oneTxt78.getText()
+						+ System.getProperty("line.separator") + s2 + "引至地面时抱杆轴向压力(多种): " + oneTxt79.getText()
+						+ System.getProperty("line.separator") + s2 + "延铅垂线引下时增加的拉线张力: " + oneTxt82.getText()
+						+ System.getProperty("line.separator") + s2 + "综合静拉力: " + oneTxt83.getText()
+						+ System.getProperty("line.separator") + s1;
+			}
+			if (oneTxt80.getText() != null) {
+				outPutTxt += "抱杆容许中心压力: "+ System.getProperty("line.separator") + s2 + "抱杆断面边宽:  " + oneTxt27.getText() + System.getProperty("line.separator") + s2 + "受压杆件的稳定系数: "
+						+ oneTxtR21.getText() + System.getProperty("line.separator") + s2 + "抱杆主材截面面积:  " + oneTxtR22.getText()+ System.getProperty("line.separator") + s2 + "抱杆主材的容许应力:  " + oneTxtR23.getText()
+						+ System.getProperty("line.separator") + s2 + "抱杆中部断面的惯性矩:  " + oneTxtC21.getText()
+						+ System.getProperty("line.separator") + s2 + "抱杆中部断面的抗弯断面系数:  " + oneTxtC22.getText()
+						+ System.getProperty("line.separator") + s2 + "压杆承受压力的偏心距:  " + oneTxtC23.getText()
+						+ System.getProperty("line.separator") + s2 + "中心压力的计算：  " + oneTxt80.getText()
+						+ System.getProperty("line.separator") + s2 + "按压弯杆件计算容许中心压力:  " + oneTxt81.getText()
+						+ System.getProperty("line.separator") + s1;
+			}
+//			if(highStrength.)
+			if (outPutTxt.length() == 7) {
+				JOptionPane.showConfirmDialog(null, "内容为空！");
+			} else {
+				Filewriter.printToTxt(outPutTxt);
+			}
 		}
 	}
 
