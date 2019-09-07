@@ -16,11 +16,18 @@ import ctgu.awt.frame.homepage.search.entity.Item;
 import ctgu.awt.frame.homepage.search.frame.item.Default;
 
 public class FrameUtil {
-	// Item实体转Defult Frame
+	/**
+	 * Item实体转Defult Frame
+	 * 
+	 * @param items
+	 * @return
+	 */
 	public static List<Default> itemsToFrames(List<Item> items) {
 		List<Default> list = new ArrayList<Default>();
 		for (Item item : items) {
+			String time = item.getYMD() + item.getMS();
 			Default d = new Default();
+			d.setTime(time);
 			d.setId(item.getMS());
 			d.setName(item.getName());
 			list.add(d);

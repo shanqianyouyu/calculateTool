@@ -33,35 +33,6 @@
       <Ntb>0</Ntb> 
     </螺栓计算> 
   </Date>  
-  <Date date="20190906">
-    <螺栓计算 date="144439">
-      <de>0</de>
-      <Fbc>0</Fbc>
-      <nv>0</nv>
-      <Cnv>12.0</Cnv>
-      <Nbc>4.0</Nbc>
-      <Hnv>0</Hnv>
-      <ftb>0</ftb>
-      <Fbv>0</Fbv>
-      <nvb>3.0</nvb>
-      <Hd>0</Hd>
-      <o1>0</o1>
-      <o2>0</o2>
-      <d>0</d>
-      <o3>0</o3>
-      <o4>8.65</o4>
-      <fbc>0</fbc>
-      <Nt>23.0</Nt>
-      <o5>0</o5>
-      <o6>0</o6>
-      <o7>0</o7>
-      <o8>0</o8>
-      <t>0</t>
-      <nf>0</nf>
-      <y>0</y>
-      <fbv>0</fbv>
-      <Nvb>3.0</Nvb>
-      <Ntb>3.0</Ntb>
-    </螺栓计算>
-  </Date>
+  <Date date="20190906"/>  
+  <Date date="20190907"></Date> 
 </Frame>

@@ -26,10 +26,12 @@ public class ResponseCode {
 	public static int NULL = 200;
 
 	/*
-	 * 生成xml
+	 * xml相关
 	 */
 	// 生成错误
 	public static int GenerateERR = 301;
 	// 解析错误
 	public static int ParseERR = 302;
+	// 异常
+	public static int ParseExp = 303;
 }

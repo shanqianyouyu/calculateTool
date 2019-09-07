@@ -20,7 +20,6 @@ import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 import org.junit.Test;
 
-import ctgu.Entity.boltCal.HighStrength;
 import ctgu.awt.frame.homepage.search.entity.Item;
 import ctgu.awt.util.ResponseCode;
 import ctgu.awt.util.Tool;
@@ -174,7 +173,8 @@ public class AnalysisXML {
 			Element second = first.addElement(entry.getKey());
 			second.setText(entry.getValue() == null ? "0" : String.valueOf(entry.getValue()));
 		}
-		OutputFormat outputFormat = OutputFormat.createPrettyPrint();
+		OutputFormat outputFormat = OutputFormat.createPrettyPrint();// 有换行
+//		OutputFormat outputFormat = OutputFormat.createCompactFormat();// 无换行
 		outputFormat.setEncoding("UTF-8");
 		XMLWriter xmlWriter = new XMLWriter(new FileWriter(file), outputFormat);// 写入XML文件的位置 以及指定的格式
 		xmlWriter.write(read);// 开始写入XML文件 写入Document对象
@@ -195,45 +195,56 @@ public class AnalysisXML {
 		return ResponseCode.OK;
 	}
 
-	@Test
-	public void test() {
-		AnalysisXML.readXml();
-	}
-
-	@Test
-	public void test1() {
-		Item item = AnalysisXML.toItem(new HighStrength());
-		System.out.println(item);
-	}
-
-	@Test
-	public void test2() {
-		System.out.println(AnalysisXML.frameToXMl(new HighStrength()));
-	}
-
-	@Test
-	public void test3() {
-		Element element = AnalysisXML.getChildsItem("20190905");
-		Iterator it = element.elementIterator();
+	// 删除一个结点(未完成)
+	public static int deleteDom(String time) {
+		String t1 = time.substring(0, 8);
+		String t2 = time.substring(8, 14);
+		SAXReader reader = new SAXReader();
+		Document document = null;
+		try {
+			document = reader.read(file);
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+		Element frame = document.getRootElement();// Frame
+		Iterator it = frame.elementIterator();
 		while (it.hasNext()) {
-			Element itt = (Element) it.next();
-			System.out.println(itt.getName());
-			Iterator iterator = itt.elementIterator();
-			while (iterator.hasNext()) {
-				Element e = (Element) iterator.next();
-				System.out.println(e.getName());
+			Element date = (Element) it.next();
+			String day = date.attribute(0).getValue();
+			if (day.equals(t1)) {
+				Iterator itt = date.elementIterator();
+				while (itt.hasNext()) {
+					Element e1 = (Element) itt.next();
+					String minutes = (String) e1.attribute(0).getData();
+					if (minutes.equals(t2)) {
+						e1.detach();
+						System.out.println("删除成功!");
+						OutputFormat outputFormat = OutputFormat.createPrettyPrint();// 无换行
+						outputFormat.setEncoding("UTF-8");
+						XMLWriter xmlWriter = null;
+						try {
+							xmlWriter = new XMLWriter(new FileWriter(file), outputFormat);
+							xmlWriter.write(document);
+							xmlWriter.close();
+						} catch (IOException e) {
+							return ResponseCode.ParseExp;
+						}
+					}
+				}
 			}
 		}
 
+		return ResponseCode.OK;
 	}
 
-	// 一个查找实例
+	// xml逆向生成Frame窗口
+	public static int domToFrame() {
+
+		return ResponseCode.OK;
+	}
+
 	@Test
-	public void test4() {
-		Element e = AnalysisXML.getChildsItem("20190905");
-		List<Item> items = AnalysisXML.getDayItem(e, "20190905");
-		for (Item item : items) {
-			System.out.println(item);
-		}
+	public void deleteTest() throws Exception {
+		AnalysisXML.deleteDom("20190907153646");
 	}
 }
