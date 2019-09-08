@@ -1,5 +1,6 @@
 package ctgu.awt.service;
 
+import ctgu.Entity.boltCal.HighStrength;
 import ctgu.awt.entity.Config;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.calFrame.TestJFrame;
@@ -21,7 +22,7 @@ import ctgu.awt.util.Util;
 public class FrameFactory {
 	private static boolean flat = true;
 
-	public static void createFrame(String name) {
+	public static void createFrame(String name, Object object) {
 		// 获取当前选项卡的数量
 		int tabSizeOld = Config.fatherTabbedPane.getTabCount();
 		// 获取主页总项目数
@@ -52,7 +53,15 @@ public class FrameFactory {
 			jPanel.setId(id);
 			jPanel.setName(name);
 		} else if (name.equals("螺栓计算")) {
-			frame = new BolFrame();
+			/**
+			 * 逆向
+			 * 
+			 */
+			if (object != null) {
+				frame = new BolFrame((HighStrength) object);
+			} else {
+				frame = new BolFrame(new HighStrength());
+			}
 			frame.setVisible(true);
 			frame.setId(id);
 			jPanel = new Bol();

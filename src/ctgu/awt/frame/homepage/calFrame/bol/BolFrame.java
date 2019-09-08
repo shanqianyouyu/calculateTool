@@ -97,7 +97,7 @@ public class BolFrame extends FatherFrame {
 	private JButton button_4;
 	private JButton button_5;
 	// 方框内的所有值
-	private HighStrength highStrength = new HighStrength();
+	private HighStrength highStrength = null;
 
 	private JTextField textField_7;
 	private JTextField textField_8;
@@ -107,26 +107,10 @@ public class BolFrame extends FatherFrame {
 	private String outPutTxt = "";
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BolFrame frame = new BolFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public BolFrame() {
-
+	public BolFrame(HighStrength h) {
+		highStrength = h;
 		setTitle("螺栓计算");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -152,7 +136,6 @@ public class BolFrame extends FatherFrame {
 
 		txtNv.setText("nv");
 		txtNv.setText(highStrength.nv == null ? "" : String.valueOf(highStrength.nv));
-
 		txtNv.setBounds(130, 47, 160, 24);
 		panel.add(txtNv);
 		txtNv.setColumns(10);
@@ -319,7 +302,7 @@ public class BolFrame extends FatherFrame {
 		label_16.setBounds(14, 244, 212, 18);
 		panel_2.add(label_16);
 
-		lblnvnbc = new JLabel("输出小于1并且Nv小于等于Nbc");
+		lblnvnbc = new JLabel(highStrength.o4 == null ? "" : String.valueOf(highStrength.o4));
 		lblnvnbc.setBounds(240, 244, 212, 18);
 		panel_2.add(lblnvnbc);
 
@@ -388,7 +371,7 @@ public class BolFrame extends FatherFrame {
 		label_21.setBounds(14, 192, 98, 18);
 		panel_5.add(label_21);
 
-		label_23 = new JLabel("取两值得较小值");
+		label_23 = new JLabel(highStrength.o5 == null ? "" : String.valueOf(highStrength.o5));
 		label_23.setBounds(158, 192, 177, 18);
 		panel_5.add(label_23);
 
@@ -396,7 +379,7 @@ public class BolFrame extends FatherFrame {
 		label_22.setBounds(14, 208, 98, 18);
 		panel_5.add(label_22);
 
-		label_24 = new JLabel("取两值得较小值");
+		label_24 = new JLabel(highStrength.o6 == null ? "" : String.valueOf(highStrength.o6));
 		label_24.setBounds(158, 208, 177, 18);
 		panel_5.add(label_24);
 
@@ -404,7 +387,7 @@ public class BolFrame extends FatherFrame {
 		label_19.setBounds(14, 225, 136, 18);
 		panel_5.add(label_19);
 
-		label_20 = new JLabel("取两值得较小值");
+		label_20 = new JLabel(highStrength.o7 == null ? "" : String.valueOf(highStrength.o7));
 		label_20.setBounds(159, 225, 177, 18);
 		panel_5.add(label_20);
 
@@ -751,4 +734,5 @@ public class BolFrame extends FatherFrame {
 		}
 		return ResponseCode.NULL;
 	}
+
 }

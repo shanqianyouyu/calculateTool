@@ -3,6 +3,9 @@ package ctgu.awt.frame.homepage.search.service;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,6 +13,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.dom4j.Attribute;
 import org.dom4j.Document;
@@ -179,7 +183,8 @@ public class AnalysisXML {
 			Element second = first.addElement(entry.getKey());
 			second.setText(entry.getValue() == null ? "0" : String.valueOf(entry.getValue()));
 		}
-		OutputFormat outputFormat = OutputFormat.createPrettyPrint();
+		OutputFormat outputFormat = OutputFormat.createPrettyPrint();// 有换行
+//		OutputFormat outputFormat = OutputFormat.createCompactFormat();// 无换行
 		outputFormat.setEncoding("UTF-8");
 		XMLWriter xmlWriter = new XMLWriter(new FileWriter(file), outputFormat);// 写入XML文件的位置 以及指定的格式
 		xmlWriter.write(read);// 开始写入XML文件 写入Document对象
@@ -200,45 +205,124 @@ public class AnalysisXML {
 		return ResponseCode.OK;
 	}
 
-	@Test
-	public void test() {
-		AnalysisXML.readXml();
+	// 删除一个结点(未完成)
+	public static int deleteDom(String time) {
+		String t1 = time.substring(0, 8);
+		String t2 = time.substring(8, 14);
+		SAXReader reader = new SAXReader();
+		Document document = null;
+		try {
+			document = reader.read(file);
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+		Element frame = document.getRootElement();// Frame
+		Iterator it = frame.elementIterator();
+		while (it.hasNext()) {
+			Element date = (Element) it.next();
+			String day = date.attribute(0).getValue();
+			if (day.equals(t1)) {
+				Iterator itt = date.elementIterator();
+				while (itt.hasNext()) {
+					Element e1 = (Element) itt.next();
+					String minutes = (String) e1.attribute(0).getData();
+					if (minutes.equals(t2)) {
+						e1.detach();
+						System.out.println("删除成功!");
+						OutputFormat outputFormat = OutputFormat.createPrettyPrint();// 无换行
+						outputFormat.setEncoding("UTF-8");
+						XMLWriter xmlWriter = null;
+						try {
+							xmlWriter = new XMLWriter(new FileWriter(file), outputFormat);
+							xmlWriter.write(document);
+							xmlWriter.close();
+						} catch (IOException e) {
+							return ResponseCode.ParseExp;
+						}
+					}
+				}
+			}
+		}
+
+		return ResponseCode.OK;
+	}
+
+	// xml逆向生成Item
+	public static Item domToItem(String time) {
+		Item item = new Item();
+		String t1 = time.substring(0, 8);
+		String t2 = time.substring(8, 14);
+		item.setMS(t2);
+		item.setYMD(t1);
+		SAXReader reader = new SAXReader();
+		Document document = null;
+		try {
+			document = reader.read(file);
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+		Element frame = document.getRootElement();// Frame
+		Iterator it = frame.elementIterator();
+		while (it.hasNext()) {
+			Element date = (Element) it.next();
+			String day = date.attribute(0).getValue();
+			if (day.equals(t1)) {
+				Iterator itt = date.elementIterator();
+				while (itt.hasNext()) {
+					Element e1 = (Element) itt.next();
+					String minutes = (String) e1.attribute(0).getData();
+					if (minutes.equals(t2)) {
+						item.setName(e1.getName());
+						Iterator iterator = e1.elementIterator();
+						Map<String, Double> map = new HashMap<>();
+						while (iterator.hasNext()) {
+							Element element = (Element) iterator.next();
+							map.put(element.getName(), Double.parseDouble(element.getText()));
+						}
+						item.setDom(map);
+					}
+				}
+			}
+		}
+		return item;
+	}
+
+	public static <T> T ItemtoEntity(final Class<?> clazz, Map<String, Double> params) throws Exception {
+		// 实例化
+		T object = (T) clazz.newInstance();
+		// 获取clazz的数据类型
+		// 获取map的所有key值
+		Set<String> keys = params.keySet();
+		for (String key : keys) {
+			Double value = (Double) params.get(key);
+			// 获取字段
+			Field field = clazz.getDeclaredField(key);
+			if (field != null) {
+				// 设置权限
+				field.setAccessible(true);
+				//
+				String fieldType = field.getType().getTypeName();
+				if ("java.lang.Integer".equals(fieldType)) {
+					field.set(object, Integer.valueOf((int) Math.round(value)));
+				} else {
+					field.set(object, value);
+				}
+			}
+		}
+		return object;
+	}
+
+	public static <T> T domTOEntity(String time, T obj) {
+		try {
+			obj = AnalysisXML.ItemtoEntity(obj.getClass(), AnalysisXML.domToItem(time).getDom());
+		} catch (Exception e) {
+			return null;
+		}
+		return obj;
 	}
 
 	@Test
 	public void test1() {
-		Item item = AnalysisXML.toItem(new HighStrength());
-		System.out.println(item);
-	}
-
-	@Test
-	public void test2() {
-		System.out.println(AnalysisXML.frameToXMl(new HighStrength()));
-	}
-
-	@Test
-	public void test3() {
-		Element element = AnalysisXML.getChildsItem("20190905");
-		Iterator it = element.elementIterator();
-		while (it.hasNext()) {
-			Element itt = (Element) it.next();
-			System.out.println(itt.getName());
-			Iterator iterator = itt.elementIterator();
-			while (iterator.hasNext()) {
-				Element e = (Element) iterator.next();
-				System.out.println(e.getName());
-			}
-		}
-
-	}
-
-	// 一个查找实例
-	@Test
-	public void test4() {
-		Element e = AnalysisXML.getChildsItem("20190905");
-		List<Item> items = AnalysisXML.getDayItem(e, "20190905");
-		for (Item item : items) {
-			System.out.println(item);
-		}
+		System.out.println(AnalysisXML.domTOEntity("20190907170359", new HighStrength()));
 	}
 }
