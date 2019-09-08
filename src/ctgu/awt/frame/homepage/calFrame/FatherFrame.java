@@ -16,5 +16,5 @@ public class FatherFrame extends JFrame {
 	public void setId(Integer id) {
 		Id = id;
 	}
-	
+
 }

@@ -3,6 +3,9 @@ package ctgu.awt.frame.homepage.search.service;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,6 +13,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.dom4j.Attribute;
 import org.dom4j.Document;
@@ -20,6 +24,7 @@ import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 import org.junit.Test;
 
+import ctgu.Entity.boltCal.HighStrength;
 import ctgu.awt.frame.homepage.search.entity.Item;
 import ctgu.awt.util.ResponseCode;
 import ctgu.awt.util.Tool;
@@ -237,14 +242,82 @@ public class AnalysisXML {
 		return ResponseCode.OK;
 	}
 
-	// xml逆向生成Frame窗口
-	public static int domToFrame() {
+	// xml逆向生成Item
+	public static Item domToItem(String time) {
+		Item item = new Item();
+		String t1 = time.substring(0, 8);
+		String t2 = time.substring(8, 14);
+		item.setMS(t2);
+		item.setYMD(t1);
+		SAXReader reader = new SAXReader();
+		Document document = null;
+		try {
+			document = reader.read(file);
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+		Element frame = document.getRootElement();// Frame
+		Iterator it = frame.elementIterator();
+		while (it.hasNext()) {
+			Element date = (Element) it.next();
+			String day = date.attribute(0).getValue();
+			if (day.equals(t1)) {
+				Iterator itt = date.elementIterator();
+				while (itt.hasNext()) {
+					Element e1 = (Element) itt.next();
+					String minutes = (String) e1.attribute(0).getData();
+					if (minutes.equals(t2)) {
+						item.setName(e1.getName());
+						Iterator iterator = e1.elementIterator();
+						Map<String, Double> map = new HashMap<>();
+						while (iterator.hasNext()) {
+							Element element = (Element) iterator.next();
+							map.put(element.getName(), Double.parseDouble(element.getText()));
+						}
+						item.setDom(map);
+					}
+				}
+			}
+		}
+		return item;
+	}
 
-		return ResponseCode.OK;
+	public static <T> T ItemtoEntity(final Class<?> clazz, Map<String, Double> params) throws Exception {
+		// 实例化
+		T object = (T) clazz.newInstance();
+		// 获取clazz的数据类型
+		// 获取map的所有key值
+		Set<String> keys = params.keySet();
+		for (String key : keys) {
+			Double value = (Double) params.get(key);
+			// 获取字段
+			Field field = clazz.getDeclaredField(key);
+			if (field != null) {
+				// 设置权限
+				field.setAccessible(true);
+				//
+				String fieldType = field.getType().getTypeName();
+				if ("java.lang.Integer".equals(fieldType)) {
+					field.set(object, Integer.valueOf((int) Math.round(value)));
+				} else {
+					field.set(object, value);
+				}
+			}
+		}
+		return object;
+	}
+
+	public static <T> T domTOEntity(String time, T obj) {
+		try {
+			obj = AnalysisXML.ItemtoEntity(obj.getClass(), AnalysisXML.domToItem(time).getDom());
+		} catch (Exception e) {
+			return null;
+		}
+		return obj;
 	}
 
 	@Test
-	public void deleteTest() throws Exception {
-		AnalysisXML.deleteDom("20190907153646");
+	public void test1() {
+		System.out.println(AnalysisXML.domTOEntity("20190907170359", new HighStrength()));
 	}
 }

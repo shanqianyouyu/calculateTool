@@ -25,6 +25,8 @@ public class ToolMenuHandlerListener implements ActionListener {
 	// 快捷键
 	private String name = null;
 
+	private Object obj = null;
+
 	public ToolMenuHandlerListener(JMenuItem e) {
 		item = e;
 	}
@@ -33,12 +35,17 @@ public class ToolMenuHandlerListener implements ActionListener {
 		name = n;
 	}
 
+	public ToolMenuHandlerListener(String n, Object object) {
+		name = n;
+		obj = object;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (item != null) {
-			FrameFactory.createFrame(item.getText());
+			FrameFactory.createFrame(item.getText(), obj);
 		} else {
-			FrameFactory.createFrame(name);
+			FrameFactory.createFrame(name, obj);
 		}
 	}
 

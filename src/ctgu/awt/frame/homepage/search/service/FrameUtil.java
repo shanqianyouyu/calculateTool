@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ctgu.Entity.boltCal.HighStrength;
+import ctgu.awt.frame.homepage.component.handlerlistener.ToolMenuHandlerListener;
 import ctgu.awt.frame.homepage.search.entity.Item;
 import ctgu.awt.frame.homepage.search.frame.item.Default;
 
@@ -30,6 +32,12 @@ public class FrameUtil {
 			d.setTime(time);
 			d.setId(item.getMS());
 			d.setName(item.getName());
+
+			Object obj = null;
+			if (item.getName().equals("螺栓计算")) {
+				obj = new HighStrength();
+			}
+			d.setEditListener(new ToolMenuHandlerListener(item.getName(), AnalysisXML.domTOEntity(time, obj)));
 			list.add(d);
 		}
 		return list;

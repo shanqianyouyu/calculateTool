@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import ctgu.awt.frame.homepage.component.handlerlistener.ToolMenuHandlerListener;
 import ctgu.awt.frame.homepage.search.service.AnalysisXML;
 import ctgu.awt.util.ResponseCode;
 
@@ -92,13 +93,8 @@ public class Default extends JPanel {
 		setVisible(true);
 
 		// 添加编辑事件
-		editBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
+//		editBtn.addActionListener(
+//				new ToolMenuHandlerListener(Name, AnalysisXML.domTOEntity("20190907170359", new HighStrength())));
 
 		// 添加删除事件
 		deleteBtn.addActionListener(new ActionListener() {
@@ -125,6 +121,10 @@ public class Default extends JPanel {
 			name = "名字为空";
 		}
 		jLabel2.setText(name);
+	}
+
+	public void setEditListener(ToolMenuHandlerListener handlerListener) {
+		editBtn.addActionListener(handlerListener);
 	}
 
 }
