@@ -130,7 +130,12 @@ public class AnalysisXML {
 
 		if (name.equals("HighStrength")) {
 			item.setName("螺栓计算");
-		} else {
+		} 
+		else if(name.equals("SquareEnity")){
+			item.setName("抱杆计算");
+		}else if(name.equals("AcrossEnity")){
+			item.setName("跨越架计算");
+		}else{
 			System.out.println(name + " " + "找不到对应类型!");
 		}
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");

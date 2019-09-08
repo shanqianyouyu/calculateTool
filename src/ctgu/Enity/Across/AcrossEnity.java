@@ -1,6 +1,9 @@
 package ctgu.Enity.Across;
 
+import lombok.Data;
+
 //参数取单词缩写
+@Data
 public class AcrossEnity {
 /*	所有参数
 	 * 输入参数
@@ -68,55 +71,59 @@ public class AcrossEnity {
 		 
 		 */
 	
-	private double WLD;
-	private double WCSC;
-	private double NOSR;
-	private double WLAC;
-	private double WS;
-	private double PA;
-	private double IC;
+	public double WLD;
+	public double WCSC;
+	public double NOSR;
+	public double WLAC;
+	public double WS;
+	public double PA;
+	public double IC;
 	
-	private double FC;
+	public double FC;
 	
-	private double HP;
-	private double MVD;
-	private double VA;
-	private double LS;
-	private double CW;
-	private double IWP;
-	private double Ms;
-	private double Hd;
-	private double Mhd;
+	public double HP;
+	public double MVD;
+	public double VA;
+	public double LS;
+	public double CW;
+	public double IWP;
+	public double Ms;
+	public double Hd;
+	public double Mhd;
 
 
-	private double RS;
-	private double SC;
-	private double HHP;
-	private double RPL;
-	private double ADP;
-	private double ACB;
-	private double OPL;
-	private double MSD;
-	private double SCD;
+	public double RS;
+	public double SC;
+	public double HHP;
+	public double RPL;
+	public double ADP;
+	public double ACB;
+	public double OPL;
+	public double MSD;
+	public double SCD;
 		
-	private double DCL;
-	private double HST;
-	private double SSC;
-	private double LOPT;
-	private double ULW;
-	private double ULWL;
-	private double DWG;
-	private double WCTC;
+	public double DCL;
+	public double HST;
+	public double SSC;
+	public double LOPT;
+	public double ULW;
+	public double ULWL;
+	public double DWG;
+	public double WCTC;
 		
-	private double WLS;
-	private double ULWP;
-	private double HLS;
-	private double MHC;
-	private double MWS;
+	public double WLS;
+	public double ULWP;
+	public double HLS;
+	public double MHC;
+	public double MWS;
 	
-	private double MSS;
-	private double Rpl;
-	private double WDD;
+	public double MSS;
+	public double Rpl;
+	public double TRpl;
+	public double WDD;
 	
+	public String getEntityName() {
+		return "跨越架计算";
+	}
 	
 }

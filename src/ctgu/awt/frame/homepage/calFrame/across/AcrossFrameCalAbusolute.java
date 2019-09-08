@@ -8,6 +8,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.sql.SQLClientInfoException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,9 +25,13 @@ import javax.xml.transform.Result;
 
 import com.sun.org.apache.bcel.internal.generic.ACONST_NULL;
 
+import ctgu.Enity.Across.AcrossEnity;
+import ctgu.Enity.Square.SquareEnity;
 import ctgu.Entity.AcrossCal;
+import ctgu.Entity.boltCal.HighStrength;
 import ctgu.awt.controller.XMLData;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
+import ctgu.awt.frame.homepage.search.service.AnalysisXML;
 import ctgu.awt.util.Filewriter;
 
 public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListener, ItemListener {
@@ -45,6 +50,9 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 	
 	//打印
 	private String outPutTxt = "";
+	
+	//保存
+	private AcrossEnity acrossEnity = new AcrossEnity();
 
 	// 定义初始图片
 	private JLabel picture1 = null;
@@ -125,9 +133,9 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 	// 输入参数
 	JTextField oneTxt51 = new JTextField("0", 7);
 	private double two51;
-	JTextField oneTxt52 = new JTextField("0", 10);
+	JTextField oneTxt52 = new JTextField("0", 5);
 	private double two52;
-	JTextField oneTxt53 = new JTextField("0", 10);
+	JTextField oneTxt53 = new JTextField("0", 5);
 	private double two53;
 	JTextField oneTxt54 = new JTextField("0", 10);
 	private double two54;
@@ -135,9 +143,9 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 	private double two55;
 	JTextField oneTxt56 = new JTextField("0", 7);
 	private double two56;
-	JTextField oneTxt57 = new JTextField("0", 5);
+	JTextField oneTxt57 = new JTextField("0", 10);
 	private double two57;
-	JTextField oneTxt58 = new JTextField("0", 5);
+	JTextField oneTxt58 = new JTextField("0", 10);
 	private double two58;
 	JTextField oneTxt59 = new JTextField("0", 10);
 	private double two59;
@@ -227,7 +235,12 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 	private double Rpl;
 	private double TRpl;
 	private double WDD;
-	private Object highStrength;
+	
+	
+	//中间变量
+	private double L1;
+	private double L2;
+	private double L3;
 
 	private void initright1(JPanel right1) {
 		// 跨越架选择
@@ -1070,46 +1083,88 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		}
 
 		if (e.getActionCommand().equals("计算")) {
-			two51 = Double.parseDouble(oneTxt51.getText());
-			two52 = Double.parseDouble(oneTxt52.getText());
-			two53 = Double.parseDouble(oneTxt53.getText());
-			two54 = Double.parseDouble(oneTxt54.getText());
-			two55 = Double.parseDouble(oneTxt55.getText());
-			two56 = Double.parseDouble(oneTxt56.getText());
-			two57 = Double.parseDouble(oneTxt57.getText());
-			two58 = Double.parseDouble(oneTxt58.getText());
-			two59 = Double.parseDouble(oneTxt59.getText());
+			two51 = Double.parseDouble(oneTxt51.getText().trim());
+			acrossEnity.OPL = two51;
+			two52 = Double.parseDouble(oneTxt52.getText().trim());
+			acrossEnity.MSD = two52;
+			two53 = Double.parseDouble(oneTxt53.getText().trim());
+			acrossEnity.HHP = two53;
+			two54 = Double.parseDouble(oneTxt54.getText().trim());
+			acrossEnity.RPL = two54;
+			two55 = Double.parseDouble(oneTxt55.getText().trim());
+			acrossEnity.ADP = two55;
+			two56 = Double.parseDouble(oneTxt56.getText().trim());
+			acrossEnity.ACB = two56;
+			two57 = Double.parseDouble(oneTxt57.getText().trim());
+			acrossEnity.RS = two57;
+			two58 = Double.parseDouble(oneTxt58.getText().trim());
+			acrossEnity.SC = two58;
+			two59 = Double.parseDouble(oneTxt59.getText().trim());
+			acrossEnity.SCD = two59;
 
-			two81 = Double.parseDouble(oneTxt81.getText());
-			two82 = Double.parseDouble(oneTxt82.getText());
-			two83 = Double.parseDouble(oneTxt83.getText());
-			two84 = Double.parseDouble(oneTxt84.getText());
-			two85 = Double.parseDouble(oneTxt85.getText());
-			two86 = Double.parseDouble(oneTxt86.getText());
-			two87 = Double.parseDouble(oneTxt87.getText());
-			two88 = Double.parseDouble(oneTxt88.getText());
+			two81 = Double.parseDouble(oneTxt81.getText().trim());
+			acrossEnity.DCL = two81;
+			two82 = Double.parseDouble(oneTxt82.getText().trim());
+			acrossEnity.HST = two82;
+			two83 = Double.parseDouble(oneTxt83.getText().trim());
+			acrossEnity.SSC = two83;
+			two84 = Double.parseDouble(oneTxt84.getText().trim());
+			acrossEnity.LOPT = two84;
+			two85 = Double.parseDouble(oneTxt85.getText().trim());
+			acrossEnity.ULW = two85;
+			two86 = Double.parseDouble(oneTxt86.getText().trim());
+			acrossEnity.ULWL = two86;
+			two87 = Double.parseDouble(oneTxt87.getText().trim());
+			acrossEnity.DWG = two87;
+			two88 = Double.parseDouble(oneTxt88.getText().trim());
+			acrossEnity.WCTC = two88;
 
-			two1 = Double.parseDouble(oneTxt1.getText());
-			two3 = Double.parseDouble(oneTxt3.getText());
-			two7 = Double.parseDouble(oneTxt7.getText());
-			two4 = Double.parseDouble(oneTxt4.getText());
-			two5 = Double.parseDouble(oneTxt5.getText());
-			two6 = Double.parseDouble(oneTxt6.getText());
+			two1 = Double.parseDouble(oneTxt1.getText().trim());
+			acrossEnity.WLD = two1;
+			two3 = Double.parseDouble(oneTxt3.getText().trim());
+			acrossEnity.NOSR = two3;
+			two7 = Double.parseDouble(oneTxt7.getText().trim());
+			acrossEnity.WLAC = two7;
+			two4 = Double.parseDouble(oneTxt4.getText().trim());
+			acrossEnity.WS = two4;
+			two5 = Double.parseDouble(oneTxt5.getText().trim());
+			acrossEnity.PA = two5;
+			two6 = Double.parseDouble(oneTxt6.getText().trim());
+			acrossEnity.IC = two6;
 
-			two21 = Double.parseDouble(oneTxt21.getText());
+			two21 = Double.parseDouble(oneTxt21.getText().trim());
+			acrossEnity.FC = two6;
 
-			two31 = Double.parseDouble(oneTxt31.getText());
-			two32 = Double.parseDouble(oneTxt32.getText());
-			two34 = Double.parseDouble(oneTxt34.getText());
-			two37 = Double.parseDouble(oneTxt37.getText());
-			two39 = Double.parseDouble(oneTxt39.getText());
+			two31 = Double.parseDouble(oneTxt31.getText().trim());
+			acrossEnity.HP = two31;
+			two32 = Double.parseDouble(oneTxt32.getText().trim());
+			acrossEnity.MVD = two32;
+			two34 = Double.parseDouble(oneTxt34.getText().trim());
+			acrossEnity.VA = two34;
+			two37 = Double.parseDouble(oneTxt37.getText().trim());
+			acrossEnity.LS = two37;
+			two39 = Double.parseDouble(oneTxt39.getText().trim());
+			acrossEnity.CW = two39;
 
-			two41 = Double.parseDouble(oneTxt41.getText());
-			two41 = Double.parseDouble(oneTxt41.getText());
-			two41 = Double.parseDouble(oneTxt41.getText());
-			two41 = Double.parseDouble(oneTxt41.getText());
+			two41 = Double.parseDouble(oneTxt41.getText().trim());
+			acrossEnity.IWP = two41;
+			two42 = Double.parseDouble(oneTxt41.getText().trim());
+			acrossEnity.Ms = two42;
+			two43 = Double.parseDouble(oneTxt41.getText().trim());
+			acrossEnity.Hd = two43;
+			two44 = Double.parseDouble(oneTxt41.getText().trim());
+			acrossEnity.Mhd = two44;
 
+			
+			acrossEnity.IWP = two41;
 
+			if(list1.equals("圆形杆件")){
+				two2 = 0.7;
+			}
+			else{
+				two2 = 1.3;
+			}
+			
 			AcrossCal sq2 = new AcrossCal(two1, two2, two3, two7, two4, two5, two6, two21, two31, two32, two34, two37,
 					two39, two41, two42, two43, two44, two51, two52, two53, two54, two55, two56, two57, two58, two59,
 					two81, two82, two83, two84, two85, two86, two87, two88);
@@ -1151,15 +1206,65 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 			// e1.printStackTrace();
 			// }
 			//
-			// }		
-			if(list1.equals("圆形杆件")){
-				two2 = 0.7;
-			}
-			else{
-				two2 = 1.3;
-			}
-		}
+			// }
+			WLS = sq2.setVerticalLoad();
 			
+			ULWP = 	sq2.setUniformLoad();
+			
+			HLS = sq2.setHorizontalLoad();
+			
+			MHC = sq2.setMinimumHeight();
+			
+			MWS = sq2.setMinimumWidth();
+			
+			L1 = sq2.setSpanCaused();
+			
+			L2 = sq2.setMinimumSafety();
+			
+			L3 = sq2.setCrossingAngle();
+			
+			MSS = sq2.setMinimumSpan();
+			
+			Rpl = sq2.setHorizontalDistance();
+			
+			TRpl = sq2.setTwoSpan();
+			
+			WDD = sq2.setWindDeviation();
+			
+			two86 = sq2.setWindLoad();
+			
+			
+			
+			oneTxt86.setText(String.format("%.2f", two86));
+			
+			oneTxt61.setText(String.format("%.2f", WLS));
+			oneTxt62.setText(String.format("%.2f", ULWP));
+			oneTxt64.setText(String.format("%.2f", HLS));
+			oneTxt65.setText(String.format("%.2f", MHC));
+			oneTxt66.setText(String.format("%.2f", MWS));
+			
+			oneTxt71.setText(String.format("%.2f", MSS));
+			oneTxt72.setText(String.format("%.2f", Rpl));
+			oneTxt74.setText(String.format("%.2f", TRpl));
+			oneTxt75.setText(String.format("%.2f", WDD));
+			
+			
+			acrossEnity.WLS = WLS;
+			acrossEnity.ULWP = ULWP;
+			acrossEnity.HLS = HLS;
+			acrossEnity.MHC = MHC;
+			acrossEnity.MWS = MWS;
+			
+			acrossEnity.MSS = MSS;
+			acrossEnity.Rpl = Rpl;
+			acrossEnity.TRpl= TRpl;
+			acrossEnity.WDD = WDD;
+			
+		}
+		
+		if (e.getActionCommand().equals("保存")) {
+				AnalysisXML.frameToXMl(acrossEnity);	
+		}
 			
 			if (e.getActionCommand().equals("打印")) {
 				String s1 = "  ";
@@ -1197,6 +1302,9 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 							+ System.getProperty("line.separator") + s2 + "导线、地线的单位长度重量: " + oneTxt85.getText()
 							+ System.getProperty("line.separator") + s2 + "导线或地线的单位长度风荷重: " + oneTxt86.getText()
 							+ System.getProperty("line.separator") + s2 + "导线或地线直径: " + oneTxt87.getText()
+							+ System.getProperty("line.separator") + s2 + "拉线位置引起的跨距: " + String.valueOf(L1)
+							+ System.getProperty("line.separator") + s2 + "拉线至运行线路最小安全距离要求的跨距: " + String.valueOf(L2)
+							+ System.getProperty("line.separator") + s2 + "运行电力线与在建线路的交叉角引起的跨距: " + String.valueOf(L3)
 							+ System.getProperty("line.separator") + s2 + "跨越架跨越架外侧至运行电力线的水平距离: " + oneTxt72.getText()
 							+ System.getProperty("line.separator") + s2 + "两副跨越架间的跨距: " + oneTxt74.getText()
 							+ System.getProperty("line.separator") + s2 + "风偏距离: " + oneTxt75.getText() + System.getProperty("line.separator") + s1;

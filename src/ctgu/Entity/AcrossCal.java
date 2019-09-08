@@ -1,5 +1,7 @@
 package ctgu.Entity;
 
+import java.awt.print.Printable;
+
 import org.omg.CORBA.PRIVATE_MEMBER;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
@@ -124,6 +126,7 @@ public class AcrossCal {
 	//均匀载荷计算
 	public double setUniformLoad(){
 		ULWP = WLAC*WCSC*PA*WS*WS/1600; 
+		System.out.println(WCSC);
 		return ULWP;
 	}
 	
@@ -182,7 +185,13 @@ public class AcrossCal {
 		return TRpl;
 	}
 	
-	//风偏距离
+	//风偏距离单位长度风荷重
+	public double setWindLoad(){
+		ULWL = DWG*WCTC*0.0613;
+		return ULWL;
+	}
+	
+	//风偏计算
 	public double setWindDeviation(){
 		WDD = ULWL*(DCL*(SSC-DCL)/2*HHP + LOPT / ULW);
 		return WDD;
