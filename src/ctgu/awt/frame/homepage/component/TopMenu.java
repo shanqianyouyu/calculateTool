@@ -55,6 +55,7 @@ public class TopMenu extends JMenuBar {
 	private JMenuItem squre = new JMenuItem("正方形抱杆");
 	private JMenuItem bol = new JMenuItem("螺栓计算");
 	private JMenuItem across = new JMenuItem("跨越架计算");
+	private JMenuItem anchor = new JMenuItem("地锚计算");
 
 	public TopMenu() {
 		init();
@@ -94,6 +95,7 @@ public class TopMenu extends JMenuBar {
 		file1.add(test);
 		file1.add(squre);
 		file3.add(bol);
+		file5.add(anchor);
 		file6.add(across);
 
 	}
@@ -127,6 +129,8 @@ public class TopMenu extends JMenuBar {
 		bol.addActionListener(new ToolMenuHandlerListener(bol));
 		// 焊缝计算
 
+		// 地锚计算
+		anchor.addActionListener(new ToolMenuHandlerListener(anchor));
 		// 跨越架计算
 		across.addActionListener(new ToolMenuHandlerListener(across));
 
@@ -134,7 +138,6 @@ public class TopMenu extends JMenuBar {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("12312");
 				SearchFrame frame = new SearchFrame();
 				frame.setVisible(true);
 

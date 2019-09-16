@@ -12,7 +12,6 @@ import java.util.TreeMap;
 
 import javax.swing.JPanel;
 
-
 import ctgu.awt.entity.Config;
 import ctgu.awt.entity.PageBean;
 import ctgu.awt.frame.homepage.item.Default;
@@ -76,45 +75,4 @@ public class PageService {
 		pageBean.setBeanList(list);
 		return pageBean;
 	}
-
-	public void test1() {
-		Map<String, String> map = new HashMap();
-		map.put("1", "schase");
-		map.put("102", "schase");
-		map.put("2143", "schase");
-		map.put("2", "schase");
-		map.put("5", "schase");
-		map.put("4", "schase");
-
-		Set<Entry<String, String>> entryset = map.entrySet();
-		Iterator<Entry<String, String>> it = entryset.iterator();
-		while (it.hasNext()) {
-			Entry<String, String> entry = it.next();
-			System.out.println(entry.getKey() + "-->" + entry.getValue());
-		}
-
-	}
-
-	public void test2() {
-		Map<Integer, String> map = new TreeMap<Integer, String>(new Comparator<Integer>() {
-			public int compare(Integer obj1, Integer obj2) {
-				// 降序排序
-				return obj2.compareTo(obj1);
-			}
-		});
-		map.put(1, "schase");
-		map.put(102, "schase");
-		map.put(2143, "schase");
-		map.put(2, "schase");
-		map.put(5, "schase");
-		map.put(4, "schase");
-		Set<Integer> keySet = map.keySet();
-		Iterator<Integer> iter = keySet.iterator();
-		while (iter.hasNext()) {
-			Integer key = iter.next();
-			System.out.println(key + ":" + map.get(key));
-		}
-
-	}
-
 }

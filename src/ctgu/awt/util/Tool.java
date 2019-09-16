@@ -1,10 +1,17 @@
 package ctgu.awt.util;
 
+import java.awt.Image;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JTextField;
 
 import org.junit.Test;
 
@@ -67,14 +74,37 @@ public class Tool {
 		return map;
 	}
 
-	@Test
-	public void test() {
-		Map<String, Double> map = Tool.fieldToMap(new HighStrength());
+	// t1失去聚焦的时候，将1的内容同步到2
+	public static void syncItem(JTextField t1, JTextField t2) {
+		t1.addFocusListener(new FocusListener() {
 
-		for (Map.Entry<String, Double> entry : map.entrySet()) {
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (!t1.getText().equals(t2.getText())) {
+					t2.setText(t1.getText());
+				}
+			}
 
-			System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-
-		}
+			@Override
+			public void focusGained(FocusEvent e) {
+			}
+		});
 	}
+
+	/**
+	 * 返回一个图片
+	 * 
+	 * @param path   图片路径
+	 * @param width  宽度
+	 * @param height 高度
+	 * @return
+	 */
+	public static ImageIcon getImageIcon(String path, int width, int height) {
+		ImageIcon imageIcon = new ImageIcon(path);
+		Image img = imageIcon.getImage();
+		img = img.getScaledInstance(width, height, Image.SCALE_DEFAULT);
+		imageIcon.setImage(img);
+		return imageIcon;
+	}
+
 }
