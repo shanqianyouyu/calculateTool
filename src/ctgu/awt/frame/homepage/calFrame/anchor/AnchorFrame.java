@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import ctgu.Entity.anchorcal.Anchor;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.component.anchor.Img1;
 import ctgu.awt.frame.homepage.component.anchor.Img2;
@@ -21,9 +22,12 @@ import ctgu.awt.frame.homepage.component.anchor.Table6;
 import ctgu.awt.frame.homepage.component.anchor.Table7;
 import ctgu.awt.frame.homepage.component.anchor.Table8;
 import ctgu.awt.frame.homepage.component.anchor.Table9;
+import ctgu.awt.frame.homepage.search.service.AnalysisXML;
+import ctgu.awt.util.ResponseCode;
 import ctgu.awt.util.Tool;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Image;
@@ -52,45 +56,32 @@ public class AnchorFrame extends FatherFrame {
 	private JTextField A1;
 	private JTextField A2;
 	private JTextField O2;
-	private JTextField A4;
 	private JTextField A3;
 	private JTextField B1;
 	private JTextField B4;
 	private JTextField B6;
 	private JTextField B5;
 	private JTextField B2;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField B8;
+	private JTextField B7;
 	private JTextField B3;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
+	private JTextField C3;
+	private JTextField C1;
+	private JTextField C2;
+	private JTextField C4;
+	private JTextField D1;
+	private JTextField D2;
+	private JTextField D3;
+	private JTextField D4;
+	private Anchor anchor = null;
+	private JLabel O1;
+	private JLabel o3;
+	private JLabel o4;
+	private JLabel o5;
+	private String outPutTxt = "";
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AnchorFrame frame = new AnchorFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public AnchorFrame() {
+	public AnchorFrame(Anchor a) {
+		anchor = a;
 		setTitle("地锚");
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -112,6 +103,7 @@ public class AnchorFrame extends FatherFrame {
 		panel.add(label);
 
 		A1 = new JTextField();
+		A1.setText(anchor.A1 == null ? "" : String.valueOf(anchor.A1));
 		A1.setBounds(154, 31, 209, 24);
 		panel.add(A1);
 		A1.setColumns(10);
@@ -122,18 +114,14 @@ public class AnchorFrame extends FatherFrame {
 		panel.add(label_1);
 
 		A2 = new JTextField();
+		A2.setText(anchor.A2 == null ? "" : String.valueOf(anchor.A2));
 		A2.setColumns(10);
 		A2.setBounds(154, 74, 209, 24);
 		panel.add(A2);
 
-		JLabel label_3 = new JLabel("中部直径:");
-		label_3.setFont(new Font("宋体", Font.PLAIN, 16));
-		label_3.setBounds(14, 171, 209, 18);
-		panel.add(label_3);
-
 		JLabel label_4 = new JLabel("容许弯曲应力:");
 		label_4.setFont(new Font("宋体", Font.PLAIN, 16));
-		label_4.setBounds(14, 287, 209, 18);
+		label_4.setBounds(14, 230, 209, 18);
 		panel.add(label_4);
 
 		JLabel label_5 = new JLabel("中心点最大弯矩:");
@@ -143,37 +131,35 @@ public class AnchorFrame extends FatherFrame {
 
 		JLabel label_6 = new JLabel("地锚锚体的弯曲应力:");
 		label_6.setFont(new Font("宋体", Font.PLAIN, 16));
-		label_6.setBounds(14, 335, 226, 18);
+		label_6.setBounds(14, 298, 226, 18);
 		panel.add(label_6);
 
 		O2 = new JTextField();
+		O2.setText(anchor.o2 == null ? "" : String.valueOf(anchor.o2));
 		O2.setColumns(10);
 		O2.setBounds(154, 121, 209, 24);
 		panel.add(O2);
 
-		A4 = new JTextField();
-		A4.setColumns(10);
-		A4.setBounds(154, 169, 209, 24);
-		panel.add(A4);
-
 		A3 = new JTextField();
+		A3.setText(anchor.A3 == null ? "" : String.valueOf(anchor.A3));
 		A3.setColumns(10);
-		A3.setBounds(154, 221, 209, 24);
+		A3.setBounds(154, 167, 209, 24);
 		panel.add(A3);
 
-		JLabel O1 = new JLabel("");
-		O1.setBounds(191, 335, 226, 18);
+		O1 = new JLabel("");
+		O1.setText(anchor.o1 == null ? "" : String.valueOf(anchor.o1));
+		O1.setBounds(191, 298, 226, 18);
 		panel.add(O1);
 
 		JLabel label_2 = new JLabel("抗弯截面系数:");
-		label_2.setBounds(14, 223, 209, 18);
+		label_2.setBounds(14, 169, 209, 18);
 		panel.add(label_2);
 		label_2.setFont(new Font("宋体", Font.PLAIN, 16));
 
 		JComboBox A5 = new JComboBox();
 		A5.addItem("<html>1079 N/cm<sup>2</sup> [圆木]</html>");
 		A5.addItem("<html><body>15700 N/cm<sup>2</sup> [Q235钢]</body></html>");
-		A5.setBounds(127, 276, 231, 37);
+		A5.setBounds(127, 219, 231, 37);
 		panel.add(A5);
 
 		JPanel panel_1 = new JPanel();
@@ -183,7 +169,7 @@ public class AnchorFrame extends FatherFrame {
 		contentPane.add(panel_1);
 
 		// 第一个图片
-		Icon icon1 = new ImageIcon("./resources/anchor/anchor1.png");
+		Icon icon1 = new ImageIcon("./resources/anchor/anchor.png");
 		Image image = ((ImageIcon) icon1).getImage();
 		image = image.getScaledInstance(-1, 260, Image.SCALE_DEFAULT);
 		((ImageIcon) icon1).setImage(image);
@@ -201,10 +187,11 @@ public class AnchorFrame extends FatherFrame {
 		panel_1.add(label_15);
 		label_15.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		textField_6 = new JTextField();
-		textField_6.setBounds(153, 363, 209, 24);
-		panel_1.add(textField_6);
-		textField_6.setColumns(10);
+		B7 = new JTextField();
+		B7.setText(anchor.B7 == null ? "" : String.valueOf(anchor.B7));
+		B7.setBounds(153, 363, 209, 24);
+		panel_1.add(B7);
+		B7.setColumns(10);
 
 		/*
 		 * A2 textField_5
@@ -216,7 +203,7 @@ public class AnchorFrame extends FatherFrame {
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 
-		B4 = new JTextField();
+		B4 = new JTextField(anchor.B4 == null ? "" : String.valueOf(anchor.B4));
 		B4.setBounds(167, 175, 209, 24);
 		panel_2.add(B4);
 		B4.setColumns(10);
@@ -226,7 +213,7 @@ public class AnchorFrame extends FatherFrame {
 		panel_2.add(label_8);
 		label_8.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		B6 = new JTextField();
+		B6 = new JTextField(anchor.B6 == null ? "" : String.valueOf(anchor.B6));
 		B6.setBounds(167, 212, 209, 24);
 		panel_2.add(B6);
 		B6.setColumns(10);
@@ -241,7 +228,7 @@ public class AnchorFrame extends FatherFrame {
 		panel_2.add(label_9);
 		label_9.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		B5 = new JTextField();
+		B5 = new JTextField(anchor.B5 == null ? "" : String.valueOf(anchor.B5));
 		B5.setBounds(167, 274, 209, 24);
 		panel_2.add(B5);
 		B5.setColumns(10);
@@ -251,16 +238,16 @@ public class AnchorFrame extends FatherFrame {
 		panel_2.add(label_16);
 		label_16.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(163, 309, 272, 24);
-		panel_2.add(lblNewLabel);
+		o3 = new JLabel(anchor.o3 == null ? "" : String.valueOf(anchor.o3));
+		o3.setBounds(163, 309, 272, 24);
+		panel_2.add(o3);
 
 		JLabel label_7 = new JLabel("地锚抗拔的土壤体积:");
 		label_7.setBounds(14, 140, 209, 18);
 		panel_2.add(label_7);
 		label_7.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		B1 = new JTextField();
+		B1 = new JTextField(anchor.B1 == null ? "" : String.valueOf(anchor.B1));
 		B1.setBounds(167, 138, 209, 24);
 		panel_2.add(B1);
 		B1.setColumns(10);
@@ -270,7 +257,7 @@ public class AnchorFrame extends FatherFrame {
 		panel_2.add(label_10);
 		label_10.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		B3 = new JTextField();
+		B3 = new JTextField(anchor.B3 == null ? "" : String.valueOf(anchor.B3));
 		B3.setBounds(167, 101, 209, 24);
 		panel_2.add(B3);
 		B3.setColumns(10);
@@ -280,22 +267,21 @@ public class AnchorFrame extends FatherFrame {
 		panel_2.add(label_14);
 		label_14.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		B2 = new JTextField();
+		B2 = new JTextField(anchor.B2 == null ? "" : String.valueOf(anchor.B2));
 		B2.setBounds(167, 64, 209, 24);
 		panel_2.add(B2);
 		B2.setColumns(10);
 
 		JLabel label_12 = new JLabel("长度:");
-		label_12.setBounds(14, 35, 226, 18);
+		label_12.setBounds(14, 29, 226, 18);
 		panel_2.add(label_12);
 		label_12.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		textField_5 = new JTextField();
-		textField_5.setBounds(167, 27, 209, 24);
-		panel_2.add(textField_5);
-		textField_5.setColumns(10);
-		Tool.syncItem(A2, textField_5);
-		Tool.syncItem(textField_5, A2);
+		B8 = new JTextField();
+		B8.setText(anchor.B8 == null ? "" : String.valueOf(anchor.B8));
+		B8.setBounds(167, 27, 209, 24);
+		panel_2.add(B8);
+		B8.setColumns(10);
 
 		JButton btnNewButton = new JButton("表一");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -420,10 +406,10 @@ public class AnchorFrame extends FatherFrame {
 		label_18.setBounds(16, 295, 209, 18);
 		panel_4.add(label_18);
 
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(168, 293, 209, 24);
-		panel_4.add(textField_9);
+		D1 = new JTextField(anchor.D1 == null ? "" : String.valueOf(anchor.D1));
+		D1.setColumns(10);
+		D1.setBounds(168, 293, 209, 24);
+		panel_4.add(D1);
 
 		JLabel label_19 = new JLabel("单桩地下部分的宽度:");
 		label_19.setFont(new Font("宋体", Font.PLAIN, 16));
@@ -445,24 +431,24 @@ public class AnchorFrame extends FatherFrame {
 		label_22.setBounds(12, 502, 209, 18);
 		panel_4.add(label_22);
 
-		textField_10 = new JTextField();
-		textField_10.setColumns(10);
-		textField_10.setBounds(168, 338, 209, 24);
-		panel_4.add(textField_10);
+		D2 = new JTextField(anchor.D2 == null ? "" : String.valueOf(anchor.D2));
+		D2.setColumns(10);
+		D2.setBounds(168, 338, 209, 24);
+		panel_4.add(D2);
 
-		textField_11 = new JTextField();
-		textField_11.setColumns(10);
-		textField_11.setBounds(168, 395, 209, 24);
-		panel_4.add(textField_11);
+		D3 = new JTextField(anchor.D3 == null ? "" : String.valueOf(anchor.D3));
+		D3.setColumns(10);
+		D3.setBounds(168, 395, 209, 24);
+		panel_4.add(D3);
 
-		textField_12 = new JTextField();
-		textField_12.setColumns(10);
-		textField_12.setBounds(168, 447, 209, 24);
-		panel_4.add(textField_12);
+		D4 = new JTextField(anchor.D4 == null ? "" : String.valueOf(anchor.D4));
+		D4.setColumns(10);
+		D4.setBounds(168, 447, 209, 24);
+		panel_4.add(D4);
 
-		JLabel label_21 = new JLabel("");
-		label_21.setBounds(151, 503, 226, 18);
-		panel_4.add(label_21);
+		o5 = new JLabel(anchor.o5 == null ? "" : String.valueOf(anchor.o5));
+		o5.setBounds(151, 503, 226, 18);
+		panel_4.add(o5);
 
 		ImageIcon imIcon5 = new ImageIcon("./resources/anchor/anchor5.png");
 		Image img5 = imIcon5.getImage();
@@ -494,10 +480,10 @@ public class AnchorFrame extends FatherFrame {
 		panel_5.add(lblY);
 		lblY.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		textField_8 = new JTextField();
-		textField_8.setBounds(191, 225, 209, 24);
-		panel_5.add(textField_8);
-		textField_8.setColumns(10);
+		C4 = new JTextField(anchor.C4 == null ? "" : String.valueOf(anchor.C4));
+		C4.setBounds(191, 225, 209, 24);
+		panel_5.add(C4);
+		C4.setColumns(10);
 
 		JLabel lblNewLabel_1 = new JLabel(
 				"<html><body>常用的角钢桩的W值为：<75×8，W<sub>Y0</sub>=8.19 cm<sup>3</sup>;<80×8,W<sub>Y0</sub>=9.46 cm<sup>3</sup></body></html>");
@@ -509,39 +495,39 @@ public class AnchorFrame extends FatherFrame {
 		panel_5.add(label_13);
 		label_13.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		JLabel lblTest = new JLabel("test");
-		lblTest.setBounds(174, 399, 226, 18);
-		panel_5.add(lblTest);
+		o4 = new JLabel(anchor.o4 == null ? "" : String.valueOf(anchor.o4));
+		o4.setBounds(174, 399, 226, 18);
+		panel_5.add(o4);
 
 		JLabel lblp = new JLabel("地面与最大弯矩处间的距离:");
 		lblp.setBounds(14, 147, 319, 18);
 		panel_5.add(lblp);
 		lblp.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		textField_4 = new JTextField();
-		textField_4.setBounds(191, 178, 209, 24);
-		panel_5.add(textField_4);
-		textField_4.setColumns(10);
+		C2 = new JTextField(anchor.C2 == null ? "" : String.valueOf(anchor.C2));
+		C2.setBounds(191, 178, 209, 24);
+		panel_5.add(C2);
+		C2.setColumns(10);
 
 		JLabel lblw = new JLabel("着力点与地面间的距离:");
 		lblw.setBounds(14, 99, 226, 18);
 		panel_5.add(lblw);
 		lblw.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		textField_3 = new JTextField();
-		textField_3.setBounds(191, 99, 209, 24);
-		panel_5.add(textField_3);
-		textField_3.setColumns(10);
+		C1 = new JTextField(anchor.C1 == null ? "" : String.valueOf(anchor.C1));
+		C1.setBounds(191, 99, 209, 24);
+		panel_5.add(C1);
+		C1.setColumns(10);
 
 		JLabel lblmmax = new JLabel("作用于桩锚上的拉力:");
 		lblmmax.setBounds(14, 47, 209, 18);
 		panel_5.add(lblmmax);
 		lblmmax.setFont(new Font("宋体", Font.PLAIN, 16));
 
-		textField_2 = new JTextField();
-		textField_2.setBounds(191, 45, 209, 24);
-		panel_5.add(textField_2);
-		textField_2.setColumns(10);
+		C3 = new JTextField(anchor.C3 == null ? "" : String.valueOf(anchor.C3));
+		C3.setBounds(191, 45, 209, 24);
+		panel_5.add(C3);
+		C3.setColumns(10);
 
 		JLabel label_29 = new JLabel("单根角钢桩的容许承载力表：");
 		label_29.setBounds(14, 450, 251, 18);
@@ -626,15 +612,166 @@ public class AnchorFrame extends FatherFrame {
 		panel_7.setLayout(null);
 
 		JButton button_11 = new JButton("保存");
+		button_11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AnalysisXML.frameToXMl(anchor);
+			}
+		});
 		button_11.setBounds(33, 13, 113, 27);
 		panel_7.add(button_11);
 
 		JButton button_12 = new JButton("计算");
+		button_12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int result = checkOne();
+				if (result == ResponseCode.DataERR) {
+					JOptionPane.showConfirmDialog(null, "参数不合法");
+					return;
+				} else if (result == ResponseCode.NoData) {
+					JOptionPane.showConfirmDialog(null, "参数不全");
+					return;
+				}
+
+				result = checkTwo();
+				if (result == ResponseCode.DataERR) {
+					JOptionPane.showConfirmDialog(null, "参数不合法");
+					return;
+				} else if (result == ResponseCode.NoData) {
+					JOptionPane.showConfirmDialog(null, "参数不全");
+					return;
+				}
+
+				result = checkThree();
+				if (result == ResponseCode.DataERR) {
+					JOptionPane.showConfirmDialog(null, "参数不合法");
+					return;
+				} else if (result == ResponseCode.NoData) {
+					JOptionPane.showConfirmDialog(null, "参数不全");
+					return;
+				}
+				result = checkFour();
+				if (result == ResponseCode.DataERR) {
+					JOptionPane.showConfirmDialog(null, "参数不合法");
+					return;
+				} else if (result == ResponseCode.NoData) {
+					JOptionPane.showConfirmDialog(null, "参数不全");
+					return;
+				}
+			}
+		});
 		button_12.setBounds(829, 13, 113, 27);
 		panel_7.add(button_12);
 
 		JButton button_13 = new JButton("打印");
+		button_13.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s1 = "  ";
+				String s2 = "      ";
+				outPutTxt += "地锚计算\n" + s1;
+//				outPutTxt
+				
+			}
+		});
 		button_13.setBounds(1564, 13, 113, 27);
 		panel_7.add(button_13);
+
+	}
+
+	// 第一部分
+	int checkOne() {
+		if (A1.getText().trim().length() != 0 && A2.getText().trim().length() != 0
+				&& A3.getText().trim().length() != 0) {
+			try {
+				anchor.A1 = Double.valueOf(A1.getText().trim());
+				anchor.A2 = Double.valueOf(A2.getText().trim());
+				anchor.A3 = Double.valueOf(A3.getText().trim());
+			} catch (NumberFormatException e) {
+				return ResponseCode.DataERR;
+			}
+			anchor.part1();
+			O1.setText(String.valueOf(anchor.o1));
+			O2.setText(String.valueOf(anchor.o2));
+			return ResponseCode.OK;
+		} else if (A1.getText().trim().length() != 0 || A2.getText().trim().length() != 0
+				|| A3.getText().trim().length() != 0) {
+			return ResponseCode.NoData;
+		}
+
+		return ResponseCode.NULL;
+	}
+
+	// 第二部分
+	int checkTwo() {
+		if (B1.getText().trim().length() != 0 && B2.getText().trim().length() != 0 && B3.getText().trim().length() != 0
+				&& B4.getText().trim().length() != 0 && B5.getText().trim().length() != 0
+				&& B6.getText().trim().length() != 0 && B7.getText().trim().length() != 0
+				&& B8.getText().trim().length() != 0) {
+			try {
+				anchor.B1 = Double.valueOf(B1.getText().trim());
+				anchor.B2 = Double.valueOf(B2.getText().trim());
+				anchor.B3 = Double.valueOf(B3.getText().trim());
+				anchor.B4 = Double.valueOf(B4.getText().trim());
+				anchor.B5 = Double.valueOf(B5.getText().trim());
+				anchor.B6 = Double.valueOf(B6.getText().trim());
+				anchor.B7 = Double.valueOf(B7.getText().trim());
+				anchor.B8 = Double.valueOf(B8.getText().trim());
+			} catch (NumberFormatException e) {
+				return ResponseCode.DataERR;
+			}
+			anchor.part2();
+			o3.setText(String.valueOf(anchor.o3));
+			return ResponseCode.OK;
+		} else if (B1.getText().trim().length() != 0 || B2.getText().trim().length() != 0
+				|| B3.getText().trim().length() != 0 || B4.getText().trim().length() != 0
+				|| B5.getText().trim().length() != 0 || B6.getText().trim().length() != 0
+				|| B7.getText().trim().length() != 0 || B8.getText().trim().length() != 0) {
+			return ResponseCode.NoData;
+
+		}
+		return ResponseCode.NULL;
+	}
+
+	// 第三部分
+	int checkThree() {
+		if (C1.getText().trim().length() != 0 && C2.getText().trim().length() != 0 && C3.getText().trim().length() != 0
+				&& C4.getText().trim().length() != 0) {
+			try {
+				anchor.C1 = Double.valueOf(C1.getText().trim());
+				anchor.C2 = Double.valueOf(C2.getText().trim());
+				anchor.C3 = Double.valueOf(C3.getText().trim());
+				anchor.C4 = Double.valueOf(C4.getText().trim());
+			} catch (NumberFormatException e) {
+				return ResponseCode.DataERR;
+			}
+			anchor.part3();
+			o4.setText(String.valueOf(anchor.o4));
+			return ResponseCode.OK;
+		} else if (C1.getText().trim().length() != 0 || C2.getText().trim().length() != 0
+				|| C3.getText().trim().length() != 0 || C4.getText().trim().length() != 0) {
+			return ResponseCode.NoData;
+		}
+		return ResponseCode.NULL;
+	}
+
+	// 第四部分
+	int checkFour() {
+		if (D1.getText().trim().length() != 0 && D2.getText().trim().length() != 0 && D3.getText().trim().length() != 0
+				&& D4.getText().trim().length() != 0) {
+			try {
+				anchor.D1 = Double.valueOf(D1.getText().trim());
+				anchor.D2 = Double.valueOf(D2.getText().trim());
+				anchor.D3 = Double.valueOf(D3.getText().trim());
+				anchor.D4 = Double.valueOf(D4.getText().trim());
+			} catch (NumberFormatException e) {
+				return ResponseCode.DataERR;
+			}
+			anchor.part4();
+			o5.setText(String.valueOf(anchor.o5));
+			return ResponseCode.OK;
+		} else if (D1.getText().trim().length() != 0 || D2.getText().trim().length() != 0
+				|| D3.getText().trim().length() != 0 || D4.getText().trim().length() != 0) {
+			return ResponseCode.NoData;
+		}
+		return ResponseCode.NULL;
 	}
 }

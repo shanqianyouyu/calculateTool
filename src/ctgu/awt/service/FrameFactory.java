@@ -1,5 +1,6 @@
 package ctgu.awt.service;
 
+import ctgu.Entity.anchorcal.Anchor;
 import ctgu.Entity.boltCal.HighStrength;
 import ctgu.awt.entity.Config;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
@@ -11,7 +12,6 @@ import ctgu.awt.frame.homepage.calFrame.derrickCal.AbusoluteSquare;
 import ctgu.awt.frame.homepage.component.MainScrollPane;
 import ctgu.awt.frame.homepage.item.Default;
 import ctgu.awt.frame.homepage.item.acrossCal.Across;
-import ctgu.awt.frame.homepage.item.anchor.Anchor;
 import ctgu.awt.frame.homepage.item.bolCal.Bol;
 import ctgu.awt.frame.homepage.item.derrickCal.Square;
 import ctgu.awt.util.Util;
@@ -78,10 +78,14 @@ public class FrameFactory {
 			jPanel.setId(id);
 			jPanel.setName(name);
 		} else if (name.equals("地锚计算")) {
-			frame = new AnchorFrame();
+			if (object != null) {
+				frame = new AnchorFrame((Anchor) object);
+			} else {
+				frame = new AnchorFrame(new Anchor());
+			}
 			frame.setVisible(true);
 			frame.setId(id);
-			jPanel = new Anchor();
+			jPanel = new ctgu.awt.frame.homepage.item.anchor.Anchor();
 			jPanel.setId(id);
 			jPanel.setName(name);
 		}

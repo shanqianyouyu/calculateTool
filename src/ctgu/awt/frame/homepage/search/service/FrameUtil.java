@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ctgu.Entity.anchorcal.Anchor;
 import ctgu.Entity.boltCal.HighStrength;
 import ctgu.awt.frame.homepage.component.handlerlistener.ToolMenuHandlerListener;
 import ctgu.awt.frame.homepage.search.entity.Item;
@@ -36,6 +37,8 @@ public class FrameUtil {
 			Object obj = null;
 			if (item.getName().equals("螺栓计算")) {
 				obj = new HighStrength();
+			} else if (item.getName().equals("地锚计算")) {
+				obj = new Anchor();
 			}
 			d.setEditListener(new ToolMenuHandlerListener(item.getName(), AnalysisXML.domTOEntity(time, obj)));
 			list.add(d);

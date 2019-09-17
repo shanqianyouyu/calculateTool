@@ -24,6 +24,7 @@ import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 import org.junit.Test;
 
+import ctgu.Entity.anchorcal.Anchor;
 import ctgu.Entity.boltCal.HighStrength;
 import ctgu.awt.frame.homepage.search.entity.Item;
 import ctgu.awt.util.ResponseCode;
@@ -134,6 +135,8 @@ public class AnalysisXML {
 
 		if (name.equals("HighStrength")) {
 			item.setName("螺栓计算");
+		} else if (name.equals("Anchor")) {
+			item.setName("地锚计算");
 		} else {
 			System.out.println(name + " " + "找不到对应类型!");
 		}
@@ -318,6 +321,6 @@ public class AnalysisXML {
 
 	@Test
 	public void test1() {
-		System.out.println(AnalysisXML.domTOEntity("20190907170359", new HighStrength()));
+		System.out.println(AnalysisXML.domTOEntity("20190917195232", new Anchor()));
 	}
 }
