@@ -23,6 +23,7 @@ import ctgu.awt.frame.homepage.component.anchor.Table7;
 import ctgu.awt.frame.homepage.component.anchor.Table8;
 import ctgu.awt.frame.homepage.component.anchor.Table9;
 import ctgu.awt.frame.homepage.search.service.AnalysisXML;
+import ctgu.awt.util.Filewriter;
 import ctgu.awt.util.ResponseCode;
 import ctgu.awt.util.Tool;
 
@@ -147,6 +148,7 @@ public class AnchorFrame extends FatherFrame {
 		panel.add(A3);
 
 		O1 = new JLabel("");
+		O1.setFont(new Font("宋体", Font.BOLD, 15));
 		O1.setText(anchor.o1 == null ? "" : String.valueOf(anchor.o1));
 		O1.setBounds(191, 298, 226, 18);
 		panel.add(O1);
@@ -239,6 +241,7 @@ public class AnchorFrame extends FatherFrame {
 		label_16.setFont(new Font("宋体", Font.PLAIN, 16));
 
 		o3 = new JLabel(anchor.o3 == null ? "" : String.valueOf(anchor.o3));
+		o3.setFont(new Font("宋体", Font.BOLD, 15));
 		o3.setBounds(163, 309, 272, 24);
 		panel_2.add(o3);
 
@@ -447,6 +450,7 @@ public class AnchorFrame extends FatherFrame {
 		panel_4.add(D4);
 
 		o5 = new JLabel(anchor.o5 == null ? "" : String.valueOf(anchor.o5));
+		o5.setFont(new Font("宋体", Font.BOLD, 15));
 		o5.setBounds(151, 503, 226, 18);
 		panel_4.add(o5);
 
@@ -496,6 +500,7 @@ public class AnchorFrame extends FatherFrame {
 		label_13.setFont(new Font("宋体", Font.PLAIN, 16));
 
 		o4 = new JLabel(anchor.o4 == null ? "" : String.valueOf(anchor.o4));
+		o4.setFont(new Font("宋体", Font.BOLD, 15));
 		o4.setBounds(174, 399, 226, 18);
 		panel_5.add(o4);
 
@@ -667,9 +672,52 @@ public class AnchorFrame extends FatherFrame {
 			public void actionPerformed(ActionEvent e) {
 				String s1 = "  ";
 				String s2 = "      ";
-				outPutTxt += "地锚计算\n" + s1;
-//				outPutTxt
-				
+
+				outPutTxt += "地锚计算" + System.getProperty("line.separator") + s1;
+				StringBuffer sb = new StringBuffer(outPutTxt);
+				if (anchor.o1 != null) {
+					sb.append("地锚锚体的强度计算:" + System.getProperty("line.separator") + s2 + "单位长度上的载荷: " + anchor.A1
+							+ System.getProperty("line.separator") + s2 + "长度: " + anchor.A2
+							+ System.getProperty("line.separator") + s2 + "中心点最大弯矩: " + anchor.o2
+							+ System.getProperty("line.separator") + s2 + "抗弯截面系数: " + anchor.A3
+							+ System.getProperty("line.separator") + s2 + "地锚锚体的弯曲应力" + anchor.o1
+							+ System.getProperty("line.separator") + s1);
+				}
+				if (anchor.o3 != null) {
+					sb.append("拉线基础的抗拔力: " + System.getProperty("line.separator") + s2 + "中部直径： " + anchor.B7
+							+ System.getProperty("line.separator") + s2 + "长度: " + anchor.B8
+							+ System.getProperty("line.separator") + s2 + "地锚的埋置深度: " + anchor.B2
+							+ System.getProperty("line.separator") + s2 + "土壤的计算抗拔角: " + anchor.B3
+							+ System.getProperty("line.separator") + s2 + "地锚抗拔的土壤体积: " + anchor.B1
+							+ System.getProperty("line.separator") + s2 + "土壤的密度: " + anchor.B4
+							+ System.getProperty("line.separator") + s2 + "地锚抗拔安全系数: " + anchor.B6
+							+ System.getProperty("line.separator") + s2 + "地锚受力方向与地面夹角: " + anchor.B5
+							+ System.getProperty("line.separator") + s2 + "地面容许抗拔力: " + anchor.o3
+							+ System.getProperty("line.separator") + s1);
+
+				}
+				if (anchor.o4 != null) {
+					sb.append("桩锚本体的强度验算: " + System.getProperty("line.separator") + s2 + "作用域桩锚上的拉力：" + anchor.C3
+							+ System.getProperty("line.separator") + s2 + "着力点与地面间的距离: " + anchor.C1
+							+ System.getProperty("line.separator") + s2 + "地面与最大弯矩处间的距离: " + anchor.C2
+							+ System.getProperty("line.separator") + s2 + "单根桩的抗弯界面系数: " + anchor.C4
+							+ System.getProperty("line.separator") + s2 + "桩承受的力对桩体构成弯曲应力:" + anchor.o5
+							+ System.getProperty("line.separator") + s1);
+				}
+				if (anchor.o5 != null) {
+					sb.append("桩锚拉力计算:" + System.getProperty("line.separator") + s2 + "土壤的允许耐压力: " + anchor.D1
+							+ System.getProperty("line.separator") + s2 + "单桩地下部分的宽度: " + anchor.D2
+							+ System.getProperty("line.separator") + s2 + "单桩打入地下的深度: " + anchor.D3
+							+ System.getProperty("line.separator") + s2 + "随H/h变化的系数: " + anchor.D4
+							+ System.getProperty("line.separator") + s2 + "单桩的容许承载力: " + anchor.o5);
+				}
+				outPutTxt = sb.toString();
+				if (outPutTxt.length() == 8) {
+					JOptionPane.showConfirmDialog(null, "内容为空！");
+				} else {
+					Filewriter.printToTxt(outPutTxt);
+				}
+
 			}
 		});
 		button_13.setBounds(1564, 13, 113, 27);
@@ -723,8 +771,8 @@ public class AnchorFrame extends FatherFrame {
 			return ResponseCode.OK;
 		} else if (B1.getText().trim().length() != 0 || B2.getText().trim().length() != 0
 				|| B3.getText().trim().length() != 0 || B4.getText().trim().length() != 0
-				|| B5.getText().trim().length() != 0 || B6.getText().trim().length() != 0
-				|| B7.getText().trim().length() != 0 || B8.getText().trim().length() != 0) {
+				|| B5.getText().trim().length() != 0 || B7.getText().trim().length() != 0
+				|| B8.getText().trim().length() != 0) {
 			return ResponseCode.NoData;
 
 		}
