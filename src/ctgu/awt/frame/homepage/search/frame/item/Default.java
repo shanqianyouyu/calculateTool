@@ -92,10 +92,6 @@ public class Default extends JPanel {
 		setName("");
 		setVisible(true);
 
-		// 添加编辑事件
-//		editBtn.addActionListener(
-//				new ToolMenuHandlerListener(Name, AnalysisXML.domTOEntity("20190907170359", new HighStrength())));
-
 		// 添加删除事件
 		deleteBtn.addActionListener(new ActionListener() {
 			@Override
@@ -123,6 +119,7 @@ public class Default extends JPanel {
 		jLabel2.setText(name);
 	}
 
+	// 设置编辑事件 FrameUtil 调用
 	public void setEditListener(ToolMenuHandlerListener handlerListener) {
 		editBtn.addActionListener(handlerListener);
 	}

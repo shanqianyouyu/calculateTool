@@ -7,11 +7,11 @@ package ctgu.awt.frame.homepage.search.service;
  * @author: 拉布拉多   
  */
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
-
+import org.junit.Test;
 import ctgu.Entity.anchorcal.Anchor;
 import ctgu.Entity.boltCal.HighStrength;
 import ctgu.awt.frame.homepage.component.handlerlistener.ToolMenuHandlerListener;
@@ -21,7 +21,6 @@ import ctgu.awt.frame.homepage.search.frame.item.Default;
 public class FrameUtil {
 	/**
 	 * Item实体转Defult Frame
-	 * 
 	 * @param items
 	 * @return
 	 */
@@ -44,5 +43,11 @@ public class FrameUtil {
 			list.add(d);
 		}
 		return list;
+	}
+	
+	@Test
+	public void test() {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+		System.out.println(formatter.format(new Date()));
 	}
 }

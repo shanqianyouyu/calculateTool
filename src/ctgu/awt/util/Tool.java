@@ -3,6 +3,7 @@ package ctgu.awt.util;
 import java.awt.Image;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.text.DecimalFormat;
@@ -32,11 +33,6 @@ public class Tool {
 	public static Double forMat(Double b) {
 		DecimalFormat df = new DecimalFormat("#.##");
 		return Double.parseDouble(df.format(b));
-	}
-
-	// 获取内容的文字长度
-	public static int getTextLength(String s) {
-		return s.trim().length();
 	}
 
 	// 获取一个对象的所有变量以及值 将其封装在map里
@@ -105,6 +101,22 @@ public class Tool {
 		img = img.getScaledInstance(width, height, Image.SCALE_DEFAULT);
 		imageIcon.setImage(img);
 		return imageIcon;
+	}
+
+	public static long getFileLength(String s) {
+		File f = new File(s);
+		if (f.exists() && f.isFile()) {
+			return f.length();
+		} else {
+			return 0;
+		}
+
+	}
+
+	@Test
+	public void test1() {
+		String path = "./src/Square.xml";
+		System.out.println(Tool.getFileLength(path));
 	}
 
 }

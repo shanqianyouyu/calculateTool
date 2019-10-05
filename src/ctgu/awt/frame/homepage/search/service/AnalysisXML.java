@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +23,6 @@ import org.dom4j.io.XMLWriter;
 import org.junit.Test;
 
 import ctgu.Entity.anchorcal.Anchor;
-import ctgu.Entity.boltCal.HighStrength;
 import ctgu.awt.frame.homepage.search.entity.Item;
 import ctgu.awt.util.ResponseCode;
 import ctgu.awt.util.Tool;
@@ -203,7 +200,7 @@ public class AnalysisXML {
 		return ResponseCode.OK;
 	}
 
-	// 删除一个结点(未完成)
+	// 删除一个结点
 	public static int deleteDom(String time) {
 		String t1 = time.substring(0, 8);
 		String t2 = time.substring(8, 14);
@@ -239,6 +236,34 @@ public class AnalysisXML {
 						}
 					}
 				}
+			}
+		}
+		return ResponseCode.OK;
+	}
+
+	// 删除全部节点
+	public static int deleteAllDoms() {
+		SAXReader reader = new SAXReader();
+		Document document = null;
+		try {
+			document = reader.read(file);
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+		Element frame = document.getRootElement();// Frame
+		Iterator it = frame.elementIterator();
+		while (it.hasNext()) {
+			Element e = (Element) it.next();
+			e.detach();
+			OutputFormat outputFormat = OutputFormat.createPrettyPrint();// 无换行
+			outputFormat.setEncoding("UTF-8");
+			XMLWriter xmlWriter = null;
+			try {
+				xmlWriter = new XMLWriter(new FileWriter(file), outputFormat);
+				xmlWriter.write(document);
+				xmlWriter.close();
+			} catch (IOException e1) {
+				return ResponseCode.ParseExp;
 			}
 		}
 
@@ -321,6 +346,11 @@ public class AnalysisXML {
 
 	@Test
 	public void test1() {
-		System.out.println(AnalysisXML.domTOEntity("20190917195232", new Anchor()));
+		System.out.println(readXml());
+	}
+
+	@Test
+	public void test2() {
+		System.out.println(deleteAllDoms());
 	}
 }
