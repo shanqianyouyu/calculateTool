@@ -121,6 +121,7 @@ public class BolFrame extends FatherFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+
 		// 取较小值
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder("普通螺栓受剪力"));
@@ -492,6 +493,8 @@ public class BolFrame extends FatherFrame {
 		panel_6.setBounds(24, 653, 1232, 59);
 		contentPane.add(panel_6);
 		panel_6.setLayout(null);
+		
+		setVisible(true);
 
 		button_3 = new JButton("保存");
 		button_3.addActionListener(new ActionListener() {

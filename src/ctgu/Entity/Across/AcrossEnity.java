@@ -1,6 +1,9 @@
-package ctgu.Enity.Across;
+package ctgu.Entity.Across;
+
+import lombok.Data;
 
 //参数取单词缩写
+@Data
 public class AcrossEnity {
 /*	所有参数
 	 * 输入参数
@@ -39,7 +42,9 @@ public class AcrossEnity {
 		 *  OPL		上拉线挂点至运行电力线的垂直距离
 		 *  MSD		上拉线与运行电力线的最小安全距离
 		 *  SCD		拉线位置引起的跨距
+		 *  
 		 *  DCL		与施工线路任一相邻杆塔的距离
+		 *  HST		水平放线张力
 		 *  SSC		施工线路的跨越档档距跨越
 		 *  LOPT	两端悬垂绝缘子串或滑车挂具长度
 		 *  ULW		导线、地线的单位长度重量
@@ -66,53 +71,59 @@ public class AcrossEnity {
 		 
 		 */
 	
-	private double WLD;
-	private double WCSC;
-	private double NOSR;
-	private double WLAC;
-	private double WS;
-	private double PA;
-	private double IC;
+	public Double WLD;
+	public Double WCSC;
+	public Double NOSR;
+	public Double WLAC;
+	public Double WS;
+	public Double PA;
+	public Double IC;
 	
-	private double FC;
+	public Double FC;
 	
-	private double HP;
-	private double MVD;
-	private double VA;
-	private double LS;
-	private double CW;
-	private double IWP;
-	private double Ms;
-	private double Hd;
-	private double Mhd;
+	public Double HP;
+	public Double MVD;
+	public Double VA;
+	public Double LS;
+	public Double CW;
+	public Double IWP;
+	public Double Ms;
+	public Double Hd;
+	public Double Mhd;
 
 
-	private double RS;
-	private double SC;
-	private double HHP;
-	private double RPL;
-	private double ADP;
-	private double ACB;
-	private double OPL;
-	private double MSD;
-	private double SCD;
-	private double DCL;
-	private double SSC;
-	private double LOPT;
-	private double ULW;
-	private double ULWL;
-	private double DWG;
-	private double WCTC;
+	public Double RS;
+	public Double SC;
+	public Double HHP;
+	public Double RPL1;
+	public Double ADP;
+	public Double ACB;
+	public Double OPL;
+	public Double MSD;
+	public Double SCD;
 		
-	private double WLS;
-	private double ULWP;
-	private double HLS;
-	private double MHC;
-	private double MWS;
+	public Double DCL;
+	public Double HST;
+	public Double SSC;
+	public Double LOPT;
+	public Double ULW;
+	public Double ULWL;
+	public Double DWG;
+	public Double WCTC;
+		
+	public Double WLS;
+	public Double ULWP;
+	public Double HLS;
+	public Double MHC;
+	public Double MWS;
 	
-	private double MSS;
-	private double Rpl;
-	private double WDD;
+	public Double MSS;
+	public Double Rpl;
+	public Double TRpl;
+	public Double WDD;
 	
+	public String getEntityName() {
+		return "跨越架计算";
+	}
 	
 }

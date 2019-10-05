@@ -50,7 +50,7 @@ public class TopTool extends JToolBar {
 
 	private void init() {
 		// 注册工具栏的点击事件
-		DerrickSquareBtn.addActionListener(new ToolMenuHandlerListener("正方形抱杆"));
+		DerrickSquareBtn.addActionListener(new ToolMenuHandlerListener("抱杆计算"));
 		bolBtn.addActionListener(new ToolMenuHandlerListener("螺栓计算"));
 		acrossBtn.addActionListener(new ToolMenuHandlerListener("跨越架计算"));
 		updatePassword.addActionListener(new ActionListener() {

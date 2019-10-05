@@ -1,7 +1,10 @@
 package ctgu.awt.service;
 
 import ctgu.Entity.anchorcal.Anchor;
+import ctgu.Entity.Across.AcrossEnity;
+import ctgu.Entity.Square.SquareEnity;
 import ctgu.Entity.boltCal.HighStrength;
+import ctgu.Entity.weld.WeldEntity;
 import ctgu.awt.entity.Config;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.calFrame.TestJFrame;
@@ -9,6 +12,7 @@ import ctgu.awt.frame.homepage.calFrame.across.AcrossFrameCalAbusolute;
 import ctgu.awt.frame.homepage.calFrame.anchor.AnchorFrame;
 import ctgu.awt.frame.homepage.calFrame.bol.BolFrame;
 import ctgu.awt.frame.homepage.calFrame.derrickCal.AbusoluteSquare;
+import ctgu.awt.frame.homepage.calFrame.weld.WeldFrameCalAbusolute;
 import ctgu.awt.frame.homepage.component.MainScrollPane;
 import ctgu.awt.frame.homepage.item.Default;
 import ctgu.awt.frame.homepage.item.acrossCal.Across;
@@ -39,6 +43,7 @@ public class FrameFactory {
 		// 生成的条目
 		Default jPanel = null;
 
+		System.out.println("------------"+name);
 		if (name.equals("测试生成新窗口")) {
 			// 创建测试窗口
 			frame = new TestJFrame();
@@ -48,8 +53,12 @@ public class FrameFactory {
 			jPanel.setId(id);
 			jPanel.setName(name);
 //			System.out.println("FrameFactory(生成的id): " + id);
-		} else if (name.equals("正方形抱杆")) {
-			frame = new AbusoluteSquare();
+		} else if (name.equals("抱杆计算")) {
+			if (object != null) {
+				frame = new AbusoluteSquare((SquareEnity) object);
+			} else {
+				frame = new AbusoluteSquare(new SquareEnity());
+			}
 			frame.setId(id);
 			jPanel = new Square();
 			jPanel.setId(id);
@@ -71,7 +80,26 @@ public class FrameFactory {
 			jPanel.setName(name);
 
 		} else if (name.equals("跨越架计算")) {
-			frame = new AcrossFrameCalAbusolute();
+			if (object != null) {
+				frame = new AcrossFrameCalAbusolute((AcrossEnity) object);
+			} else {
+				frame = new AcrossFrameCalAbusolute(new AcrossEnity());
+			}
+//			frame = new AcrossFrameCalAbusolute();
+			frame.setVisible(true);
+			frame.setId(id);
+			jPanel = new Across();
+			jPanel.setId(id);
+			jPanel.setName(name);
+		}
+		else if (name.equals("焊缝计算")) {
+			if (object != null) {
+				System.out.println(1111111);
+				frame = new WeldFrameCalAbusolute((WeldEntity) object);
+			} else {
+				frame = new WeldFrameCalAbusolute(new WeldEntity());
+			}
+//			frame = new AcrossFrameCalAbusolute();
 			frame.setVisible(true);
 			frame.setId(id);
 			jPanel = new Across();

@@ -1,5 +1,7 @@
 package ctgu.Entity;
 
+import java.awt.print.Printable;
+
 import org.omg.CORBA.PRIVATE_MEMBER;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
@@ -37,13 +39,15 @@ public class AcrossCal {
 	private double RS;
 	private double SC;
 	private double HHP;
-	private double RPL;
+	private double RPL1;
 	private double ADP;
 	private double ACB;
 	private double OPL;
 	private double MSD;
 	private double SCD;
+	
 	private double DCL;
+	private double HSt;
 	private double SSC;
 	private double LOPT;
 	private double ULW;
@@ -71,9 +75,9 @@ public class AcrossCal {
 	public AcrossCal(double WLD,double WCSC,double NOSR,double WLAC,
 			double WS,double PC,double PA,double IC,double HP,double MVD,double VA,double LS,
 			double CW,double IWP,double Ms,double Hd,double Mhd,double RS
-			,double SC,double HHP,double RPL,double ADP,double ACB,double OPL
-			,double MSD,double SCD,double DCL,double SSC,double LOPT,double ULW,double ULWL
-			,double DWG,double WCTC,double WLS,double ULWP,double HLS,double MHC,double MWS,double MSS,double Rpl,double WDD){
+			,double SC,double HHP,double RPL1,double ADP,double ACB,double OPL
+			,double MSD,double SCD,double DCL,double HSt,double SSC,double LOPT,double ULW,double ULWL
+			,double DWG,double WCTC){
 		super();
 		this.WLD = WLD;
 		this.WCSC = WCSC;
@@ -95,27 +99,20 @@ public class AcrossCal {
 		this.RS = RS;
 		this.SC = SC;
 		this.HHP = HHP;
-		this.RPL = RPL;
+		this.RPL1 = RPL1;
 		this.ADP = ADP;
 		this.ACB = ACB;
 		this.OPL = OPL;
 		this.MSD = MSD;
 		this.SCD = SCD;
 		this.DCL = DCL;
+		this.HSt = HSt;
 		this.SSC = SSC;
 		this.LOPT = LOPT;
 		this.ULW = ULW;
 		this.ULWL = ULWL;
 		this.DWG = DWG;
 		this.WCTC = WCTC;	
-		this.WLS = WLS;
-		this.ULWP = ULWP;
-		this.HLS = HLS;
-		this.MHC = MHC;
-		this.WLD = MWS;
-		this.MSS = MSS;
-		this.Rpl = Rpl;
-		this.WDD = WDD;	
 	}
 	
 	
@@ -129,6 +126,7 @@ public class AcrossCal {
 	//均匀载荷计算
 	public double setUniformLoad(){
 		ULWP = WLAC*WCSC*PA*WS*WS/1600; 
+		System.out.println(WCSC);
 		return ULWP;
 	}
 	
@@ -159,7 +157,7 @@ public class AcrossCal {
 	//中间变量
 	//拉线位置引起的跨距
 	public double setSpanCaused(){
-		L1 = (HHP-RPL)*Math.sin(ACB)/Math.tan(ADP)*Math.tan(IWP);
+		L1 = (HHP-RPL1)*Math.sin(ACB)/Math.tan(ADP)*Math.tan(IWP);
 		return L1;
 	}
 	
@@ -171,23 +169,29 @@ public class AcrossCal {
 	
 	//拉线至运行线路最小安全距离要求的跨距
 	public double setCrossingAngle(){
-		L3 = (HHP-RPL)*Math.sin(ACB)/Math.tan(ADP);
+		L3 = (HHP-RPL1)*Math.sin(ACB)/Math.tan(ADP);
 		return L2;
 	}
 		
 	//架外侧至运行电力线的水平距离为
 	public double setHorizontalDistance(){
-		RPL = L1+L2+L3;
-		return RPL;
+		RPL1 = L1+L2+L3;
+		return RPL1;
 	}
 	
 	//两幅跨越架间的跨距
 	public double setTwoSpan(){
-		TRpl = (2*RPL + Hd)/Math.sin(IWP);
+		TRpl = (2*RPL1 + Hd)/Math.sin(IWP);
 		return TRpl;
 	}
 	
-	//风偏距离
+	//风偏距离单位长度风荷重
+	public double setWindLoad(){
+		ULWL = DWG*WCTC*0.0613;
+		return ULWL;
+	}
+	
+	//风偏计算
 	public double setWindDeviation(){
 		WDD = ULWL*(DCL*(SSC-DCL)/2*HHP + LOPT / ULW);
 		return WDD;

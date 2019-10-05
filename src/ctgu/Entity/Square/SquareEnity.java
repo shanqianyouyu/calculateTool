@@ -1,14 +1,17 @@
-package ctgu.Enity.Square;
+package ctgu.Entity.Square;
 
 import java.lang.reflect.Field;
 
 import org.junit.Test;
+
+import lombok.Data;
 
 /**
  * 
  * @author 陈煜昆
  *
  */
+@Data
 public class SquareEnity {
 /*	所有参数
  * 输入参数
@@ -105,85 +108,79 @@ public class SquareEnity {
 	 */
 	
 
-	private double HM1;
-	private double HM2;
-	private double WM1;
-	private double HD;
-	private double PL;
-	private double RL;
+	public Double HM1;
+	public Double HM2;
+	public Double WM1;
+	public Double HD;
+	public Double PL;
+	public Double RL;
 	
-	private double DL;
-	private double GXJ;
-	private double DGXJ;
-	private double SDZ;
-	private double PLQ;
-	private double GL;
-	private double WL;
-	private double YX;
-	private double YXX;
-	private double SDc;
+	public Double DL;
+	public Double GXJ;
+	public Double DGXJ;
+	public Double SDZ;
+	public Double A;
+	public Double GL;
+	public Double WL;
+	public Double YX;
+	public Double YXX;
+	public Double SDc;
 
-	private double WG;
-	private double AL;
-	private double AJ;
-	private double ZG;
+	public Double WG;
+	public Double AL;
+	public Double AJ;
+	public Double ZG;
 	
-	private double N1;
-	private double AX;
-	private double ALA;
-	private double AF;
+	public Double N1;
+	public Double AX;
+	public Double ALA;
+	public Double AF;
 	
-	private double aWD;
-	private double SAn;
-	private double FY;
+	public Double aWD;
+	public Double SAn;
+	public Double FY;
 
-	private double Mj;
-	private double MDk;
-	private double PXj;
+	public Double Mj;
+	public Double MDk;
+	public Double PXj;
 	
-	private double WN;
-	private double AFZ;
-	private double AFQ;
-	private double AKK;
-	private double WG2;
-	private double HV;
+	public Double WN;
+	public Double AFZ;
+	public Double AFQ;
+	public Double AKK;
+	public Double WG2;
+	public Double HV;
 	
-	private double ADb;
-	private double ADn;
-	private double BSg;
-	private double AZz;
-	private double ABt;
+	public Double ADb;
+	public Double ADn;
+	public Double BSg;
+	public Double AZz;
+	public Double ABt;
 
-	private double BL;
-	private double DBc;
-	private double DBx;
-	private double BBc;
-	private double BBx;
+	public Double BL;
+	public Double DBc;
+	public Double DBx;
+	public Double BBc;
+	public Double BBc1;
+	public Double BBx;
 	
-	private double QG;
-	private double FZ1;
-	private double FZd;
-	private double FQ1;
-	private double FQ2;
-	private double FD1;
-	private double FL1;
-	private double DL1;
-	private double FZ2;
-	private double FC1;
-	private double FZ3;
-	private double FM1;
-	private double FAM1;
-	private double FAY;
-	private double FAZ;
+	public Double AS;
+	public Double QG;
+	public Double FZ1;
+	public Double FQ1;
+	public Double FQ2;
+	public Double FL1;
+	public Double DL1;
+	public Double FZ2;
+	public Double FC1;
+	public Double FZ3;
+	public Double FM1;
+	public Double FAM1;
+	public Double FAY;
+	public Double FAZ;
 	
-	@Test
-	public void test() {
-		SquareEnity enity = new SquareEnity();
-		Field[] fields = enity.getClass().getDeclaredFields();
-		for (Field field : fields) {
-			System.out.println(field);
-			
-		}
-		
+	
+	public String getEntityName() {
+		return "抱杆计算";
 	}
 }

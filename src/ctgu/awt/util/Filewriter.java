@@ -17,7 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-public class Filewriter extends JFrame {
+public class Filewriter extends JFrame{
 	/**
 	 * 
 	 */

@@ -51,7 +51,8 @@ public class TopMenu extends JMenuBar {
 	 * 
 	 * 抱杆：test按钮
 	 */
-	private JMenuItem squre = new JMenuItem("正方形抱杆");
+	private JMenuItem test = new JMenuItem("测试生成新窗口");
+	private JMenuItem squre = new JMenuItem("抱杆计算");
 	private JMenuItem bol = new JMenuItem("螺栓计算");
 	private JMenuItem across = new JMenuItem("跨越架计算");
 	private JMenuItem anchor = new JMenuItem("地锚计算");

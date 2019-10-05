@@ -1,15 +1,18 @@
-package ctgu.awt.frame.homepage.calFrame.across;
+package ctgu.awt.frame.homepage.calFrame.weld;
 
+import java.awt.Color;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
+import org.omg.CORBA.IMP_LIMIT;
 
-public class pictureWindow1 extends JFrame{
+public class pictureWindowW3 extends JFrame{
 	/**
 	 * 
 	 */
@@ -36,12 +39,12 @@ public class pictureWindow1 extends JFrame{
 	private static String Name = "";
 	
 	// 没输入名字
-		public pictureWindow1() {
+		public pictureWindowW3() {
 			this(Name);
 			// String name = "请输入名字!";
 		}
 
-		public pictureWindow1(String name2) {
+		public pictureWindowW3(String name2) {
 			initSquare(name2);
 			jpicture.setVisible(true);
 			jpicture.setResizable(false);
@@ -59,7 +62,7 @@ public class pictureWindow1 extends JFrame{
 			
 			picJpanel.setVisible(true);
 			//加载图片
-			ImageIcon image = new ImageIcon(this.getClass().getResource("3.png"));
+			ImageIcon image = new ImageIcon(this.getClass().getResource("c1.png"));
 			image.setImage(image.getImage().getScaledInstance(-40, 380, Image.SCALE_DEFAULT));
 			pic.setIcon(image);
 //			picJpanel2.add("Center", pic);

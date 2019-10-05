@@ -7,13 +7,13 @@ package ctgu.awt.frame.homepage.search.service;
  * @author: 拉布拉多   
  */
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import org.junit.Test;
+import ctgu.Entity.Across.AcrossEnity;
+import ctgu.Entity.Square.SquareEnity;
 import ctgu.Entity.anchorcal.Anchor;
 import ctgu.Entity.boltCal.HighStrength;
+import ctgu.Entity.weld.WeldEntity;
 import ctgu.awt.frame.homepage.component.handlerlistener.ToolMenuHandlerListener;
 import ctgu.awt.frame.homepage.search.entity.Item;
 import ctgu.awt.frame.homepage.search.frame.item.Default;
@@ -21,6 +21,7 @@ import ctgu.awt.frame.homepage.search.frame.item.Default;
 public class FrameUtil {
 	/**
 	 * Item实体转Defult Frame
+	 * 
 	 * @param items
 	 * @return
 	 */
@@ -36,18 +37,22 @@ public class FrameUtil {
 			Object obj = null;
 			if (item.getName().equals("螺栓计算")) {
 				obj = new HighStrength();
+//<<<<<<< HEAD
 			} else if (item.getName().equals("地锚计算")) {
 				obj = new Anchor();
+//=======
+			} else if (item.getName().equals("跨越架计算")) {
+				obj = new AcrossEnity();
+			} else if (item.getName().equals("抱杆计算")) {
+				obj = new SquareEnity();
+			} else if (item.getName().equals("焊缝计算")) {
+				obj = new WeldEntity();
+//>>>>>>> cyk
 			}
 			d.setEditListener(new ToolMenuHandlerListener(item.getName(), AnalysisXML.domTOEntity(time, obj)));
 			list.add(d);
 		}
 		return list;
 	}
-	
-	@Test
-	public void test() {
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-		System.out.println(formatter.format(new Date()));
-	}
+
 }
