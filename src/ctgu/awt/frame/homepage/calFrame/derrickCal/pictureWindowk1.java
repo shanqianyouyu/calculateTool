@@ -14,21 +14,6 @@ public class pictureWindowk1 extends JFrame{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	static {
-		try {
-			// 设置边框样式为强立体半透明
-			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencyAppleLike;
-			// 引入apple的皮肤包
-			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			// UIManager.setLookAndFeel("com.jtattoo.plaf.fast.FastLookAndFeel");
-			// UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
-		} catch (Exception e) {
-			// TODO exception
-			System.out.println("皮肤软件抛出异常");
-		}
-	}
 	private JFrame jpicture; 
 	private JLabel pic = new JLabel("", JLabel.LEFT);
 	private JPanel picJpanel = new JPanel();
@@ -52,7 +37,7 @@ public class pictureWindowk1 extends JFrame{
 		private void initSquare(String name2) {
 			jpicture = new JFrame(name2);
 			jpicture.setSize(790, 470);
-			jpicture.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);// 关闭等功能
+			jpicture.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// 关闭等功能
 			jpicture.dispose();
 			jpicture.setLayout(null);
 			jpicture.setLocationRelativeTo(null);// 居中	

@@ -32,6 +32,7 @@ import ctgu.Entity.Across.AcrossEnity;
 import ctgu.Entity.Square.SquareEnity;
 import ctgu.Entity.boltCal.HighStrength;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
+import ctgu.awt.frame.homepage.calFrame.derrickCal.RyncItem;
 import ctgu.awt.frame.homepage.search.service.AnalysisXML;
 import ctgu.awt.util.Filewriter;
 import ctgu.awt.util.Tool;
@@ -74,7 +75,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 
 	public AcrossFrameCalAbusolute(AcrossEnity AE) {
 		acrossEnity = AE;
-		setTitle("螺栓计算");
+		setTitle("跨越架计算");
 		System.out.println("初始化成功...");
 		initSquare(AE);
 		setResizable(false);
@@ -396,6 +397,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 
 		JLabel tank86 = new JLabel("导线或地线安装的单位长度风荷重:");
 		tank86.setHorizontalAlignment(JTextField.RIGHT);
+		oneTxt86.setEnabled(false);
 		oneTxt86.setText(acrossEnity.ULWL == null ? "0" : String.valueOf(acrossEnity.ULWL));
 
 		JLabel tank87 = new JLabel("导线或地线直径:");
@@ -406,7 +408,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		tank88.setHorizontalAlignment(JTextField.RIGHT);
 		oneTxt88.setText(acrossEnity.WCTC == null ? "0" : String.valueOf(acrossEnity.WCTC));
 		JLabel tankK13 = new JLabel();
-		J69.setLayout(null);
+		J68.setLayout(null);
 		tankK13.setBounds(0, 0, 390, 30);
 		oneTxt88.addFocusListener(new FocusListener() {
 			@Override
@@ -420,6 +422,8 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 				tankK13.setForeground(Color.RED);
 			}
 		});
+		RyncItem re = new RyncItem();
+		re.syncItem(oneTxt88, oneTxt86, oneTxt87);
 
 		// 设置内部布局
 		J5.setLayout(null);
@@ -438,18 +442,18 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		J63.add(tank83);
 		J64.add(tank84);
 		J65.add(tank85);
-		J66.add(tank86);
-		J67.add(tank87);
-		J68.add(tank88);
-		J69.add(tankK13);
+		J66.add(tank87);
+		J67.add(tank88);
+		J68.add(tankK13);
+		J69.add(tank86);
 		J61.add(oneTxt81);
 		J62.add(oneTxt82);
 		J63.add(oneTxt83);
 		J64.add(oneTxt84);
 		J65.add(oneTxt85);
-		J66.add(oneTxt86);
-		J67.add(oneTxt87);
-		J68.add(oneTxt88);
+		J66.add(oneTxt87);
+		J67.add(oneTxt88);
+		J69.add(oneTxt86);
 		J5.add(J61);
 		J5.add(J62);
 		J5.add(J63);
@@ -1148,6 +1152,21 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		}
 
 		if (e.getActionCommand().equals("计算")) {
+			int k = 0,a = 0,b = 0,c = 0,d = 0,f = 0,z = 0,x = 0;
+			if(!oneTxt51.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt52.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt53.getText().trim().matches("^[0.0-9.0]+$") || 
+					!oneTxt54.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt55.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt56.getText().trim().matches("^[0.0-9.0]+$") || 
+					!oneTxt57.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt58.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt59.getText().trim().matches("^[0.0-9.0]+$") ||
+					!oneTxt81.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt82.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt83.getText().trim().matches("^[0.0-9.0]+$")
+			    || !oneTxt84.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt85.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt86.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxt87.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt88.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt1.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxt3.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt7.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt4.getText().trim().matches("^[0.0-9.0]+$")
+			    || !oneTxt5.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt6.getText().trim().matches("^[0.0-9.0]+$") ||!oneTxt21.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxt31.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt32.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt34.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxt37.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt39.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt41.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxt42.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt43.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt44.getText().trim().matches("^[0.0-9.0]+$")){
+				JOptionPane.showMessageDialog(null,"IO occurred ","ERROR",JOptionPane.ERROR_MESSAGE);
+			}
+			else{
 			two51 = Double.parseDouble(oneTxt51.getText().trim());
 			acrossEnity.OPL = two51;
 			two52 = Double.parseDouble(oneTxt52.getText().trim());
@@ -1233,46 +1252,6 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 			AcrossCal sq2 = new AcrossCal(two1, two2, two3, two7, two4, two5, two6, two21, two31, two32, two34, two37,
 					two39, two41, two42, two43, two44, two51, two52, two53, two54, two55, two56, two57, two58, two59,
 					two81, two82, two83, two84, two85, two86, two87, two88);
-
-			two61 = String.format("%.2f", WLS);
-			oneTxt61.setText(two61);
-			two62 = String.format("%.2f", ULWP);
-			oneTxt62.setText(two62);
-			two64 = String.format("%.2f", HLS);
-			oneTxt64.setText(two64);
-			two65 = String.format("%.2f", MHC);
-			oneTxt65.setText(two65);
-			two66 = String.format("%.2f", MWS);
-			oneTxt66.setText(two66);
-			two71 = String.format("%.2f", MSS);
-			oneTxt71.setText(two71);
-			two72 = String.format("%.2f", Rpl);
-			oneTxt72.setText(two72);
-			two74 = String.format("%.2f", TRpl);
-			oneTxt74.setText(two74);
-			two75 = String.format("%.2f", WDD);
-			oneTxt75.setText(two75);
-			// if (e.getActionCommand().equals("保存")) {
-			//// XMLData data1 = new XMLData(one1, one2, one3, one4, one5, one6,
-			// one21, one22, one23, one24, one25, one26, one27, one28, onek21,
-			// onek22, one31, one32, one33, one34, one43, one42, one41, one44,
-			// oneR21, oneR22, oneR23, oneC21, oneC22, oneC23, oneC31, oneC32,
-			// oneC33, oneC34, oneC35, oneC36, oneC41, oneC42, oneC43, oneC44,
-			// oneC45, As, BL, DBc, DBx, BBc, BBc, BBx, QG, FZ1, FQ1, FQ2, FL1,
-			// DL1, FZ2, FC1, FZ3, FM1, FAM1, FAY, FAZ);
-			// try {
-			// Result result = data1.add();
-			// if (result != null) {
-			// JOptionPane.showMessageDialog(null, "保存成功",
-			// "提示",JOptionPane.WARNING_MESSAGE);
-			// }
-			// } catch (Exception e1) {
-			// // TODO Auto-generated catch block
-			// e1.printStackTrace();
-			// }
-			//
-			// }
-			
 			
 			
 			WLS = Tool.forMat(sq2.setVerticalLoad());
@@ -1283,27 +1262,96 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 			
 			MHC = Tool.forMat(sq2.setMinimumHeight());
 			
+			if (Double.isNaN(sq2.setMinimumWidth())) {
+				k = 1;
+				MWS = 0.0;
+			}else{
 			MWS = Tool.forMat(sq2.setMinimumWidth());
+			}
 			
+			if (Double.isNaN(sq2.setSpanCaused())) {
+				b = 3;
+				L1 = 0.0;
+			}else{
 			L1 = Tool.forMat(sq2.setSpanCaused());
+			}
 			
+			if (Double.isNaN(sq2.setMinimumSafety())) {
+				c = 4;
+				L2 = 0.0;
+			}else{
 			L2 = Tool.forMat(sq2.setMinimumSafety());
+			}
 			
+			if (Double.isNaN(sq2.setCrossingAngle())) {
+				d = 5;
+				L3 = 0.0;
+			}else{
 			L3 = Tool.forMat(sq2.setCrossingAngle());
+			}
 			
+			if (Double.isNaN(sq2.setMinimumSpan())) {
+				a = 2;
+				MSS = 0.0;
+			}else{
 			MSS = Tool.forMat(sq2.setMinimumSpan());
+			}
 			
+			if (Double.isNaN(sq2.setMinimumSpan())) {
+				x = 8;
+				Rpl = 0.0;
+			}else{
 			Rpl = Tool.forMat(sq2.setHorizontalDistance());
+			}
 			
+			if (Double.isNaN(sq2.setTwoSpan())) {
+				f = 6;
+				TRpl = 0.0;
+			}else{
 			TRpl = Tool.forMat(sq2.setTwoSpan());
+			}
 			
+			if (Double.isNaN(sq2.setWindDeviation())) {
+				z = 7;
+				WDD = 0.0;
+			}else{
 			WDD = Tool.forMat(sq2.setWindDeviation());
+			}
 			
+			if(k == 1 && a != 2 && b != 3 &&c != 4 && d != 5 && f != 6 && z != 7 && x != 8){
+				JOptionPane.showMessageDialog(null, "跨越架的最小宽度参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a == 2 && b != 3 &&c != 4 && d != 5 && f != 6 && z != 7 && x != 8){
+				JOptionPane.showMessageDialog(null, "跨越架的最小跨距错误", "提示",JOptionPane.WARNING_MESSAGE);
+			}
+			else if(k != 1 && a != 2 && b == 3 &&c != 4 && d != 5 && f != 6 && z != 7 && x != 8){
+				JOptionPane.showMessageDialog(null, "拉线位置引起的跨距参数错误", "提示",JOptionPane.WARNING_MESSAGE);
+			}
+			else if(k != 1 && a != 2 && b != 3 &&c == 4 && d != 5 && f != 6 && z != 7 && x != 8){
+				JOptionPane.showMessageDialog(null, "拉线至运行线路最小安全距离要求的跨距参数错误", "提示",JOptionPane.WARNING_MESSAGE);
+			}
+			else if(k != 1 && a != 2 && b != 3 &&c != 4 && d == 5 && f != 6 && z != 7 && x != 8){
+				JOptionPane.showMessageDialog(null, "运行电力线与在建线路的交叉角引起的跨距参数错误", "提示",JOptionPane.WARNING_MESSAGE);
+			}
+			else if(k != 1 && a != 2 && b != 3 &&c != 4 && d != 5 && f == 6 && z != 7 && x != 8){
+				JOptionPane.showMessageDialog(null, "两幅跨越架间的跨距参数错误", "提示",JOptionPane.WARNING_MESSAGE);
+			}
+			else if(k != 1 && a != 2 && b != 3 &&c != 4 && d != 5 && f != 6 && z == 7 && x != 8){
+				JOptionPane.showMessageDialog(null, "风偏计算参数错误", "提示",JOptionPane.WARNING_MESSAGE);
+			}
+			else if(k != 1 && a != 2 && b != 3 &&c != 4 && d != 5 && f != 6 && z != 7 && x == 8){
+				JOptionPane.showMessageDialog(null, "架外侧至运行电力线的水平距离参数错误", "提示",JOptionPane.WARNING_MESSAGE);
+			}
+			else if(k != 1 && a != 2 && b != 3 &&c != 4 && d != 5 && f != 6 && z != 7 && x != 8){
+				
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "多参数错误", "提示",JOptionPane.WARNING_MESSAGE);
+			}
 			two86 = Tool.forMat(sq2.setWindLoad());
 			
 			
 			
-			oneTxt86.setText(String.format("%.2f", two86));
 			
 			oneTxt61.setText(String.format("%.2f", WLS));
 			oneTxt62.setText(String.format("%.2f", ULWP));
@@ -1327,14 +1375,14 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 			acrossEnity.Rpl = Rpl;
 			acrossEnity.TRpl= TRpl;
 			acrossEnity.WDD = WDD;
-			
+			}
 		}
 		
 		if (e.getActionCommand().equals("保存")) {
 				AnalysisXML.frameToXMl(acrossEnity);	
 		}
 			
-			if (e.getActionCommand().equals("打印")) {
+		if (e.getActionCommand().equals("打印")) {
 				String s1 = "  ";
 				String s2 = "      ";
 				outPutTxt = "跨越架计算: " + System.getProperty("line.separator") + s1;

@@ -60,7 +60,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 	private void initSquare(SquareEnity SE) {
 		// jfSquare = new JFrame(name2);
 		setSize(1610, 1000);
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);// 关闭等功能
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// 关闭等功能
 		dispose();
 		setLayout(null);
 		setLocationRelativeTo(null);// 居中
@@ -1253,6 +1253,23 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		}
 
 		if (e.getActionCommand().equals("计算")) {
+			if(!oneTxt1.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt2.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt3.getText().trim().matches("^[0.0-9.0]+$") || 
+					!oneTxt4.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt5.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt6.getText().trim().matches("^[0.0-9.0]+$") || 
+					!oneTxt21.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt22.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt23.getText().trim().matches("^[0.0-9.0]+$") ||
+					!oneTxt24.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt25.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt26.getText().trim().matches("^[0.0-9.0]+$")
+			    || !oneTxt27.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt28.getText().trim().matches("^[0.0-9.0]+$") || !oneTxtk21.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxtk22.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt31.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt32.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxt33.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt34.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt41.getText().trim().matches("^[0.0-9.0]+$")
+			    || !oneTxt42.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt43.getText().trim().matches("^[0.0-9.0]+$") ||!oneTxt44.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxtR21.getText().trim().matches("^[0.0-9.0]+$") || !oneTxtR22.getText().trim().matches("^[0.0-9.0]+$") || !oneTxtR23.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxtC21.getText().trim().matches("^[0.0-9.0]+$") || !oneTxtC22.getText().trim().matches("^[0.0-9.0]+$") || !oneTxtC23.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxtC31.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt32.getText().trim().matches("^[0.0-9.0]+$") || !oneTxtC33.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxt34.getText().trim().matches("^[0.0-9.0]+$") || !oneTxtC35.getText().trim().matches("^[0.0-9.0]+$") || !oneTxtC36.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxtC41.getText().trim().matches("^[0.0-9.0]+$") || !oneTxtC42.getText().trim().matches("^[0.0-9.0]+$") || !oneTxtC43.getText().trim().matches("^[0.0-9.0]+$") ||
+			    !oneTxtC44.getText().trim().matches("^[0.0-9.0]+$") || !oneTxtC45.getText().trim().matches("^[0.0-9.0]+$") || !oneTxtC45.getText().trim().matches("^[0.0-9.0]+$")){
+				JOptionPane.showMessageDialog(null,"IO occurred ","ERROR",JOptionPane.ERROR_MESSAGE);
+			} 
+			else{
 			one1 = Double.parseDouble(oneTxt1.getText().trim());
 			squareEnity.HM1 = one1;
 			one2 = Double.parseDouble(oneTxt2.getText().trim());
@@ -1350,6 +1367,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			DecimalFormat df = new DecimalFormat("#.##");
 
+			int k = 0,a = 0,b = 0,c = 0,d = 0,q = 0,f = 0,g = 0,h = 0,i = 0,j = 0,l = 0,m = 0,n = 0,o = 0,p = 0,r = 0;
 			// 抱杆主材截面面积
 				As = Tool.forMat(sq1.setS());	
 
@@ -1365,7 +1383,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 			System.out.println(BL);
 			// 等截面抱杆的长细比
 			if (Double.isNaN(sq1.setDslendernessRatio())) {
-				JOptionPane.showMessageDialog(null, "等截面抱杆的长细比参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				k = 1;
 				DBc = 0.0;
 			}else{
 				DBc = Tool.forMat(sq1.setDslendernessRatio());
@@ -1374,7 +1392,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 等截面抱杆的惯性矩
 			if (Double.isNaN(sq1.setDmomenToFinertia())) {
-				JOptionPane.showMessageDialog(null, "等截面抱杆的惯性矩参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				a = 2;
 				DBx = 0.0;
 			}else{
 			DBx = Tool.forMat(sq1.setDmomenToFinertia());
@@ -1382,7 +1400,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 变截面抱杆长细比
 			if (Double.isNaN(sq1.setBmomenToFinertia())) {
-				JOptionPane.showMessageDialog(null, "变截面抱杆长细比参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				b = 3;
 				BBc = 0.0;
 			}else{
 			BBc = Tool.forMat(sq1.setBmomenToFinertia());
@@ -1390,7 +1408,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 变截面抱杆的折算长细比
 			if (Double.isNaN(sq1.setOneMomenToFinertia())) {
-				JOptionPane.showMessageDialog(null, "抱杆的折算长细比参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				c = 4;
 				BBx = 0.0;
 			}else{
 			BBx = Tool.forMat(sq1.setOneMomenToFinertia());
@@ -1398,7 +1416,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 起吊重力
 			if (Double.isNaN(sq1.setWeight())) {
-				JOptionPane.showMessageDialog(null, "起吊重力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				d = 5;
 				QG = 0.0;
 			}else{
 			QG = Tool.forMat(sq1.setWeight());
@@ -1406,7 +1424,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 攀根绳的静张力
 			if (Double.isNaN(sq1.setPstatictension())) {
-				JOptionPane.showMessageDialog(null, "攀根绳的静张力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				q = 6;
 				FZ1 = 0.0;
 			}else{
 			FZ1 = Tool.forMat(sq1.setPstatictension());
@@ -1414,7 +1432,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 起吊和牵引绳
 			if (Double.isNaN(sq1.setDstatictension())) {
-				JOptionPane.showMessageDialog(null, "起吊和牵引绳参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				f = 7;
 				FQ1 = 0.0;
 			}else{
 			FQ1 = Tool.forMat(sq1.setDstatictension());
@@ -1422,7 +1440,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 牵引绳的静张力
 			if (Double.isNaN(sq1.setQstatictension())) {
-				JOptionPane.showMessageDialog(null, "牵引绳的静张力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				g = 8; 
 				FQ2 = 0.0;
 			}else{
 			FQ2 = Tool.forMat(sq1.setQstatictension());
@@ -1430,7 +1448,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 抱杆拉线的静张力
 			if (Double.isNaN(sq1.setLstatictension1())) {
-				JOptionPane.showMessageDialog(null, "拉线的静张力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				h = 9;
 				FL1 = 0.0;
 			}else{
 			if (F4 == 1) {
@@ -1446,7 +1464,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 吊装辅助拉线静张力
 			if (Double.isNaN(sq1.setZwireTension())) {
-				JOptionPane.showMessageDialog(null, "辅助拉线静张力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				i = 10;
 				DL1 = 0.0;
 			}else{
 			DL1 = Tool.forMat(sq1.setZwireTension());
@@ -1454,7 +1472,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 抱杆的轴心压力,AFZ变化
 			if (Double.isNaN(sq1.setAxisPressure())) {
-				JOptionPane.showMessageDialog(null, "抱杆的轴心压力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				j = 11;
 				FZ2 = 0.0;
 			}else{
 			if (F4 == 1) {
@@ -1466,7 +1484,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 承托绳的静张力
 			if (Double.isNaN(sq1.setCstatictension())) {
-				JOptionPane.showMessageDialog(null, "承托绳的静张力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				l = 12;
 				FC1 = 0.0;
 			}else{
 			if (F4 == 1) {
@@ -1478,7 +1496,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			//轴向压力
 			if (Double.isNaN(sq1.setYaxialPressure1())) {
-				JOptionPane.showMessageDialog(null, "轴向压力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				m = 13;
 				FZ3 = 0.0;
 			}else{
 			if (F1 == 3) {
@@ -1494,7 +1512,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 中心压力的计算
 			if (Double.isNaN(sq1.setCentralPressure())) {
-				JOptionPane.showMessageDialog(null, "中心压力的计算参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				n = 14;
 				FM1 = 0.0;
 			}else{
 			FM1 = Tool.forMat(sq1.setCentralPressure());
@@ -1502,7 +1520,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 按压弯件中心压力的计算
 			if (Double.isNaN(sq1.setPermissibleCentralPressure())) {
-				JOptionPane.showMessageDialog(null, "中心压力的计算参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				o = 15;
 				FAM1 = 0.0;
 			}else{
 			FAM1 = Tool.forMat(sq1.setPermissibleCentralPressure());
@@ -1510,7 +1528,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 向下增加的拉力
 			if (Double.isNaN(sq1.setZstatictension1())) {
-				JOptionPane.showMessageDialog(null, "向下增加的拉力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				p = 16;
 				FAY = 0.0;
 			}else{
 			FAY = Tool.forMat(sq1.setZstatictension1());
@@ -1518,12 +1536,73 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 
 			// 综合静拉力
 			if (Double.isNaN(sq1.setZstatictensionZ())) {
-				JOptionPane.showMessageDialog(null, "综合静拉力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+				r = 17;
 				FAZ = 0.0;
 			}else{
 			FAZ = Tool.forMat(sq1.setZstatictensionZ());
 			}
 
+			if(k == 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "等截面抱杆的长细比参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a == 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "等截面抱杆的惯性矩参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b == 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "变截面抱杆长细比参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c == 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "变截面抱杆的折算长细比参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d == 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "起吊重力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q == 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "攀根绳的静张力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f == 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "起吊和牵引绳参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g == 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "牵引绳的静张力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h == 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "抱杆拉线的静张力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i == 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "吊装辅助拉线静张力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j == 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "抱杆的轴心压力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l == 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "承托绳的静张力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m == 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "轴向压力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n == 14 && o != 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "中心压力的计算参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o == 15 && p != 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "按压弯件中心压力的计算参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p == 16 && r != 17){
+				JOptionPane.showMessageDialog(null, "向下增加的拉力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r == 17){
+				JOptionPane.showMessageDialog(null, "综合静拉力参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			else if(k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && q != 6 && f != 7 && g != 8 && h != 9 && i != 10 && j != 11 && l != 12 && m != 13 && n != 14 && o != 15 && p != 16 && r != 17){
+				
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "多参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
+			}
+			
+			
+			
 			S61 = String.valueOf(BL);
 			oneTxt61.setText(S61);
 			S62 = String.valueOf(DBc);
@@ -1582,6 +1661,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 			squareEnity.FAM1 = FAM1;
 			squareEnity.FAY = FAY;
 			squareEnity.FAZ = FAZ;
+			}
 		}
 
 		if (e.getActionCommand().equals("保存")) {

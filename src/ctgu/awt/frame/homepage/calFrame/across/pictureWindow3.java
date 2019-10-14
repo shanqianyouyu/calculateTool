@@ -8,20 +8,6 @@ import javax.swing.*;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
  
 public class pictureWindow3 extends JFrame{
-	static {
-		try {
-			// 设置边框样式为强立体半透明
-			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencyAppleLike;
-			// 引入apple的皮肤包
-			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			// UIManager.setLookAndFeel("com.jtattoo.plaf.fast.FastLookAndFeel");
-			// UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
-		} catch (Exception e) {
-			// TODO exception
-			System.out.println("皮肤软件抛出异常");
-		}
-	}
 	
 	public pictureWindow3(String name) {
 		setVisible(true);

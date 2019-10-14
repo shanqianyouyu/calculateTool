@@ -2,6 +2,7 @@ package ctgu.Entity;
 
 import java.awt.print.Printable;
 
+import org.omg.CORBA.IMP_LIMIT;
 import org.omg.CORBA.PRIVATE_MEMBER;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
@@ -167,10 +168,10 @@ public class AcrossCal {
 		return L2;
 	}
 	
-	//拉线至运行线路最小安全距离要求的跨距
+	//运行电力线与在建线路的交叉角引起的跨距
 	public double setCrossingAngle(){
 		L3 = (HHP-RPL1)*Math.sin(ACB)/Math.tan(ADP);
-		return L2;
+		return L3;
 	}
 		
 	//架外侧至运行电力线的水平距离为
