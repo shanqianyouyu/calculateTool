@@ -42,7 +42,7 @@ public class Table2 extends JDialog {
 	public Table2() {
 		setLocationRelativeTo(null);
 		setTitle("表二：按圆木强度计算地锚的容许拉力");
-		setBounds(100, 100, 635, 653);
+		setBounds(100, 100, 700, 653);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

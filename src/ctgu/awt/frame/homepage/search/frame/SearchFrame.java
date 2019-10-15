@@ -140,6 +140,8 @@ public class SearchFrame extends JFrame {
 						JOptionPane.INFORMATION_MESSAGE);
 				if (result == JOptionPane.OK_OPTION) {
 					AnalysisXML.deleteAllDoms();
+					JScrollPane scrollPane_1 = new JScrollPane();
+					scrollPane.setViewportView(scrollPane_1);
 				}
 
 			}

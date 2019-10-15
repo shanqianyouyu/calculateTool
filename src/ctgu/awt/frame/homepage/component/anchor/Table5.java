@@ -41,7 +41,7 @@ public class Table5 extends JDialog {
 	 */
 	public Table5() {
 		setTitle("封闭式钢板锚体的容许拉力");
-		setBounds(100, 100, 705, 480);
+		setBounds(100, 100, 720, 500);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

@@ -80,6 +80,7 @@ public class Load extends JFrame implements LoadObs {
 		loginFrame.mainView();
 
 	}
+	
 
 	@Override
 	public void update() {

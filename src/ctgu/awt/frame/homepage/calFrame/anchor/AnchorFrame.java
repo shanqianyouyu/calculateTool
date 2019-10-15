@@ -83,7 +83,7 @@ public class AnchorFrame extends FatherFrame {
 
 	public AnchorFrame(Anchor a) {
 		anchor = a;
-		setTitle("地锚");
+		setTitle("地锚计算");
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1781, 943);

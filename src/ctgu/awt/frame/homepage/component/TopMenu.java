@@ -51,11 +51,11 @@ public class TopMenu extends JMenuBar {
 	 * 
 	 * 抱杆：test按钮
 	 */
-	private JMenuItem test = new JMenuItem("测试生成新窗口");
 	private JMenuItem squre = new JMenuItem("抱杆计算");
 	private JMenuItem bol = new JMenuItem("螺栓计算");
 	private JMenuItem across = new JMenuItem("跨越架计算");
 	private JMenuItem anchor = new JMenuItem("地锚计算");
+	private JMenuItem weld = new JMenuItem("焊缝计算");
 
 	public TopMenu() {
 		init();
@@ -94,6 +94,7 @@ public class TopMenu extends JMenuBar {
 		 */
 		file1.add(squre);
 		file3.add(bol);
+		file4.add(weld);
 		file5.add(anchor);
 		file6.add(across);
 
@@ -125,7 +126,7 @@ public class TopMenu extends JMenuBar {
 		// 螺栓计算
 		bol.addActionListener(new ToolMenuHandlerListener(bol));
 		// 焊缝计算
-		
+		weld.addActionListener(new ToolMenuHandlerListener(weld));
 		// 地锚计算
 		anchor.addActionListener(new ToolMenuHandlerListener(anchor));
 		// 跨越架计算

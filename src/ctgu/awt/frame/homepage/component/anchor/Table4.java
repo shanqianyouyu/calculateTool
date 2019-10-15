@@ -44,7 +44,7 @@ public class Table4 extends JDialog {
 	public Table4() {
 		setLocationRelativeTo(null);
 		setTitle("表4：斜向地埋木的最小抗拔力（α=45°，kN）");
-		setBounds(100, 100, 979, 756);
+		setBounds(100, 100, 1200, 756);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

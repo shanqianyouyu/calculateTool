@@ -42,7 +42,7 @@ public class Table3 extends JDialog {
 	public Table3() {
 		setLocationRelativeTo(null);
 		setTitle("表三：∅230×1600钢管地锚（K=2）斜向的（α=45°）容许抗拔力(kN)");
-		setBounds(100, 100, 684, 789);
+		setBounds(100, 100, 720, 789);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
