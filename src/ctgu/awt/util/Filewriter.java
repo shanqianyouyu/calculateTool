@@ -17,7 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-public class Filewriter extends JFrame{
+public class Filewriter extends JFrame {
 	/**
 	 * 
 	 */
@@ -48,7 +48,7 @@ public class Filewriter extends JFrame{
 			String path = chooser.getSelectedFile().getPath();
 			try {
 				File f = new File(path + ".doc");
-				InputStream is = new FileInputStream(new File("./src/qmx/awt/main/测试文件.doc"));
+				InputStream is = new FileInputStream(new File("./src/ctgu/awt/frame/测试文件.doc"));
 				System.out.println(f.getAbsolutePath());
 				f.createNewFile();
 				BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f, true), "GBK"));

@@ -22,7 +22,6 @@ import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 import org.junit.Test;
 
-import ctgu.Entity.anchorcal.Anchor;
 import ctgu.awt.frame.homepage.search.entity.Item;
 import ctgu.awt.util.ResponseCode;
 import ctgu.awt.util.Tool;
@@ -38,7 +37,7 @@ import ctgu.awt.util.Tool;
 
 public class AnalysisXML {
 	// Square.xml文件相对路径
-	static File file = new File("./src/Square.xml");
+	static File file = new File("./txt/Square.xml");
 
 	// 读取xml
 	public static Item readXml() {
