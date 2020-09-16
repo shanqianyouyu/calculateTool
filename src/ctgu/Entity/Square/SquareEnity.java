@@ -1,9 +1,5 @@
 package ctgu.Entity.Square;
 
-import java.lang.reflect.Field;
-
-import org.junit.Test;
-
 import lombok.Data;
 
 /**

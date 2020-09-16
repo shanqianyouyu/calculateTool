@@ -9,14 +9,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 import javax.swing.JTextField;
-
 import org.junit.Test;
 
-import ctgu.Entity.boltCal.HighStrength;
 
 /**
  * Copyright © 2019 eSunny Info. Tech Ltd. All rights reserved.

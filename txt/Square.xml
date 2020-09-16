@@ -1,36 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Frame> 
-  <Date date="20191015"/>  
-  <Date date="20191016">
-    <螺栓计算 date="181710">
-      <de>0</de>
-      <Fbc>3.0</Fbc>
-      <nv>1.0</nv>
-      <Cnv>0</Cnv>
-      <Nbc>0</Nbc>
-      <Hnv>0</Hnv>
-      <ftb>0</ftb>
-      <Fbv>2.0</Fbv>
-      <nvb>0</nvb>
-      <Hd>0</Hd>
-      <o1>1.57</o1>
-      <o2>3.0</o2>
-      <d>1.0</d>
-      <o3>0</o3>
-      <o4>0</o4>
-      <fbc>3.0</fbc>
-      <Nt>0</Nt>
-      <o5>0</o5>
-      <o6>0</o6>
-      <o7>0</o7>
-      <o8>0</o8>
-      <t>1.0</t>
-      <nf>0</nf>
-      <y>0</y>
-      <fbv>2.0</fbv>
-      <Nvb>0</Nvb>
-      <Ntb>0</Ntb>
-    </螺栓计算>
-  </Date>
-</Frame>
+<Frame></Frame>
