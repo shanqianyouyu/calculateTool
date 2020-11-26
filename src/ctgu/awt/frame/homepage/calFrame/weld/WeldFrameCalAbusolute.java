@@ -214,7 +214,7 @@ public class WeldFrameCalAbusolute extends FatherFrame implements ActionListener
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 372, 489);
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
-				"\u76F4\u89D2\u89D2\u710A\u7F1D\u5F3A\u5EA6\u8BA1\u7B97\u53C2\u6570", TitledBorder.LEADING,
+				"斜对接焊缝", TitledBorder.LEADING,
 				TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel.setToolTipText("dsad");
 		contentPane.add(panel);
@@ -226,7 +226,7 @@ public class WeldFrameCalAbusolute extends FatherFrame implements ActionListener
 
 		textField = new JTextField("0");
 		textField.setText(weldEntity.TWT == null ? "0" : String.valueOf(weldEntity.TWT));
-		textField.setBounds(149, 28, 185, 24);
+		textField.setBounds(163, 28, 185, 24);
 		panel.add(textField);
 		textField.setColumns(10);
 

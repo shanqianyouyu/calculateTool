@@ -37,17 +37,14 @@ public class FrameUtil {
 			Object obj = null;
 			if (item.getName().equals("螺栓计算")) {
 				obj = new HighStrength();
-//<<<<<<< HEAD
 			} else if (item.getName().equals("地锚计算")) {
 				obj = new Anchor();
-//=======
 			} else if (item.getName().equals("跨越架计算")) {
 				obj = new AcrossEnity();
 			} else if (item.getName().equals("抱杆计算")) {
 				obj = new SquareEnity();
 			} else if (item.getName().equals("焊缝计算")) {
 				obj = new WeldEntity();
-//>>>>>>> cyk
 			}
 			d.setEditListener(new ToolMenuHandlerListener(item.getName(), AnalysisXML.domTOEntity(time, obj)));
 			list.add(d);

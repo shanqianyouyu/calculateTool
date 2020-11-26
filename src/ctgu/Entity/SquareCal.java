@@ -1,5 +1,6 @@
 package ctgu.Entity;
 
+import org.apache.poi.xslf.model.geom.CosExpression;
 import org.apache.poi.xslf.model.geom.SqrtExpression;
 
 import com.sun.org.apache.bcel.internal.generic.RETURN;
@@ -275,6 +276,7 @@ public class SquareCal {
 
 	public double setAxisPressure1() {
 		FZ2 = (FQ1*Math.cos(AFZ+AJ)+FQ2*Math.sin(AFZ))/2*Math.sin(AFZ);
+		
 		return FZ2;
 	}
 	
@@ -290,7 +292,15 @@ public class SquareCal {
 	}
 	
 	public double setYaxialPressure1() {
-		FZ3 = Math.cos(AKK)*Math.sin(AFQ+ABt)*WG2/Math.cos(AKK+AFQ)*Math.sin(ABt);
+		FZ3 = (Math.cos(Math.toRadians(AKK))*Math.sin(Math.toRadians(AFQ)+Math.toRadians(ABt))*WG2)/(Math.cos(Math.toRadians(AKK)+Math.toRadians(AFQ))*Math.sin(Math.toRadians(ABt)));
+		System.out.println(FZ3);
+		double radians = Math.toRadians(AKK);
+		System.out.println(Math.cos(radians));
+		System.out.println(Math.cos(Math.toRadians(AKK)));
+		System.out.println((Math.cos(Math.toRadians(AKK))*Math.sin(Math.toRadians(AFQ)+Math.toRadians(ABt))*WG2));
+		System.out.println((Math.cos(Math.toRadians(AKK)+Math.toRadians(AFQ))*Math.sin(Math.toRadians(ABt))));
+		System.out.println(WG2);
+		System.out.println(FZ3);
 		return FZ3;
 	}
 

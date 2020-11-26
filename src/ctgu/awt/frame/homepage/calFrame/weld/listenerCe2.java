@@ -19,6 +19,7 @@ public class listenerCe2 {
 	
 	private int B2;
 	
+	private int B3;
 	
 	private int i = 0;
 		
@@ -344,5 +345,40 @@ public class listenerCe2 {
 			                   
 		});
 		return B2;
+	}
+
+
+	public int listenergeK2(JRadioButton rdbtnNewRadioButton, JRadioButton radioButton) {
+		rdbtnNewRadioButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent arg0) {
+				if(i == 0){
+					radioButton.setSelected(false);
+					i = 1;
+					}
+					else{
+						radioButton.setSelected(false);
+						i = 0;
+					}
+				B3 = 1;
+				}
+			                 
+		});
+		radioButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent arg0) {
+				if(i == 0){
+					rdbtnNewRadioButton.setSelected(false);
+					i = 1;
+					}
+					else{
+						rdbtnNewRadioButton.setSelected(false);
+						i = 0;
+					}
+				B3 = 2;
+			}
+			                   
+		});
+		return B3;
 	}
 }

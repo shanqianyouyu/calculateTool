@@ -579,6 +579,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 		picturecheck.add(checkBox11);
 		listenerge lis1 = new listenerge();
 		F1 = lis1.listenerge1(checkBox06, checkBox07, checkBox08, checkBox09, checkBox10, checkBox11);
+		System.out.println(F1);
 		middle.add(picturecheck);
 
 		// 设置监听
@@ -1460,6 +1461,7 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 			} else {
 				FL1 = Tool.forMat(sq1.setLstatictension4());
 			}
+			System.out.println(FL1);
 			}
 
 			// 吊装辅助拉线静张力
@@ -1497,9 +1499,12 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 			//轴向压力
 			if (Double.isNaN(sq1.setYaxialPressure1())) {
 				m = 13;
+				System.out.println(1);
 				FZ3 = 0.0;
 			}else{
 			if (F1 == 3) {
+				System.out.println(1);
+				System.out.println(sq1.setYaxialPressure1());
 				FZ3 = Tool.forMat(sq1.setYaxialPressure1());
 			} else if (F1 == 4) {
 				FZ3 = Tool.forMat(sq1.setYaxialPressure2());
@@ -1509,6 +1514,8 @@ public class AbusoluteSquare extends FatherFrame implements ActionListener, Focu
 				FZ3 = Tool.forMat(sq1.setYaxialPressure4());
 			}
 			}
+			
+			System.out.println(FZ3);
 
 			// 中心压力的计算
 			if (Double.isNaN(sq1.setCentralPressure())) {

@@ -15,6 +15,6 @@ import ctgu.awt.frame.homepage.item.Default;
 public class Across extends Default {
 	public Across() {
 		super();
-		setName("抱杆抱杆计算");
+		setName("抱杆计算");
 	}
 }

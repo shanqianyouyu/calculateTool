@@ -10,7 +10,7 @@ public class UserMsg {
 	private String repass = null;
 
 	public UserMsg(String user, String pass) {
-		file = new File("./src/ctgu/awt/frame/login/login.txt");
+		file = new File("./login.txt");
 		System.out.println(file);
 		try {
 			if (file == null) {
