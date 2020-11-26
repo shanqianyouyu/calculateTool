@@ -1,5 +1,6 @@
 package ctgu.awt.entity;
 
+import java.awt.Color;
 import java.util.Comparator;
 import java.util.TreeMap;
 
@@ -9,7 +10,6 @@ import javax.swing.JPanel;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.calFrame.FatherTabbedPane;
 import ctgu.awt.util.Util;
-
 
 //用来记录一共有多少个窗体
 public class Config {
@@ -33,6 +33,9 @@ public class Config {
 			return obj2.compareTo(obj1);
 		}
 	});
+
+	// 窗体默认颜色
+	public static Color ResColor = new Color(253, 253, 241);
 
 	/*
 	 * 后台记录

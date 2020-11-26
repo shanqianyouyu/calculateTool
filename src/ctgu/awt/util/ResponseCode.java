@@ -24,6 +24,10 @@ public class ResponseCode {
 	public static int CalculationERR = 103;
 	// 全部为空
 	public static int NULL = 200;
+	// 检查异常
+	public static int UnKnowERR = 301;
+	//数字解析异常
+	public static int NumParseExp= 301;
 
 	/*
 	 * xml相关

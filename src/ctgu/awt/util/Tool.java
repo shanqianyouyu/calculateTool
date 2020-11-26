@@ -1,6 +1,7 @@
 package ctgu.awt.util;
 
 import java.awt.Image;
+import java.awt.TextField;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.io.File;
@@ -26,6 +27,33 @@ import org.junit.Test;
  */
 
 public class Tool {
+
+	/**
+	 * 判断输入框的数字格式是否正确
+	 * 
+	 * @param vis       是否全部大于等于0
+	 * @param textField 输入框
+	 * @return ResponseCode.OK 数据正常 ResponseCode.NoData 数据不全 ResponseCode.DataERR
+	 *         数字错误 ResponseCode.NumParseExp 数字解析异常 ResponseCode.UnKnowERR 未知错误
+	 */
+	public static int checkTextFiled(Boolean vis, JTextField... textField) {
+		try {
+			for (JTextField item : textField) {
+				if (null == item.getText() || item.getText().trim().length() == 0) {
+					return ResponseCode.NoData;
+				}
+				if (Double.valueOf(item.getText().trim()) < 0.0 && vis) {// 必须全部未非负数并且有负数
+					return ResponseCode.DataERR;// 数字错误
+				}
+			}
+
+		} catch (NumberFormatException e) {
+			return ResponseCode.NumParseExp;// 解析异常,数字格式不正确
+		} catch (Exception e) {
+			return ResponseCode.UnKnowERR;// 未知错误
+		}
+		return ResponseCode.OK;
+	}
 
 	// 保留两位小数
 	public static Double forMat(Double b) {
@@ -158,7 +186,8 @@ public class Tool {
 
 	/**
 	 * 设置图片 JLabel的icon
-	 * @param url 图片地址
+	 * 
+	 * @param url    图片地址
 	 * @param width
 	 * @param height
 	 * @return

@@ -2,5 +2,67 @@
 
 <Frame> 
   <Date date="20191015"/>  
-  <Date date="20201126"></Date> 
+  <Date date="20201126">
+    <焊缝计算 date="153103">
+      <FFC>0.0</FFC>
+      <LW>0.0</LW>
+      <FLTC>0.0</FLTC>
+      <FFW>0.0</FFW>
+      <FNCS>0.0</FNCS>
+      <R1>0.0</R1>
+      <FTCS>0.0</FTCS>
+      <ETo>0.0</ETo>
+      <N1>0.0</N1>
+      <SDV>0.0</SDV>
+      <PWL>0.0</PWL>
+      <N2>0.0</N2>
+      <IP>0.0</IP>
+      <SLf>0.0</SLf>
+      <SFOf>0.0</SFOf>
+      <IW>0.0</IW>
+      <CLw>0.0</CLw>
+      <TWT>0.0</TWT>
+      <AS>0.0</AS>
+      <NC>0.0</NC>
+      <TOT>0.0</TOT>
+      <Me>0.0</Me>
+      <FNBS>0.0</FNBS>
+      <FTBS>0.0</FTBS>
+      <SAL>0.0</SAL>
+      <LOf>0.0</LOf>
+      <TFw>0.0</TFw>
+      <IFB>0.0</IFB>
+      <Af>0.0</Af>
+      <K1>0.0</K1>
+      <K2>0.0</K2>
+      <FM>0.0</FM>
+      <AFM>0.0</AFM>
+      <AWA>0.0</AWA>
+      <N>0.0</N>
+      <FT>0.0</FT>
+      <FLT>0.0</FLT>
+      <FV>0.0</FV>
+      <MFs1>0.0</MFs1>
+      <FSCS>0.0</FSCS>
+      <T1>0.0</T1>
+      <WW>0.0</WW>
+      <m1>0.0</m1>
+      <SW>0.0</SW>
+      <m2>0.0</m2>
+      <L1>0.0</L1>
+      <L2>0.0</L2>
+      <SOE>0.0</SOE>
+      <H1>0.0</H1>
+      <SOF>0.0</SOF>
+      <e1>0.0</e1>
+      <LB>0.0</LB>
+      <SSW>0.0</SSW>
+      <AFM1>0.0</AFM1>
+      <FAT>0.0</FAT>
+      <FNC>0.0</FNC>
+      <MFs>0.0</MFs>
+      <FOBS>0.0</FOBS>
+      <PTWL>0.0</PTWL>
+    </焊缝计算>
+  </Date>
 </Frame>
