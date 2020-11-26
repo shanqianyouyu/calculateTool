@@ -12,10 +12,7 @@ import ctgu.awt.frame.load.Load;
  */
 
 public class Run {
-
 	public static void main(String[] args) {
 		Load.main(args);
-
 	}
-
 }

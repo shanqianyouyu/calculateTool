@@ -6,13 +6,15 @@ import java.awt.event.FocusListener;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import org.junit.Test;
-
 
 /**
  * Copyright © 2019 eSunny Info. Tech Ltd. All rights reserved.
@@ -109,10 +111,63 @@ public class Tool {
 
 	}
 
-	@Test
-	public void test1() {
-		String path = "./src/Square.xml";
-		System.out.println(Tool.getFileLength(path));
+	/**
+	 * 输入求得x，y （有且仅有一值为空） 已知两点 (x1, y1)(x2,y2)
+	 * 
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 * @param x
+	 * @param y
+	 * @return x为空则返回y，y为空则返回x
+	 */
+	public static BigDecimal getPointWithPoints(BigDecimal x1, BigDecimal y1, BigDecimal x2, BigDecimal y2,
+			BigDecimal x, BigDecimal y) {
+		if (null == x) {
+			return getXWithTwoPoints(x1, y1, x2, y2, y);
+		} else if (null == y) {
+			return getYWithTwoPoints(x1, y1, x2, y2, x);
+		}
+		return null;
 	}
 
+	/**
+	 * 给出两点求x，线性拟合
+	 * 
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 * @param x
+	 * @return
+	 */
+	public static BigDecimal getYWithTwoPoints(BigDecimal x1, BigDecimal y1, BigDecimal x2, BigDecimal y2,
+			BigDecimal x) {
+		// x1 != x2
+		BigDecimal tmp = y1.subtract(y2).divide(x1.subtract(x2)).multiply(x1.subtract(x));
+
+		return y1.subtract(tmp);
+	}
+
+	public static BigDecimal getXWithTwoPoints(BigDecimal x1, BigDecimal y1, BigDecimal x2, BigDecimal y2,
+			BigDecimal y) {
+		BigDecimal tmp = x1.subtract(x2).divide(y1.subtract(y2)).multiply(y.subtract(y1)).add(x1);
+		return tmp;
+	}
+
+	/**
+	 * 设置图片 JLabel的icon
+	 * @param url 图片地址
+	 * @param width
+	 * @param height
+	 * @return
+	 */
+	public static Icon getIcon(String url, int width, int height) {
+		Icon icon = new ImageIcon(url);
+		Image image = ((ImageIcon) icon).getImage();
+		image = image.getScaledInstance(width, height, Image.SCALE_DEFAULT);// 缩放图片大小
+		((ImageIcon) icon).setImage(image);
+		return icon;
+	}
 }

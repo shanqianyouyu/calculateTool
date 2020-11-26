@@ -43,7 +43,7 @@ public class PageService {
 		TreeMap<Integer, JPanel> calJpanels = Config.calJpanel;
 		// 所有的窗口数量
 		int size = calJpanels.size();
-		System.out.println("PageService(总数量):" + size);
+//		System.out.println("PageService(总数量):" + size);
 		// 取当页PageBean
 		PageBean pageBean = new PageBean();
 		// 所有的窗口数量

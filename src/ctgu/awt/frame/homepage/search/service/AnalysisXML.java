@@ -60,15 +60,15 @@ public class AnalysisXML {
 				List<Attribute> dateAttrs = date.attributes();
 				for (Attribute attr : dateAttrs) {
 					item.setYMD(attr.getValue());
-					System.out.println("属性名：" + attr.getName() + "--属性值：" + attr.getValue());
+//					System.out.println("属性名：" + attr.getName() + "--属性值：" + attr.getValue());
 				}
 				// 解析子节点的信息
 				Iterator itt = date.elementIterator();
 				while (itt.hasNext()) {
 					Element bookChild = (Element) itt.next();
 					Iterator ittt = bookChild.elementIterator();
-					System.out.println("节点名：" + bookChild.getName() + "--节点值："
-							+ ((Attribute) bookChild.attributes().get(0)).getValue());
+//					System.out.println("节点名：" + bookChild.getName() + "--节点值："
+//							+ ((Attribute) bookChild.attributes().get(0)).getValue());
 					while (ittt.hasNext()) {
 						Element e = (Element) ittt.next();
 						System.out.println(e.getName() + "---" + e.getText());
@@ -131,13 +131,9 @@ public class AnalysisXML {
 
 		if (name.equals("HighStrength")) {
 			item.setName("螺栓计算");
-//<<<<<<< HEAD
 		} else if (name.equals("Anchor")) {
 			item.setName("地锚计算");
 		} 
-//		else {
-//=======
-//		} 
 		else if(name.equals("SquareEnity")){
 			item.setName("抱杆计算");
 		}else if(name.equals("AcrossEnity")){
