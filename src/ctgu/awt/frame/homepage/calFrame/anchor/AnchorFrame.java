@@ -1,9 +1,7 @@
 package ctgu.awt.frame.homepage.calFrame.anchor;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -25,9 +23,7 @@ import ctgu.awt.frame.homepage.component.anchor.Table9;
 import ctgu.awt.frame.homepage.search.service.AnalysisXML;
 import ctgu.awt.util.Filewriter;
 import ctgu.awt.util.ResponseCode;
-import ctgu.awt.util.Tool;
 
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -36,7 +32,6 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -45,7 +40,7 @@ import java.awt.GridLayout;
 /**
  * Copyright © 2019 eSunny Info. Tech Ltd. All rights reserved.
  * 
- * 功能描述：地锚窗口
+ * 功能描述：地锚窗口（无用）
  * 
  * @Package: ctgu.awt.frame.homepage.calFrame.anchor
  * @author: 拉布拉多
@@ -85,6 +80,7 @@ public class AnchorFrame extends FatherFrame {
 		anchor = a;
 		setTitle("地锚计算");
 		setLocationRelativeTo(null);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1781, 943);
 		contentPane = new JPanel();

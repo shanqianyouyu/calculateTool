@@ -17,6 +17,9 @@ import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.calFrame.TestJFrame;
 import ctgu.awt.frame.homepage.calFrame.across.AcrossFrameCalAbusolute;
 import ctgu.awt.frame.homepage.calFrame.anchor.AnchorFrame;
+import ctgu.awt.frame.homepage.calFrame.anchor.LogAnchor;
+import ctgu.awt.frame.homepage.calFrame.anchor.SleeperAnchor;
+import ctgu.awt.frame.homepage.calFrame.anchor.SteelAnchor;
 import ctgu.awt.frame.homepage.calFrame.bol.BolFrame;
 import ctgu.awt.frame.homepage.calFrame.derrickCal.AbusoluteSquare;
 import ctgu.awt.frame.homepage.calFrame.derrickCal.DerrickSquare;
@@ -42,6 +45,11 @@ import ctgu.awt.util.Util;
 public class FrameFactory {
 	private static boolean flat = true;
 
+	/**
+	 * 
+	 * @param name   TopMenu中定义
+	 * @param object 每个窗口对应的数据对象
+	 */
 	public static void createFrame(String name, Object object) {
 		// 获取当前选项卡的数量
 		int tabSizeOld = Config.fatherTabbedPane.getTabCount();
@@ -57,7 +65,7 @@ public class FrameFactory {
 		// 生成的条目
 		Default jPanel = null;
 
-		System.out.println("------------"+name);
+//		System.out.println("------------"+name);
 		if (name.equals("测试生成新窗口")) {
 			// 创建测试窗口
 			frame = new TestJFrame();
@@ -67,8 +75,7 @@ public class FrameFactory {
 			jPanel.setId(id);
 			jPanel.setName(name);
 //			System.out.println("FrameFactory(生成的id): " + id);
-		}
-		else if (name.equals("钢管抱杆计算")) {
+		} else if (name.equals("钢管抱杆计算")) {
 			if (object != null) {
 				frame = new DerrickSquareSteel((DerrickSquareSteelEnity) object);
 			} else {
@@ -78,8 +85,7 @@ public class FrameFactory {
 			jPanel = new Square();
 			jPanel.setId(id);
 			jPanel.setName(name);
-		}
-		else if (name.equals("人字抱杆计算")) {
+		} else if (name.equals("人字抱杆计算")) {
 			if (object != null) {
 				frame = new DerrickSquareMan((DerrickSquareManEnity) object);
 			} else {
@@ -89,8 +95,7 @@ public class FrameFactory {
 			jPanel = new Square();
 			jPanel.setId(id);
 			jPanel.setName(name);
-		}
-		else if (name.equals("正方形格构抱杆计算")) {
+		} else if (name.equals("正方形格构抱杆计算")) {
 			if (object != null) {
 				frame = new DerrickSquare((DerrickSquareEnity) object);
 			} else {
@@ -128,8 +133,8 @@ public class FrameFactory {
 			jPanel = new Across();
 			jPanel.setId(id);
 			jPanel.setName(name);
-		}
-		else if (name.equals("常用直角焊缝计算")) {
+//<<<<<<< HEAD
+		} else if (name.equals("常用直角焊缝计算")) {
 			if (object != null) {
 				frame = new WeldFrameAngle((WeldAngleEntity) object);
 			} else {
@@ -152,7 +157,7 @@ public class FrameFactory {
 			jPanel = new ctgu.awt.frame.homepage.item.anchor.Anchor();
 			jPanel.setId(id);
 			jPanel.setName(name);
-		}else if (name.equals("工字形焊缝计算")) {
+		} else if (name.equals("工字形焊缝计算")) {
 			if (object != null) {
 				frame = new WeldFrameSection((WeldSectionEntity) object);
 			} else {
@@ -163,7 +168,7 @@ public class FrameFactory {
 			jPanel = new ctgu.awt.frame.homepage.item.anchor.Anchor();
 			jPanel.setId(id);
 			jPanel.setName(name);
-		}else if (name.equals("斜焊缝计算")) {
+		} else if (name.equals("斜焊缝计算")) {
 			if (object != null) {
 				frame = new WeldFrameOblique((WeldObliqueEntity) object);
 			} else {
@@ -174,7 +179,7 @@ public class FrameFactory {
 			jPanel = new ctgu.awt.frame.homepage.item.anchor.Anchor();
 			jPanel.setId(id);
 			jPanel.setName(name);
-		}else if (name.equals("对接焊缝计算")) {
+		} else if (name.equals("对接焊缝计算")) {
 			if (object != null) {
 				frame = new WeldFrameaButment((WeldButmentEntity) object);
 			} else {
@@ -183,6 +188,41 @@ public class FrameFactory {
 			frame.setVisible(true);
 			frame.setId(id);
 			jPanel = new ctgu.awt.frame.homepage.item.anchor.Anchor();
+			/*
+			 * 圆木地锚计算 钢板地锚计算 枕木单柱式立式地锚计算
+			 */
+		} else if (name.equals("圆木地锚计算")) {
+			if (null != object) {
+				frame = new LogAnchor((ctgu.Entity.anchorcal.LogAnchor) object);
+			} else {
+				frame = new LogAnchor();
+			}
+			frame.setVisible(true);
+			frame.setId(id);
+			jPanel = new ctgu.awt.frame.homepage.item.anchor.LogAnchor();
+			jPanel.setId(id);
+			jPanel.setName(name);
+
+		} else if (name.equals("钢板地锚计算")) {
+			if (null != object) {
+				frame = new SteelAnchor((ctgu.Entity.anchorcal.SteelAnchor) object);
+			} else {
+				frame = new SteelAnchor(new ctgu.Entity.anchorcal.SteelAnchor());
+			}
+			frame.setVisible(true);
+			frame.setId(id);
+			jPanel = new ctgu.awt.frame.homepage.item.anchor.SteelAnchor();
+			jPanel.setId(id);
+			jPanel.setName(name);
+		} else if (name.equals("枕木单柱式立式地锚计算")) {
+			if (null != object) {
+				frame = new SleeperAnchor((ctgu.Entity.anchorcal.SleeperAnchor) object);
+			} else {
+				frame = new SleeperAnchor(new ctgu.Entity.anchorcal.SleeperAnchor());
+			}
+			frame.setVisible(true);
+			frame.setId(id);
+			jPanel = new ctgu.awt.frame.homepage.item.anchor.SleeperAnchor();
 			jPanel.setId(id);
 			jPanel.setName(name);
 		}

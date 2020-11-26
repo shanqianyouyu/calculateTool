@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Frame> 
+<<<<<<< HEAD
   <Date date="20191015"> 
     <跨越架计算 date="215117"> 
       <RS>0.0</RS>  
@@ -228,4 +229,7 @@
       <FC>0.0</FC>
     </跨越架计算>
   </Date> 
+=======
+  <Date date="20191015"></Date> 
+>>>>>>> chase
 </Frame>

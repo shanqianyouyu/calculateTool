@@ -5,12 +5,16 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+
+import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 public class ToolsFrame extends JFrame {
 
 	private JPanel contentPane;
 
+	
 	/**
 	 * Launch the application.
 	 */
