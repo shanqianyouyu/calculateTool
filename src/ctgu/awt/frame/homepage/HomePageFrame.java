@@ -22,10 +22,13 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import ctgu.awt.entity.Config;
 import ctgu.awt.frame.homepage.calFrame.FatherTabbedPane;
@@ -41,10 +44,26 @@ import ctgu.awt.frame.homepage.component.TopTool;
  * 存一个列表记录进入Config.calJpanel
  */
 public class HomePageFrame extends JFrame {
+	
+	static {
+		try {
+			// 设置边框样式为强立体半透明
+			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencyAppleLike;
+			// 引入apple的皮肤包
+			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			System.out.println("皮肤软件抛出异常");
+		}
+	}
 
 	private JPanel contentPane;
 	FatherTabbedPane tabbedPane = new FatherTabbedPane();
 
+	public static void main(String[] args) {
+		HomePageFrame homePageFrame = new HomePageFrame();
+		homePageFrame.setVisible(true);
+	}
 
 	/**
 	 * Create the frame.

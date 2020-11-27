@@ -41,7 +41,7 @@ public class Items extends JPanel {
 		// 取出numPage页的数据
 		PageBean pagebean = PageService.getPageBean(numPage);
 		list = pagebean.getBeanList();
-		System.out.println("该页的数据量: " + list.size());
+//		System.out.println("该页的数据量: " + list.size());
 		// 将该数据添加到Items中
 		for (JPanel jp : list) {
 			jp.setPreferredSize(new Dimension(0, 60));// 高度为60，宽度自适应

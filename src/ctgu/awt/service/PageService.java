@@ -1,13 +1,8 @@
 package ctgu.awt.service;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.TreeMap;
 
 import javax.swing.JPanel;
@@ -48,7 +43,7 @@ public class PageService {
 		TreeMap<Integer, JPanel> calJpanels = Config.calJpanel;
 		// 所有的窗口数量
 		int size = calJpanels.size();
-		System.out.println("PageService(总数量):" + size);
+//		System.out.println("PageService(总数量):" + size);
 		// 取当页PageBean
 		PageBean pageBean = new PageBean();
 		// 所有的窗口数量

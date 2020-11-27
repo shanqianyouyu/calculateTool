@@ -3,6 +3,7 @@ package ctgu.awt.frame.homepage.component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -41,9 +42,11 @@ public class TopMenu extends JMenuBar {
 	private JMenu file4 = new JMenu("焊缝计算");
 	private JMenu file5 = new JMenu("地锚计算");
 	private JMenu file6 = new JMenu("跨越架计算");
+	
 	private JMenuItem download1 = new JMenuItem("说明书");
 	private JMenuItem download2 = new JMenuItem("标准参数");
-
+	private JMenu download3 = new JMenu("电力标准规范");
+	
 	private JMenuItem history = new JMenuItem("保存记录");
 
 	/*
@@ -61,6 +64,11 @@ public class TopMenu extends JMenuBar {
 	private JMenuItem Derrick = new JMenuItem("正方形格构抱杆计算");
 	private JMenuItem DerrickSteel = new JMenuItem("钢管抱杆计算");
 	private JMenuItem DerrickMan = new JMenuItem("人字抱杆计算");
+	private JMenuItem anchor1 = new JMenuItem("圆木地锚计算");
+	private JMenuItem anchor2 = new JMenuItem("钢板地锚计算");
+	private JMenuItem anchor3 = new JMenuItem("枕木单柱式立式地锚计算");
+	
+	private JMenuItem item1 = new JMenuItem("DL∕T 318-2017 输变电工程施工机具产品型号编制方法.pdf");
 
 	public TopMenu() {
 		init();
@@ -87,6 +95,7 @@ public class TopMenu extends JMenuBar {
 		File.add(file6);
 		download.add(download1);
 		download.add(download2);
+		download.add(download3);
 		edit.add(history);
 
 		/*
@@ -106,7 +115,12 @@ public class TopMenu extends JMenuBar {
 		file4.add(weld2);
 		file4.add(weld3);
 		file5.add(anchor);
+		file5.add(anchor1);
+		file5.add(anchor2);
+		file5.add(anchor3);
 		file6.add(across);
+		
+		download3.add(item1);
 
 	}
 
@@ -131,16 +145,34 @@ public class TopMenu extends JMenuBar {
 			}
 		});
 
+//<<<<<<< HEAD
 		// 正方形格构抱杆的点击
 		Derrick.addActionListener(new ToolMenuHandlerListener(Derrick));
 		// 钢管抱杆的点击
 		DerrickSteel.addActionListener(new ToolMenuHandlerListener(DerrickSteel));
 		// 人字抱杆的点击
 		DerrickMan.addActionListener(new ToolMenuHandlerListener(DerrickMan));
+//=======
+		item1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Filewriter.downloadFile("./resources/pdf/318-2017.pdf", "123");
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		
+		// 正方形抱杆的点击
+//		squre.addActionListener(new ToolMenuHandlerListener(squre));
+//>>>>>>> chase
 		// 螺栓计算
 		bol.addActionListener(new ToolMenuHandlerListener(bol));
 		// 直角焊缝计算
 		weld.addActionListener(new ToolMenuHandlerListener(weld));
+//<<<<<<< HEAD
 		// 工字型焊缝计算
 		weld1.addActionListener(new ToolMenuHandlerListener(weld1));
 		// 对接焊缝计算
@@ -148,7 +180,15 @@ public class TopMenu extends JMenuBar {
 		// 斜焊缝计算
 		weld3.addActionListener(new ToolMenuHandlerListener(weld3));
 		// 地锚计算
+//=======
+		/*
+		 *  地锚计算
+		 */
+//>>>>>>> chase
 		anchor.addActionListener(new ToolMenuHandlerListener(anchor));
+		anchor1.addActionListener(new ToolMenuHandlerListener(anchor1));
+		anchor2.addActionListener(new ToolMenuHandlerListener(anchor2));
+		anchor3.addActionListener(new ToolMenuHandlerListener(anchor3));
 		// 跨越架计算
 		across.addActionListener(new ToolMenuHandlerListener(across));
 

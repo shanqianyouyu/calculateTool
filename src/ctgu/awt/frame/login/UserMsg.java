@@ -10,7 +10,11 @@ public class UserMsg {
 	private String repass = null;
 
 	public UserMsg(String user, String pass) {
-		file = new File("./login.txt");
+//<<<<<<< HEAD
+//		file = new File("./login.txt");
+//=======
+		file = new File("./txt/login.txt");
+//>>>>>>> chase
 		System.out.println(file);
 		try {
 			if (file == null) {
@@ -92,56 +96,56 @@ public class UserMsg {
 					String[] split = line.split(user);
 					System.out.println(split[0]);
 					System.out.println(split[1]);
-					raf.seek(user.length()+1);
+					raf.seek(user.length() + 1);
 					System.out.println(split[1].length());
-					for(int i = 0;i < split[1].length();i++){
-					raf.writeBytes(" ");
+					for (int i = 0; i < split[1].length(); i++) {
+						raf.writeBytes(" ");
 					}
-					raf.seek(user.length()+1);
+					raf.seek(user.length() + 1);
 					raf.writeBytes(pass);
 					bj_pass = true;
 				}
 			}
 			raf.close();
-			return new boolean[] {bj_pass };
+			return new boolean[] { bj_pass };
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	//修改验证
+	// 修改验证
 	public synchronized boolean[] readUserPass() {
 
-			try {
-				boolean bj_user = false;
-				boolean bj_pass = false;
-				FileReader fr = new FileReader(file);
-				BufferedReader bf = new BufferedReader(fr);
+		try {
+			boolean bj_user = false;
+			boolean bj_pass = false;
+			FileReader fr = new FileReader(file);
+			BufferedReader bf = new BufferedReader(fr);
 
-				String str = null;
-				String[] s = null;
-				while ((str = bf.readLine()) != null) {
-					System.out.println(str);
-					s = str.split(" ");
-					System.out.println(s[0]);
-					if (s[0].trim().equals(user)) {
-						bj_user = true;
-						if (s[1].trim().equals(pass)) {
-							System.out.println(s[1]);
-							bj_pass = true;
-							break;
-						}
+			String str = null;
+			String[] s = null;
+			while ((str = bf.readLine()) != null) {
+				System.out.println(str);
+				s = str.split(" ");
+				System.out.println(s[0]);
+				if (s[0].trim().equals(user)) {
+					bj_user = true;
+					if (s[1].trim().equals(pass)) {
+						System.out.println(s[1]);
+						bj_pass = true;
+						break;
 					}
 				}
-				fr.close();
-				bf.close();
-				return new boolean[] { bj_user, bj_pass };
-
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
 			}
-			return null;
+			fr.close();
+			bf.close();
+			return new boolean[] { bj_user, bj_pass };
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
+		return null;
+	}
 }
