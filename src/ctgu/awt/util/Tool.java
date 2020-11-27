@@ -150,13 +150,13 @@ public class Tool {
 	 * @param y
 	 * @return x为空则返回y，y为空则返回x
 	 */
-	public static BigDecimal getPointWithPoints(BigDecimal x1, BigDecimal y1, BigDecimal x2, BigDecimal y2,
-			BigDecimal x, BigDecimal y) {
+	public static Double getPointWithPoints(Double x1, Double y1, Double x2, Double y2, Double x, Double y) {
+
 		if (null == x) {
 			return getXWithTwoPoints(x1, y1, x2, y2, y);
 		} else if (null == y) {
 			return getYWithTwoPoints(x1, y1, x2, y2, x);
-		}
+		} 
 		return null;
 	}
 
@@ -170,17 +170,17 @@ public class Tool {
 	 * @param x
 	 * @return
 	 */
-	public static BigDecimal getYWithTwoPoints(BigDecimal x1, BigDecimal y1, BigDecimal x2, BigDecimal y2,
-			BigDecimal x) {
+	public static Double getYWithTwoPoints(Double x1, Double y1, Double x2, Double y2, Double x) {
 		// x1 != x2
-		BigDecimal tmp = y1.subtract(y2).divide(x1.subtract(x2)).multiply(x1.subtract(x));
+//		BigDecimal tmp = y1.subtract(y2).divide(x1.subtract(x2)).multiply(x1.subtract(x));
+		Double tmp = (x - x2) / (x1 - x2) * (y1 - y2) + y2;
 
-		return y1.subtract(tmp);
+		return tmp;
 	}
 
-	public static BigDecimal getXWithTwoPoints(BigDecimal x1, BigDecimal y1, BigDecimal x2, BigDecimal y2,
-			BigDecimal y) {
-		BigDecimal tmp = x1.subtract(x2).divide(y1.subtract(y2)).multiply(y.subtract(y1)).add(x1);
+	public static Double getXWithTwoPoints(Double x1, Double y1, Double x2, Double y2, Double y) {
+//		BigDecimal tmp = x1.subtract(x2).divide(y1.subtract(y2)).multiply(y.subtract(y1)).add(x1);
+		Double tmp = (y - y2) / (y1 - y2) * (x1 - x2) + x2;
 		return tmp;
 	}
 

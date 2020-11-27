@@ -5,7 +5,7 @@ import javax.swing.JScrollPane;
 public class MainScrollPane extends JScrollPane {
 
 	public MainScrollPane() {
-		System.out.println("MainScrollPane : 第一次加载");
+//		System.out.println("MainScrollPane : 第一次加载");
 	}
 
 	public MainScrollPane(int numPage) {

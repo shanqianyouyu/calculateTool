@@ -18,6 +18,7 @@ import ctgu.awt.frame.homepage.calFrame.TestJFrame;
 import ctgu.awt.frame.homepage.calFrame.across.AcrossFrameCalAbusolute;
 import ctgu.awt.frame.homepage.calFrame.anchor.AnchorFrame;
 import ctgu.awt.frame.homepage.calFrame.anchor.LogAnchor;
+import ctgu.awt.frame.homepage.calFrame.anchor.PileAnchor;
 import ctgu.awt.frame.homepage.calFrame.anchor.SleeperAnchor;
 import ctgu.awt.frame.homepage.calFrame.anchor.SteelAnchor;
 import ctgu.awt.frame.homepage.calFrame.bol.BolFrame;
@@ -223,6 +224,17 @@ public class FrameFactory {
 			frame.setVisible(true);
 			frame.setId(id);
 			jPanel = new ctgu.awt.frame.homepage.item.anchor.SleeperAnchor();
+			jPanel.setId(id);
+			jPanel.setName(name);
+		} else if (name.equals("桩锚")) {
+			if (null != object) {
+				frame = new PileAnchor((ctgu.Entity.anchorcal.PileAnchor) object);
+			} else {
+				frame = new PileAnchor(new ctgu.Entity.anchorcal.PileAnchor());
+			}
+			frame.setVisible(true);
+			frame.setId(id);
+			jPanel = new ctgu.awt.frame.homepage.item.anchor.PileAnchor();
 			jPanel.setId(id);
 			jPanel.setName(name);
 		}

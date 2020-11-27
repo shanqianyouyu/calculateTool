@@ -1,5 +1,7 @@
 package ctgu.Entity.anchorcal;
 
+import ctgu.awt.util.Tool;
+
 /**
  * Copyright © 2020 eSunny Info. Tech Ltd. All rights reserved.
  * 
@@ -43,7 +45,12 @@ public class PileAnchor {
 	}
 
 	public void calOne() {
-		calT();
+//		calT();
+		if (btn1 == 1.0) {
+			W = 8190.0;
+		} else {
+			W = 9460.0;
+		}
 		res1 = N * (a1 + c1) / W;
 	}
 
@@ -60,6 +67,23 @@ public class PileAnchor {
 		if (b1 <= 0.0) {
 			return;
 		} else if (b1 < 800) {
+			Tool.getPointWithPoints(800.0, 6.787,1000.0, 8.484, b1, null);
+
+		} else if (b1 == 800) {
+
+		} else if (b1 > 800 && b1 < 1000) {
+
+		} else if (b1 == 1000) {
+
+		} else if (b1 > 1000 && b1 < 1200) {
+
+		} else if (b1 == 1200) {
+
+		} else if (b1 > 1200 && b1 < 1400) {
+
+		} else if (b1 == 1400) {
+
+		} else if (b1 > 1400) {
 
 		}
 	}

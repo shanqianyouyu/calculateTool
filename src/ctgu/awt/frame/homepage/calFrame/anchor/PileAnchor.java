@@ -19,11 +19,14 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * Copyright © 2020 eSunny Info. Tech Ltd. All rights reserved.
@@ -78,7 +81,7 @@ public class PileAnchor extends FatherFrame {
 	public PileAnchor(ctgu.Entity.anchorcal.PileAnchor pAnchor) {
 		setTitle("桩锚");
 		setBounds(100, 100, 1135, 679);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		JPanel panel_1 = new JPanel();
@@ -147,11 +150,28 @@ public class PileAnchor extends FatherFrame {
 		getContentPane().add(panel);
 		panel.setLayout(null);
 
+		JLabel lblNewLabel_2 = new JLabel(String.valueOf(pAnchor.W));
+		lblNewLabel_2.setBounds(206, 33, 118, 18);
+		panel.add(lblNewLabel_2);
 		JRadioButton radioButton = new JRadioButton("< 75 * 8");
+		radioButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				pAnchor.btn1 = 1.0;
+				lblNewLabel_2.setText("8190");
+			}
+		});
 		radioButton.setBounds(69, 64, 157, 27);
 		panel.add(radioButton);
 
 		JRadioButton radioButton_1 = new JRadioButton("< 80 * 8");
+		radioButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				pAnchor.btn1 = 2.0;
+				lblNewLabel_2.setText("9460");
+			}
+		});
 		radioButton_1.setBounds(298, 64, 157, 27);
 		panel.add(radioButton_1);
 
@@ -172,10 +192,6 @@ public class PileAnchor extends FatherFrame {
 		JLabel lblw = new JLabel("单根桩的抗弯截面系数 W:");
 		lblw.setBounds(14, 33, 200, 18);
 		panel.add(lblw);
-
-		JLabel lblNewLabel_2 = new JLabel(String.valueOf(pAnchor.W));
-		lblNewLabel_2.setBounds(206, 33, 118, 18);
-		panel.add(lblNewLabel_2);
 
 		JLabel lblCm_1 = new JLabel("<html>mm<sup>3</sup></html>");
 		lblCm_1.setBounds(338, 24, 72, 27);
@@ -202,14 +218,25 @@ public class PileAnchor extends FatherFrame {
 			public void actionPerformed(ActionEvent e) {
 				int check = Tool.checkTextFiled(true, textField, textField_1, textField_2);
 				if (check == ResponseCode.NoData) {
-
+					JOptionPane.showConfirmDialog(null, "参数不全");
+					return;
 				} else if (check == ResponseCode.UnKnowERR) {
-
+					JOptionPane.showConfirmDialog(null, "未知错误");
+					return;
 				} else if (check == ResponseCode.DataERR) {
-
-				} else if (check == ResponseCode.UnKnowERR) {
-
+					JOptionPane.showConfirmDialog(null, "参数不合法");
+					return;
+				} else if (check == ResponseCode.NumParseExp) {
+					JOptionPane.showConfirmDialog(null, "参数格式错误");
+					return;
 				}
+				pAnchor.a1 = Double.valueOf(textField.getText().trim());
+				pAnchor.c1 = Double.valueOf(textField_1.getText().trim());
+				pAnchor.N = Double.valueOf(textField_2.getText().trim());
+				pAnchor.calOne();
+				pAnchor.res1 = Tool.forMat(pAnchor.res1);
+				textField_3.setText(pAnchor.res1.toString());
+				
 			}
 		});
 		button.setBounds(271, 27, 113, 27);
@@ -305,6 +332,12 @@ public class PileAnchor extends FatherFrame {
 		panel_5.add(textField_6);
 
 		JButton button_1 = new JButton("计算");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
 		button_1.setBounds(271, 27, 113, 27);
 		panel_5.add(button_1);
 

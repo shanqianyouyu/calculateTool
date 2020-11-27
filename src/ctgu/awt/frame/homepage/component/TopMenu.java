@@ -64,9 +64,11 @@ public class TopMenu extends JMenuBar {
 	private JMenuItem Derrick = new JMenuItem("正方形格构抱杆计算");
 	private JMenuItem DerrickSteel = new JMenuItem("钢管抱杆计算");
 	private JMenuItem DerrickMan = new JMenuItem("人字抱杆计算");
-	private JMenuItem anchor1 = new JMenuItem("圆木地锚计算");
+	
+//	private JMenuItem anchor1 = new JMenuItem("圆木地锚计算");
 	private JMenuItem anchor2 = new JMenuItem("钢板地锚计算");
-	private JMenuItem anchor3 = new JMenuItem("枕木单柱式立式地锚计算");
+//	private JMenuItem anchor3 = new JMenuItem("枕木单柱式立式地锚计算");
+	private JMenuItem anchor4 = new JMenuItem("桩锚");
 	
 	private JMenuItem item1 = new JMenuItem("DL∕T 318-2017 输变电工程施工机具产品型号编制方法.pdf");
 
@@ -115,9 +117,10 @@ public class TopMenu extends JMenuBar {
 		file4.add(weld2);
 		file4.add(weld3);
 		file5.add(anchor);
-		file5.add(anchor1);
+//		file5.add(anchor1);
 		file5.add(anchor2);
-		file5.add(anchor3);
+//		file5.add(anchor3);
+		file5.add(anchor4);
 		file6.add(across);
 		
 		download3.add(item1);
@@ -186,9 +189,10 @@ public class TopMenu extends JMenuBar {
 		 */
 //>>>>>>> chase
 		anchor.addActionListener(new ToolMenuHandlerListener(anchor));
-		anchor1.addActionListener(new ToolMenuHandlerListener(anchor1));
+//		anchor1.addActionListener(new ToolMenuHandlerListener(anchor1));
 		anchor2.addActionListener(new ToolMenuHandlerListener(anchor2));
-		anchor3.addActionListener(new ToolMenuHandlerListener(anchor3));
+//		anchor3.addActionListener(new ToolMenuHandlerListener(anchor3));
+		anchor4.addActionListener(new ToolMenuHandlerListener(anchor4));
 		// 跨越架计算
 		across.addActionListener(new ToolMenuHandlerListener(across));
 
