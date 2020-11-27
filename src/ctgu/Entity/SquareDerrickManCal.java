@@ -47,25 +47,41 @@ public class SquareDerrickManCal {
 	}
 	//封绳拉力
 	public double fengshen(){
+		if(a == b){
+			P = 0; 
+		}else{
 		P = Tool.forMat((Tool.forMat(G*Math.sin(Math.toRadians(90-a))/Math.tan(Math.toRadians(a-b))) + G*Math.cos(Math.toRadians(90-a)))*A/4*Math.sqrt(L*L-(A/2)));
+		}
 		return P;
 	}
 	
 	//单锁脚绳张力k
 	public double dansuo(){
+		if(a == b){
+			K = 0; 
+		}else{
 		K =  Tool.forMat((Tool.forMat(G*Math.sin(Math.toRadians(90-a))/Math.tan(Math.toRadians(a-b))) + G*Math.cos(Math.toRadians(90-a)))*L*Math.cos(Math.toRadians(a))/2*Math.sqrt(L*L-(A/2)));
+		}
 		return K;
 	}
 	
 	//单根抱杆轴拉力
 	public double dangen(){
+		if(a == b){
+			R = 0; 
+		}else{
 		R = Tool.forMat((Tool.forMat(G*Math.sin(Math.toRadians(90-a))/Math.tan(Math.toRadians(a-b))) + Math.cos(Math.toRadians(90-a)))*L/2*Math.sqrt(L*L-(A/2)));
+		}
 		return R;
 	}
 	
 	//拉线张力
 	public double laxian(){
+		if(a == b){
+			T = 0; 
+		}else{
 		T = Tool.forMat(G*Math.sin(Math.toRadians(90-a))/Math.tan(Math.toRadians(a-b)));
+		}
 		return T;
 	}
 }
