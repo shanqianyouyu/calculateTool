@@ -267,20 +267,26 @@ public class SquareDerrickCal {
 	}
 
 	public double cal1(double value3) {
+		if(value3 > 250){
+			c9 = 0.123;
+		}else{
 		c6 = (int) Math.ceil(value3);
 		c7 = (int) Math.floor(value3);
 		c8 = BigDecimal.valueOf(b[c7] - b[c6]).divide(BigDecimal.valueOf(c6 - c7), 2, BigDecimal.ROUND_HALF_UP).doubleValue();
 		c9 = c8 * (value3 - c7) + b[c7];
-		System.out.println(c9);
+		}
 		return c9;
 	}
 	
 	public double cal2(double value4) {
+		if(value4 > 6){
+			c13 = 0.1;
+		}else{
 		c10 = (int) Math.ceil(value4);
 		c11 = (int) Math.floor(value4);
 		c12 = BigDecimal.valueOf(d[c11] - d[c10]).divide(BigDecimal.valueOf(c10 - c11), 2, BigDecimal.ROUND_HALF_UP).doubleValue();
 		c13 = c12 * (value4 - c11) + d[c11];
-		System.out.println(c13);
+		}
 		return c13;
 	}
 
@@ -305,17 +311,19 @@ public class SquareDerrickCal {
 	// 滑轮组及绳索重量
 	public double zongzhong() {
 		GO = 10+(Tool.forMat(64.4/100*(60+Tool.forMat(60*N/Math.cos(Math.toRadians(K))))));
+		System.out.println(GO);
 		return GO;
 	}
 
 	// 顶滑轮的载荷，顶滑轮的倾角
 	public double dinghuaz() {
-		FH = Tool.forMat(Math.sqrt(Math.pow(FT*Math.sin(Math.toRadians(p))-FQ*Math.sin(Math.toRadians(Q)), 2) + (GO + FQ*Math.sin(Q) + FT*Math.cos(p))));
+		FH = Tool.forMat(Math.sqrt(Math.pow(FT*Math.sin(Math.toRadians(p))-FQ*Math.sin(Math.toRadians(Q)), 2) + (GO + FQ*Math.sin(Math.toRadians(Q)) + FT*Math.cos(Math.toRadians(p)))));
+		System.out.println(FH);
 		return FH;
 	}
 
 	public double dinghuao() {
-		DO = Tool.forMat(Math.asin(FT*Math.sin(Math.toRadians(p))-FQ*Math.sin(Math.toRadians(Q))/FH));
+		DO = Tool.forMat(Math.asin((FT*Math.sin(Math.toRadians(p))-FQ*Math.sin(Math.toRadians(Q)))/FH));
 		return DO;
 	}
 
@@ -323,23 +331,23 @@ public class SquareDerrickCal {
 	// 查表,结构迎风面充实率，间隔比，总风力系数，构件垂直于风向的实体迎风面积，风力，风荷载，当风载作用于危险截面时弯矩
 	public double chajie() {
 		
-		A1 = c[index1][3];
-		KG = c[index1][4];
-		IXI = c[index1][5];
-		IXK = c[index1][6];
-
-		IX0 = c[index1][7];
-		IY0 = c[index1][8];
-		ZO = c[index1][9];
-
-		A11 = c[index2][3];
-		KG1 = c[index2][4];
-		IXI1 = c[index2][5];
-		IXK1 = c[index2][6];
-
-		IX01 = c[index2][7];
-		IY01 = c[index2][8];
-		ZO1 = c[index2][9];
+//		A1 = c[index1][3];
+//		KG = c[index1][4];
+//		IXI = c[index1][5];
+//		IXK = c[index1][6];
+//
+//		IX0 = c[index1][7];
+//		IY0 = c[index1][8];
+//		ZO = c[index1][9];
+//
+//		A11 = c[index2][3];
+//		KG1 = c[index2][4];
+//		IXI1 = c[index2][5];
+//		IXK1 = c[index2][6];
+//
+//		IX01 = c[index2][7];
+//		IY01 = c[index2][8];
+//		ZO1 = c[index2][9];
 		
 		if(I2 == 0){
 			I21 = 30;
@@ -486,7 +494,9 @@ public class SquareDerrickCal {
 	}
 
 	public double gowind() {
+		System.out.println(JYV);
 		DZ = Tool.forMat(cal2(JYV));
+		System.out.println(DZ);
 		return DZ;
 	}
 
@@ -500,7 +510,11 @@ public class SquareDerrickCal {
 	}
 
 	public double goujian() {
+		if(S == J){
+			TS = 0;
+		}else{
 		TS = Tool.forMat((L0*S/1000000 + (J/1000) + S*3.5*Math.cos(Math.atan(Tool.forMat((L-L0)/(S-J))))/1000)*DZ);
+		}
 		return TS;
 	}
 
@@ -511,11 +525,13 @@ public class SquareDerrickCal {
 
 	public double fenghezai() {
 		QH = Tool.forMat(FL/10);
+		System.out.println(QH);
 		return QH;
 	}
 
 	public double dangfengzai() {
 		M = Tool.forMat(QH*L*L/8);
+		System.out.println(M);
 		return M;
 	}
 
@@ -644,7 +660,7 @@ public class SquareDerrickCal {
 	
 	//单肢稳定系数
 	public double danzhiwen(){
-		DW = cal2(DCB);
+		DW = cal1(DCB);
 		return DW;
 	}
 	
@@ -681,7 +697,7 @@ public class SquareDerrickCal {
 	
 	//斜缀条稳定系数
     public double xiewending(){
-    	XAX = cal2(XCB);
+    	XAX = cal1(XCB);
     	return XAX;
     }
     

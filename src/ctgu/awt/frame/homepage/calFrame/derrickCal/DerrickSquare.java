@@ -920,8 +920,7 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 
 				
 
-				textField_7.setText(String.format("%.2f", QH));
-				textField_8.setText(String.format("%.2f", M));
+				
 				
 				YX = sqc.changxi();
 				Y0X = sqc.huansuan();
@@ -942,7 +941,47 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 				XCB = sqc.xiezhuichangxibi();
 				XAX = sqc.xiewending();
 				WA = sqc.xiewendingan();
+				if(Y0X <= 120){
+					radioButton.setEnabled(true);
+					radioButton.setSelected(true);
+				}else{
+					radioButton_1.setEnabled(true);
+					radioButton_1.setSelected(true);
+				}
 				
+				if(AY >= 2.5){
+					radioButton_8.setEnabled(true);
+					radioButton_8.setSelected(true);
+				}else{
+					radioButton_9.setEnabled(true);
+					radioButton_9.setSelected(true);
+				}
+				
+				if(DCB <= 0.7*YX){
+					radioButton_10.setEnabled(true);
+					radioButton_10.setSelected(true);
+				}else{
+					radioButton_11.setEnabled(true);
+					radioButton_11.setSelected(true);
+				}
+				
+				if(XCB <= 120){
+					radioButton_2.setEnabled(true);
+					radioButton_2.setSelected(true);
+				}else{
+					radioButton_3.setEnabled(true);
+					radioButton_3.setSelected(true);
+				}
+				
+				if(WA >= 2.5){
+					radioButton_4.setEnabled(true);
+					radioButton_4.setSelected(true);
+				}else{
+					radioButton_5.setEnabled(true);
+					radioButton_5.setSelected(true);
+				}
+				textField_7.setText(String.format("%.2f", QH));
+				textField_8.setText(String.format("%.2f", M));
 				textField_36.setText(String.format("%.2f", Y0X));
 				textField_4.setText(String.format("%.2f", AY));
 				textField_5.setText(String.format("%.2f", DCB));
