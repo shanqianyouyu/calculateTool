@@ -184,13 +184,9 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 	 */
 	private void initSquare(WeldButmentEntity WEB) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(0, 100, 1443, 1007);
+		setBounds(0, 100, 1443, 832);
 		getContentPane().setLayout(null);
-		setLocationRelativeTo(null);// 居中
-		
-		JLabel label = new JLabel("斜对接焊缝");
-		label.setBounds(107, 13, 82, 18);
-		getContentPane().add(label);
+		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		Icon icon1 = new ImageIcon(this.getClass().getResource("f2.png"));
@@ -200,18 +196,16 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		((ImageIcon) icon1).setImage(image);
 		picture1 = new JLabel(icon1, JLabel.CENTER);
 		picture1.setBounds(0, 0, 315, 361);
-		panel.setBounds(10, 44, 316, 351);
+		panel.setBounds(10, 13, 316, 351);
 		getContentPane().add(panel);
-		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
-				"示意图", TitledBorder.LEADING,
-				TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u659C\u5BF9\u63A5\u710A\u7F1D\u793A\u610F\u56FE", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel.setLayout(null);
 		
 		panel.add(picture1);
 		
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 561, 316, 151);
+		panel_1.setBounds(10, 530, 316, 151);
 		
 		getContentPane().add(panel_1);
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
@@ -299,15 +293,13 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		label_38.setBounds(282, 60, 46, 24);
 		panel_4.add(label_38);
 		
-		JLabel label_8 = new JLabel("正对接焊缝");
-		label_8.setBounds(454, 540, 82, 18);
+		JLabel label_8 = new JLabel("");
+		label_8.setBounds(454, 536, 82, 18);
 		getContentPane().add(label_8);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setLayout(null);
-		panel_5.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
-						"示意图", TitledBorder.LEADING,
-						TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_5.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u6B63\u5BF9\u63A5\u710A\u7F1D\u793A\u610F\u56FE", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		Icon icon2 = new ImageIcon(this.getClass().getResource("f1.png"));
 		// ImageIcon image = new ImageIcon();
 		Image image1 = ((ImageIcon) icon2).getImage();
@@ -316,25 +308,25 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		picture2 = new JLabel(icon2, JLabel.CENTER);
 		picture2.setBounds(0, 13, 350, 245);
 		panel_5.add(picture2);
-		panel_5.setBounds(329, 561, 359, 258);
+		panel_5.setBounds(326, 530, 359, 258);
 		getContentPane().add(panel_5);
 		
 		JButton button = new JButton("保存");
 		button.setActionCommand("保存");
 		button.addActionListener(this);
-		button.setBounds(193, 892, 113, 27);
+		button.setBounds(1060, 597, 113, 27);
 		getContentPane().add(button);
 		
 		JButton button_1 = new JButton("打印");
 		button_1.setActionCommand("打印");
 		button_1.addActionListener(this);
-		button_1.setBounds(643, 892, 113, 27);
+		button_1.setBounds(1214, 597, 113, 27);
 		getContentPane().add(button_1);
 		
 		JButton button_2 = new JButton("计算");
 		button_2.setActionCommand("计算");
 		button_2.addActionListener(this);
-		button_2.setBounds(1060, 892, 113, 27);
+		button_2.setBounds(1060, 536, 113, 27);
 		getContentPane().add(button_2);
 		
 		JPanel panel_6 = new JPanel();
@@ -449,7 +441,7 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		panel_8.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 						"钢材类型", TitledBorder.LEADING,
 						TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_8.setBounds(696, 333, 348, 74);
+		panel_8.setBounds(696, 333, 348, 55);
 		getContentPane().add(panel_8);
 		
 		radioButton_1 = new JRadioButton("Q235");
@@ -633,7 +625,7 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		panel_11.add(radioButton_4);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(10, 421, 316, 140);
+		panel_2.setBounds(10, 377, 316, 140);
 		getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
@@ -666,7 +658,7 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		panel_15.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 								"焊缝厚度与直径（mm）", TitledBorder.LEADING,
 								TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_15.setBounds(696, 484, 348, 151);
+		panel_15.setBounds(696, 464, 348, 151);
 		getContentPane().add(panel_15);
 		
 		radioButton_5 = new JRadioButton("≤16");
@@ -698,13 +690,13 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		panel_17.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 										"焊缝等级", TitledBorder.LEADING,
 										TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_17.setBounds(340, 13, 342, 74);
+		panel_17.setBounds(340, 13, 342, 63);
 		getContentPane().add(panel_17);
 		
 		radioButton_11 = new JRadioButton("一，二级");
 		radioButton_11.setActionCommand("一，二级");
 		radioButton_11.addActionListener(this);
-		radioButton_11.setBounds(81, 25, 110, 27);
+		radioButton_11.setBounds(53, 25, 124, 27);
 		panel_17.add(radioButton_11);
 		
 		radioButton_12 = new JRadioButton("三级");
@@ -718,7 +710,7 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		panel_18.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 										"焊缝厚度与直径（mm）", TitledBorder.LEADING,
 										TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_18.setBounds(340, 85, 342, 151);
+		panel_18.setBounds(340, 78, 342, 151);
 		getContentPane().add(panel_18);
 		
 		radioButton_13 = new JRadioButton("≤16");
@@ -750,7 +742,7 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		panel_19.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 										"焊缝等级", TitledBorder.LEADING,
 										TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_19.setBounds(696, 407, 342, 74);
+		panel_19.setBounds(696, 388, 342, 74);
 		getContentPane().add(panel_19);
 		
 		radioButton_17 = new JRadioButton("一，二级");
@@ -766,7 +758,7 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		panel_19.add(radioButton_18);
 		
 		JPanel panel_14 = new JPanel();
-		panel_14.setBounds(696, 648, 359, 151);
+		panel_14.setBounds(699, 628, 359, 160);
 		getContentPane().add(panel_14);
 		panel_14.setLayout(null);
 		panel_14.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
@@ -813,7 +805,7 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		panel_14.add(label_53);
 		
 		JPanel panel_13 = new JPanel();
-		panel_13.setBounds(340, 239, 342, 108);
+		panel_13.setBounds(340, 231, 342, 108);
 		getContentPane().add(panel_13);
 		panel_13.setLayout(null);
 		panel_13.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
@@ -870,7 +862,7 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		panel_3.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 								"钢材类型", TitledBorder.LEADING,
 								TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_3.setBounds(10, 725, 316, 74);
+		panel_3.setBounds(10, 694, 316, 55);
 		getContentPane().add(panel_3);
 		
 		radioButton = new JRadioButton("Q235");

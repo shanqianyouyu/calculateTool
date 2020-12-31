@@ -621,19 +621,23 @@ public class AnglePileAnchor extends FatherFrame {
 						+ System.getProperty("line.separator") + s2 + "单根桩的抗弯截面系数: " + entity.W
 						+ System.getProperty("line.separator") + s2 + "弯曲应力: " + entity.f1
 						+ System.getProperty("line.separator") + s1);
-				String type ="";
-				if(entity.btn4 == 1.0) type ="坚土";
-				else if(entity.btn4 == 2.0) type ="次坚土";
-				else if(entity.btn4 == 3.0) type ="普通土";
-				else  type ="软土";
+				String type = "";
+				if (entity.btn4 == 1.0)
+					type = "坚土";
+				else if (entity.btn4 == 2.0)
+					type = "次坚土";
+				else if (entity.btn4 == 3.0)
+					type = "普通土";
+				else
+					type = "软土";
 				sb.append("按土壤的允许的耐力计算单桩的容许承载力:" + System.getProperty("line.separator") + s2 + "土壤类型: " + type
 						+ System.getProperty("line.separator") + s2 + "允许耐压力: " + entity.cT
 						+ System.getProperty("line.separator") + s2 + "单桩地下部分的计算宽度: " + entity.b
 						+ System.getProperty("line.separator") + s2 + "着力点与地面间的距离: " + entity.H2);
-				if(entity.btn5 == 1.0) {
+				if (entity.btn5 == 1.0) {
 					sb.append(System.getProperty("line.separator") + s2 + "单桩打入地下的深度: " + entity.h
 							+ System.getProperty("line.separator") + s2 + "承载力: " + entity.res1);
-				}else {
+				} else {
 					sb.append(System.getProperty("line.separator") + s2 + "单桩的容许承载力: " + entity.p
 							+ System.getProperty("line.separator") + s2 + "单桩打入地下的深度: " + entity.res2);
 				}

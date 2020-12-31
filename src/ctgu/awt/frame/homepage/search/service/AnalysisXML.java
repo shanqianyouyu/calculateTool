@@ -37,7 +37,8 @@ import ctgu.awt.util.Tool;
 
 public class AnalysisXML {
 	// Square.xml文件相对路径
-	static File file = new File("./resources/Square.xml");
+	static String url = "./resources/Square.xml";
+	static File file = new File(url);
 
 	// 读取xml
 	public static Item readXml() {
@@ -161,8 +162,7 @@ public class AnalysisXML {
 			item.setName("对接焊缝计算");
 		}else if(name.equals("Tool")) {
 			item.setName("工器具计算");
-		}
-		else {
+		}else {
 			System.out.println(name + " " + "找不到对应类型!");
 		}
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
@@ -180,7 +180,7 @@ public class AnalysisXML {
 		Element root = null;
 
 		SAXReader reader = new SAXReader();
-		read = reader.read("./src/Square.xml");
+		read = reader.read(url);
 
 		root = read.getRootElement();// Frame
 		List<Element> elements = root.elements();// elements[0] Date

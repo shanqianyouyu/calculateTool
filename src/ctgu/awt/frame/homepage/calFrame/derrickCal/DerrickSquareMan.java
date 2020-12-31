@@ -86,7 +86,7 @@ public class DerrickSquareMan extends FatherFrame implements ActionListener, Ite
 	 */
 	private void initSquare(SquareDerrickManCal des) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1000, 673);
+		setBounds(100, 100, 1000, 648);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -216,7 +216,7 @@ public class DerrickSquareMan extends FatherFrame implements ActionListener, Ite
 				}
 			}
 		});
-		button.setBounds(745, 580, 167, 27);
+		button.setBounds(746, 570, 167, 27);
 		contentPane.add(button);
 
 		JButton button_1 = new JButton("保存到历史纪录");
@@ -225,7 +225,7 @@ public class DerrickSquareMan extends FatherFrame implements ActionListener, Ite
 				AnalysisXML.frameToXMl(des);
 			}
 		});
-		button_1.setBounds(513, 580, 203, 27);
+		button_1.setBounds(513, 570, 203, 27);
 		contentPane.add(button_1);
 
 		JButton button_2 = new JButton("计算");

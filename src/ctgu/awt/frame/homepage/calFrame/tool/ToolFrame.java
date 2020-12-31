@@ -105,7 +105,7 @@ public class ToolFrame extends FatherFrame {
 		setTitle("工器具计算");
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1664, 955);
+		setBounds(100, 100, 1468, 840);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -114,7 +114,7 @@ public class ToolFrame extends FatherFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(
 				new TitledBorder(null, "\u5E73\u884C\u6302\u677F", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(15, 27, 435, 876);
+		panel.setBounds(15, 27, 346, 757);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
@@ -139,7 +139,7 @@ public class ToolFrame extends FatherFrame {
 		panel.add(label_2);
 
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(15, 347, 354, 90);
+		panel_2.setBounds(15, 347, 295, 68);
 		panel.add(panel_2);
 		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u6750\u6599\u9009\u578B",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -152,7 +152,7 @@ public class ToolFrame extends FatherFrame {
 				tool.btn1 = 1.0;
 			}
 		});
-		rdbtnQ.setBounds(50, 43, 129, 27);
+		rdbtnQ.setBounds(48, 29, 129, 27);
 		panel_2.add(rdbtnQ);
 
 		JRadioButton rdbtnQ_1 = new JRadioButton("Q345");
@@ -168,7 +168,7 @@ public class ToolFrame extends FatherFrame {
 			rdbtnQ_1.setSelected(true);
 		}
 
-		rdbtnQ_1.setBounds(209, 42, 102, 27);
+		rdbtnQ_1.setBounds(183, 29, 102, 27);
 		panel_2.add(rdbtnQ_1);
 
 		ButtonGroup buttonGroup = new ButtonGroup();
@@ -176,43 +176,43 @@ public class ToolFrame extends FatherFrame {
 		buttonGroup.add(rdbtnQ_1);
 
 		JLabel lblR = new JLabel("<html>内径 R<sub>1</sub>：</html>");
-		lblR.setBounds(25, 448, 117, 38);
+		lblR.setBounds(15, 428, 117, 29);
 		panel.add(lblR);
 
 		textField = new JTextField();
-		textField.setBounds(161, 453, 115, 24);
+		textField.setBounds(146, 428, 115, 24);
 		panel.add(textField);
 		textField.setColumns(10);
 
 		textField_1 = new JTextField();
-		textField_1.setBounds(161, 509, 115, 24);
+		textField_1.setBounds(149, 472, 115, 24);
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 
 		JLabel lblR_1 = new JLabel("<html>外径R<sub>2</sub> ：</html>");
-		lblR_1.setBounds(27, 505, 115, 36);
+		lblR_1.setBounds(15, 468, 115, 36);
 		panel.add(lblR_1);
 
 		JLabel lblF = new JLabel("拉力 F：");
-		lblF.setBounds(27, 563, 115, 18);
+		lblF.setBounds(15, 516, 115, 18);
 		panel.add(lblF);
 
 		textField_2 = new JTextField();
-		textField_2.setBounds(161, 556, 115, 24);
+		textField_2.setBounds(149, 509, 115, 24);
 		panel.add(textField_2);
 		textField_2.setColumns(10);
 
 		JLabel lblT = new JLabel("厚度 t ：");
-		lblT.setBounds(27, 614, 119, 18);
+		lblT.setBounds(15, 550, 104, 18);
 		panel.add(lblT);
 
 		textField_3 = new JTextField();
-		textField_3.setBounds(161, 611, 115, 24);
+		textField_3.setBounds(149, 547, 117, 24);
 		panel.add(textField_3);
 		textField_3.setColumns(10);
 
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(15, 661, 354, 161);
+		panel_3.setBounds(15, 581, 280, 161);
 		panel.add(panel_3);
 		panel_3.setBackground(Color.LIGHT_GRAY);
 		panel_3.setForeground(Color.LIGHT_GRAY);
@@ -226,7 +226,7 @@ public class ToolFrame extends FatherFrame {
 
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(174, 28, 150, 24);
+		textField_4.setBounds(174, 28, 86, 24);
 		panel_3.add(textField_4);
 
 		JLabel lblN = new JLabel("<html>挤压安全系数 n<sub>2</sub>：<html>");
@@ -235,7 +235,7 @@ public class ToolFrame extends FatherFrame {
 
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(174, 73, 150, 24);
+		textField_5.setBounds(174, 73, 86, 24);
 		panel_3.add(textField_5);
 
 		JButton button = new JButton("计算");
@@ -272,19 +272,19 @@ public class ToolFrame extends FatherFrame {
 		panel_3.add(button);
 
 		JLabel lblMm = new JLabel("mm");
-		lblMm.setBounds(302, 457, 72, 18);
+		lblMm.setBounds(290, 432, 42, 18);
 		panel.add(lblMm);
 
 		JLabel label_5 = new JLabel("mm");
-		label_5.setBounds(302, 512, 72, 18);
+		label_5.setBounds(290, 475, 42, 18);
 		panel.add(label_5);
 
 		JLabel label_7 = new JLabel("mm");
-		label_7.setBounds(302, 614, 72, 18);
+		label_7.setBounds(290, 550, 42, 18);
 		panel.add(label_7);
 
 		JLabel lblN_1 = new JLabel("N");
-		lblN_1.setBounds(302, 563, 72, 18);
+		lblN_1.setBounds(290, 516, 56, 18);
 		panel.add(lblN_1);
 
 		Icon icon2 = new ImageIcon("./resources/tool/tool3.png");
@@ -293,7 +293,7 @@ public class ToolFrame extends FatherFrame {
 		((ImageIcon) icon2).setImage(image2);
 
 		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(454, 27, 395, 876);
+		panel_4.setBounds(375, 27, 395, 757);
 		contentPane.add(panel_4);
 		panel_4.setBorder(new TitledBorder(null, "\u4E09\u89D2\u8054\u677F\u8BA1\u7B97", TitledBorder.LEADING,
 				TitledBorder.TOP, null, null));
@@ -331,36 +331,36 @@ public class ToolFrame extends FatherFrame {
 		panel_4.add(textField_8);
 
 		JLabel lblR_4 = new JLabel("<html>内径 r<sub>1</sub>：</html>");
-		lblR_4.setBounds(14, 424, 117, 38);
+		lblR_4.setBounds(14, 405, 86, 30);
 		panel_4.add(lblR_4);
 
 		textField_9 = new JTextField();
 		textField_9.setColumns(10);
-		textField_9.setBounds(82, 430, 86, 24);
+		textField_9.setBounds(82, 411, 86, 24);
 		panel_4.add(textField_9);
 
 		JLabel lblR_5 = new JLabel("<html>内径 r<sub>2</sub>：</html>");
-		lblR_5.setBounds(209, 424, 98, 38);
+		lblR_5.setBounds(209, 409, 77, 30);
 		panel_4.add(lblR_5);
 
 		textField_10 = new JTextField();
 		textField_10.setColumns(10);
-		textField_10.setBounds(274, 430, 86, 24);
+		textField_10.setBounds(274, 411, 86, 24);
 		panel_4.add(textField_10);
 
 		JLabel lblT_1 = new JLabel("厚度 t:");
-		lblT_1.setBounds(14, 475, 117, 38);
+		lblT_1.setBounds(14, 437, 86, 30);
 		panel_4.add(lblT_1);
 
 		textField_11 = new JTextField();
 		textField_11.setColumns(10);
-		textField_11.setBounds(110, 482, 179, 24);
+		textField_11.setBounds(82, 443, 86, 24);
 		panel_4.add(textField_11);
 
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(Color.LIGHT_GRAY);
 		panel_5.setBorder(new TitledBorder(null, "\u8F93\u51FA", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_5.setBounds(14, 636, 367, 227);
+		panel_5.setBounds(11, 517, 367, 227);
 		panel_4.add(panel_5);
 		panel_5.setLayout(null);
 
@@ -450,30 +450,30 @@ public class ToolFrame extends FatherFrame {
 		panel_5.add(textField_27);
 
 		JLabel lblA_2 = new JLabel("a:");
-		lblA_2.setBounds(14, 529, 117, 24);
+		lblA_2.setBounds(209, 443, 46, 24);
 		panel_4.add(lblA_2);
 
 		JLabel lblB_1 = new JLabel("b:");
-		lblB_1.setBounds(14, 562, 117, 24);
+		lblB_1.setBounds(26, 480, 56, 24);
 		panel_4.add(lblB_1);
 
 		JLabel lblC = new JLabel("h:");
-		lblC.setBounds(14, 599, 117, 24);
+		lblC.setBounds(209, 480, 33, 24);
 		panel_4.add(lblC);
 
 		textField_23 = new JTextField();
 		textField_23.setColumns(10);
-		textField_23.setBounds(110, 529, 179, 24);
+		textField_23.setBounds(274, 443, 86, 24);
 		panel_4.add(textField_23);
 
 		textField_24 = new JTextField();
 		textField_24.setColumns(10);
-		textField_24.setBounds(110, 562, 179, 24);
+		textField_24.setBounds(82, 480, 84, 24);
 		panel_4.add(textField_24);
 
 		textField_25 = new JTextField();
 		textField_25.setColumns(10);
-		textField_25.setBounds(110, 600, 179, 24);
+		textField_25.setBounds(274, 480, 84, 24);
 		panel_4.add(textField_25);
 
 		JPanel panel_9 = new JPanel();
@@ -518,15 +518,15 @@ public class ToolFrame extends FatherFrame {
 		panel_4.add(label_9);
 
 		JLabel label_10 = new JLabel("mm");
-		label_10.setBounds(182, 433, 64, 18);
+		label_10.setBounds(172, 418, 64, 18);
 		panel_4.add(label_10);
 
 		JLabel label_11 = new JLabel("mm");
-		label_11.setBounds(364, 433, 72, 18);
+		label_11.setBounds(364, 417, 46, 18);
 		panel_4.add(label_11);
 
 		JLabel label_12 = new JLabel("mm");
-		label_12.setBounds(303, 488, 72, 18);
+		label_12.setBounds(172, 447, 72, 18);
 		panel_4.add(label_12);
 
 		JLabel label_16 = new JLabel("N");
@@ -536,18 +536,18 @@ public class ToolFrame extends FatherFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(
 				new TitledBorder(null, "\u540A\u73AF\u8BA1\u7B97", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(882, 27, 359, 801);
+		panel_1.setBounds(773, 27, 296, 757);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
 		Icon icon4 = Tool.getIcon("./resources/tool/tool4.png", -1, 120);
 		JLabel label_3 = new JLabel(icon4, JLabel.CENTER);
-		label_3.setBounds(15, 28, 333, 153);
+		label_3.setBounds(15, 28, 268, 153);
 		panel_1.add(label_3);
 
 		textField_14 = new JTextField();
 		textField_14.setColumns(10);
-		textField_14.setBounds(130, 330, 140, 24);
+		textField_14.setBounds(130, 330, 109, 24);
 		panel_1.add(textField_14);
 
 		JLabel lblF_4 = new JLabel("<html>水平拉力 F<sub>1</sub>:</html>");
@@ -555,37 +555,37 @@ public class ToolFrame extends FatherFrame {
 		panel_1.add(lblF_4);
 
 		JLabel lblF_5 = new JLabel("<html>竖直拉力 F<sub>2</sub>:</html>");
-		lblF_5.setBounds(15, 395, 117, 38);
+		lblF_5.setBounds(15, 367, 117, 38);
 		panel_1.add(lblF_5);
 
 		textField_15 = new JTextField();
 		textField_15.setColumns(10);
-		textField_15.setBounds(130, 400, 140, 24);
+		textField_15.setBounds(130, 372, 109, 24);
 		panel_1.add(textField_15);
 
 		JLabel lblF_6 = new JLabel("吊环孔径 ф:");
-		lblF_6.setBounds(15, 456, 117, 38);
+		lblF_6.setBounds(15, 418, 117, 38);
 		panel_1.add(lblF_6);
 
 		textField_16 = new JTextField();
 		textField_16.setColumns(10);
-		textField_16.setBounds(130, 461, 140, 24);
+		textField_16.setBounds(130, 423, 109, 24);
 		panel_1.add(textField_16);
 
 		JLabel lblR_6 = new JLabel("环内半径 R:");
-		lblR_6.setBounds(15, 521, 117, 38);
+		lblR_6.setBounds(15, 469, 117, 38);
 		panel_1.add(lblR_6);
 
 		textField_17 = new JTextField();
 		textField_17.setColumns(10);
-		textField_17.setBounds(130, 526, 140, 24);
+		textField_17.setBounds(130, 474, 109, 24);
 		panel_1.add(textField_17);
 
 		JPanel panel_6 = new JPanel();
 		panel_6.setLayout(null);
 		panel_6.setBorder(new TitledBorder(null, "\u8F93\u51FA", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_6.setBackground(Color.LIGHT_GRAY);
-		panel_6.setBounds(15, 593, 330, 195);
+		panel_6.setBounds(15, 535, 247, 195);
 		panel_1.add(panel_6);
 
 		JLabel lblA = new JLabel("截面强度安全系数 n：");
@@ -594,7 +594,7 @@ public class ToolFrame extends FatherFrame {
 
 		textField_18 = new JTextField();
 		textField_18.setColumns(10);
-		textField_18.setBounds(111, 68, 179, 24);
+		textField_18.setBounds(15, 71, 179, 24);
 		panel_6.add(textField_18);
 
 		JButton button_2 = new JButton("计算");
@@ -632,7 +632,7 @@ public class ToolFrame extends FatherFrame {
 		panel_10.setLayout(null);
 		panel_10.setBorder(
 				new TitledBorder(null, "\u6750\u6599\u9009\u578B", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_10.setBounds(15, 218, 319, 79);
+		panel_10.setBounds(15, 218, 268, 79);
 		panel_1.add(panel_10);
 
 		JRadioButton radioButton_2 = new JRadioButton("Q235");
@@ -642,7 +642,7 @@ public class ToolFrame extends FatherFrame {
 				tool.btn3 = 1.0;
 			}
 		});
-		radioButton_2.setBounds(29, 33, 129, 27);
+		radioButton_2.setBounds(29, 33, 102, 27);
 		panel_10.add(radioButton_2);
 
 		JRadioButton radioButton_3 = new JRadioButton("Q345");
@@ -657,7 +657,7 @@ public class ToolFrame extends FatherFrame {
 			radioButton_2.setSelected(true);
 		} else
 			radioButton_3.setSelected(true);
-		radioButton_3.setBounds(190, 32, 102, 27);
+		radioButton_3.setBounds(137, 33, 102, 27);
 		panel_10.add(radioButton_3);
 
 		ButtonGroup buttonGroup3 = new ButtonGroup();
@@ -665,25 +665,25 @@ public class ToolFrame extends FatherFrame {
 		buttonGroup3.add(radioButton_3);
 
 		JLabel label_13 = new JLabel("mm");
-		label_13.setBounds(276, 466, 72, 18);
+		label_13.setBounds(253, 438, 72, 18);
 		panel_1.add(label_13);
 
 		JLabel label_14 = new JLabel("mm");
-		label_14.setBounds(276, 531, 72, 18);
+		label_14.setBounds(253, 489, 72, 18);
 		panel_1.add(label_14);
 
 		JLabel label_17 = new JLabel("N");
-		label_17.setBounds(276, 333, 72, 18);
+		label_17.setBounds(253, 333, 72, 18);
 		panel_1.add(label_17);
 
 		JLabel label_18 = new JLabel("N");
-		label_18.setBounds(276, 404, 72, 18);
+		label_18.setBounds(253, 376, 72, 18);
 		panel_1.add(label_18);
 
 		JPanel panel_7 = new JPanel();
 		panel_7.setBorder(
 				new TitledBorder(null, "\u62C9\u68D2\u8BA1\u7B97", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_7.setBounds(1246, 27, 359, 618);
+		panel_7.setBounds(1083, 27, 359, 618);
 		contentPane.add(panel_7);
 		panel_7.setLayout(null);
 
@@ -852,11 +852,11 @@ public class ToolFrame extends FatherFrame {
 				}
 			}
 		});
-		button_4.setBounds(1255, 658, 174, 29);
+		button_4.setBounds(1083, 658, 174, 29);
 		contentPane.add(button_4);
 
 		JButton button_5 = new JButton("保存到历史纪录");
-		button_5.setBounds(1255, 700, 174, 29);
+		button_5.setBounds(1083, 700, 174, 29);
 		contentPane.add(button_5);
 	}
 }

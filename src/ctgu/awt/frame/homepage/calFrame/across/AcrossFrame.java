@@ -107,10 +107,11 @@ public class AcrossFrame extends FatherFrame {
 	 * Create the frame.
 	 */
 	public AcrossFrame(Across item) {
+		setTitle("跨越架计算");
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1746, 1002);
+		setBounds(100, 100, 1646, 825);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -123,7 +124,7 @@ public class AcrossFrame extends FatherFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "\u8DE8\u8D8A\u67B6\u7684\u57FA\u672C\u53C2\u6570\u8BA1\u7B97",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(14, 268, 454, 631);
+		panel.setBounds(14, 268, 454, 502);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
@@ -137,25 +138,25 @@ public class AcrossFrame extends FatherFrame {
 		textField.setColumns(10);
 
 		JLabel lblQ = new JLabel("导线线密度 q：");
-		lblQ.setBounds(14, 80, 131, 18);
+		lblQ.setBounds(14, 62, 131, 18);
 		panel.add(lblQ);
 
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(178, 78, 108, 24);
+		textField_1.setBounds(178, 60, 108, 24);
 		panel.add(textField_1);
 
 		JLabel lblNm = new JLabel("N/m");
-		lblNm.setBounds(300, 81, 72, 18);
+		lblNm.setBounds(300, 63, 72, 18);
 		panel.add(lblNm);
 
 		JLabel lblUs = new JLabel("<html>风荷调整系数 u<sub>s</sub>：</html>");
-		lblUs.setBounds(14, 122, 157, 24);
+		lblUs.setBounds(14, 93, 157, 24);
 		panel.add(lblUs);
 
 		JLabel lblmm = new JLabel("高度30m以下取1.1，30~50m取1.5");
 		lblmm.setForeground(Color.RED);
-		lblmm.setBounds(24, 147, 273, 18);
+		lblmm.setBounds(24, 118, 273, 18);
 		panel.add(lblmm);
 		lblmm.setVisible(false);
 		textField_2 = new JTextField();
@@ -172,7 +173,7 @@ public class AcrossFrame extends FatherFrame {
 			}
 		});
 		textField_2.setColumns(10);
-		textField_2.setBounds(178, 122, 108, 24);
+		textField_2.setBounds(178, 93, 108, 24);
 		panel.add(textField_2);
 
 		JRadioButton radioButton = new JRadioButton("圆形杆件");
@@ -185,7 +186,7 @@ public class AcrossFrame extends FatherFrame {
 
 			}
 		});
-		radioButton.setBounds(21, 178, 144, 27);
+		radioButton.setBounds(20, 140, 144, 27);
 		panel.add(radioButton);
 
 		JRadioButton radioButton_1 = new JRadioButton("平面杆件");
@@ -198,7 +199,7 @@ public class AcrossFrame extends FatherFrame {
 			}
 		});
 
-		radioButton_1.setBounds(164, 178, 123, 27);
+		radioButton_1.setBounds(163, 140, 123, 27);
 		panel.add(radioButton_1);
 
 		ButtonGroup buttonGroup1 = new ButtonGroup();
@@ -206,12 +207,12 @@ public class AcrossFrame extends FatherFrame {
 		buttonGroup1.add(radioButton_1);
 
 		JLabel lblUs_1 = new JLabel("<html>风载体型系数 β<sub>z</sub>：</html>");
-		lblUs_1.setBounds(14, 231, 182, 24);
+		lblUs_1.setBounds(14, 177, 182, 24);
 		panel.add(lblUs_1);
 
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(178, 230, 94, 24);
+		textField_3.setBounds(178, 176, 94, 24);
 		panel.add(textField_3);
 		if (item.btn1 == 1.0) {
 			radioButton.setSelected(true);
@@ -224,13 +225,13 @@ public class AcrossFrame extends FatherFrame {
 		}
 
 		JLabel lblV = new JLabel("路线设计最大风速 V：");
-		lblV.setBounds(14, 277, 182, 18);
+		lblV.setBounds(14, 217, 182, 18);
 		panel.add(lblV);
 
 		JLabel label = new JLabel("取值为25~30");
 
 		label.setForeground(Color.RED);
-		label.setBounds(14, 300, 273, 18);
+		label.setBounds(14, 240, 273, 18);
 		panel.add(label);
 		label.setVisible(false);
 		textField_4 = new JTextField();
@@ -246,15 +247,15 @@ public class AcrossFrame extends FatherFrame {
 			}
 		});
 		textField_4.setColumns(10);
-		textField_4.setBounds(178, 274, 94, 24);
+		textField_4.setBounds(178, 214, 94, 24);
 		panel.add(textField_4);
 
 		JLabel lblMs = new JLabel("m/s");
-		lblMs.setBounds(274, 277, 72, 18);
+		lblMs.setBounds(274, 217, 72, 18);
 		panel.add(lblMs);
 
 		JLabel lblmAs = new JLabel("<html>架面1m范围的投影面积 A<sub>s</sub>：</html>");
-		lblmAs.setBounds(14, 345, 215, 33);
+		lblmAs.setBounds(14, 271, 215, 33);
 		panel.add(lblmAs);
 		JLabel label_1 = new JLabel("一般可取架面架面轮廓面积的30%到40%");
 		textField_5 = new JTextField();
@@ -270,56 +271,56 @@ public class AcrossFrame extends FatherFrame {
 			}
 		});
 		textField_5.setColumns(10);
-		textField_5.setBounds(203, 348, 108, 24);
+		textField_5.setBounds(203, 274, 108, 24);
 		panel.add(textField_5);
 
 		JLabel label_2 = new JLabel("m/s");
-		label_2.setBounds(325, 351, 45, 18);
+		label_2.setBounds(325, 277, 45, 18);
 		panel.add(label_2);
 
 		label_1.setForeground(Color.RED);
-		label_1.setBounds(24, 373, 315, 18);
+		label_1.setBounds(24, 299, 315, 18);
 		panel.add(label_1);
 		label_1.setVisible(false);
 
 		JLabel lblz = new JLabel("<html>冲击系数 K<sub>1</sub>：</html>");
-		lblz.setBounds(14, 402, 182, 24);
+		lblz.setBounds(14, 333, 182, 24);
 		panel.add(lblz);
 
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
-		textField_6.setBounds(203, 399, 108, 24);
+		textField_6.setBounds(203, 330, 108, 24);
 		panel.add(textField_6);
 
 		JLabel label_3 = new JLabel("取值为1.3~1.5");
 		label_3.setForeground(Color.RED);
-		label_3.setBounds(24, 425, 273, 18);
+		label_3.setBounds(24, 356, 273, 18);
 		panel.add(label_3);
 
 		JLabel lblAs = new JLabel("<html>导线或牵引绳对跨越架的摩擦系数 u<sub>0</sub>：</html>");
-		lblAs.setBounds(14, 447, 263, 32);
+		lblAs.setBounds(14, 377, 263, 32);
 		panel.add(lblAs);
 
 		textField_7 = new JTextField();
-		textField_7.setBounds(291, 450, 108, 24);
+		textField_7.setBounds(291, 380, 108, 24);
 		panel.add(textField_7);
 		textField_7.setColumns(10);
 
 		JLabel lblu = new JLabel(
 				"<html>架顶为滚动横梁，u<sub>0</sub>=0.2〜0.3;<br>架顶为非滚动横梁，且为非金属材料，u<sub>0</sub>=0.7~1.0;<br>架顶力非滚动横梁，且为金属材料，u<sub>0</sub>=0.4~0.5<br></html>");
-		lblu.setBounds(14, 481, 391, 78);
+		lblu.setBounds(14, 411, 391, 78);
 		panel.add(lblu);
 		lblu.setForeground(Color.RED);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBounds(482, 13, 423, 414);
+		panel_1.setBounds(482, 13, 389, 323);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(null, "\u8F93\u51FA", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.setBounds(14, 13, 391, 385);
+		panel_2.setBounds(14, 13, 364, 307);
 		panel_1.add(panel_2);
 		panel_2.setLayout(null);
 		panel_2.setBackground(Config.ResColor);
@@ -330,41 +331,41 @@ public class AcrossFrame extends FatherFrame {
 
 		textField_8 = new JTextField();
 		textField_8.setColumns(10);
-		textField_8.setBounds(191, 24, 108, 24);
+		textField_8.setBounds(191, 24, 69, 24);
 		panel_2.add(textField_8);
 
 		JLabel lblN_1 = new JLabel("N");
-		lblN_1.setBounds(313, 27, 42, 18);
+		lblN_1.setBounds(274, 25, 42, 18);
 		panel_2.add(lblN_1);
 
 		JLabel lblQf = new JLabel("<html>架面风压的均布载荷 q<sub>F</sub>：</html>");
-		lblQf.setBounds(14, 71, 194, 24);
+		lblQf.setBounds(14, 52, 194, 24);
 		panel_2.add(lblQf);
 
 		textField_9 = new JTextField();
 		textField_9.setColumns(10);
-		textField_9.setBounds(190, 71, 108, 24);
+		textField_9.setBounds(190, 52, 69, 24);
 		panel_2.add(textField_9);
 
 		JLabel lblKnm = new JLabel("KN/m");
-		lblKnm.setBounds(313, 73, 42, 18);
+		lblKnm.setBounds(274, 52, 42, 18);
 		panel_2.add(lblKnm);
 
 		JLabel lblP = new JLabel("跨越架的水平荷载 P：");
-		lblP.setBounds(14, 114, 176, 18);
+		lblP.setBounds(14, 86, 176, 18);
 		panel_2.add(lblP);
 
 		textField_10 = new JTextField();
 		textField_10.setColumns(10);
-		textField_10.setBounds(190, 111, 108, 24);
+		textField_10.setBounds(190, 83, 69, 24);
 		panel_2.add(textField_10);
 
 		JLabel label_4 = new JLabel("N");
-		label_4.setBounds(313, 114, 42, 18);
+		label_4.setBounds(274, 84, 42, 18);
 		panel_2.add(label_4);
 
 		JLabel lblW = new JLabel("架顶宽度 W规范：");
-		lblW.setBounds(14, 152, 176, 18);
+		lblW.setBounds(14, 121, 176, 18);
 		panel_2.add(lblW);
 
 		JButton btnW = new JButton("查看规范");
@@ -374,11 +375,11 @@ public class AcrossFrame extends FatherFrame {
 				pictureWindow3 window3 = new pictureWindow3(name2);
 			}
 		});
-		btnW.setBounds(157, 148, 113, 27);
+		btnW.setBounds(157, 117, 113, 27);
 		panel_2.add(btnW);
 
 		JLabel lblS = new JLabel("<html>跨越架与铁路、公路及弱电线的最小安全距离 S<sub>1</sub>：</html>");
-		lblS.setBounds(14, 188, 363, 35);
+		lblS.setBounds(14, 152, 363, 35);
 		panel_2.add(lblS);
 
 		JButton button = new JButton("查看规范");
@@ -389,11 +390,11 @@ public class AcrossFrame extends FatherFrame {
 				window1.setVisible(true);
 			}
 		});
-		button.setBounds(157, 236, 113, 27);
+		button.setBounds(157, 184, 113, 27);
 		panel_2.add(button);
 
 		JLabel lblS_1 = new JLabel("<html>跨越架与带电体之间的最小安全距离 S<sub>2</sub>：</html>");
-		lblS_1.setBounds(14, 277, 363, 35);
+		lblS_1.setBounds(14, 213, 363, 27);
 		panel_2.add(lblS_1);
 
 		JButton button_1 = new JButton("查看规范");
@@ -404,7 +405,7 @@ public class AcrossFrame extends FatherFrame {
 				window2.setVisible(true);
 			}
 		});
-		button_1.setBounds(157, 317, 113, 27);
+		button_1.setBounds(157, 241, 113, 27);
 		panel_2.add(button_1);
 
 		JButton button_2 = new JButton("计算");
@@ -444,14 +445,14 @@ public class AcrossFrame extends FatherFrame {
 				textField_10.setText(String.valueOf(item.P11));
 			}
 		});
-		button_2.setBounds(14, 345, 113, 27);
+		button_2.setBounds(14, 270, 113, 27);
 		panel_2.add(button_2);
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 				"\u7AF9\u3001\u6728\u6746\u8DE8\u8D8A\u67B6\u7684\u5B89\u88C5\u8BA1\u7B97", TitledBorder.LEADING,
 				TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_3.setBounds(482, 440, 423, 502);
+		panel_3.setBounds(482, 352, 405, 433);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 
@@ -461,15 +462,15 @@ public class AcrossFrame extends FatherFrame {
 
 		textField_11 = new JTextField();
 		textField_11.setColumns(10);
-		textField_11.setBounds(263, 25, 108, 24);
+		textField_11.setBounds(263, 25, 63, 24);
 		panel_3.add(textField_11);
 
 		JLabel lblM = new JLabel("m");
-		lblM.setBounds(381, 28, 42, 18);
+		lblM.setBounds(340, 28, 42, 18);
 		panel_3.add(lblM);
 
 		JLabel lblkv = new JLabel("被跨越电力线电压(KV):");
-		lblkv.setBounds(14, 63, 178, 24);
+		lblkv.setBounds(14, 48, 178, 24);
 		panel_3.add(lblkv);
 
 		JRadioButton radioButton_2 = new JRadioButton("≦10");
@@ -479,7 +480,7 @@ public class AcrossFrame extends FatherFrame {
 				item.btn2 = 1.0;
 			}
 		});
-		radioButton_2.setBounds(24, 84, 79, 27);
+		radioButton_2.setBounds(24, 69, 79, 27);
 		panel_3.add(radioButton_2);
 
 		JRadioButton radioButton_3 = new JRadioButton("35");
@@ -489,7 +490,7 @@ public class AcrossFrame extends FatherFrame {
 				item.btn2 = 2.0;
 			}
 		});
-		radioButton_3.setBounds(109, 84, 63, 27);
+		radioButton_3.setBounds(109, 69, 63, 27);
 		panel_3.add(radioButton_3);
 
 		JRadioButton radioButton_4 = new JRadioButton("60-110");
@@ -499,7 +500,7 @@ public class AcrossFrame extends FatherFrame {
 				item.btn2 = 3.0;
 			}
 		});
-		radioButton_4.setBounds(178, 84, 88, 27);
+		radioButton_4.setBounds(178, 69, 88, 27);
 		panel_3.add(radioButton_4);
 
 		JRadioButton radioButton_5 = new JRadioButton("220");
@@ -509,7 +510,7 @@ public class AcrossFrame extends FatherFrame {
 				item.btn2 = 4.0;
 			}
 		});
-		radioButton_5.setBounds(263, 84, 63, 27);
+		radioButton_5.setBounds(263, 69, 63, 27);
 		panel_3.add(radioButton_5);
 
 		JRadioButton radioButton_6 = new JRadioButton("330");
@@ -519,7 +520,7 @@ public class AcrossFrame extends FatherFrame {
 				item.btn2 = 5.0;
 			}
 		});
-		radioButton_6.setBounds(332, 84, 63, 27);
+		radioButton_6.setBounds(332, 69, 63, 27);
 		panel_3.add(radioButton_6);
 
 		ButtonGroup buttonGroup2 = new ButtonGroup();
@@ -547,7 +548,7 @@ public class AcrossFrame extends FatherFrame {
 				item.btn3 = 1.0;
 			}
 		});
-		radioButton_7.setBounds(79, 116, 108, 27);
+		radioButton_7.setBounds(79, 94, 108, 27);
 		panel_3.add(radioButton_7);
 
 		JRadioButton radioButton_8 = new JRadioButton("有地线");
@@ -557,7 +558,7 @@ public class AcrossFrame extends FatherFrame {
 				item.btn3 = 2.0;
 			}
 		});
-		radioButton_8.setBounds(216, 116, 108, 27);
+		radioButton_8.setBounds(216, 94, 108, 27);
 		panel_3.add(radioButton_8);
 
 		ButtonGroup buttonGroup3 = new ButtonGroup();
@@ -576,7 +577,7 @@ public class AcrossFrame extends FatherFrame {
 				item.btn4 = 1.0;
 			}
 		});
-		radioButton_9.setBounds(79, 148, 108, 27);
+		radioButton_9.setBounds(79, 126, 108, 27);
 		panel_3.add(radioButton_9);
 
 		JRadioButton radioButton_10 = new JRadioButton("封顶网");
@@ -586,7 +587,7 @@ public class AcrossFrame extends FatherFrame {
 				item.btn4 = 2.0;
 			}
 		});
-		radioButton_10.setBounds(216, 148, 108, 27);
+		radioButton_10.setBounds(216, 126, 108, 27);
 		panel_3.add(radioButton_10);
 		ButtonGroup buttonGroup4 = new ButtonGroup();
 		buttonGroup4.add(radioButton_9);
@@ -598,39 +599,39 @@ public class AcrossFrame extends FatherFrame {
 			radioButton_10.setSelected(true);
 
 		JLabel lblF = new JLabel("跨越架封顶网的弧垂 f:");
-		lblF.setBounds(14, 226, 178, 24);
+		lblF.setBounds(14, 203, 178, 24);
 		panel_3.add(lblF);
 
 		JLabel lblFfm = new JLabel("<html>封顶用竹、木杆时，  f=0;<br>对于尼龙网，f=1~2m;</html>");
-		lblFfm.setBounds(24, 253, 202, 46);
+		lblFfm.setBounds(24, 227, 202, 46);
 		panel_3.add(lblFfm);
 		lblFfm.setForeground(Color.RED);
 
 		textField_12 = new JTextField();
-		textField_12.setBounds(192, 226, 108, 24);
+		textField_12.setBounds(192, 203, 108, 24);
 		panel_3.add(textField_12);
 		textField_12.setColumns(10);
 
 		JLabel label_5 = new JLabel("m");
-		label_5.setBounds(314, 229, 42, 18);
+		label_5.setBounds(314, 206, 42, 18);
 		panel_3.add(label_5);
 
 		JLabel lblB = new JLabel("<html>施工线路的线间距离 B<sub>1</sub>：</html>");
-		lblB.setBounds(14, 308, 194, 24);
+		lblB.setBounds(14, 273, 194, 24);
 		panel_3.add(lblB);
 
 		textField_13 = new JTextField();
-		textField_13.setBounds(192, 307, 108, 24);
+		textField_13.setBounds(192, 272, 108, 24);
 		panel_3.add(textField_13);
 		textField_13.setColumns(10);
 
 		JLabel label_6 = new JLabel("m");
-		label_6.setBounds(314, 310, 42, 18);
+		label_6.setBounds(314, 275, 42, 18);
 		panel_3.add(label_6);
 
 		JLabel lblbmfm = new JLabel(
 				"<html>对于单线，B<sub>1</sub>取0.5m;<br>对于双线，B<sub>1</sub>为线间距离;<br>对于三相线，B<sub>1</sub>为两边线的距离;</html>");
-		lblbmfm.setBounds(24, 332, 235, 66);
+		lblbmfm.setBounds(24, 298, 235, 66);
 		panel_3.add(lblbmfm);
 		lblbmfm.setFont(new Font("宋体", Font.PLAIN, 13));
 		lblbmfm.setForeground(Color.RED);
@@ -642,7 +643,7 @@ public class AcrossFrame extends FatherFrame {
 				textField_14.setText("1.5");
 			}
 		});
-		rdbtnD.setBounds(14, 407, 157, 27);
+		rdbtnD.setBounds(14, 366, 157, 27);
 		panel_3.add(rdbtnD);
 
 		JRadioButton radioButton_11 = new JRadioButton("不停电架线跨越架");
@@ -652,7 +653,7 @@ public class AcrossFrame extends FatherFrame {
 				textField_14.setText("1.7");
 			}
 		});
-		radioButton_11.setBounds(189, 407, 180, 27);
+		radioButton_11.setBounds(189, 366, 180, 27);
 		panel_3.add(radioButton_11);
 
 		ButtonGroup buttonGroup5 = new ButtonGroup();
@@ -660,7 +661,7 @@ public class AcrossFrame extends FatherFrame {
 		buttonGroup5.add(radioButton_11);
 
 		textField_14 = new JTextField();
-		textField_14.setBounds(262, 443, 57, 24);
+		textField_14.setBounds(262, 402, 57, 24);
 		panel_3.add(textField_14);
 		textField_14.setColumns(10);
 		if (item.btn5 == 1.0) {
@@ -672,24 +673,24 @@ public class AcrossFrame extends FatherFrame {
 		}
 
 		JLabel lblM_1 = new JLabel("跨越架顶面超出施工线路的宽度 M:");
-		lblM_1.setBounds(14, 443, 259, 24);
+		lblM_1.setBounds(14, 402, 259, 24);
 		panel_3.add(lblM_1);
 
 		JLabel label_7 = new JLabel("m");
-		label_7.setBounds(333, 446, 42, 18);
+		label_7.setBounds(333, 405, 42, 18);
 		panel_3.add(label_7);
 
 		JLabel label_40 = new JLabel("不同电压等级的电力线与封顶架面的最小垂直距离 a:");
-		label_40.setBounds(14, 172, 375, 24);
+		label_40.setBounds(14, 150, 375, 24);
 		panel_3.add(label_40);
 
 		textField_45 = new JTextField();
 		textField_45.setColumns(10);
-		textField_45.setBounds(192, 196, 108, 24);
+		textField_45.setBounds(14, 176, 108, 24);
 		panel_3.add(textField_45);
 
 		JLabel label_41 = new JLabel("m");
-		label_41.setBounds(314, 199, 42, 18);
+		label_41.setBounds(136, 179, 42, 18);
 		panel_3.add(label_41);
 
 		JButton button_8 = new JButton("获取");
@@ -791,12 +792,12 @@ public class AcrossFrame extends FatherFrame {
 				textField_17.setText(String.valueOf(res2));
 			}
 		});
-		button_8.setBounds(332, 195, 77, 27);
+		button_8.setBounds(154, 175, 77, 27);
 		panel_3.add(button_8);
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_4.setBounds(919, 13, 389, 408);
+		panel_4.setBounds(885, 13, 359, 306);
 		contentPane.add(panel_4);
 		panel_4.setLayout(null);
 
@@ -814,74 +815,75 @@ public class AcrossFrame extends FatherFrame {
 		panel_4.add(label_9);
 
 		JLabel lblB_1 = new JLabel("<html>被跨电力线两边线间的水平距离 B<sub>2</sub>：</html>");
-		lblB_1.setBounds(14, 50, 286, 24);
+		lblB_1.setBounds(14, 36, 286, 24);
 		panel_4.add(lblB_1);
 
 		textField_16 = new JTextField();
 		textField_16.setColumns(10);
-		textField_16.setBounds(192, 89, 108, 24);
+		textField_16.setBounds(24, 63, 118, 24);
 		panel_4.add(textField_16);
 
 		JLabel label_10 = new JLabel("m");
-		label_10.setBounds(314, 92, 42, 18);
+		label_10.setBounds(146, 66, -4, 18);
 		panel_4.add(label_10);
 
 		JLabel lblD = new JLabel("<html>跨越架内侧主杆或主柱外缘（金属架）至被跨电力线的最小水平距离 D:</html>");
-		lblD.setBounds(14, 126, 361, 55);
+		lblD.setBounds(14, 84, 310, 60);
 		panel_4.add(lblD);
 
 		textField_17 = new JTextField();
 		textField_17.setColumns(10);
-		textField_17.setBounds(192, 167, 108, 24);
+		textField_17.setBounds(207, 115, 57, 24);
 		panel_4.add(textField_17);
 
 		JLabel label_11 = new JLabel("m");
-		label_11.setBounds(314, 170, 42, 18);
+		label_11.setBounds(278, 121, 42, 18);
 		panel_4.add(label_11);
 
 		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(Config.ResColor);
 		panel_5.setBorder(new TitledBorder(null, "\u8F93\u51FA", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_5.setBounds(14, 194, 361, 204);
+		panel_5.setBounds(14, 142, 331, 153);
 		panel_4.add(panel_5);
 		panel_5.setLayout(null);
 
 		JLabel lblH = new JLabel("跨越架的最小高度 h:");
-		lblH.setBounds(14, 32, 168, 18);
+		lblH.setBounds(14, 16, 168, 18);
 		panel_5.add(lblH);
 
 		textField_18 = new JTextField();
 		textField_18.setColumns(10);
-		textField_18.setBounds(190, 29, 108, 24);
+		textField_18.setBounds(190, 13, 54, 24);
 		panel_5.add(textField_18);
 
 		JLabel label_12 = new JLabel("m");
-		label_12.setBounds(312, 32, 42, 18);
+		label_12.setBounds(258, 16, 42, 18);
 		panel_5.add(label_12);
 
 		JLabel lblB_2 = new JLabel("跨越架的最小宽度 b:");
-		lblB_2.setBounds(14, 70, 168, 18);
+		lblB_2.setBounds(14, 51, 168, 18);
 		panel_5.add(lblB_2);
 
 		textField_19 = new JTextField();
 		textField_19.setColumns(10);
-		textField_19.setBounds(190, 66, 108, 24);
+		textField_19.setBounds(190, 47, 54, 24);
 		panel_5.add(textField_19);
 
 		JLabel label_13 = new JLabel("m");
-		label_13.setBounds(312, 70, 42, 18);
+		label_13.setBounds(258, 51, 42, 18);
 		panel_5.add(label_13);
 
 		JLabel lblL = new JLabel("跨越架顶面的最小跨距 L:");
-		lblL.setBounds(14, 111, 195, 18);
+		lblL.setBounds(14, 85, 195, 18);
 		panel_5.add(lblL);
 
 		textField_20 = new JTextField();
 		textField_20.setColumns(10);
-		textField_20.setBounds(190, 108, 108, 24);
+		textField_20.setBounds(190, 82, 54, 24);
 		panel_5.add(textField_20);
 
 		JLabel label_14 = new JLabel("m");
-		label_14.setBounds(312, 111, 42, 18);
+		label_14.setBounds(258, 85, 42, 18);
 		panel_5.add(label_14);
 
 		JButton button_3 = new JButton("计算");
@@ -920,17 +922,18 @@ public class AcrossFrame extends FatherFrame {
 
 			}
 		});
-		button_3.setBounds(14, 147, 113, 27);
+		button_3.setBounds(14, 116, 113, 27);
 		panel_5.add(button_3);
 
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_6.setBounds(1322, 13, 405, 323);
+		panel_6.setBounds(1258, 13, 349, 280);
 		contentPane.add(panel_6);
 		panel_6.setLayout(null);
 
 		JPanel panel_8 = new JPanel();
-		panel_8.setBounds(14, 141, 353, 169);
+		panel_8.setBackground(Config.ResColor);
+		panel_8.setBounds(14, 104, 327, 169);
 		panel_6.add(panel_8);
 		panel_8.setBorder(new TitledBorder(null, "\u8F93\u51FA", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_8.setLayout(null);
@@ -1033,17 +1036,17 @@ public class AcrossFrame extends FatherFrame {
 
 		textField_24 = new JTextField();
 		textField_24.setColumns(10);
-		textField_24.setBounds(192, 91, 108, 24);
+		textField_24.setBounds(14, 77, 108, 24);
 		panel_6.add(textField_24);
 
 		JLabel label_24 = new JLabel("m");
-		label_24.setBounds(314, 94, 42, 18);
+		label_24.setBounds(136, 80, 42, 18);
 		panel_6.add(label_24);
 
 		JPanel panel_9 = new JPanel();
 		panel_9.setBorder(new TitledBorder(null, "\u8DE8\u8D8A\u67B6\u98CE\u504F\u8BA1\u7B97", TitledBorder.LEADING,
 				TitledBorder.TOP, null, null));
-		panel_9.setBounds(1322, 349, 405, 465);
+		panel_9.setBounds(1258, 306, 373, 426);
 		contentPane.add(panel_9);
 		panel_9.setLayout(null);
 
@@ -1087,56 +1090,57 @@ public class AcrossFrame extends FatherFrame {
 		panel_9.add(label_38);
 
 		JLabel label_32 = new JLabel("<html>施工线路跨越档两端悬垂绝缘子串或滑车挂具长度 λ:</html>");
-		label_32.setBounds(14, 147, 202, 41);
+		label_32.setBounds(14, 136, 202, 41);
 		panel_9.add(label_32);
 
 		textField_39 = new JTextField();
 		textField_39.setColumns(10);
-		textField_39.setBounds(220, 163, 92, 24);
+		textField_39.setBounds(220, 152, 92, 24);
 		panel_9.add(textField_39);
 
 		JLabel label_39 = new JLabel("m");
-		label_39.setBounds(326, 170, 41, 18);
+		label_39.setBounds(326, 159, 41, 18);
 		panel_9.add(label_39);
 
 		JLabel lblW_1 = new JLabel("<html>导线、地线的单位长度重量 W<sub>1</sub>:</html>");
-		lblW_1.setBounds(14, 190, 192, 42);
+		lblW_1.setBounds(14, 176, 192, 42);
 		panel_9.add(lblW_1);
 
 		textField_40 = new JTextField();
 		textField_40.setColumns(10);
-		textField_40.setBounds(220, 206, 92, 24);
+		textField_40.setBounds(220, 192, 92, 24);
 		panel_9.add(textField_40);
 
 		JLabel lblNm_1 = new JLabel("N/m");
-		lblNm_1.setBounds(326, 213, 41, 18);
+		lblNm_1.setBounds(326, 199, 41, 18);
 		panel_9.add(lblNm_1);
 
 		JLabel lblD_1 = new JLabel("导线或地线直径 d:");
-		lblD_1.setBounds(14, 246, 178, 24);
+		lblD_1.setBounds(14, 223, 178, 24);
 		panel_9.add(lblD_1);
 
 		textField_41 = new JTextField();
 		textField_41.setColumns(10);
-		textField_41.setBounds(220, 245, 92, 24);
+		textField_41.setBounds(220, 222, 92, 24);
 		panel_9.add(textField_41);
 
 		JLabel lblMm = new JLabel("mm");
-		lblMm.setBounds(326, 248, 41, 18);
+		lblMm.setBounds(326, 225, 41, 18);
 		panel_9.add(lblMm);
 
 		JLabel lblK = new JLabel("风载体型系数 K:");
-		lblK.setBounds(14, 284, 178, 24);
+		lblK.setBounds(14, 250, 178, 24);
 		panel_9.add(lblK);
 
 		textField_42 = new JTextField();
 		textField_42.setColumns(10);
-		textField_42.setBounds(220, 283, 92, 24);
+		textField_42.setBounds(220, 249, 92, 24);
 		panel_9.add(textField_42);
 
 		JPanel panel_10 = new JPanel();
+		panel_10.setBackground(Config.ResColor);
 		panel_10.setBorder(new TitledBorder(null, "\u8F93\u51FA", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_10.setBounds(14, 310, 353, 148);
+		panel_10.setBounds(14, 276, 353, 148);
 		panel_9.add(panel_10);
 		panel_10.setLayout(null);
 
@@ -1207,7 +1211,7 @@ public class AcrossFrame extends FatherFrame {
 		panel_12.setBorder(
 				new TitledBorder(null, "\u91D1\u5C5E\u7ED3\u6784\u8DE8\u8D8A\u67B6\u7684\u5B89\u88C5\u8BA1\u7B97",
 						TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_12.setBounds(919, 425, 389, 517);
+		panel_12.setBounds(895, 332, 349, 453);
 		contentPane.add(panel_12);
 		panel_12.setLayout(null);
 
@@ -1216,95 +1220,95 @@ public class AcrossFrame extends FatherFrame {
 		panel_12.add(label_15);
 
 		textField_21 = new JTextField();
-		textField_21.setBounds(263, 26, 70, 24);
+		textField_21.setBounds(14, 52, 70, 24);
 		panel_12.add(textField_21);
 		textField_21.setColumns(10);
 
 		JLabel label_16 = new JLabel("m");
-		label_16.setBounds(347, 29, 42, 18);
+		label_16.setBounds(98, 55, 42, 18);
 		panel_12.add(label_16);
 
 		JLabel label_19 = new JLabel("跨越架封顶网的弧垂 f:");
-		label_19.setBounds(14, 74, 178, 24);
+		label_19.setBounds(14, 89, 178, 24);
 		panel_12.add(label_19);
 
 		JLabel label_20 = new JLabel("<html>封顶用竹、木杆时，  f=0;<br>对于尼龙网，f=1~2m;</html>");
-		label_20.setBounds(24, 96, 202, 46);
+		label_20.setBounds(24, 111, 202, 46);
 		panel_12.add(label_20);
 		label_20.setForeground(Color.RED);
 
 		textField_23 = new JTextField();
-		textField_23.setBounds(192, 74, 108, 24);
+		textField_23.setBounds(192, 89, 70, 24);
 		panel_12.add(textField_23);
 		textField_23.setColumns(10);
 
 		JLabel label_21 = new JLabel("m");
-		label_21.setBounds(314, 77, 42, 18);
+		label_21.setBounds(264, 92, 42, 18);
 		panel_12.add(label_21);
 
 		JLabel lblH_1 = new JLabel("<html>跨越架上层拉线挂点至地面的高度 H:</html>");
-		lblH_1.setBounds(14, 153, 194, 39);
+		lblH_1.setBounds(14, 168, 194, 39);
 		panel_12.add(lblH_1);
 
 		textField_27 = new JTextField();
-		textField_27.setBounds(202, 168, 108, 24);
+		textField_27.setBounds(202, 183, 60, 24);
 		panel_12.add(textField_27);
 		textField_27.setColumns(10);
 
 		JLabel label_25 = new JLabel("m");
-		label_25.setBounds(314, 171, 42, 18);
+		label_25.setBounds(264, 189, 42, 18);
 		panel_12.add(label_25);
 
 		JLabel lblH_2 = new JLabel("<html>运行电力线的下导线至地面高度 h<sub>1</sub>:</html>");
-		lblH_2.setBounds(14, 215, 194, 39);
+		lblH_2.setBounds(14, 220, 194, 39);
 		panel_12.add(lblH_2);
 
 		textField_28 = new JTextField();
-		textField_28.setBounds(202, 230, 108, 24);
+		textField_28.setBounds(202, 235, 60, 24);
 		panel_12.add(textField_28);
 		textField_28.setColumns(10);
 
 		JLabel label_27 = new JLabel("m");
-		label_27.setBounds(314, 233, 42, 18);
+		label_27.setBounds(264, 241, 42, 18);
 		panel_12.add(label_27);
 
 		JLabel lblA_1 = new JLabel("拉线对地面夹角 α:");
-		lblA_1.setBounds(14, 267, 178, 24);
+		lblA_1.setBounds(14, 272, 178, 24);
 		panel_12.add(lblA_1);
 
 		textField_29 = new JTextField();
-		textField_29.setBounds(202, 267, 108, 24);
+		textField_29.setBounds(202, 272, 60, 24);
 		panel_12.add(textField_29);
 		textField_29.setColumns(10);
 
 		JLabel label_26 = new JLabel("゜");
-		label_26.setBounds(314, 270, 42, 18);
+		label_26.setBounds(264, 278, 42, 18);
 		panel_12.add(label_26);
 
 		JLabel label_28 = new JLabel("<html>拉线与跨越架横担轴线间的水平夹角 γ:</html>");
-		label_28.setBounds(14, 319, 194, 39);
+		label_28.setBounds(14, 309, 194, 39);
 		panel_12.add(label_28);
 
 		textField_30 = new JTextField();
-		textField_30.setBounds(202, 330, 108, 24);
+		textField_30.setBounds(202, 320, 60, 24);
 		panel_12.add(textField_30);
 		textField_30.setColumns(10);
 
 		JLabel label_29 = new JLabel("゜");
-		label_29.setBounds(314, 330, 42, 24);
+		label_29.setBounds(264, 323, 42, 24);
 		panel_12.add(label_29);
 
 		JLabel lblL_4 = new JLabel("<html>内侧上拉线与运行电力线的最小安全距离 L<sub>0</sub>:</html>");
-		lblL_4.setBounds(14, 390, 194, 39);
+		lblL_4.setBounds(14, 380, 194, 39);
 		panel_12.add(lblL_4);
 
 		textField_32 = new JTextField();
-		textField_32.setBounds(202, 405, 108, 24);
+		textField_32.setBounds(202, 395, 60, 24);
 		panel_12.add(textField_32);
 		textField_32.setColumns(10);
 
 		JLabel label_30 = new JLabel("m");
-		label_30.setBounds(314, 408, 42, 18);
+		label_30.setBounds(264, 401, 42, 18);
 		panel_12.add(label_30);
 
 		JButton button_6 = new JButton("下载到桌面");
@@ -1389,11 +1393,11 @@ public class AcrossFrame extends FatherFrame {
 			
 			
 		});
-		button_6.setBounds(1353, 830, 151, 27);
+		button_6.setBounds(1260, 745, 151, 27);
 		contentPane.add(button_6);
 
 		JButton button_7 = new JButton("保存到历史纪录");
-		button_7.setBounds(1534, 830, 166, 27);
+		button_7.setBounds(1441, 745, 166, 27);
 		contentPane.add(button_7);
 	}
 }

@@ -102,7 +102,7 @@ public class DerrickSquareSteel extends FatherFrame {
 	 */
 	private void initSquare(DerrickSquareSteelEnity des) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1314, 828);
+		setBounds(100, 100, 1314, 785);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -122,9 +122,9 @@ public class DerrickSquareSteel extends FatherFrame {
 		((ImageIcon) icon1).setImage(image);
 //		picture1 = new JLabel(icon1, JLabel.CENTER);
 		// 330
-		picture1 = new JLabel(Tool.getIcon("./resources/steel/Derrick1.png", -1, 239));
-		picture1.setBounds(14, 23, 336, 356);
-		panel.setBounds(14, 13, 364, 386);
+		picture1 = new JLabel(Tool.getIcon("/resources/steel/Derrick1.png", -1, 239));
+		picture1.setBounds(62, 24, 238, 263);
+		panel.setBounds(14, 13, 364, 312);
 		contentPane.add(panel);
 		panel.add(picture1);
 
@@ -136,7 +136,7 @@ public class DerrickSquareSteel extends FatherFrame {
 
 				TitledBorder.TOP, null, new Color(0, 0, 0)));
 
-		panel_1.setBounds(392, 437, 364, 312);
+		panel_1.setBounds(402, 338, 364, 312);
 		contentPane.add(panel_1);
 
 		JLabel label = new JLabel("<html><body>控制绳的张力F<sub>k</sub>:</body></html>");
@@ -500,7 +500,7 @@ public class DerrickSquareSteel extends FatherFrame {
 				"钢材的材质选型", TitledBorder.LEADING,
 
 				TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_8.setBounds(392, 13, 389, 74);
+		panel_8.setBounds(14, 675, 364, 74);
 		contentPane.add(panel_8);
 
 		radioButton_6 = new JRadioButton("Q235");
@@ -509,7 +509,7 @@ public class DerrickSquareSteel extends FatherFrame {
 				des.btn1 = 1.0;
 			}
 		});
-		radioButton_6.setBounds(99, 25, 84, 27);
+		radioButton_6.setBounds(45, 25, 112, 27);
 		panel_8.add(radioButton_6);
 
 		radioButton_7 = new JRadioButton("Q345");
@@ -523,7 +523,7 @@ public class DerrickSquareSteel extends FatherFrame {
 			radioButton_6.setSelected(true);
 		} else
 			radioButton_7.setSelected(true);
-		radioButton_7.setBounds(201, 25, 93, 27);
+		radioButton_7.setBounds(201, 25, 112, 27);
 		panel_8.add(radioButton_7);
 
 		ButtonGroup buttonGroup1 = new ButtonGroup();
@@ -535,7 +535,7 @@ public class DerrickSquareSteel extends FatherFrame {
 		panel_4.setBorder(
 				new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u5DE5\u51B5\u6761\u4EF6(\u8F93\u5165)",
 						TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_4.setBounds(14, 422, 364, 327);
+		panel_4.setBounds(14, 338, 364, 327);
 		contentPane.add(panel_4);
 
 		JLabel label_20 = new JLabel("<html><body>控制绳对地夹角K:</body></html>");
@@ -724,7 +724,7 @@ public class DerrickSquareSteel extends FatherFrame {
 //		picture2 = new JLabel(icon2, JLabel.CENTER);
 		picture2 = new JLabel(Tool.getIcon("./resources/steel/Steel1.png", -1, 175));
 		picture2.setBounds(25, 30, 337, 185);
-		panel_9.setBounds(392, 187, 389, 228);
+		panel_9.setBounds(392, 100, 389, 228);
 		panel_9.add(picture2);
 		contentPane.add(panel_9);
 
@@ -736,7 +736,7 @@ public class DerrickSquareSteel extends FatherFrame {
 		panel_6.setLayout(null);
 		panel_6.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u94A2\u7BA1\u9009\u578B",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_6.setBounds(392, 100, 389, 74);
+		panel_6.setBounds(392, 13, 389, 74);
 		contentPane.add(panel_6);
 
 		JRadioButton radioButton = new JRadioButton("钢管");
