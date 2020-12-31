@@ -219,6 +219,9 @@ public class DerrickSquareEnity {
 	public Double XCB;
 	public Double XAX;
 	public Double WA;
+	public Double B;
+	public Double btn1=1.0;
+	public Double O1;
 	public String getEntityName() {
 		return "正方形格构抱杆计算";
 	}

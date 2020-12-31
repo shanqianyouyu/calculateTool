@@ -15,6 +15,6 @@ import ctgu.awt.frame.homepage.item.Default;
 public class Anchor extends Default {
 	public Anchor() {
 		super();
-		setName("地锚计算");
+		setName("工器具计算");
 	}
 }

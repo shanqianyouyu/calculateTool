@@ -22,7 +22,7 @@ public class Captcha {
 
 	@SuppressWarnings("finally")
 	public Image draw() {
-		File file = new File("img/2.jpg");
+		File file = new File("./resources/img/2.jpg");
 		int width = 100;
 		int height = 50;
 		int imageType = BufferedImage.TYPE_INT_RGB;

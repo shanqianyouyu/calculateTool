@@ -37,6 +37,9 @@ public class Config {
 	// 窗体默认颜色
 	public static Color ResColor = new Color(253, 253, 241);
 
+	public static String SAVE = "保存到历史记录";
+	public static String DOWNLOAD = "下载到桌面";
+
 	/*
 	 * 后台记录
 	 */

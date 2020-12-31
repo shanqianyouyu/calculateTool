@@ -37,7 +37,7 @@ import ctgu.awt.util.Tool;
 
 public class AnalysisXML {
 	// Square.xml文件相对路径
-	static File file = new File("./txt/Square.xml");
+	static File file = new File("./resources/Square.xml");
 
 	// 读取xml
 	public static Item readXml() {
@@ -128,20 +128,41 @@ public class AnalysisXML {
 	public static Item toItem(Object object) {
 		Item item = new Item();
 		String name = object.getClass().getSimpleName();
-
+		
 		if (name.equals("HighStrength")) {
 			item.setName("螺栓计算");
 		} else if (name.equals("Anchor")) {
 			item.setName("地锚计算");
-		} 
-		else if(name.equals("SquareEnity")){
+		} else if (name.equals("SquareEnity")) {
 			item.setName("抱杆计算");
-		}else if(name.equals("AcrossEnity")){
+		} else if (name.equals("AcrossEnity")) {
 			item.setName("跨越架计算");
-		}else if(name.equals("WeldEntity")){
-			item.setName("焊缝计算");
-		}else{
-//>>>>>>> cyk
+		} else if (name.equals("SteelAnchor")) {
+			item.setName("钢板地锚计算");
+		} else if (name.equals("DrillAnchor")) {
+			item.setName("地钻计算");
+		} else if (name.equals("PileAnchor")) {
+			item.setName("桩锚计算");
+		} else if (name.equals("AnglePileAnchor")) {
+			item.setName("角桩锚计算");
+		}else if(name.equals("DerrickSquareEnity")) {
+			item.setName("正方形格构抱杆计算");
+		}else if(name.equals("DerrickSquareSteelEnity")) {
+			item.setName("钢管抱杆计算");
+		}else if(name.equals("SquareDerrickManCal")) {
+			item.setName("人字抱杆计算");
+		}else if(name.equals("WeldAngleEntity")) {
+			item.setName("常用直角焊缝计算");
+		}else if(name.equals("WeldSectionEntity")) {
+			item.setName("工字形焊缝计算");
+		}else if(name.equals("WeldObliqueEntity")) {
+			item.setName("斜焊缝计算");
+		}else if(name.equals("WeldButmentEntity")) {
+			item.setName("对接焊缝计算");
+		}else if(name.equals("Tool")) {
+			item.setName("工器具计算");
+		}
+		else {
 			System.out.println(name + " " + "找不到对应类型!");
 		}
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");

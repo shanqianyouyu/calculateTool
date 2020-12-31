@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import ctgu.Entity.WeldButmentCal;
 import ctgu.Entity.weld.WeldAngleEntity;
 import ctgu.Entity.weld.WeldButmentEntity;
+import ctgu.awt.entity.Config;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.search.service.AnalysisXML;
 import ctgu.awt.util.Filewriter;
@@ -465,6 +466,7 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		radioButton_2.addActionListener(this);
 		
 		JPanel panel_9 = new JPanel();
+		panel_9.setBackground(Config.ResColor);
 		panel_9.setLayout(null);
 		panel_9.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 												"焊缝计算截面特性", TitledBorder.LEADING,
@@ -1491,7 +1493,7 @@ public class WeldFrameaButment extends FatherFrame implements ActionListener, It
 		if(e.getActionCommand().equals("打印")) {
 			String s1 = "  ";
 			String s2 = "      ";
-			outPutTxt = "斜对接焊缝计算: " + System.getProperty("line.separator") + s1;
+			outPutTxt = "对接焊缝计算: " + System.getProperty("line.separator") + s1;
 			if (textField_4.getText() != null) {
 				outPutTxt += "焊缝受力: " + System.getProperty("line.separator") + s2 + "轴力:  " + textField_4.getText()
 				+ System.getProperty("line.separator") + s1;			

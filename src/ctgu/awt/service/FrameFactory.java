@@ -1,33 +1,29 @@
 package ctgu.awt.service;
 
-import ctgu.Entity.anchorcal.Anchor;
-import ctgu.Entity.Across.AcrossEnity;
+import ctgu.Entity.anchorcal.DrillItem;
+import ctgu.Entity.SquareDerrickManCal;
 import ctgu.Entity.Square.DerrickSquareEnity;
-import ctgu.Entity.Square.DerrickSquareManEnity;
 import ctgu.Entity.Square.DerrickSquareSteelEnity;
-import ctgu.Entity.Square.SquareEnity;
 import ctgu.Entity.boltCal.HighStrength;
+import ctgu.Entity.tool.Tool;
 import ctgu.Entity.weld.WeldAngleEntity;
 import ctgu.Entity.weld.WeldButmentEntity;
-import ctgu.Entity.weld.WeldEntity;
 import ctgu.Entity.weld.WeldObliqueEntity;
 import ctgu.Entity.weld.WeldSectionEntity;
 import ctgu.awt.entity.Config;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.calFrame.TestJFrame;
-import ctgu.awt.frame.homepage.calFrame.across.AcrossFrameCalAbusolute;
-import ctgu.awt.frame.homepage.calFrame.anchor.AnchorFrame;
-import ctgu.awt.frame.homepage.calFrame.anchor.LogAnchor;
+import ctgu.awt.frame.homepage.calFrame.across.AcrossFrame;
+import ctgu.awt.frame.homepage.calFrame.anchor.AnglePileAnchor;
+import ctgu.awt.frame.homepage.calFrame.anchor.DrillAnchor;
 import ctgu.awt.frame.homepage.calFrame.anchor.PileAnchor;
-import ctgu.awt.frame.homepage.calFrame.anchor.SleeperAnchor;
 import ctgu.awt.frame.homepage.calFrame.anchor.SteelAnchor;
 import ctgu.awt.frame.homepage.calFrame.bol.BolFrame;
-import ctgu.awt.frame.homepage.calFrame.derrickCal.AbusoluteSquare;
 import ctgu.awt.frame.homepage.calFrame.derrickCal.DerrickSquare;
 import ctgu.awt.frame.homepage.calFrame.derrickCal.DerrickSquareMan;
 import ctgu.awt.frame.homepage.calFrame.derrickCal.DerrickSquareSteel;
+import ctgu.awt.frame.homepage.calFrame.tool.ToolFrame;
 import ctgu.awt.frame.homepage.calFrame.weld.WeldFrameAngle;
-import ctgu.awt.frame.homepage.calFrame.weld.WeldFrameCalAbusolute;
 import ctgu.awt.frame.homepage.calFrame.weld.WeldFrameOblique;
 import ctgu.awt.frame.homepage.calFrame.weld.WeldFrameSection;
 import ctgu.awt.frame.homepage.calFrame.weld.WeldFrameaButment;
@@ -66,7 +62,6 @@ public class FrameFactory {
 		// 生成的条目
 		Default jPanel = null;
 
-//		System.out.println("------------"+name);
 		if (name.equals("测试生成新窗口")) {
 			// 创建测试窗口
 			frame = new TestJFrame();
@@ -75,7 +70,16 @@ public class FrameFactory {
 			jPanel = new Default();
 			jPanel.setId(id);
 			jPanel.setName(name);
-//			System.out.println("FrameFactory(生成的id): " + id);
+		}  else if (name.equals("正方形格构抱杆计算")) {
+			if (object != null) {
+				frame = new DerrickSquare((DerrickSquareEnity) object);
+			} else {
+				frame = new DerrickSquare(new DerrickSquareEnity());
+			}
+			frame.setId(id);
+			jPanel = new Square();
+			jPanel.setId(id);
+			jPanel.setName(name);
 		} else if (name.equals("钢管抱杆计算")) {
 			if (object != null) {
 				frame = new DerrickSquareSteel((DerrickSquareSteelEnity) object);
@@ -88,25 +92,15 @@ public class FrameFactory {
 			jPanel.setName(name);
 		} else if (name.equals("人字抱杆计算")) {
 			if (object != null) {
-				frame = new DerrickSquareMan((DerrickSquareManEnity) object);
+				frame = new DerrickSquareMan((SquareDerrickManCal) object);
 			} else {
-				frame = new DerrickSquareMan(new DerrickSquareManEnity());
+				frame = new DerrickSquareMan(new SquareDerrickManCal());
 			}
 			frame.setId(id);
 			jPanel = new Square();
 			jPanel.setId(id);
 			jPanel.setName(name);
-		} else if (name.equals("正方形格构抱杆计算")) {
-			if (object != null) {
-				frame = new DerrickSquare((DerrickSquareEnity) object);
-			} else {
-				frame = new DerrickSquare(new DerrickSquareEnity());
-			}
-			frame.setId(id);
-			jPanel = new Square();
-			jPanel.setId(id);
-			jPanel.setName(name);
-		} else if (name.equals("螺栓计算")) {
+		}else if (name.equals("螺栓计算")) {
 			/**
 			 * 逆向
 			 * 
@@ -124,38 +118,24 @@ public class FrameFactory {
 
 		} else if (name.equals("跨越架计算")) {
 			if (object != null) {
-				frame = new AcrossFrameCalAbusolute((AcrossEnity) object);
+				frame = new AcrossFrame((ctgu.Entity.Across.Across) object);
 			} else {
-				frame = new AcrossFrameCalAbusolute(new AcrossEnity());
+				frame = new AcrossFrame(new ctgu.Entity.Across.Across());
 			}
-//			frame = new AcrossFrameCalAbusolute();
 			frame.setVisible(true);
 			frame.setId(id);
 			jPanel = new Across();
 			jPanel.setId(id);
 			jPanel.setName(name);
-//<<<<<<< HEAD
 		} else if (name.equals("常用直角焊缝计算")) {
 			if (object != null) {
 				frame = new WeldFrameAngle((WeldAngleEntity) object);
 			} else {
 				frame = new WeldFrameAngle(new WeldAngleEntity());
 			}
-//			frame = new AcrossFrameCalAbusolute();
 			frame.setVisible(true);
 			frame.setId(id);
-			jPanel = new Across();
-			jPanel.setId(id);
-			jPanel.setName(name);
-		} else if (name.equals("地锚计算")) {
-			if (object != null) {
-				frame = new AnchorFrame((Anchor) object);
-			} else {
-				frame = new AnchorFrame(new Anchor());
-			}
-			frame.setVisible(true);
-			frame.setId(id);
-			jPanel = new ctgu.awt.frame.homepage.item.anchor.Anchor();
+			jPanel = new ctgu.awt.frame.homepage.item.weld.WeldAngle();
 			jPanel.setId(id);
 			jPanel.setName(name);
 		} else if (name.equals("工字形焊缝计算")) {
@@ -166,7 +146,7 @@ public class FrameFactory {
 			}
 			frame.setVisible(true);
 			frame.setId(id);
-			jPanel = new ctgu.awt.frame.homepage.item.anchor.Anchor();
+			jPanel = new ctgu.awt.frame.homepage.item.weld.WeldSection();
 			jPanel.setId(id);
 			jPanel.setName(name);
 		} else if (name.equals("斜焊缝计算")) {
@@ -177,7 +157,7 @@ public class FrameFactory {
 			}
 			frame.setVisible(true);
 			frame.setId(id);
-			jPanel = new ctgu.awt.frame.homepage.item.anchor.Anchor();
+			jPanel = new ctgu.awt.frame.homepage.item.weld.WeldOblique();
 			jPanel.setId(id);
 			jPanel.setName(name);
 		} else if (name.equals("对接焊缝计算")) {
@@ -188,23 +168,13 @@ public class FrameFactory {
 			}
 			frame.setVisible(true);
 			frame.setId(id);
-			jPanel = new ctgu.awt.frame.homepage.item.anchor.Anchor();
+			jPanel = new ctgu.awt.frame.homepage.item.weld.WeldButment();
+			jPanel.setId(id);
+			jPanel.setName(name);
 			/*
 			 * 圆木地锚计算 钢板地锚计算 枕木单柱式立式地锚计算
 			 */
-		} else if (name.equals("圆木地锚计算")) {
-			if (null != object) {
-				frame = new LogAnchor((ctgu.Entity.anchorcal.LogAnchor) object);
-			} else {
-				frame = new LogAnchor();
-			}
-			frame.setVisible(true);
-			frame.setId(id);
-			jPanel = new ctgu.awt.frame.homepage.item.anchor.LogAnchor();
-			jPanel.setId(id);
-			jPanel.setName(name);
-
-		} else if (name.equals("钢板地锚计算")) {
+		}else if (name.equals("钢板地锚计算")) {
 			if (null != object) {
 				frame = new SteelAnchor((ctgu.Entity.anchorcal.SteelAnchor) object);
 			} else {
@@ -215,18 +185,29 @@ public class FrameFactory {
 			jPanel = new ctgu.awt.frame.homepage.item.anchor.SteelAnchor();
 			jPanel.setId(id);
 			jPanel.setName(name);
-		} else if (name.equals("枕木单柱式立式地锚计算")) {
+		} else if (name.equals("角桩锚计算")) {
 			if (null != object) {
-				frame = new SleeperAnchor((ctgu.Entity.anchorcal.SleeperAnchor) object);
+				frame = new AnglePileAnchor((ctgu.Entity.anchorcal.AnglePileAnchor) object);
 			} else {
-				frame = new SleeperAnchor(new ctgu.Entity.anchorcal.SleeperAnchor());
+				frame = new AnglePileAnchor(new ctgu.Entity.anchorcal.AnglePileAnchor());
 			}
 			frame.setVisible(true);
 			frame.setId(id);
-			jPanel = new ctgu.awt.frame.homepage.item.anchor.SleeperAnchor();
+			jPanel = new ctgu.awt.frame.homepage.item.anchor.AnglePileAnchor();
 			jPanel.setId(id);
 			jPanel.setName(name);
-		} else if (name.equals("桩锚")) {
+		} else if (name.equals("地钻计算")) {
+			if (null != object) {
+				frame = new DrillAnchor((DrillItem) object);
+			} else {
+				frame = new DrillAnchor(new DrillItem());
+			}
+			frame.setVisible(true);
+			frame.setId(id);
+			jPanel = new ctgu.awt.frame.homepage.item.anchor.DrillAnchor();
+			jPanel.setId(id);
+			jPanel.setName(name);
+		} else if (name.equals("桩锚计算")) {
 			if (null != object) {
 				frame = new PileAnchor((ctgu.Entity.anchorcal.PileAnchor) object);
 			} else {
@@ -237,12 +218,22 @@ public class FrameFactory {
 			jPanel = new ctgu.awt.frame.homepage.item.anchor.PileAnchor();
 			jPanel.setId(id);
 			jPanel.setName(name);
+		} else if (name.equals("工器具计算")) {
+			if (null != object) {
+				frame = new ToolFrame((Tool) object);
+			} else {
+				frame = new ToolFrame(new Tool());
+			}
+			frame.setVisible(true);
+			frame.setId(id);
+			jPanel = new ctgu.awt.frame.homepage.item.tool.Tool();
+			jPanel.setId(id);
+			jPanel.setName(name);
 		}
 
 		// 将窗口记录到后台
 		Config.addFrame(frame.getId(), frame);
 		Config.addPanel(jPanel.getId(), jPanel);
-//		System.out.println("FrameFactory (总数据量)" + Config.calJpanel.size());
 		/*
 		 * 如果达到边界则增加面板的页数
 		 * 

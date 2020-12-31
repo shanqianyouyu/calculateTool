@@ -1,20 +1,16 @@
 package ctgu.Entity;
 
-
 import java.math.BigDecimal;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
-import org.omg.CORBA.PUBLIC_MEMBER;
-
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
 import ctgu.awt.util.Tool;
+import lombok.Data;
 
 /**
  * 
  * @author 陈煜昆
  *
  */
+@Data
 public class SquareDerrickCal {
 
 	double a[] = { 1.000, 1.000, 1.000, 0.999, 0.999, 0.998, 0.998, 0.997, 0.996, 0.995, 0.994, 0.993, 0.992, 0.991,
@@ -83,30 +79,30 @@ public class SquareDerrickCal {
 			{ 140, 10, 27.373, 21.488, 514.460, 4.340, 5.460, 2.780, 3.820 },
 			{ 140, 12, 32.512, 25.522, 603.680, 4.310, 5.430, 2.760, 3.900 },
 			{ 140, 14, 37.567, 29.490, 688.810, 4.280, 5.400, 2.750, 3.980 } };
-			
-	double d[] = {0,0.92,0.75,0.59,0.43,0.25,0.10};
+
+	double d[] = { 0, 0.92, 0.75, 0.59, 0.43, 0.25, 0.10 };
 
 	public double G;
 	public double p;
-	public double K; 
+	public double K;
 
-	public double FT; 
+	public double FT;
 	public double FK;
 
-	public double N; 
-	public double MZ; 
+	public double N;
+	public double MZ;
 
-	public double FQ; 
-	public double DO; 
+	public double FQ;
+	public double DO;
 	public double FH;
 
-	public double Q; 
-	public double GO; 
+	public double Q;
+	public double GO;
 
 	public double JF;
-	public double JGB; 
-	public double L; 
-	public double L0; 
+	public double JGB;
+	public double L;
+	public double L0;
 	public double S;
 	public double J;
 	public double Z;
@@ -118,9 +114,9 @@ public class SquareDerrickCal {
 	public double FL;
 	public double QH;
 	public double M;
-	
+
 	public double DO1;
-	public double GZ = 2342.44;
+	public double GZ;
 	public double FB;
 	public double GN;
 	public double TD;
@@ -131,7 +127,7 @@ public class SquareDerrickCal {
 	public double Z01;
 	public double AS;
 	public double L1;
-	
+
 	public Double LL1;
 	public Double LL2;
 	public Double LL3;
@@ -153,7 +149,7 @@ public class SquareDerrickCal {
 	public double JL;
 	public double HR;
 	public double XO;
-	
+
 	public double DCB;
 
 	public double LJJ;
@@ -176,29 +172,29 @@ public class SquareDerrickCal {
 
 	public double b1;
 	public double b2;
-	
+
 	public double I1;
 	public double I11;
 	public double I2;
 	public double I21;
 
-	int c2;
-	int c3;
+	Double c2;
+	Double c3;
 	double c4;
 	double c5;
 
-	int c6;
-	int c7;
-	double c8;
-	double c9;
-	
-	int c10;
-	int c11;
-	double c12;
-	double c13;
+	Double c6;
+	Double c7;
+	Double c8;
+	Double c9;
 
-	int index1;
-	int index2;
+	Double c10;
+	Double c11;
+	Double c12;
+	Double c13;
+
+	Double index1;
+	Double index2;
 
 	public double A1;
 	public double KG;
@@ -218,7 +214,12 @@ public class SquareDerrickCal {
 	public double IY01;
 	public double ZO1;
 
-	public SquareDerrickCal(double K,double p,double Q,double TD,double N,double G,double L,double L0,double Z,double S,double J,double FS,double FQ1,double I1,double I2) {
+	public Double B;
+	public Double btn1 = 1.0;
+	public Double O1;
+
+	public SquareDerrickCal(double K, double p, double Q, double TD, double N, double G, double L, double L0, double Z,
+			double S, double J, double FS, double FQ1, double I1, double I2) {
 		this.K = K;
 		this.p = p;
 		this.Q = Q;
@@ -234,22 +235,22 @@ public class SquareDerrickCal {
 		this.FQ1 = FQ1;
 		this.I1 = I1;
 		this.I2 = I2;
-		System.out.println(K);
-		System.out.println(p);
-		System.out.println(Q);
-		System.out.println(TD);
-		System.out.println(N);
-		System.out.println(G);
-		System.out.println(L);
-		System.out.println(L0);
-		System.out.println(Z);
-		System.out.println(S);
-		System.out.println(J);
-		System.out.println(FS);
-		System.out.println(FQ1);
-		System.out.println(I1);
-		System.out.println(I2);
-		
+//		System.out.println(K);
+//		System.out.println(p);
+//		System.out.println(Q);
+//		System.out.println(TD);
+//		System.out.println(N);
+//		System.out.println(G);
+//		System.out.println(L);
+//		System.out.println(L0);
+//		System.out.println(Z);
+//		System.out.println(S);
+//		System.out.println(J);
+//		System.out.println(FS);
+//		System.out.println(FQ1);
+//		System.out.println(I1);
+//		System.out.println(I2);
+
 	}
 
 	public double add(double value1) {
@@ -258,79 +259,145 @@ public class SquareDerrickCal {
 	}
 
 	public double cal(double value2) {
-		c2 = (int) Math.ceil(value2);
-		c3 = (int) Math.floor(value2);
-		c4 = BigDecimal.valueOf(a[c3] - a[c2]).divide(BigDecimal.valueOf(c2 - c3), 2, BigDecimal.ROUND_HALF_UP).doubleValue();
-		c5 = c4 * (value2 - c3) + a[c3];
-		System.out.println(c5);
+		c2 = Math.ceil(value2);
+		c3 = Math.floor(value2);
+		c4 = BigDecimal.valueOf(a[Double.valueOf(String.valueOf(c3)).intValue()] - a[Double.valueOf(String.valueOf(c2)).intValue()])
+				.divide(BigDecimal.valueOf(c2 - c3), 2, BigDecimal.ROUND_HALF_UP).doubleValue();
+		c5 = c4 * (value2 - c3) + a[Double.valueOf(String.valueOf(c3)).intValue()];
+//		System.out.println(c5);
 		return c5;
 	}
 
 	public double cal1(double value3) {
-		if(value3 > 250){
+		if (value3 > 250) {
 			c9 = 0.123;
-		}else{
-		c6 = (int) Math.ceil(value3);
-		c7 = (int) Math.floor(value3);
-		c8 = BigDecimal.valueOf(b[c7] - b[c6]).divide(BigDecimal.valueOf(c6 - c7), 2, BigDecimal.ROUND_HALF_UP).doubleValue();
-		c9 = c8 * (value3 - c7) + b[c7];
+		} else {
+			c6 = Math.ceil(value3);
+			c7 = Math.floor(value3);
+			c8 = BigDecimal.valueOf(b[Double.valueOf(String.valueOf(c7)).intValue()] - b[Double.valueOf(String.valueOf(c6)).intValue()])
+					.divide(BigDecimal.valueOf(c6 - c7), 2, BigDecimal.ROUND_HALF_UP).doubleValue();
+			c9 = c8 * (value3 - c7) + b[Double.valueOf(String.valueOf(c7)).intValue()];
 		}
 		return c9;
 	}
-	
+
 	public double cal2(double value4) {
-		if(value4 > 6){
-			c13 = 0.1;
-		}else{
-		c10 = (int) Math.ceil(value4);
-		c11 = (int) Math.floor(value4);
-		c12 = BigDecimal.valueOf(d[c11] - d[c10]).divide(BigDecimal.valueOf(c10 - c11), 2, BigDecimal.ROUND_HALF_UP).doubleValue();
-		c13 = c12 * (value4 - c11) + d[c11];
+		Double c13 = null;
+		if (btn1 == 1.0) {
+			if (value4 >= 0.6) {
+				c13 = 0.1;
+			} else if (value4 > 0.5 && value4 < 0.6) {
+				c13 = Tool.getPointWithPoints(0.5, 0.25, 0.6, 0.10, value4, c13);
+			} else if (value4 == 0.5)
+				c13 = 0.25;
+			else if (value4 > 0.4 && value4 < 0.5) {
+				c13 = Tool.getPointWithPoints(0.5, 0.25, 0.4, 0.43, value4, c13);
+			} else if (value4 == 0.4)
+				c13 = 0.43;
+			else if (value4 > 0.3 && value4 < 0.4) {
+				c13 = Tool.getPointWithPoints(0.3, 0.59, 0.4, 0.43, value4, c13);
+			} else if (value4 == 0.3)
+				c13 = 0.59;
+			else if (value4 > 0.2 && value4 < 0.3) {
+				c13 = Tool.getPointWithPoints(0.3, 0.59, 0.2, 0.75, value4, c13);
+			} else if (value4 == 0.2)
+				c13 = 0.75;
+			else if (value4 > 0.1 && value4 < 0.2) {
+				c13 = Tool.getPointWithPoints(0.1, 0.92, 0.2, 0.75, value4, c13);
+			} else if (value4 == 0.1)
+				c13 = 0.92;
+			else if (value4 > 0.0 && value4 < 0.1) {
+				c13 = Tool.getPointWithPoints(0.1, 0.92, 0.0, 1.0, value4, c13);
+			}
+		} else {
+			if (value4 >= 0.6) {
+				c13 = 0.115;
+			} else if (value4 > 0.5 && value4 < 0.6) {
+				c13 = Tool.getPointWithPoints(0.5, 0.262, 0.6, 0.115, value4, c13);
+			} else if (value4 == 0.5)
+				c13 = 0.262;
+			else if (value4 > 0.4 && value4 < 0.5) {
+				c13 = Tool.getPointWithPoints(0.5, 0.262, 0.4, 0.4405, value4, c13);
+			} else if (value4 == 0.4)
+				c13 = 0.4405;
+			else if (value4 > 0.3 && value4 < 0.4) {
+				c13 = Tool.getPointWithPoints(0.3, 0.596, 0.4, 0.4405, value4, c13);
+			} else if (value4 == 0.3)
+				c13 = 0.596;
+			else if (value4 > 0.2 && value4 < 0.3) {
+				c13 = Tool.getPointWithPoints(0.3, 0.596, 0.2, 0.7575, value4, c13);
+			} else if (value4 == 0.2)
+				c13 = 0.7575;
+			else if (value4 > 0.1 && value4 < 0.2) {
+				c13 = Tool.getPointWithPoints(0.1, 0.9245, 0.2, 0.7575, value4, c13);
+			} else if (value4 == 0.1)
+				c13 = 0.9245;
+			else if (value4 > 0.0 && value4 < 0.1) {
+				c13 = Tool.getPointWithPoints(0.1, 0.92, 0.0, 1.0, value4, c13);
+			}
+
 		}
+		this.c13 = c13;
 		return c13;
 	}
 
 	// 滑轮组的拉力
 	public double hualun() {
-		FT = Tool.forMat(Math.cos(Math.toRadians(K))*G/Math.cos(Math.toRadians(p+K)));
+		FT = Tool.forMat(Math.cos(Math.toRadians(K)) * G / Math.cos(Math.toRadians(p + K)));
 		return FT;
 	}
 
 	// 控制绳的张力
 	public double kongzhi() {
-		FK = Tool.forMat(Math.cos(Math.toRadians(p))*G/Math.cos(Math.toRadians(p+K)));
+		FK = Tool.forMat(Math.sin(Math.toRadians(p)) * G / Math.cos(Math.toRadians(p + K)));
 		return FK;
 	}
 
 	// 牵引绳张力
-	public double qianyin() {
-		FQ = Tool.forMat(FT/N*Math.pow(MZ,N));
+	public double qianyin() throws Exception {
+		MZ = 0.95;
+		FQ = Tool.forMat(FT / N * Math.pow(MZ, N));//
+		double n = N, vis = FQ;
+		while (vis > 1500.0) {
+			if (n == 20)
+				throw new Exception("滑轮组的拉力过大");
+			if (n < 7.0) {
+				n = 7;
+				vis = Tool.forMat(FT / n * Math.pow(MZ, n));
+			} else {
+				n++;
+				vis = Tool.forMat(FT / n * Math.pow(MZ, n));
+			}
+			FQ = vis;
+			N = n;
+		}
 		return FQ;
 	}
 
 	// 滑轮组及绳索重量
 	public double zongzhong() {
-		GO = 10+(Tool.forMat(64.4/100*(60+Tool.forMat(60*N/Math.cos(Math.toRadians(K))))));
-		System.out.println(GO);
+		GO = 10 + (Tool.forMat(64.4 / 100 * (60 + Tool.forMat(60 * N / Math.cos(Math.toRadians(K))))));
+//		System.out.println(GO);
 		return GO;
 	}
 
-	// 顶滑轮的载荷，顶滑轮的倾角
+	// 顶滑轮的载荷
 	public double dinghuaz() {
-		FH = Tool.forMat(Math.sqrt(Math.pow(FT*Math.sin(Math.toRadians(p))-FQ*Math.sin(Math.toRadians(Q)), 2) + (GO + FQ*Math.sin(Math.toRadians(Q)) + FT*Math.cos(Math.toRadians(p)))));
-		System.out.println(FH);
+		FH = Tool.forMat(Math.sqrt(Math.pow(FT * Math.sin(Math.toRadians(p)) - FQ * Math.sin(Math.toRadians(Q)), 2)
+				+ (GO + FQ * Math.sin(Math.toRadians(Q)) + FT * Math.cos(Math.toRadians(p)))));
+//		System.out.println(FH);
 		return FH;
 	}
 
+	// 顶滑轮的倾角
 	public double dinghuao() {
-		DO = Tool.forMat(Math.asin((FT*Math.sin(Math.toRadians(p))-FQ*Math.sin(Math.toRadians(Q)))/FH));
+		DO = Tool.forMat(Math.asin((FT * Math.sin(Math.toRadians(p)) - FQ * Math.sin(Math.toRadians(Q))) / FH));
 		return DO;
 	}
 
-	
 	// 查表,结构迎风面充实率，间隔比，总风力系数，构件垂直于风向的实体迎风面积，风力，风荷载，当风载作用于危险截面时弯矩
 	public double chajie() {
-		
+
 //		A1 = c[index1][3];
 //		KG = c[index1][4];
 //		IXI = c[index1][5];
@@ -348,365 +415,421 @@ public class SquareDerrickCal {
 //		IX01 = c[index2][7];
 //		IY01 = c[index2][8];
 //		ZO1 = c[index2][9];
-		
-		if(I2 == 0){
+
+		if (I2 == 0) {
 			I21 = 30;
-		}else if(I2 == 1){
-			I21 = 40; 
-		}else if(I2 == 2){
-			I21 = 40; 
-		}else if(I2 == 3){
-			I21 = 40; 
-		}else if(I2 == 4){
-			I21 = 45; 
-		}else if(I2 == 5){
-			I21 = 45; 
-		}else if(I2 == 6){
-			I21 = 50; 
-		}else if(I2 == 7){
-			I21 = 50; 
-		}else if(I2 == 8){
-			I21 = 56; 
-		}else if(I2 == 9){
-			I21 = 56; 
-		}else if(I2 == 10){
-			I21 = 63; 
-		}else if(I2 == 11){
-			I21 = 63; 
-		}else if(I2 == 12){
-			I21 = 70; 
-		}else if(I2 == 13){
-			I21 = 70; 
-		}else if(I2 == 14){
-			I21 = 70; 
-		}else if(I2 == 15){
-			I21 = 75; 
-		}else if(I2 == 16){
-			I21 = 75; 
-		}else if(I2 == 17){
-			I21 = 75; 
-		}else if(I2 == 18){
-			I21 = 80; 
-		}else if(I2 == 19){
-			I21 = 80; 
-		}else if(I2 == 20){
-			I21 = 80; 
-		}else if(I2 == 21){
-			I21 = 90; 
-		}else if(I2 == 22){
-			I21 = 90; 
-		}else if(I2 == 23){
-			I21 = 90; 
-		}else if(I2 == 24){
-			I21 = 100; 
-		}else if(I2 == 25){
-			I21 = 100; 
-		}else if(I2 == 26){
-			I21 = 110; 
-		}else if(I2 == 27){
-			I21 = 110; 
-		}else if(I2 == 28){
-			I21 = 125; 
-		}else if(I2 == 29){
-			I21 = 125; 
-		}else if(I2 == 30){
-			I21 = 125; 
-		}else if(I2 == 31){
-			I21 = 140; 
-		}else if(I2 == 32){
-			I21 = 140; 
-		}else if(I2 == 33){
-			I21 = 140; 
+		} else if (I2 == 1) {
+			I21 = 40;
+		} else if (I2 == 2) {
+			I21 = 40;
+		} else if (I2 == 3) {
+			I21 = 40;
+		} else if (I2 == 4) {
+			I21 = 45;
+		} else if (I2 == 5) {
+			I21 = 45;
+		} else if (I2 == 6) {
+			I21 = 50;
+		} else if (I2 == 7) {
+			I21 = 50;
+		} else if (I2 == 8) {
+			I21 = 56;
+		} else if (I2 == 9) {
+			I21 = 56;
+		} else if (I2 == 10) {
+			I21 = 63;
+		} else if (I2 == 11) {
+			I21 = 63;
+		} else if (I2 == 12) {
+			I21 = 70;
+		} else if (I2 == 13) {
+			I21 = 70;
+		} else if (I2 == 14) {
+			I21 = 70;
+		} else if (I2 == 15) {
+			I21 = 75;
+		} else if (I2 == 16) {
+			I21 = 75;
+		} else if (I2 == 17) {
+			I21 = 75;
+		} else if (I2 == 18) {
+			I21 = 80;
+		} else if (I2 == 19) {
+			I21 = 80;
+		} else if (I2 == 20) {
+			I21 = 80;
+		} else if (I2 == 21) {
+			I21 = 90;
+		} else if (I2 == 22) {
+			I21 = 90;
+		} else if (I2 == 23) {
+			I21 = 90;
+		} else if (I2 == 24) {
+			I21 = 100;
+		} else if (I2 == 25) {
+			I21 = 100;
+		} else if (I2 == 26) {
+			I21 = 110;
+		} else if (I2 == 27) {
+			I21 = 110;
+		} else if (I2 == 28) {
+			I21 = 125;
+		} else if (I2 == 29) {
+			I21 = 125;
+		} else if (I2 == 30) {
+			I21 = 125;
+		} else if (I2 == 31) {
+			I21 = 140;
+		} else if (I2 == 32) {
+			I21 = 140;
+		} else if (I2 == 33) {
+			I21 = 140;
 		}
-		
-		if(I1 == 0){
+
+		if (I1 == 0) {
 			I11 = 30;
-		}else if(I1 == 1){
-			I11 = 40; 
-		}else if(I1 == 2){
-			I11 = 40; 
-		}else if(I1 == 3){
-			I11 = 40; 
-		}else if(I1 == 4){
-			I11 = 45; 
-		}else if(I1 == 5){
-			I11 = 45; 
-		}else if(I1 == 6){
-			I11 = 50; 
-		}else if(I1 == 7){
-			I11 = 50; 
-		}else if(I1 == 8){
-			I11 = 56; 
-		}else if(I1 == 9){
-			I11 = 56; 
-		}else if(I1 == 10){
-			I11 = 63; 
-		}else if(I1 == 11){
-			I11 = 63; 
-		}else if(I1 == 12){
-			I11 = 70; 
-		}else if(I1 == 13){
-			I11 = 70; 
-		}else if(I1 == 14){
-			I11 = 70; 
-		}else if(I1 == 15){
-			I11 = 75; 
-		}else if(I1 == 16){
-			I11 = 75; 
-		}else if(I1 == 17){
-			I11 = 75; 
-		}else if(I1 == 18){
-			I11 = 80; 
-		}else if(I1 == 19){
-			I11 = 80; 
-		}else if(I1 == 20){
-			I11 = 80; 
-		}else if(I1 == 21){
-			I11 = 90; 
-		}else if(I1 == 22){
-			I11 = 90; 
-		}else if(I1 == 23){
-			I11 = 90; 
-		}else if(I1 == 24){
-			I11 = 100; 
-		}else if(I1 == 25){
-			I11 = 100; 
-		}else if(I1 == 26){
-			I11 = 110; 
-		}else if(I1 == 27){
-			I11 = 110; 
-		}else if(I1 == 28){
-			I11 = 125; 
-		}else if(I1 == 29){
-			I11 = 125; 
-		}else if(I1 == 30){
-			I11 = 125; 
-		}else if(I1 == 31){
-			I11 = 140; 
-		}else if(I1 == 32){
-			I11 = 140; 
-		}else if(I1 == 33){
-			I11 = 140; 
-		}	
-		//改
-		JYV =  Tool.forMat(I11*4*Z*2+S*I21*2+Math.sqrt(S*S+Z*Z)*50*4/S*Z*4);
+		} else if (I1 == 1) {
+			I11 = 40;
+		} else if (I1 == 2) {
+			I11 = 40;
+		} else if (I1 == 3) {
+			I11 = 40;
+		} else if (I1 == 4) {
+			I11 = 45;
+		} else if (I1 == 5) {
+			I11 = 45;
+		} else if (I1 == 6) {
+			I11 = 50;
+		} else if (I1 == 7) {
+			I11 = 50;
+		} else if (I1 == 8) {
+			I11 = 56;
+		} else if (I1 == 9) {
+			I11 = 56;
+		} else if (I1 == 10) {
+			I11 = 63;
+		} else if (I1 == 11) {
+			I11 = 63;
+		} else if (I1 == 12) {
+			I11 = 70;
+		} else if (I1 == 13) {
+			I11 = 70;
+		} else if (I1 == 14) {
+			I11 = 70;
+		} else if (I1 == 15) {
+			I11 = 75;
+		} else if (I1 == 16) {
+			I11 = 75;
+		} else if (I1 == 17) {
+			I11 = 75;
+		} else if (I1 == 18) {
+			I11 = 80;
+		} else if (I1 == 19) {
+			I11 = 80;
+		} else if (I1 == 20) {
+			I11 = 80;
+		} else if (I1 == 21) {
+			I11 = 90;
+		} else if (I1 == 22) {
+			I11 = 90;
+		} else if (I1 == 23) {
+			I11 = 90;
+		} else if (I1 == 24) {
+			I11 = 100;
+		} else if (I1 == 25) {
+			I11 = 100;
+		} else if (I1 == 26) {
+			I11 = 110;
+		} else if (I1 == 27) {
+			I11 = 110;
+		} else if (I1 == 28) {
+			I11 = 125;
+		} else if (I1 == 29) {
+			I11 = 125;
+		} else if (I1 == 30) {
+			I11 = 125;
+		} else if (I1 == 31) {
+			I11 = 140;
+		} else if (I1 == 32) {
+			I11 = 140;
+		} else if (I1 == 33) {
+			I11 = 140;
+		}
+		// 改
+		JYV = Tool.forMat(I11 * 4 * Z * 2 + S * I21 * 2 + Math.sqrt(S * S + Z * Z) * I21 * 4 / S * Z * 4);
 		return JYV;
 	}
 
 	public double gowind() {
-		System.out.println(JYV);
+
+		// 判断计算类型
 		DZ = Tool.forMat(cal2(JYV));
-		System.out.println(DZ);
 		return DZ;
 	}
 
+	// 间隔比
 	public double jiange() {
-	   return 1;
+		return 1;
 	}
 
+	// 总风力系数C
 	public double zongfengli() {
-		ZF = Tool.forMat(1.7*(1+DZ));
+		ZF = Tool.forMat(1.7 * (1 + DZ));
 		return ZF;
 	}
 
+	// A
 	public double goujian() {
-		if(S == J){
+		if (S == J) {
 			TS = 0;
-		}else{
-		TS = Tool.forMat((L0*S/1000000 + (J/1000) + S*3.5*Math.cos(Math.atan(Tool.forMat((L-L0)/(S-J))))/1000)*DZ);
+		} else {
+			TS = Tool.forMat((L0 * S / 1000000 + (J / 1000)
+					+ S * 3.5 * Math.cos(Math.atan(Tool.forMat((L - L0) / (S - J)))) / 1000) * DZ);//
 		}
 		return TS;
 	}
 
 	public double fengli() {
-		FL = Tool.forMat(ZF*90*TS);
+		FL = Tool.forMat(ZF * 90 * TS);
 		return FL;
 	}
 
 	public double fenghezai() {
-		QH = Tool.forMat(FL/10);
-		System.out.println(QH);
+		QH = Tool.forMat(FL / 10);
+//		System.out.println(QH);
 		return QH;
 	}
 
 	public double dangfengzai() {
-		M = Tool.forMat(QH*L*L/8);
-		System.out.println(M);
+		M = Tool.forMat(QH * L * L / 8.0);
+//		System.out.println(M);
 		return M;
 	}
 
 	// 中间变量L1,L2,L3,L4,FB,N
 	public double middle1() {
-		LL1 = Tool.forMat(L*Math.sin(Math.toRadians(DO+Q)));
-		System.out.println(LL1);
+		LL1 = Tool.forMat(L * Math.sin(Math.toRadians(DO + Q)));
+//		System.out.println(LL1);
 		return LL1;
 	}
 
 	public double middle2() {
-		
-		LL2 = Tool.forMat(L/2);
-		System.out.println(LL2);
+
+		LL2 = Tool.forMat(L / 2);
+//		System.out.println(LL2);
 		return LL2;
 	}
 
 	public double middle3() {
-		LL3 = Tool.forMat(Math.sin(Math.toRadians(90-Q-TD)));
-		System.out.println(LL3);
+		LL3 = Tool.forMat(Math.sin(Math.toRadians(90 - Q - B)));
+//		System.out.println(LL3);
 		return LL3;
 	}
 
 	public double middle4() {
-		LL4 = Tool.forMat(L*Math.sin(Math.toRadians(Q))/2);
-		System.out.println(LL4);
+		LL4 = Tool.forMat(L * Math.sin(Math.toRadians(Q)) / 2);
+//		System.out.println(LL4);
 		return LL4;
 	}
 
+	public void calGZ() {
+		double a = c[(int) (I1 - 1)][3];
+		double b = c[(int) (I2 - 1)][3];
+		double L1 = Math.sqrt(Z * Z + Math.pow(J + (S - J) / 4, 2));
+		double L2 = Math.sqrt(Z * Z + Math.pow(J + (S - J) / 2, 2));
+		double L3 = Math.sqrt(Z * Z + Math.pow(J + 3 * (S - J) / 4, 2));
+		double L4 = Math.sqrt(Z * Z + S * S);
+		if (btn1 == 1.0)
+			GZ = ((L - L0) / Math.cos(Math.asin((S - J) / (L - L0))) + L0) * 0.004 * a
+					+ ((L1 + L2 + L3 + L4) * 16 + L4 * 4 * L0 / Z + 4 * L0 / Z * S + 16 * S + 20 * J) * 0.001 * b;
+		else
+			GZ = ((L - L0) / Math.cos(Math.asin((S - J) / (L - L0))) + L0) * 0.003 * a
+					+ ((L1 + L2 + L3 + L4) * 12 + L4 * 3 * L0 / Z + 3 * L0 / Z * S + 12 * S + 15 * J) * 0.001 * b;
+	}
+
 	public double waizhangxian() {
-		System.out.println(LL1);
-		System.out.println(LL2);
-		System.out.println(LL3);
-		System.out.println(LL4);
-		FB = Tool.forMat((LL1*FH + FL*LL2 + LL4*GZ)/LL3);
+//		System.out.println(LL1);
+//		System.out.println(LL2);
+//		System.out.println(LL3);
+//		System.out.println(LL4);
+		calGZ();
+		FB = Tool.forMat((LL1 * FH + FL * LL2 + LL4 * GZ) / LL3);//
 		return FB;
 	}
 
 	public double ganshen() {
-		GN = Tool.forMat(Math.sqrt(Math.pow(FB*Math.cos(Math.toRadians(TD))-FH*Math.sin(Math.toRadians(DO)), 2) + Math.pow(FB*Math.sin(Math.toRadians(TD))+FH*Math.cos(Math.toRadians(DO)), 2)));
+		GN = Tool.forMat(Math.sqrt(Math.pow(FB * Math.cos(Math.toRadians(B)) - FH * Math.sin(Math.toRadians(DO)), 2)
+				+ Math.pow(FB * Math.sin(Math.toRadians(B)) + FH * Math.cos(Math.toRadians(DO)), 2)));
 		return GN;
 	}
-	
-	//承托绳最大张力
-	public double zuida(){
-		FC = Tool.forMat(N*Math.sin(Math.toRadians(Q+TD))/Math.sin(Math.toRadians(2*TD)));
+
+	// 承托绳最大张力
+	public double zuida() {
+		FC = Tool.forMat(N * Math.sin(Math.toRadians(Q + TD)) / Math.sin(Math.toRadians(2 * TD)));
 		return FC;
 	}
-	
-	//计算长度
-	public double jisuanlong(){
+
+	// 计算长度
+	public double jisuanlong() {
 		L1 = L;
 		return L1;
 	}
-	
-	//截面惯性矩
-	public double jimianguanxin(){
-		IX1 = c[(int) (I1-1)][4];
-		AS = c[(int) (I1-1)][2];
-		Z0 = c[(int) (I1-1)][3];
-		Z01 = c[(int) (I2-1)][2];
-		HR = c[(int) (I1-1)][6];
-		IX = Tool.forMat(4*IX1+AS*Math.pow((S/20-Z0),2));
+
+	// 截面惯性矩
+	public double jimianguanxin() {
+		IX1 = c[(int) (I1 - 1)][4];
+		AS = c[(int) (I1 - 1)][2];
+		Z0 = c[(int) (I1 - 1)][8];
+		Z01 = c[(int) (I2 - 1)][2];
+		HR = c[(int) (I1 - 1)][6];
+		if (btn1 == 1.0)
+			IX = Tool.forMat(4.0 * (IX1 + AS * Math.pow((S / 20 - Z0), 2)));
+		else
+			IX = Tool.forMat(3.0 * (IX1 + AS * Math.pow((S / 10 - Z0), 2)));
 		return IX;
 	}
-	
-	//回转半径
-	public double huizhuan(){
-		IR = Tool.forMat(Math.sqrt(IX/(4*AS)));
+
+	// 回转半径
+	public double huizhuan() {
+		if (btn1 == 1.0)
+			IR = Tool.forMat(Math.sqrt(IX / (4 * AS)));
+		else
+			IR = Tool.forMat(Math.sqrt(IX / (3 * AS)));
 		return IR;
 	}
-	
-	//抗弯模量
-	public double kangwan(){
-		W = Tool.forMat(2*IX/S);
+
+	// 抗弯模量
+	public double kangwan() {
+		W = Tool.forMat(2 * IX / S);
 		return W;
 	}
-	
-	//长细比
-	public double changxi(){
-		YX = Tool.forMat(L1/IR);
+
+	// 长细比
+	public double changxi() {
+		YX = Tool.forMat(L1 / IR);
 		return YX;
 	}
-	
-	//换算长细比
-	public double huansuan(){
-		Y0X = Tool.forMat(Math.sqrt(Math.pow((L1/IR + 160*AS/Z01), 2)));
-		return Y0X;		
+
+	// 换算长细比
+	public double huansuan() {
+		if (btn1 == 1.0)
+			Y0X = Tool.forMat(Math.sqrt(Math.pow(L1 / IR, 2) + 40 * 4 * AS / Z01));
+		else {
+			Y0X = Tool.forMat(Math.sqrt(
+					Math.pow(L1 / IR, 2) + 42 * 3 * AS / (Z01 * (1.5 - Math.pow(Math.cos(Math.toRadians(O1)), 2)))));
+		}
+		return Y0X;
 	}
-	
-	//稳定系数
-	public double wendingxi(){
+
+	// 稳定系数
+	public double wendingxi() {
 		w1 = cal1(Y0X);
 		return w1;
 	}
-	
-	//安全系数
-	public double anquan(){
-		AY = Tool.forMat(FQ1/(N/(4*(AS/10000)*w1)+M/(W/1000000)));
+
+	// 安全系数
+	public double anquan() {
+		AY = Tool.forMat(FQ1 / (N / (4 * (AS / 10000) * w1) + M / (W / 1000000)));
 		return AY;
 	}
-	
-	//斜缀条与柱轴线夹角
-	public double xiezhuitiao(){
-		XO = Tool.forMat(Math.atan(Math.toRadians(S/Z)));
+
+	// 斜缀条与柱轴线夹角
+	public double xiezhuitiao() {
+		XO = Tool.forMat(Math.atan(S / Z));
 		return XO;
 	}
-	
-	//单肢长细比
-	public double danzhi(){
-		DCB = Tool.forMat((Z/10)/HR);
+
+	// 单肢长细比
+	public double danzhi() {
+		DCB = Tool.forMat((Z / 10.0) / HR);
 		return DCB;
 	}
-	
-	//两槽钢净距
-	public double liangcao(){
-		LJJ = Tool.forMat(S - 20*Z0);
+
+	// 两槽钢净距
+	public double liangcao() {
+		LJJ = Tool.forMat(S - 20.0 * Z0);
 		return LJJ;
 	}
-	
-	//单肢轴压力
-	public double danzhizhou(){
-		ND = Tool.forMat(N/4 + M/(2*LJJ));
+
+	// 单肢轴压力
+	public double danzhizhou() {
+		ND = Tool.forMat(N / 4.0 + M / (2.0 * LJJ));
 		return ND;
 	}
-	
-	//单肢稳定系数
-	public double danzhiwen(){
+
+	// 单肢稳定系数
+	public double danzhiwen() {
 		DW = cal1(DCB);
 		return DW;
 	}
-	
-	//单肢稳定安全系数
-	public double danzhiwenan(){
-		DWA = Tool.forMat(DW*AS*FQ1/(ND*10));
+
+	// 单肢稳定安全系数
+	public double danzhiwenan() {
+		DWA = Tool.forMat(DW * AS * FQ1 / (ND * 10));
 		return DWA;
-	} 
-	
-	//计算长度lx
-	public double jisuanlonglx(){
-		LX = Tool.forMat((S/10-2*Z0)/Math.sin(Math.toRadians(XO)));
+	}
+
+	// 计算长度lx
+	public double jisuanlonglx() {
+		LX = Tool.forMat((S / 10 - 2 * Z0) / Math.sin(XO));
 		return LX;
-	} 
-	
-	//风载引起的斜缀条剪力
-	public double v1(){
-		V1 = Tool.forMat(ZF*90*I21*LX*LX/100000000*2);
+	}
+
+	// 风载引起的斜缀条剪力
+	public double v1() {
+		V1 = Tool.forMat(ZF * 90 * I21 * LX * LX / 100000000 * 2);
 		return V1;
 	}
-	
-	
-	//纵向弯曲引起的横向剪力
-	public double v2(){
-		V2 = Tool.forMat((4*AS*100*FS*Math.sqrt(FQ1/235)/85)/1000);
+
+	// 纵向弯曲引起的横向剪力
+	public double v2() {
+		V2 = Tool.forMat((4 * AS * 100 * FS * Math.sqrt(FQ1 / 235) / 85) / 1000);
 		return V2;
 	}
-	
-	//斜缀条长细比
-	public double xiezhuichangxibi(){
-		XCB = Tool.forMat(LX/c[(int) (I2-1)][7]);
+
+	// 斜缀条长细比
+	public double xiezhuichangxibi() {
+		XCB = Tool.forMat(LX / c[(int) (I2 - 1)][7]);
 		return XCB;
 	}
-	
-	//斜缀条稳定系数
-    public double xiewending(){
-    	XAX = cal1(XCB);
-    	return XAX;
-    }
-    
-    
-    //斜缀条稳定安全系数
-    public double xiewendingan(){
-    	WA = Tool.forMat(FQ1*c[(int) (I2-1)][2]*XAX*(V1+V2)/Math.sin(Math.toRadians(XO)));
-    	return WA;
-    }
-    
-    
+
+	// 斜缀条稳定系数
+	public double xiewending() {
+		XAX = cal1(XCB);
+		return XAX;
+	}
+
+	// 斜缀条稳定安全系数
+	public double xiewendingan() {
+		WA = Tool.forMat(FQ1 * c[(int) (I2 - 1)][2] * XAX * (V1 + V2) / Math.sin(Math.toRadians(XO)));
+		return WA;
+	}
+
+//    public void cal() {
+//    	hualun();
+//		kongzhi();
+//		qianyin();
+//		zongzhong();
+//		dinghuaz();
+//		dinghuao();
+//		chajie();
+//		gowind();
+//		zongfengli();
+//		goujian();
+//		fengli();
+//		fenghezai();
+//		dangfengzai();
+//		middle1();
+//		middle2();
+//		middle3();
+//		middle4();
+//		waizhangxian();
+//		ganshen();
+//		zuida();
+//		jisuanlong();
+//		jimianguanxin();
+//		huizhuan();
+//		kangwan();
+//    }
+
 }

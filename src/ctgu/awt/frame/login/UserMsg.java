@@ -13,7 +13,7 @@ public class UserMsg {
 //<<<<<<< HEAD
 //		file = new File("./login.txt");
 //=======
-		file = new File("./txt/login.txt");
+		file = new File("./resources/login.txt");
 //>>>>>>> chase
 		System.out.println(file);
 		try {

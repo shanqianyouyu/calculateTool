@@ -1,6 +1,5 @@
 package ctgu.awt.frame.homepage.calFrame.derrickCal;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
 
@@ -8,15 +7,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.text.StyleContext.SmallAttributeSet;
 
 import ctgu.Entity.SquareDerrickManCal;
-import ctgu.Entity.Square.DerrickSquareEnity;
-import ctgu.Entity.Square.DerrickSquareManEnity;
-import ctgu.Entity.Square.DerrickSquareSteelEnity;
-import ctgu.Entity.weld.WeldObliqueEntity;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
-import ctgu.awt.frame.homepage.calFrame.weld.WeldFrameN;
+import ctgu.awt.frame.homepage.search.service.AnalysisXML;
+import ctgu.awt.util.Filewriter;
 
 import javax.swing.UIManager;
 import java.awt.Color;
@@ -29,16 +24,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.math.BigDecimal;
 import java.awt.event.ActionEvent;
-import javax.swing.JRadioButton;
-import javax.swing.JComboBox;
 
 public class DerrickSquareMan extends FatherFrame implements ActionListener, ItemListener {
 
 	private JPanel contentPane;
 
-	private DerrickSquareManEnity derrickSquareManEnity = null;
+	private SquareDerrickManCal derrickSquareManEnity = null;
 
 	private JLabel picture1 = null;
 	private JLabel picture2 = null;
@@ -70,7 +62,7 @@ public class DerrickSquareMan extends FatherFrame implements ActionListener, Ite
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DerrickSquareManEnity des = new DerrickSquareManEnity(); 
+					SquareDerrickManCal des = new SquareDerrickManCal(); 
 					DerrickSquareMan frame = new DerrickSquareMan(des);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -80,11 +72,11 @@ public class DerrickSquareMan extends FatherFrame implements ActionListener, Ite
 		});
 	}
 
-	public DerrickSquareMan(DerrickSquareManEnity des) {
+	public DerrickSquareMan(SquareDerrickManCal des) {
 		derrickSquareManEnity = des;
-		setTitle("人字抱杆");
+		setTitle("人字抱杆计算");
 		System.out.println("初始化成功...");
-		initSquare(des);
+		initSquare(derrickSquareManEnity);
 		setResizable(false);
 		setVisible(true);
 	}
@@ -92,9 +84,9 @@ public class DerrickSquareMan extends FatherFrame implements ActionListener, Ite
 	/**
 	 * Create the frame.
 	 */
-	private void initSquare(DerrickSquareManEnity des) {
+	private void initSquare(SquareDerrickManCal des) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1000, 780);
+		setBounds(100, 100, 1000, 673);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -194,22 +186,52 @@ public class DerrickSquareMan extends FatherFrame implements ActionListener, Ite
 		label_14.setBounds(279, 159, 42, 18);
 		panel_1.add(label_14);
 
-		JButton button = new JButton("保存");
+		JButton button = new JButton("下载到桌面");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				SquareDerrickManCal des = derrickSquareManEnity;
+				String outPutTxt = "";
+				String s1 = "  ";
+				String s2 = "      ";
+				outPutTxt += "人字抱杆计算" + System.getProperty("line.separator") + s1;
+				StringBuffer sb = new StringBuffer(outPutTxt);
+				sb.append("工况参数:" + System.getProperty("line.separator") + s2 + "单抱杆长度: " + des.L + " mm"
+						+ System.getProperty("line.separator") + s2 + "吊重: " + des.G+ " kg"
+						+ System.getProperty("line.separator") + s2 + "根开距离: " + des.A+ " mm"
+						+ System.getProperty("line.separator") + s2 + "抱杆倾斜角a: " + des.a+ " °"
+						+ System.getProperty("line.separator") + s2 + "抱杆倾斜角b: " + des.b+ " °"
+						+ System.getProperty("line.separator") + s1);
+						
+				sb.append("力的计算结果:" + System.getProperty("line.separator") + s2 + "封绳张力: " + des.P+ " kgf"
+						+ System.getProperty("line.separator") + s2 + "单锁脚绳张力: " + des.K+ " kgf"
+						+ System.getProperty("line.separator") + s2 + "单根抱杆轴拉力: " + des.R+ " kgf"
+						+ System.getProperty("line.separator") + s2 + "拉线张力: " + des.T+ " kgf"
+						+ System.getProperty("line.separator") + s1);
+						
+				outPutTxt = sb.toString();
+				if (outPutTxt.length() == 8) {
+					JOptionPane.showConfirmDialog(null, "内容为空！");
+				} else {
+					Filewriter.printToTxt(outPutTxt);
+				}
 			}
 		});
-		button.setBounds(63, 634, 113, 27);
+		button.setBounds(745, 580, 167, 27);
 		contentPane.add(button);
 
-		JButton button_1 = new JButton("打印");
-		button_1.setBounds(420, 634, 113, 27);
+		JButton button_1 = new JButton("保存到历史纪录");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AnalysisXML.frameToXMl(des);
+			}
+		});
+		button_1.setBounds(513, 580, 203, 27);
 		contentPane.add(button_1);
 
 		JButton button_2 = new JButton("计算");
 		button_2.setActionCommand("计算");
 		button_2.addActionListener(this);
-		button_2.setBounds(765, 634, 113, 27);
+		button_2.setBounds(516, 530, 113, 27);
 		contentPane.add(button_2);
 		
 		JPanel panel_2 = new JPanel();
@@ -316,12 +338,13 @@ public class DerrickSquareMan extends FatherFrame implements ActionListener, Ite
 				a = Double.valueOf(textField_15.getText().trim());
 				b = Double.valueOf(textField_16.getText().trim());
 				
-				SquareDerrickManCal sm = new SquareDerrickManCal(L,G,A,a,b);
+//				SquareDerrickManCal sm = new SquareDerrickManCal(L,G,A,a,b);
+				derrickSquareManEnity = new SquareDerrickManCal(L,G,A,a,b);
 				
-				P = sm.fengshen();
-				K = sm.dansuo();
-				R = sm.dangen();
-				T = sm.laxian();
+				P = derrickSquareManEnity.fengshen();
+				K = derrickSquareManEnity.dansuo();
+				R = derrickSquareManEnity.dangen();
+				T = derrickSquareManEnity.laxian();
 				
 				textField_3.setText(String.format("%.2f", P));
 				textField_4.setText(String.format("%.2f", K));

@@ -19,122 +19,153 @@ public class HighStrength {
 	/*
 	 * 普通螺栓受剪力
 	 */
-	// 输入
-
-	// 受剪面数
-	public Integer nv;
-	// 螺栓杆直径
-	public Double d;
-	// 在不同受力方向中一个受力方向承压构件总厚度的较小值
-	public Double t;
-	// 螺栓的抗剪设计值
-	public Double fbv;
-	// 螺栓承压强度设计值
-	public Double fbc;
-
-	// 输出
-	// 普通螺栓受剪承载力设计值
-	public Double o1;
-	// 普通螺栓承压承载力设计值：
-	public Double o2;
-
-	public void part1() {
-		DecimalFormat df = new DecimalFormat("#.##");
-		// 2是显示的小数点后的显示的最多位,显示的最后位是舍入的
-		o1 = nv * Math.PI * d * d * fbv / 4;
-		o2 = d * t * fbc;
-		// 保留两位小数
-		o1 = Tool.forMat(o1);
-		o2 = Tool.forMat(o2);
-	}
+	public Double nv1 = 0.0;
+	public Double t1 = 0.0;
+	public Double d1 = 0.0;
+	public Double V1 = 0.0;
+	public Double An1 = 0.0;
+	public Double n1 = 0.0;
+	public Double btn11 = 2.0;
+	public Double btn12 = 1.0;
+	public Double btn13 = 2.0;
 
 	/*
-	 * 普通螺栓收杆轴方向拉力
+	 * 普通螺栓抗拉剪
 	 */
-	// 输入
-	// 螺纹处的有效直径
-	public Double de;
-	// 抗拉强度设计值
-	public Double ftb;
-
-	// 输出
-	// 承载力设计值
-	public Double o3;
-
-	public void part2() {
-		o3 = Tool.forMat(Math.PI * de * de * ftb / 4);
-	}
+	public Double nv2 = 0.0;
+	public Double t2 = 0.0;
+	public Double d2 = 0.0;
+	public Double V2 = 0.0;
+	public Double N2 = 0.0;
+	public Double n2 = 0.0;
+	public Double btn21 = 1.0;
+	public Double btn22 = 1.0;
+	public Double btn23 = 2.0;
 
 	/*
-	 * 普通螺栓同时承受剪力和杆轴方向拉力
+	 * 高强度螺栓计算
 	 */
-	// 输入
-	// 承受剪力
-	public Double Cnv;
-	// 承受拉力
-	public Double Nt;
-	// 承剪继承力设计值
-	public Double Nvb;
-	// 承拉继承力设计值
-	public Double Ntb;
-	// 承压继承力设计值
-	public Double Nbc;
+	public Double nv3 = 0.0;
+	public Double t3 = 0.0;
+	public Double d3 = 0.0;
+	public Double V3 = 0.0;
+	public Double N3 = 0.0;
+	public Double n3 = 0.0;
+	public Double btn31 = 1.0;
+	public Double btn32 = 1.0;
+	public Double btn33 = 2.0;
 
-	// 输出
-	// 同时承受剪力和杆轴方向拉力
-	public Double o4;
+	public void calPartOne() {
+		Double fbt, fbv, fbc;
+		Double nbv, nbc, Nbmin;
+		Double f;
+		if (btn11 == 1.0) {
+			fbt = 170.0;
+			fbv = 140.0;
+			if (btn12 == 1.0)
+				fbc = 305.0;
+			else
+				fbc = 385.0;
+		} else if (btn11 == 2.0) {
+			fbt = 210.0;
+			fbv = 190.0;
 
-	public void part3() {
-		o4 = Tool.forMat(Math.sqrt(Math.pow(Cnv / Nvb, 2) + Math.pow(Nt / Ntb, 2)));
+			//
+			fbc = 405.0;
+		} else {
+			fbt = 400.0;
+			fbv = 320.0;
+			fbc = 510.0;
+		}
+		nbv = nv1 * (Math.PI * d1 * d1 / 4) * fbv;
+		nbc = d1 * t1 * fbc;
+		Nbmin = Math.min(nbv, nbc);
+		n1 = Math.ceil(V1 / Nbmin);// 向上取整
+		// 验算
+		if (btn12 == 1.0)
+			f = 215.0;
+		else
+			f = 310.0;
+		if ((V1 / An1) < f) {
+			btn13 = 1.0;
+		} else
+			btn13 = 2.0;
+
 	}
 
-	/*
-	 * 高强度螺栓承压型连接
-	 */
-	// 输入
-	// 螺栓杆直径
-	public Double Hd;
-	// 受剪面数
-	public Double Hnv;
-	// 螺栓抗剪设计值
-	public Double Fbv;
-	// 螺栓承压设计值
-	public Double Fbc;
+	public void calPartTwo() {
+		Double fbt, fbv, fbc;
+		Double nbv, nbc, Nbmin;
 
-	// 输出
-	// 受剪承载力
-	public Double o5;
-	// 受压承载力
-	public Double o6;
-	// 受剪承载力设计值
-	public Double o7;
+		if (btn21 == 1.0) {
+			fbt = 170.0;
+			fbv = 140.0;
+			if (btn22 == 1.0)
+				fbc = 305.0;
+			else
+				fbc = 385.0;
+		} else if (btn21 == 2.0) {
+			fbt = 210.0;
+			fbv = 190.0;
 
-	public void part4() {
-		o5 = Tool.forMat(Hnv * Math.PI * Hd * Hd * Fbv / 4);
-		o6 = Tool.forMat(Hd * Fbc);
-		o7 = o5 < o6 ? o5 : o6;
+			//
+			fbc = 405.0;
+		} else {
+			fbt = 400.0;
+			fbv = 320.0;
+			fbc = 510.0;
+		}
+		nbv = nv2 * (Math.PI * d2 * d2 / 4) * fbv;
+		nbc = d2 * t2 * fbc;
+		Nbmin = Math.min(nbv, nbc);
+
+		System.out.println(n2);
+		n2 = Math.ceil(N2 / Nbmin);// 向上取整
+
+		// 验证
+		Double de, nbt, nv, nt;
+		de = 0.88 * d2;
+		nbt = (Math.PI * de * de / 4) * fbt;
+		nv = V2 / n2;
+		nt = N2 / n2;
+		if (nv <= nbc && Math.sqrt(Math.pow(nv / nbv, 2.0) + Math.pow(nt / nbt, 2.0)) <= 1) {
+			btn23 = 1.0;
+		} else {
+			btn23 = 2.0;
+		}
+
 	}
 
-	/*
-	 * 高强度螺栓摩擦型连接
-	 */
-	// 输入
-	// 摩擦面数
-	public Double nf;
-	// 摩擦面的抗滑移系数
-	public Double y;
-	// 预拉力
-	public Double nvb;
-	// 输出
-	// 承载力
-	public Double o8;
+	public void calPartThree() {
+		Double fbt, fbv, fbc;
+		Double nbv, nbc, Nbmin, nbt;
+		if (btn11 == 1.0) {
+			fbt = 400.0;
+			fbv = 250.0;
 
-	public void part5() {
-		o8 = Tool.forMat(0.9 * nf * y * nvb);
-	}
+			fbc = 470.0;
+		} else {
+			fbt = 500.0;
+			fbv = 310.0;
 
-	public String getEntityName() {
-		return "螺栓计算";
+			//
+			fbc = 590.0;
+		}
+		nbv = nv3 * (Math.PI * d3 * d3 / 4) * fbv;
+		nbc = d3 * t3 * fbc;
+		Nbmin = Math.min(nbv, nbc);
+		n3 = Math.ceil(V3 / Nbmin);// 向上取整
+		// 验算不是很懂
+		nbt = Math.PI * Math.pow(0.88 * d3, 2) / 4.0 * fbt;
+		Double Nv = V3 / n3;
+		Double nt = N3 / n3;
+		Double vis = Math.sqrt(Math.pow(nv3 / nbv, 2) + Math.pow(nt / nbt, 2));
+		if (vis <= 1.0 && Nv < (nbc / 1.2)) {
+			btn33 = 1.0;
+		} else {
+			btn33 = 2.0;
+		}
+
 	}
 
 }

@@ -6,12 +6,14 @@ import org.omg.CORBA.PRIVATE_MEMBER;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
 import ctgu.awt.util.Tool;
+import lombok.Data;
 
 /**
  * 
  * @author 陈煜昆
  *
  */
+@Data
 public class SquareDerrickManCal {
 
 	public double L;
@@ -25,7 +27,8 @@ public class SquareDerrickManCal {
 	public double K;
 	public double R;
 	public double T;
-	
+	public SquareDerrickManCal() {
+	}
 	public SquareDerrickManCal(double L,double G,double A,double a,double b){
 		
 		this.L = L;
@@ -37,13 +40,6 @@ public class SquareDerrickManCal {
 		this.R = R;
 		this.T = T;
 		this.A = A;
-		
-		System.out.println(L);
-		System.out.println(G);
-		System.out.println(a);
-		System.out.println(b);
-		System.out.println(A);
-		
 	}
 	//封绳拉力
 	public double fengshen(){

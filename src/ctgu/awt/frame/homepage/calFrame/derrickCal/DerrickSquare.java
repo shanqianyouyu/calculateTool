@@ -16,12 +16,14 @@ import ctgu.Entity.Square.DerrickSquareEnity;
 import ctgu.Entity.weld.WeldObliqueEntity;
 import ctgu.awt.frame.homepage.calFrame.FatherFrame;
 import ctgu.awt.frame.homepage.calFrame.weld.WeldFrameN;
+import ctgu.awt.frame.homepage.search.service.AnalysisXML;
 
 import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -33,13 +35,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 
-public class DerrickSquare extends FatherFrame implements ActionListener, ItemListener {
+public class DerrickSquare extends FatherFrame {
 
 	private JPanel contentPane;
 	private JTextField textField_36;
 	private JTextField textField_39;
 	private JTextField textField_40;
 
+	private SquareDerrickCal sqc = null;
 	private DerrickSquareEnity derrickSquareEnity = null;
 
 	private JLabel picture1 = null;
@@ -66,7 +69,6 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 	private JTextField textField_14;
 	private JTextField textField_19;
 
-	
 	JRadioButton radioButton_2;
 	JRadioButton radioButton_3;
 	JRadioButton radioButton_8;
@@ -79,25 +81,25 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 	JRadioButton radioButton_5;
 	public double G;
 	public double p;
-	public double K; 
+	public double K;
 
-	public double FT; 
+	public double FT;
 	public double FK;
 
-	public double N; 
-	public double MZ; 
+	public double N;
+	public double MZ;
 
-	public double FQ; 
-	public double DO; 
+	public double FQ;
+	public double DO;
 	public double FH;
 
-	public double Q; 
-	public double GO; 
+	public double Q;
+	public double GO;
 
 	public double JF;
-	public double JGB; 
-	public double L; 
-	public double L0; 
+	public double JGB;
+	public double L;
+	public double L0;
 	public double S;
 	public double J;
 	public double Z;
@@ -109,7 +111,7 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 	public double FL;
 	public double QH;
 	public double M;
-	
+
 	public double DO1;
 	public double GZ = 2342.44;
 	public double FB;
@@ -121,7 +123,7 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 	public double Z0;
 	public double AS;
 	public double L1;
-	
+
 	public Double LL1;
 	public Double LL2;
 	public Double LL3;
@@ -143,7 +145,7 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 	public double JL;
 	public double HR;
 	public double XO;
-	
+
 	public double DCB;
 
 	public double LJJ;
@@ -166,7 +168,7 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 
 	public double b1;
 	public double b2;
-	
+
 	public double I1;
 	public double I11;
 	public double I2;
@@ -177,6 +179,9 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 
 	JComboBox comboBox;
 	JComboBox comboBox_1;
+	private JTextField textField_10;
+	private JTextField textField_18;
+	private JTextField textField_20;
 
 	/**
 	 * Launch the application.
@@ -198,8 +203,7 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 	public DerrickSquare(DerrickSquareEnity deo) {
 		derrickSquareEnity = deo;
 		setTitle("正方形格构抱杆");
-		System.out.println("初始化成功...");
-		initSquare(deo);
+		initSquare(derrickSquareEnity);
 		setResizable(false);
 		setVisible(true);
 	}
@@ -242,99 +246,268 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 
 				TitledBorder.TOP, null, new Color(0, 0, 0)));
 
-		panel_1.setBounds(392, 417, 364, 230);
+		panel_1.setBounds(392, 417, 364, 306);
 		contentPane.add(panel_1);
 
 		JLabel label = new JLabel("<html><body>控制绳的张力F<sub>k</sub>:</body></html>");
-		label.setBounds(14, 31, 154, 24);
+		label.setBounds(14, 69, 154, 24);
 		panel_1.add(label);
 
 		textField = new JTextField("0");
 		textField.setColumns(10);
-		textField.setBounds(182, 28, 86, 24);
+		textField.setBounds(182, 66, 86, 24);
 		panel_1.add(textField);
 
 		JLabel label_1 = new JLabel("kgf");
-		label_1.setBounds(282, 31, 39, 18);
+		label_1.setBounds(282, 69, 39, 18);
 		panel_1.add(label_1);
 
 		JLabel label_2 = new JLabel("牵引绳张力F:");
-		label_2.setBounds(14, 65, 154, 18);
+		label_2.setBounds(14, 109, 154, 18);
 		panel_1.add(label_2);
 
 		textField_1 = new JTextField("0");
 		textField_1.setColumns(10);
-		textField_1.setBounds(182, 62, 86, 24);
+		textField_1.setBounds(182, 106, 86, 24);
 		panel_1.add(textField_1);
 
 		JLabel label_17 = new JLabel("kgf");
-		label_17.setBounds(282, 65, 39, 18);
+		label_17.setBounds(282, 109, 39, 18);
 		panel_1.add(label_17);
 
 		JLabel label_26 = new JLabel("<html><body>顶滑轮的载荷F<sub>H</sub>:</body></html>");
-		label_26.setBounds(14, 95, 120, 21);
+		label_26.setBounds(14, 143, 120, 21);
 		panel_1.add(label_26);
 
 		textField_2 = new JTextField("0");
 		textField_2.setColumns(10);
-		textField_2.setBounds(182, 92, 86, 24);
+		textField_2.setBounds(182, 140, 86, 24);
 		panel_1.add(textField_2);
 
 		JLabel label_27 = new JLabel("<html><body>kgf</body></html>");
-		label_27.setBounds(282, 84, 39, 32);
+		label_27.setBounds(282, 132, 39, 32);
 		panel_1.add(label_27);
 
 		JLabel label_28 = new JLabel("<html><body>外张线拉力F<sub>B</sub>:</body></html>");
-		label_28.setBounds(14, 128, 154, 24);
+		label_28.setBounds(14, 176, 154, 24);
 		panel_1.add(label_28);
 
 		textField_15 = new JTextField("0");
 		textField_15.setColumns(10);
-		textField_15.setBounds(182, 129, 86, 24);
+		textField_15.setBounds(182, 177, 86, 24);
 		panel_1.add(textField_15);
 
 		JLabel label_29 = new JLabel("<html><body>kgf</body></html>");
-		label_29.setBounds(282, 121, 39, 32);
+		label_29.setBounds(282, 169, 39, 32);
 		panel_1.add(label_29);
 
 		JLabel label_35 = new JLabel("杆身轴压力N:");
-		label_35.setBounds(14, 165, 154, 18);
+		label_35.setBounds(14, 213, 154, 18);
 		panel_1.add(label_35);
 
 		textField_16 = new JTextField("0");
 		textField_16.setColumns(10);
-		textField_16.setBounds(182, 162, 86, 24);
+		textField_16.setBounds(182, 210, 86, 24);
 		panel_1.add(textField_16);
 
 		JLabel label_37 = new JLabel("<html><body>kgf</body></html>");
-		label_37.setBounds(282, 159, 39, 24);
+		label_37.setBounds(282, 207, 39, 24);
 		panel_1.add(label_37);
 
 		JLabel label_38 = new JLabel("<html><body>承托绳最大张力F<sub>C</sub>:</body></html>");
-		label_38.setBounds(14, 199, 154, 21);
+		label_38.setBounds(14, 247, 154, 21);
 		panel_1.add(label_38);
 
 		textField_17 = new JTextField("0");
 		textField_17.setColumns(10);
-		textField_17.setBounds(182, 196, 86, 24);
+		textField_17.setBounds(182, 244, 86, 24);
 		panel_1.add(textField_17);
 
 		JLabel label_39 = new JLabel("<html><body>kgf</body></html>");
-		label_39.setBounds(282, 196, 39, 24);
+		label_39.setBounds(282, 244, 39, 24);
 		panel_1.add(label_39);
 
-		JButton button = new JButton("保存");
-		button.setBounds(124, 767, 113, 27);
+		JLabel lblfk = new JLabel("<html><body>滑轮组的拉力F<sub>T</sub>:</body></html>");
+		lblfk.setBounds(14, 29, 154, 24);
+		panel_1.add(lblfk);
+
+		textField_10 = new JTextField("0");
+		textField_10.setColumns(10);
+		textField_10.setBounds(182, 26, 86, 24);
+		panel_1.add(textField_10);
+
+		JLabel label_30 = new JLabel("kgf");
+		label_30.setBounds(282, 29, 39, 18);
+		panel_1.add(label_30);
+
+		JButton button = new JButton("保存到历史纪录");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (null != sqc)
+					AnalysisXML.frameToXMl(sqc);
+			}
+		});
+		button.setBounds(1094, 561, 149, 27);
 		contentPane.add(button);
 
-		JButton button_1 = new JButton("打印");
-		button_1.setBounds(640, 767, 113, 27);
+		JButton button_1 = new JButton("下载到桌面");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		button_1.setBounds(770, 561, 149, 27);
 		contentPane.add(button_1);
 
 		JButton button_2 = new JButton("计算");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				I1 = comboBox.getSelectedIndex();
+				I2 = comboBox_1.getSelectedIndex();
+				if (!textField_9.getText().trim().matches("^[0.0-9.0]+$")
+						|| !textField_11.getText().trim().matches("^[0.0-9.0]+$")
+						|| !textField_12.getText().trim().matches("^[0.0-9.0]+$")
+						|| !textField_13.getText().trim().matches("^[0.0-9.0]+$")
+						|| !textField_14.getText().trim().matches("^[0.0-9.0]+$")
+						|| !textField_19.getText().trim().matches("^[0.0-9.0]+$")
+						|| !textField_6.getText().trim().matches("^[0.0-9.0]+$")
+						|| !textField_41.getText().trim().matches("^[0.0-9.0]+$")
+						|| !textField_43.getText().trim().matches("^[0.0-9.0]+$")
+						|| !textField_44.getText().trim().matches("^[0.0-9.0]+$")
+						|| !textField_18.getText().trim().matches("^[0.0-9.0]+$")
+						|| !textField_45.getText().trim().matches("^[0.0-9.0]+$")) {
+					JOptionPane.showMessageDialog(null, "输入不合法或者输入为0", "ERROR", JOptionPane.ERROR_MESSAGE);
+				} else {
+
+					K = Double.valueOf(textField_9.getText().trim());
+//					 = Double.valueOf(textField_10.getText().trim());
+					p = Double.valueOf(textField_11.getText().trim());
+					Q = Double.valueOf(textField_12.getText().trim());
+					TD = Double.valueOf(textField_13.getText().trim());
+					N = Double.valueOf(textField_14.getText().trim());
+					G = Double.valueOf(textField_19.getText().trim());
+
+					L = Double.valueOf(textField_6.getText().trim());
+					L0 = Double.valueOf(textField_41.getText().trim());
+					Z = Double.valueOf(textField_43.getText().trim());
+					S = Double.valueOf(textField_44.getText().trim());
+					J = Double.valueOf(textField_45.getText().trim());
+
+					sqc = new SquareDerrickCal(K, p, Q, TD, N, G, L, L0, Z, S, J, FS, FQ1, I1, I2);
+					sqc.btn1 = deo.btn1;
+					sqc.O1 = Double.valueOf(textField_20.getText().trim());
+					sqc.B = Double.valueOf(textField_18.getText().trim());
+
+					FT = sqc.hualun();
+					FK = sqc.kongzhi();
+					try {
+						FQ = sqc.qianyin();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						JOptionPane.showMessageDialog(null, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+					}
+					GO = sqc.zongzhong();
+					FH = sqc.dinghuaz();
+					DO = sqc.dinghuao();
+					JYV = sqc.chajie();
+					DZ = sqc.gowind();
+					ZF = sqc.zongfengli();
+					TS = sqc.goujian();
+					FL = sqc.fengli();
+					QH = sqc.fenghezai();
+					M = sqc.dangfengzai();
+					LL1 = sqc.middle1();
+					LL2 = sqc.middle2();
+					LL3 = sqc.middle3();
+					LL4 = sqc.middle4();
+					FB = sqc.waizhangxian();
+					GN = sqc.ganshen();
+					FC = sqc.zuida();
+					L1 = sqc.jisuanlong();
+					IX = sqc.jimianguanxin();
+					IR = sqc.huizhuan();
+					W = sqc.kangwan();
+
+					textField.setText(String.format("%.2f", FK));
+					textField_1.setText(String.format("%.2f", FQ));
+					textField_2.setText(String.format("%.2f", FH));
+					textField_15.setText(String.format("%.2f", FB));
+					textField_16.setText(String.format("%.2f", GN));
+					textField_17.setText(String.format("%.2f", FC));
+
+					YX = sqc.changxi();
+					Y0X = sqc.huansuan();
+					w1 = sqc.wendingxi();
+
+					AY = sqc.anquan();
+					XO = sqc.xiezhuitiao();
+					DCB = sqc.danzhi();
+					LJJ = sqc.liangcao();
+
+					ND = sqc.danzhizhou();
+					DW = sqc.danzhiwen();
+					DWA = sqc.danzhiwenan();
+					LX = sqc.jisuanlonglx();
+					V1 = sqc.v1();
+					V2 = sqc.v2();
+					XCB = sqc.xiezhuichangxibi();
+					XAX = sqc.xiewending();
+					WA = sqc.xiewendingan();
+					if (Y0X <= 120) {
+						radioButton.setEnabled(true);
+						radioButton.setSelected(true);
+					} else {
+						radioButton_1.setEnabled(true);
+						radioButton_1.setSelected(true);
+					}
+
+					if (AY >= 2.5) {
+						radioButton_8.setEnabled(true);
+						radioButton_8.setSelected(true);
+					} else {
+						radioButton_9.setEnabled(true);
+						radioButton_9.setSelected(true);
+					}
+
+					if (DCB <= 0.7 * YX) {
+						radioButton_10.setEnabled(true);
+						radioButton_10.setSelected(true);
+					} else {
+						radioButton_11.setEnabled(true);
+						radioButton_11.setSelected(true);
+					}
+
+					if (XCB <= 120) {
+						radioButton_2.setEnabled(true);
+						radioButton_2.setSelected(true);
+					} else {
+						radioButton_3.setEnabled(true);
+						radioButton_3.setSelected(true);
+					}
+
+					if (WA >= 2.5) {
+						radioButton_4.setEnabled(true);
+						radioButton_4.setSelected(true);
+					} else {
+						radioButton_5.setEnabled(true);
+						radioButton_5.setSelected(true);
+					}
+					textField_7.setText(String.format("%.2f", QH));
+					textField_8.setText(String.format("%.2f", M));
+					textField_36.setText(String.format("%.2f", Y0X));
+					textField_4.setText(String.format("%.2f", AY));
+					textField_5.setText(String.format("%.2f", DCB));
+					textField_3.setText(String.format("%.2f", ND));
+					textField_39.setText(String.format("%.2f", XCB));
+					textField_40.setText(String.format("%.2f", WA));
+					textField_14.setText(String.valueOf(sqc.N));
+					
+				}
+			}
+		});
 		button_2.setActionCommand("计算");
-		button_2.addActionListener(this);
-		button_2.setBounds(1072, 767, 113, 27);
+//		button_2.addActionListener(this);
+		button_2.setBounds(770, 521, 113, 27);
 		contentPane.add(button_2);
 
 		JPanel panel_5 = new JPanel();
@@ -503,31 +676,42 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 				"钢材的材质选型", TitledBorder.LEADING,
 
 				TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_8.setBounds(392, 13, 364, 74);
+		panel_8.setBounds(392, 13, 364, 62);
 		contentPane.add(panel_8);
 
 		radioButton_6 = new JRadioButton("Q235");
-		radioButton_6.setBounds(61, 24, 84, 27);
+		radioButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FS = 310000000;
+				FQ1 = 345000000;
+			}
+		});
+		radioButton_6.setBounds(60, 24, 84, 27);
 		panel_8.add(radioButton_6);
 
 		radioButton_7 = new JRadioButton("Q345");
-		radioButton_7.setBounds(163, 24, 93, 27);
+		radioButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				FS = 215000000;
+				FQ1 = 235000000;
+			}
+		});
+		ButtonGroup buttonGroup = new ButtonGroup();
+		buttonGroup.add(radioButton_6);
+		buttonGroup.add(radioButton_7);
+		radioButton_7.setBounds(202, 24, 93, 27);
 		panel_8.add(radioButton_7);
 
 		radioButton_6.setActionCommand("Q235");
 		radioButton_7.setActionCommand("Q345");
-		radioButton_6.addActionListener(this);
-		radioButton_7.addActionListener(this);
 
 		JPanel panel_9 = new JPanel();
-		panel_9.setBounds(389, 215, 364, 189);
+		panel_9.setBounds(392, 189, 364, 226);
 		contentPane.add(panel_9);
 		panel_9.setLayout(null);
-		panel_9.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
-
-				"抱杆尺寸", TitledBorder.LEADING,
-
-				TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_9.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u62B1\u6746\u5C5E\u6027",
+				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 
 		JLabel label_24 = new JLabel("抱杆的总长L:");
 		label_24.setBounds(27, 29, 120, 18);
@@ -594,6 +778,19 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 		textField_45.setBounds(195, 140, 86, 24);
 		panel_9.add(textField_45);
 
+		JLabel lblx = new JLabel("<html>构件截面内缀条所在平面与X轴夹角 θ:<html>");
+		lblx.setBounds(27, 176, 154, 37);
+		panel_9.add(lblx);
+
+		textField_20 = new JTextField("0");
+		textField_20.setColumns(10);
+		textField_20.setBounds(195, 189, 86, 24);
+		panel_9.add(textField_20);
+
+		JLabel label_40 = new JLabel("<html><body><sup>。</sup></body></html>");
+		label_40.setBounds(292, 195, 42, 18);
+		panel_9.add(label_40);
+
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
 		panel_3.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
@@ -601,7 +798,7 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 				"抱杆选型", TitledBorder.LEADING,
 
 				TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_3.setBounds(392, 104, 364, 98);
+		panel_3.setBounds(392, 78, 364, 98);
 		contentPane.add(panel_3);
 
 		JLabel label_14 = new JLabel("主材（主肢）规格:");
@@ -646,7 +843,7 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 		comboBox.addItem("∠140x10");
 		comboBox.addItem("∠140x12");
 		comboBox.addItem("∠140x14");
-		comboBox.addItemListener(this);
+//		comboBox.addItemListener(this);
 		comboBox.setBounds(161, 28, 100, 24);
 		panel_3.add(comboBox);
 
@@ -684,7 +881,7 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 		comboBox_1.addItem("∠140x10");
 		comboBox_1.addItem("∠140x12");
 		comboBox_1.addItem("∠140x14");
-		comboBox_1.addItemListener(this);
+//		comboBox_1.addItemListener(this);
 		comboBox_1.setBounds(161, 62, 100, 24);
 		panel_3.add(comboBox_1);
 
@@ -703,91 +900,104 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 				"吊装数据", TitledBorder.LEADING,
 
 				TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_4.setBounds(14, 412, 364, 253);
+		panel_4.setBounds(14, 400, 364, 275);
 		contentPane.add(panel_4);
 
-		JLabel label_20 = new JLabel("<html><body>控制绳对地夹角K:</body></html>");
-		label_20.setBounds(14, 31, 154, 24);
-		panel_4.add(label_20);
+		JLabel lblK_1 = new JLabel("<html><body>控制绳对地夹角 k:</body></html>");
+		lblK_1.setBounds(14, 60, 154, 24);
+		panel_4.add(lblK_1);
 
 		textField_9 = new JTextField("0");
 		textField_9.setColumns(10);
-		textField_9.setBounds(182, 28, 86, 24);
+		textField_9.setBounds(182, 57, 86, 24);
 		panel_4.add(textField_9);
 
 		JLabel label_31 = new JLabel("<html><body>货物被拉偏角度p:</body></html>");
-		label_31.setBounds(14, 62, 154, 21);
+		label_31.setBounds(14, 91, 154, 21);
 		panel_4.add(label_31);
 
 		textField_11 = new JTextField("0");
 		textField_11.setColumns(10);
-		textField_11.setBounds(182, 59, 86, 24);
+		textField_11.setBounds(182, 88, 86, 24);
 		panel_4.add(textField_11);
 
 		JLabel label_33 = new JLabel("<html><body>杆身倾斜角度q:</body></html>");
-		label_33.setBounds(14, 95, 154, 24);
+		label_33.setBounds(14, 174, 154, 24);
 		panel_4.add(label_33);
 
 		textField_12 = new JTextField("0");
 		textField_12.setColumns(10);
-		textField_12.setBounds(182, 96, 86, 24);
+		textField_12.setBounds(182, 175, 86, 24);
 		panel_4.add(textField_12);
 
 		JLabel label_36 = new JLabel("承托绳对地夹角t:");
-		label_36.setBounds(14, 132, 154, 18);
+		label_36.setBounds(14, 211, 154, 18);
 		panel_4.add(label_36);
 
 		textField_13 = new JTextField("0");
 		textField_13.setColumns(10);
-		textField_13.setBounds(182, 129, 86, 24);
+		textField_13.setBounds(182, 208, 86, 24);
 		panel_4.add(textField_13);
 
 		JLabel label_43 = new JLabel("<html><body>绳索数（n）:</body></html>");
-		label_43.setBounds(14, 166, 154, 21);
+		label_43.setBounds(14, 122, 154, 21);
 		panel_4.add(label_43);
 
 		textField_14 = new JTextField("0");
 		textField_14.setColumns(10);
-		textField_14.setBounds(182, 163, 86, 24);
+		textField_14.setBounds(182, 119, 86, 24);
 		panel_4.add(textField_14);
 
 		JLabel label_46 = new JLabel("<html><body>货物重量G:</body></html>");
-		label_46.setBounds(14, 219, 154, 21);
+		label_46.setBounds(14, 28, 154, 21);
 		panel_4.add(label_46);
 
 		textField_19 = new JTextField("0");
 		textField_19.setColumns(10);
-		textField_19.setBounds(182, 216, 86, 24);
+		textField_19.setBounds(182, 25, 86, 24);
 		panel_4.add(textField_19);
 
 		JLabel label_47 = new JLabel("<html><body>kg</body></html>");
-		label_47.setBounds(282, 216, 39, 24);
+		label_47.setBounds(282, 25, 39, 24);
 		panel_4.add(label_47);
 
 		JLabel label_22 = new JLabel("<html><body><sup>。</sup></body></html>");
-		label_22.setBounds(279, 28, 42, 18);
+		label_22.setBounds(279, 57, 42, 18);
 		panel_4.add(label_22);
 
 		JLabel label_32 = new JLabel("<html><body><sup>。</sup></body></html>");
-		label_32.setBounds(279, 59, 42, 18);
+		label_32.setBounds(279, 88, 42, 18);
 		panel_4.add(label_32);
 
 		JLabel label_34 = new JLabel("<html><body><sup>。</sup></body></html>");
-		label_34.setBounds(279, 95, 42, 18);
+		label_34.setBounds(279, 174, 42, 18);
 		panel_4.add(label_34);
 
 		JLabel label_42 = new JLabel("<html><body><sup>。</sup></body></html>");
-		label_42.setBounds(279, 129, 42, 18);
+		label_42.setBounds(279, 208, 42, 18);
 		panel_4.add(label_42);
 
 		JLabel label_44 = new JLabel("<html><body>根</body></html>");
-		label_44.setBounds(279, 163, 42, 18);
+		label_44.setBounds(279, 119, 42, 18);
 		panel_4.add(label_44);
 
 		JLabel label_48 = new JLabel("<html><body>建议初始绳索数为7</body></html>");
 		label_48.setForeground(Color.RED);
-		label_48.setBounds(14, 185, 169, 32);
+		label_48.setBounds(14, 141, 169, 32);
 		panel_4.add(label_48);
+
+		JLabel lblB = new JLabel("<html><body>外拉线对地夹角 b:</body></html>");
+		lblB.setBounds(14, 242, 154, 24);
+		panel_4.add(lblB);
+
+		textField_18 = new JTextField("0");
+		textField_18.setColumns(10);
+		textField_18.setBounds(182, 243, 86, 24);
+		panel_4.add(textField_18);
+
+		JLabel label_23 = new JLabel("<html><body><sup>。</sup></body></html>");
+		label_23.setBounds(279, 242, 42, 18);
+		panel_4.add(label_23);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(253, 253, 241));
@@ -829,168 +1039,52 @@ public class DerrickSquare extends FatherFrame implements ActionListener, ItemLi
 		JLabel label_12 = new JLabel("风弯矩M:");
 		label_12.setBounds(147, 64, 120, 18);
 		panel_2.add(label_12);
-	}
 
-	@Override
-	public void itemStateChanged(ItemEvent e) {
+		JPanel panel_6 = new JPanel();
+		panel_6.setLayout(null);
+		panel_6.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u8BA1\u7B97\u9009\u578B",
+				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_6.setBounds(14, 680, 364, 62);
+		contentPane.add(panel_6);
 
-		I1 = comboBox.getSelectedIndex();
-		System.out.println(I1);
-
-		I2 = comboBox_1.getSelectedIndex();
-		System.out.println(I2);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Q345")) {
-			FS = 215000000;
-			FQ1 = 235000000;
-			radioButton_6.setSelected(false);
-		}
-		if (e.getActionCommand().equals("Q235")) {
-			FS = 310000000;
-			FQ1 = 345000000;
-			radioButton_7.setSelected(false);
-		}
-		
-		
-		if(e.getActionCommand().equals("计算")) {
-			if(!textField.getText().trim().matches("^[0.0-9.0]+$") || !textField_1.getText().trim().matches("^[0.0-9.0]+$") ||
-					!textField_2.getText().trim().matches("^[0.0-9.0]+$") || !textField_15.getText().trim().matches("^[0.0-9.0]+$") ||
-							!textField_16.getText().trim().matches("^[0.0-9.0]+$")|| !textField_17.getText().trim().matches("^[0.0-9.0]+$") ||
-							 !textField_9.getText().trim().matches("^[0.0-9.0]+$") ||
-							 !textField_11.getText().trim().matches("^[0.0-9.0]+$") || 
-							!textField_12.getText().trim().matches("^[0.0-9.0]+$") || !textField_13.getText().trim().matches("^[0.0-9.0]+$") ||
-							!textField_14.getText().trim().matches("^[0.0-9.0]+$") || !textField_19.getText().trim().matches("^[0.0-9.0]+$") || 
-							!textField_6.getText().trim().matches("^[0.0-9.0]+$")|| !textField_41.getText().trim().matches("^[0.0-9.0]+$") 
-							|| !textField_43.getText().trim().matches("^[0.0-9.0]+$")  || !textField_44.getText().trim().matches("^[0.0-9.0]+$") 
-							|| !textField_45.getText().trim().matches("^[0.0-9.0]+$") )
-			 {
-				JOptionPane.showMessageDialog(null,"输入不合法或者输入为0","ERROR",JOptionPane.ERROR_MESSAGE);
-			} else{
-				
-				K = Double.valueOf(textField_9.getText().trim());
-//				 = Double.valueOf(textField_10.getText().trim());
-				p = Double.valueOf(textField_11.getText().trim());
-				Q = Double.valueOf(textField_12.getText().trim());
-				TD = Double.valueOf(textField_13.getText().trim());
-				N = Double.valueOf(textField_14.getText().trim());
-				G = Double.valueOf(textField_19.getText().trim());
-				
-				L = Double.valueOf(textField_6.getText().trim());
-				L0 = Double.valueOf(textField_41.getText().trim());
-				Z = Double.valueOf(textField_43.getText().trim());
-				S = Double.valueOf(textField_44.getText().trim());
-				J = Double.valueOf(textField_45.getText().trim());
-				
-				SquareDerrickCal sqc = new SquareDerrickCal(K, p, Q, TD, N, G, L, L0, Z, S, J,FS,FQ1,I1,I2);
-				
-				FT = sqc.hualun();
-				FK = sqc.kongzhi();
-				FQ = sqc.qianyin();
-				GO = sqc.zongzhong();
-				FH = sqc.dinghuaz();
-				DO = sqc.dinghuao();
-				JYV = sqc.chajie();
-				DZ = sqc.gowind();
-				ZF = sqc.zongfengli();
-				TS = sqc.goujian();
-				FL = sqc.fengli();
-				QH = sqc.fenghezai();
-				M = sqc.dangfengzai();
-				LL1 = sqc.middle1();
-				LL2 = sqc.middle2();
-				LL3 = sqc.middle3();
-				LL4 = sqc.middle4();
-				FB = sqc.waizhangxian();
-				GN = sqc.ganshen();
-				FC = sqc.zuida();
-				L1 = sqc.jisuanlong();
-				IX = sqc.jimianguanxin();
-				IR = sqc.huizhuan();
-				W = sqc.kangwan();
-				
-				textField.setText(String.format("%.2f", FK));
-				textField_1.setText(String.format("%.2f", FQ));
-				textField_2.setText(String.format("%.2f", FH));
-				textField_15.setText(String.format("%.2f", FB));
-				textField_16.setText(String.format("%.2f", GN));
-				textField_17.setText(String.format("%.2f", FC));
-
-				
-
-				
-				
-				YX = sqc.changxi();
-				Y0X = sqc.huansuan();
-				w1 = sqc.wendingxi();
-				
-				AY = sqc.anquan();
-				XO = sqc.xiezhuitiao();
-				DCB = sqc.danzhi();
-				LJJ = sqc.liangcao();
-				
-				
-				ND  = sqc.danzhizhou();
-				DW = sqc.danzhiwen();
-				DWA = sqc.danzhiwenan();
-				LX = sqc.jisuanlonglx();
-				V1 = sqc.v1();
-				V2 = sqc.v2();
-				XCB = sqc.xiezhuichangxibi();
-				XAX = sqc.xiewending();
-				WA = sqc.xiewendingan();
-				if(Y0X <= 120){
-					radioButton.setEnabled(true);
-					radioButton.setSelected(true);
-				}else{
-					radioButton_1.setEnabled(true);
-					radioButton_1.setSelected(true);
-				}
-				
-				if(AY >= 2.5){
-					radioButton_8.setEnabled(true);
-					radioButton_8.setSelected(true);
-				}else{
-					radioButton_9.setEnabled(true);
-					radioButton_9.setSelected(true);
-				}
-				
-				if(DCB <= 0.7*YX){
-					radioButton_10.setEnabled(true);
-					radioButton_10.setSelected(true);
-				}else{
-					radioButton_11.setEnabled(true);
-					radioButton_11.setSelected(true);
-				}
-				
-				if(XCB <= 120){
-					radioButton_2.setEnabled(true);
-					radioButton_2.setSelected(true);
-				}else{
-					radioButton_3.setEnabled(true);
-					radioButton_3.setSelected(true);
-				}
-				
-				if(WA >= 2.5){
-					radioButton_4.setEnabled(true);
-					radioButton_4.setSelected(true);
-				}else{
-					radioButton_5.setEnabled(true);
-					radioButton_5.setSelected(true);
-				}
-				textField_7.setText(String.format("%.2f", QH));
-				textField_8.setText(String.format("%.2f", M));
-				textField_36.setText(String.format("%.2f", Y0X));
-				textField_4.setText(String.format("%.2f", AY));
-				textField_5.setText(String.format("%.2f", DCB));
-				textField_3.setText(String.format("%.2f", ND));
-				textField_39.setText(String.format("%.2f", XCB));
-				textField_40.setText(String.format("%.2f", WA));
+		JRadioButton radioButton_12 = new JRadioButton("正方形格构抱杆");
+		radioButton_12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				deo.btn1 = 1.0;
+				lblx.setVisible(false);
+				textField_20.setVisible(false);
+				label_40.setVisible(false);
 			}
-			
-		}
+		});
+		radioButton_12.setActionCommand("Q235");
+		radioButton_12.setBounds(23, 24, 173, 27);
+		panel_6.add(radioButton_12);
 
+		JRadioButton radioButton_13 = new JRadioButton("三角形抱杆");
+		radioButton_13.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				deo.btn1 = 2.0;
+				lblx.setVisible(true);
+				textField_20.setVisible(true);
+				label_40.setVisible(true);
+			}
+		});
+		if (deo.btn1 == 1.0) {
+			radioButton_12.setSelected(true);
+			lblx.setVisible(false);
+			textField_20.setVisible(false);
+			label_40.setVisible(false);
+		} else {
+			radioButton_13.setSelected(true);
+			lblx.setVisible(true);
+			textField_20.setVisible(true);
+			label_40.setVisible(true);
+		}
+		radioButton_13.setActionCommand("Q345");
+		radioButton_13.setBounds(202, 24, 152, 27);
+		panel_6.add(radioButton_13);
+		ButtonGroup buttonGroup2 = new ButtonGroup();
+		buttonGroup2.add(radioButton_12);
+		buttonGroup2.add(radioButton_13);
 	}
 }

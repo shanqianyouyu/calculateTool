@@ -50,11 +50,11 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 	private JButton model = new JButton("显示规范");
 	private JButton table1 = new JButton("显示表一");
 	private JButton table2 = new JButton("显示表二");
-	
-	//打印
+
+	// 打印
 	private String outPutTxt = "";
-	
-	//保存
+
+	// 保存
 	private AcrossEnity acrossEnity = null;
 
 	// 定义初始图片
@@ -125,12 +125,10 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 	private int B1;
 	private int B2;
 
-	
 	// 获取下拉列表的值
 	private String list1;
 	private String list2;
-	
-	
+
 	// 输入参数
 	JTextField oneTxt51 = new JTextField("0", 7);
 	private double two51;
@@ -236,9 +234,8 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 	private double Rpl;
 	private double TRpl;
 	private double WDD;
-	
-	
-	//中间变量
+
+	// 中间变量
 	private double L1;
 	private double L2;
 	private double L3;
@@ -513,7 +510,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		Image image = ((ImageIcon) icon1).getImage();
 		image = image.getScaledInstance(360, 290, Image.SCALE_DEFAULT);
 		((ImageIcon) icon1).setImage(image);
-	    picture1 = new JLabel(icon1, JLabel.CENTER);
+		picture1 = new JLabel(icon1, JLabel.CENTER);
 		picture1.setBounds(10, 15, 380, 300);
 		picture.add(picture1);
 		left.add(picture);
@@ -545,10 +542,9 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		comboBox.addItemListener(this);
 
 		// 设置默认选中的条目
-		if(acrossEnity.WCSC == null || acrossEnity.WCSC == 1.3){
+		if (acrossEnity.WCSC == null || acrossEnity.WCSC == 1.3) {
 			comboBox.setSelectedIndex(1);
-		}		
-		else{
+		} else {
 			comboBox.setSelectedIndex(0);
 		}
 
@@ -1049,7 +1045,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		JLabel tank75 = new JLabel("两幅跨越架之间的跨距");
 		tank75.setHorizontalAlignment(JTextField.RIGHT);
 		oneTxt75.setText(acrossEnity.WDD == null ? "0" : String.valueOf(acrossEnity.WDD));
-		
+
 		// 设置内部布局
 		fengp.setLayout(null);
 		J71.setBounds(0, 20, 390, 38);
@@ -1091,7 +1087,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		button02.addActionListener(this);
 		button01.setActionCommand("保存");
 		button01.addActionListener(this);
-		
+
 		button01.setBounds(200, 5, 150, 40);
 		button02.setBounds(700, 5, 150, 40);
 		button03.setBounds(1300, 5, 150, 40);
@@ -1114,7 +1110,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 			Image image = ((ImageIcon) icon1).getImage();
 			image = image.getScaledInstance(360, 290, Image.SCALE_DEFAULT);
 			((ImageIcon) icon1).setImage(image);
-		    picture1 = new JLabel(icon1, JLabel.CENTER);
+			picture1 = new JLabel(icon1, JLabel.CENTER);
 			picture1.setBounds(10, 15, 380, 300);
 			picture.add(picture1);
 			picture1.setVisible(true);
@@ -1124,7 +1120,7 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		if (e.getActionCommand().equals("事故情况之二")) {
 			picture1.setVisible(false);
 			picture.setLayout(null);
-			Icon icon2= new ImageIcon(this.getClass().getResource("2.png"));
+			Icon icon2 = new ImageIcon(this.getClass().getResource("2.png"));
 //			ImageIcon image = new ImageIcon();
 			Image image = ((ImageIcon) icon2).getImage();
 			image = image.getScaledInstance(360, 290, Image.SCALE_DEFAULT);
@@ -1152,289 +1148,309 @@ public class AcrossFrameCalAbusolute extends FatherFrame implements ActionListen
 		}
 
 		if (e.getActionCommand().equals("计算")) {
-			int k = 0,a = 0,b = 0,c = 0,d = 0,f = 0,z = 0,x = 0;
-			if(!oneTxt51.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt52.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt53.getText().trim().matches("^[0.0-9.0]+$") || 
-					!oneTxt54.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt55.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt56.getText().trim().matches("^[0.0-9.0]+$") || 
-					!oneTxt57.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt58.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt59.getText().trim().matches("^[0.0-9.0]+$") ||
-					!oneTxt81.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt82.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt83.getText().trim().matches("^[0.0-9.0]+$")
-			    || !oneTxt84.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt85.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt86.getText().trim().matches("^[0.0-9.0]+$") ||
-			    !oneTxt87.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt88.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt1.getText().trim().matches("^[0.0-9.0]+$") ||
-			    !oneTxt3.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt7.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt4.getText().trim().matches("^[0.0-9.0]+$")
-			    || !oneTxt5.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt6.getText().trim().matches("^[0.0-9.0]+$") ||!oneTxt21.getText().trim().matches("^[0.0-9.0]+$") ||
-			    !oneTxt31.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt32.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt34.getText().trim().matches("^[0.0-9.0]+$") ||
-			    !oneTxt37.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt39.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt41.getText().trim().matches("^[0.0-9.0]+$") ||
-			    !oneTxt42.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt43.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt44.getText().trim().matches("^[0.0-9.0]+$")){
-				JOptionPane.showMessageDialog(null,"IO occurred ","ERROR",JOptionPane.ERROR_MESSAGE);
-			}
-			else{
-			two51 = Double.parseDouble(oneTxt51.getText().trim());
-			acrossEnity.OPL = two51;
-			two52 = Double.parseDouble(oneTxt52.getText().trim());
-			acrossEnity.MSD = two52;
-			two53 = Double.parseDouble(oneTxt53.getText().trim());
-			acrossEnity.HHP = two53;
-			two54 = Double.parseDouble(oneTxt54.getText().trim());
-			acrossEnity.RPL1 = two54;
-			two55 = Double.parseDouble(oneTxt55.getText().trim());
-			acrossEnity.ADP = two55;
-			two56 = Double.parseDouble(oneTxt56.getText().trim());
-			acrossEnity.ACB = two56;
-			two57 = Double.parseDouble(oneTxt57.getText().trim());
-			acrossEnity.RS = two57;
-			two58 = Double.parseDouble(oneTxt58.getText().trim());
-			acrossEnity.SC = two58;
-			two59 = Double.parseDouble(oneTxt59.getText().trim());
-			acrossEnity.SCD = two59;
+			int k = 0, a = 0, b = 0, c = 0, d = 0, f = 0, z = 0, x = 0;
+			if (!oneTxt51.getText().trim().matches("^[0.0-9.0]+$") || !oneTxt52.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt53.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt54.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt55.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt56.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt57.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt58.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt59.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt81.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt82.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt83.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt84.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt85.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt86.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt87.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt88.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt1.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt3.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt7.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt4.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt5.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt6.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt21.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt31.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt32.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt34.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt37.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt39.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt41.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt42.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt43.getText().trim().matches("^[0.0-9.0]+$")
+					|| !oneTxt44.getText().trim().matches("^[0.0-9.0]+$")) {
+				JOptionPane.showMessageDialog(null, "IO occurred ", "ERROR", JOptionPane.ERROR_MESSAGE);
+			} else {
+				two51 = Double.parseDouble(oneTxt51.getText().trim());
+				acrossEnity.OPL = two51;
+				two52 = Double.parseDouble(oneTxt52.getText().trim());
+				acrossEnity.MSD = two52;
+				two53 = Double.parseDouble(oneTxt53.getText().trim());
+				acrossEnity.HHP = two53;
+				two54 = Double.parseDouble(oneTxt54.getText().trim());
+				acrossEnity.RPL1 = two54;
+				two55 = Double.parseDouble(oneTxt55.getText().trim());
+				acrossEnity.ADP = two55;
+				two56 = Double.parseDouble(oneTxt56.getText().trim());
+				acrossEnity.ACB = two56;
+				two57 = Double.parseDouble(oneTxt57.getText().trim());
+				acrossEnity.RS = two57;
+				two58 = Double.parseDouble(oneTxt58.getText().trim());
+				acrossEnity.SC = two58;
+				two59 = Double.parseDouble(oneTxt59.getText().trim());
+				acrossEnity.SCD = two59;
 
-			two81 = Double.parseDouble(oneTxt81.getText().trim());
-			acrossEnity.DCL = two81;
-			two82 = Double.parseDouble(oneTxt82.getText().trim());
-			acrossEnity.HST = two82;
-			two83 = Double.parseDouble(oneTxt83.getText().trim());
-			acrossEnity.SSC = two83;
-			two84 = Double.parseDouble(oneTxt84.getText().trim());
-			acrossEnity.LOPT = two84;
-			two85 = Double.parseDouble(oneTxt85.getText().trim());
-			acrossEnity.ULW = two85;
-			two86 = Double.parseDouble(oneTxt86.getText().trim());
-			acrossEnity.ULWL = two86;
-			two87 = Double.parseDouble(oneTxt87.getText().trim());
-			acrossEnity.DWG = two87;
-			two88 = Double.parseDouble(oneTxt88.getText().trim());
-			acrossEnity.WCTC = two88;
+				two81 = Double.parseDouble(oneTxt81.getText().trim());
+				acrossEnity.DCL = two81;
+				two82 = Double.parseDouble(oneTxt82.getText().trim());
+				acrossEnity.HST = two82;
+				two83 = Double.parseDouble(oneTxt83.getText().trim());
+				acrossEnity.SSC = two83;
+				two84 = Double.parseDouble(oneTxt84.getText().trim());
+				acrossEnity.LOPT = two84;
+				two85 = Double.parseDouble(oneTxt85.getText().trim());
+				acrossEnity.ULW = two85;
+				two86 = Double.parseDouble(oneTxt86.getText().trim());
+				acrossEnity.ULWL = two86;
+				two87 = Double.parseDouble(oneTxt87.getText().trim());
+				acrossEnity.DWG = two87;
+				two88 = Double.parseDouble(oneTxt88.getText().trim());
+				acrossEnity.WCTC = two88;
 
-			two1 = Double.parseDouble(oneTxt1.getText().trim());
-			acrossEnity.WLD = two1;
-			two3 = Double.parseDouble(oneTxt3.getText().trim());
-			acrossEnity.NOSR = two3;
-			two7 = Double.parseDouble(oneTxt7.getText().trim());
-			acrossEnity.WLAC = two7;
-			two4 = Double.parseDouble(oneTxt4.getText().trim());
-			acrossEnity.WS = two4;
-			two5 = Double.parseDouble(oneTxt5.getText().trim());
-			acrossEnity.PA = two5;
-			two6 = Double.parseDouble(oneTxt6.getText().trim());
-			acrossEnity.IC = two6;
+				two1 = Double.parseDouble(oneTxt1.getText().trim());
+				acrossEnity.WLD = two1;
+				two3 = Double.parseDouble(oneTxt3.getText().trim());
+				acrossEnity.NOSR = two3;
+				two7 = Double.parseDouble(oneTxt7.getText().trim());
+				acrossEnity.WLAC = two7;
+				two4 = Double.parseDouble(oneTxt4.getText().trim());
+				acrossEnity.WS = two4;
+				two5 = Double.parseDouble(oneTxt5.getText().trim());
+				acrossEnity.PA = two5;
+				two6 = Double.parseDouble(oneTxt6.getText().trim());
+				acrossEnity.IC = two6;
 
-			two21 = Double.parseDouble(oneTxt21.getText().trim());
-			acrossEnity.FC = two6;
+				two21 = Double.parseDouble(oneTxt21.getText().trim());
+				acrossEnity.FC = two6;
 
-			two31 = Double.parseDouble(oneTxt31.getText().trim());
-			acrossEnity.HP = two31;
-			two32 = Double.parseDouble(oneTxt32.getText().trim());
-			acrossEnity.MVD = two32;
-			two34 = Double.parseDouble(oneTxt34.getText().trim());
-			acrossEnity.VA = two34;
-			two37 = Double.parseDouble(oneTxt37.getText().trim());
-			acrossEnity.LS = two37;
-			two39 = Double.parseDouble(oneTxt39.getText().trim());
-			acrossEnity.CW = two39;
+				two31 = Double.parseDouble(oneTxt31.getText().trim());
+				acrossEnity.HP = two31;
+				two32 = Double.parseDouble(oneTxt32.getText().trim());
+				acrossEnity.MVD = two32;
+				two34 = Double.parseDouble(oneTxt34.getText().trim());
+				acrossEnity.VA = two34;
+				two37 = Double.parseDouble(oneTxt37.getText().trim());
+				acrossEnity.LS = two37;
+				two39 = Double.parseDouble(oneTxt39.getText().trim());
+				acrossEnity.CW = two39;
 
-			two41 = Double.parseDouble(oneTxt41.getText().trim());
-			acrossEnity.IWP = two41;
-			two42 = Double.parseDouble(oneTxt41.getText().trim());
-			acrossEnity.Ms = two42;
-			two43 = Double.parseDouble(oneTxt41.getText().trim());
-			acrossEnity.Hd = two43;
-			two44 = Double.parseDouble(oneTxt41.getText().trim());
-			acrossEnity.Mhd = two44;
+				two41 = Double.parseDouble(oneTxt41.getText().trim());
+				acrossEnity.IWP = two41;
+				two42 = Double.parseDouble(oneTxt41.getText().trim());
+				acrossEnity.Ms = two42;
+				two43 = Double.parseDouble(oneTxt41.getText().trim());
+				acrossEnity.Hd = two43;
+				two44 = Double.parseDouble(oneTxt41.getText().trim());
+				acrossEnity.Mhd = two44;
 
-			
-			acrossEnity.IWP = two41;
+				acrossEnity.IWP = two41;
 
-			if(list1.equals("圆形杆件")){
-				two2 = 0.7;
-			}
-			else{
-				two2 = 1.3;
-			}
-			
-			AcrossCal sq2 = new AcrossCal(two1, two2, two3, two7, two4, two5, two6, two21, two31, two32, two34, two37,
-					two39, two41, two42, two43, two44, two51, two52, two53, two54, two55, two56, two57, two58, two59,
-					two81, two82, two83, two84, two85, two86, two87, two88);
-			
-			
-			WLS = Tool.forMat(sq2.setVerticalLoad());
-			
-			ULWP = 	Tool.forMat(sq2.setUniformLoad());
-			
-			HLS = Tool.forMat(sq2.setHorizontalLoad());
-			
-			MHC = Tool.forMat(sq2.setMinimumHeight());
-			
-			if (Double.isNaN(sq2.setMinimumWidth())) {
-				k = 1;
-				MWS = 0.0;
-			}else{
-			MWS = Tool.forMat(sq2.setMinimumWidth());
-			}
-			
-			if (Double.isNaN(sq2.setSpanCaused())) {
-				b = 3;
-				L1 = 0.0;
-			}else{
-			L1 = Tool.forMat(sq2.setSpanCaused());
-			}
-			
-			if (Double.isNaN(sq2.setMinimumSafety())) {
-				c = 4;
-				L2 = 0.0;
-			}else{
-			L2 = Tool.forMat(sq2.setMinimumSafety());
-			}
-			
-			if (Double.isNaN(sq2.setCrossingAngle())) {
-				d = 5;
-				L3 = 0.0;
-			}else{
-			L3 = Tool.forMat(sq2.setCrossingAngle());
-			}
-			
-			if (Double.isNaN(sq2.setMinimumSpan())) {
-				a = 2;
-				MSS = 0.0;
-			}else{
-			MSS = Tool.forMat(sq2.setMinimumSpan());
-			}
-			
-			if (Double.isNaN(sq2.setMinimumSpan())) {
-				x = 8;
-				Rpl = 0.0;
-			}else{
-			Rpl = Tool.forMat(sq2.setHorizontalDistance());
-			}
-			
-			if (Double.isNaN(sq2.setTwoSpan())) {
-				f = 6;
-				TRpl = 0.0;
-			}else{
-			TRpl = Tool.forMat(sq2.setTwoSpan());
-			}
-			
-			if (Double.isNaN(sq2.setWindDeviation())) {
-				z = 7;
-				WDD = 0.0;
-			}else{
-			WDD = Tool.forMat(sq2.setWindDeviation());
-			}
-			
-			if(k == 1 && a != 2 && b != 3 &&c != 4 && d != 5 && f != 6 && z != 7 && x != 8){
-				JOptionPane.showMessageDialog(null, "跨越架的最小宽度参数错误", "提示",JOptionPane.WARNING_MESSAGE); 
-			}
-			else if(k != 1 && a == 2 && b != 3 &&c != 4 && d != 5 && f != 6 && z != 7 && x != 8){
-				JOptionPane.showMessageDialog(null, "跨越架的最小跨距错误", "提示",JOptionPane.WARNING_MESSAGE);
-			}
-			else if(k != 1 && a != 2 && b == 3 &&c != 4 && d != 5 && f != 6 && z != 7 && x != 8){
-				JOptionPane.showMessageDialog(null, "拉线位置引起的跨距参数错误", "提示",JOptionPane.WARNING_MESSAGE);
-			}
-			else if(k != 1 && a != 2 && b != 3 &&c == 4 && d != 5 && f != 6 && z != 7 && x != 8){
-				JOptionPane.showMessageDialog(null, "拉线至运行线路最小安全距离要求的跨距参数错误", "提示",JOptionPane.WARNING_MESSAGE);
-			}
-			else if(k != 1 && a != 2 && b != 3 &&c != 4 && d == 5 && f != 6 && z != 7 && x != 8){
-				JOptionPane.showMessageDialog(null, "运行电力线与在建线路的交叉角引起的跨距参数错误", "提示",JOptionPane.WARNING_MESSAGE);
-			}
-			else if(k != 1 && a != 2 && b != 3 &&c != 4 && d != 5 && f == 6 && z != 7 && x != 8){
-				JOptionPane.showMessageDialog(null, "两幅跨越架间的跨距参数错误", "提示",JOptionPane.WARNING_MESSAGE);
-			}
-			else if(k != 1 && a != 2 && b != 3 &&c != 4 && d != 5 && f != 6 && z == 7 && x != 8){
-				JOptionPane.showMessageDialog(null, "风偏计算参数错误", "提示",JOptionPane.WARNING_MESSAGE);
-			}
-			else if(k != 1 && a != 2 && b != 3 &&c != 4 && d != 5 && f != 6 && z != 7 && x == 8){
-				JOptionPane.showMessageDialog(null, "架外侧至运行电力线的水平距离参数错误", "提示",JOptionPane.WARNING_MESSAGE);
-			}
-			else if(k != 1 && a != 2 && b != 3 &&c != 4 && d != 5 && f != 6 && z != 7 && x != 8){
-				
-			}
-			else{
-				JOptionPane.showMessageDialog(null, "多参数错误", "提示",JOptionPane.WARNING_MESSAGE);
-			}
-			two86 = Tool.forMat(sq2.setWindLoad());
-			
-			
-			
-			
-			oneTxt61.setText(String.format("%.2f", WLS));
-			oneTxt62.setText(String.format("%.2f", ULWP));
-			oneTxt64.setText(String.format("%.2f", HLS));
-			oneTxt65.setText(String.format("%.2f", MHC));
-			oneTxt66.setText(String.format("%.2f", MWS));
-			
-			oneTxt71.setText(String.format("%.2f", MSS));
-			oneTxt72.setText(String.format("%.2f", Rpl));
-			oneTxt74.setText(String.format("%.2f", TRpl));
-			oneTxt75.setText(String.format("%.2f", WDD));
-			
-			
-			acrossEnity.WLS = WLS;
-			acrossEnity.ULWP = ULWP;
-			acrossEnity.HLS = HLS;
-			acrossEnity.MHC = MHC;
-			acrossEnity.MWS = MWS;
-			
-			acrossEnity.MSS = MSS;
-			acrossEnity.Rpl = Rpl;
-			acrossEnity.TRpl= TRpl;
-			acrossEnity.WDD = WDD;
-			}
-		}
-		
-		if (e.getActionCommand().equals("保存")) {
-				AnalysisXML.frameToXMl(acrossEnity);	
-		}
-			
-		if (e.getActionCommand().equals("打印")) {
-				String s1 = "  ";
-				String s2 = "      ";
-				outPutTxt = "跨越架计算: " + System.getProperty("line.separator") + s1;
-				if (oneTxt61.getText() != null) {
-					outPutTxt += "垂直载荷和均匀载荷: "+ System.getProperty("line.separator") + s2 + "导线密度:  " + oneTxt1.getText() + System.getProperty("line.separator") + s2 + "风载体型系数:  "
-							+ String.valueOf(two2) + System.getProperty("line.separator") + s2 + "子导线根数:  " + oneTxt3.getText() + System.getProperty("line.separator") + s2
-							+ "风荷调整系数:  " + oneTxt7.getText() + System.getProperty("line.separator") + s2 + "路线设计最大风速: " + oneTxt4.getText() + System.getProperty("line.separator")
-							+ s2 + "架面1m范围内的投影面积: " + oneTxt5.getText() + System.getProperty("line.separator") + s2 + "冲击系数:  " + oneTxt6.getText()
-							+  System.getProperty("line.separator") + s2 + "跨越架的垂直载荷:  " + oneTxt61.getText() + System.getProperty("line.separator") + s2 + "架面风压的均匀载荷:  " + oneTxt62.getText()+ System.getProperty("line.separator") + s1;
-				}
-				if (oneTxt64.getText() != null) {
-					outPutTxt += "跨越架的水平载荷: "+ System.getProperty("line.separator") + s2 + "冲击系数:  " + oneTxt6.getText() + System.getProperty("line.separator") + s2 + "导线或牵引绳对跨越架的摩擦系数: "
-							+ oneTxt21.getText() + System.getProperty("line.separator") + s1;
-				}
-				if (oneTxt65.getText() != null) {
-					outPutTxt += "竹木跨越架的安装:" + System.getProperty("line.separator") + s2 + "被跨电力线最高点的对地距离: " + oneTxt31.getText() + System.getProperty("line.separator") + s2 + "不同电压等级的电力线与封顶架面的最小垂直距离: "
-							+ oneTxt32.getText()  + System.getProperty("line.separator") + s2 + "跨越架封顶网的弧垂: " + oneTxt34.getText()  + System.getProperty("line.separator") + s2 + "施工线路的线间距离: "
-							+ oneTxt37.getText() + System.getProperty("line.separator") + s2 + "跨越架顶面超出施工线路的宽度: " + oneTxt39.getText() + System.getProperty("line.separator") + s2
-							+ "施工线路与别跨电力线的交叉角: " + oneTxt41.getText() + System.getProperty("line.separator") + s2 + "被跨电力线两边线间的水平距离: " + oneTxt43.getText()
-							+ System.getProperty("line.separator") + s2 + "跨越架内侧主杆或主柱外缘（金属架）至被跨电力线的最小水平距离: " + oneTxt44.getText() + System.getProperty("line.separator") + s2 + "跨越架的最小高度: " + oneTxt65.getText()
-							+ System.getProperty("line.separator") + s2 + "跨越架的最小宽度: " + oneTxt66.getText() + System.getProperty("line.separator") + s2 + "跨越架顶面的最小跨距: " + oneTxt71.getText()
-							+ System.getProperty("line.separator") + s1;
-				}
-				if (oneTxt72.getText() != null) {
-					outPutTxt += "单侧跨越架: " + System.getProperty("line.separator") + s2 + "跨越家上层拉线挂点至地面的高度: " + oneTxt53.getText()  + System.getProperty("line.separator") + s2 + "上拉线与运行电力线的最小安全距离: "
-							+ oneTxt54.getText()  + System.getProperty("line.separator") + s2 + "拉线对地面夹角: " + oneTxt55.getText()  + System.getProperty("line.separator") + s2 + "拉线与跨越架横担轴线间的水平夹角: "
-							+ oneTxt56.getText() + System.getProperty("line.separator") + s2 + "跨越架的上拉线挂点至运行电力线的垂直距离: " + oneTxt51.getText() + System.getProperty("line.separator") + s2 + "内侧上拉线与运行电力线的最小安全距离: "
-							+ oneTxt52.getText() + System.getProperty("line.separator") + s2 + "拉线至运行线路最小安全距离要求的跨距: " + oneTxt57.getText() + System.getProperty("line.separator") + s2 + "运行电力线与在建线路的交叉角引起的跨距: " + oneTxt58.getText()
-							+ System.getProperty("line.separator") + s2 + "拉线位置引起的跨距: " + oneTxt59.getText() + System.getProperty("line.separator") + s2 + "被跨越物与施工线路任一相邻杆塔的距离: " + oneTxt81.getText()
-							+ System.getProperty("line.separator") + s2 + "水平放线张力: " + oneTxt82.getText()
-							+ System.getProperty("line.separator") + s2 + "施工线路的跨越档档距跨越: " + oneTxt83.getText()
-							+ System.getProperty("line.separator") + s2 + "施工线路跨越档两端悬垂绝缘子串或滑车挂具长度: " + oneTxt84.getText() + System.getProperty("line.separator") + s2 + "施工线路跨越档两端悬垂绝缘子串或滑车挂具长度: " + oneTxt84.getText() 
-							+ System.getProperty("line.separator") + s2 + "导线、地线的单位长度重量: " + oneTxt85.getText()
-							+ System.getProperty("line.separator") + s2 + "导线或地线的单位长度风荷重: " + oneTxt86.getText()
-							+ System.getProperty("line.separator") + s2 + "导线或地线直径: " + oneTxt87.getText()
-							+ System.getProperty("line.separator") + s2 + "拉线位置引起的跨距: " + String.valueOf(L1)
-							+ System.getProperty("line.separator") + s2 + "拉线至运行线路最小安全距离要求的跨距: " + String.valueOf(L2)
-							+ System.getProperty("line.separator") + s2 + "运行电力线与在建线路的交叉角引起的跨距: " + String.valueOf(L3)
-							+ System.getProperty("line.separator") + s2 + "跨越架跨越架外侧至运行电力线的水平距离: " + oneTxt72.getText()
-							+ System.getProperty("line.separator") + s2 + "两副跨越架间的跨距: " + oneTxt74.getText()
-							+ System.getProperty("line.separator") + s2 + "风偏距离: " + oneTxt75.getText() + System.getProperty("line.separator") + s1;
-				}
-//				if(highStrength.)
-				if (outPutTxt.length() == 7) {
-					JOptionPane.showConfirmDialog(null, "内容为空！");
+				if (list1.equals("圆形杆件")) {
+					two2 = 0.7;
 				} else {
-					Filewriter.printToTxt(outPutTxt);
+					two2 = 1.3;
 				}
+
+				AcrossCal sq2 = new AcrossCal(two1, two2, two3, two7, two4, two5, two6, two21, two31, two32, two34,
+						two37, two39, two41, two42, two43, two44, two51, two52, two53, two54, two55, two56, two57,
+						two58, two59, two81, two82, two83, two84, two85, two86, two87, two88);
+
+				WLS = Tool.forMat(sq2.setVerticalLoad());
+
+				ULWP = Tool.forMat(sq2.setUniformLoad());
+
+				HLS = Tool.forMat(sq2.setHorizontalLoad());
+
+				MHC = Tool.forMat(sq2.setMinimumHeight());
+
+				if (Double.isNaN(sq2.setMinimumWidth())) {
+					k = 1;
+					MWS = 0.0;
+				} else {
+					MWS = Tool.forMat(sq2.setMinimumWidth());
+				}
+
+				if (Double.isNaN(sq2.setSpanCaused())) {
+					b = 3;
+					L1 = 0.0;
+				} else {
+					L1 = Tool.forMat(sq2.setSpanCaused());
+				}
+
+				if (Double.isNaN(sq2.setMinimumSafety())) {
+					c = 4;
+					L2 = 0.0;
+				} else {
+					L2 = Tool.forMat(sq2.setMinimumSafety());
+				}
+
+				if (Double.isNaN(sq2.setCrossingAngle())) {
+					d = 5;
+					L3 = 0.0;
+				} else {
+					L3 = Tool.forMat(sq2.setCrossingAngle());
+				}
+
+				if (Double.isNaN(sq2.setMinimumSpan())) {
+					a = 2;
+					MSS = 0.0;
+				} else {
+					MSS = Tool.forMat(sq2.setMinimumSpan());
+				}
+
+				if (Double.isNaN(sq2.setMinimumSpan())) {
+					x = 8;
+					Rpl = 0.0;
+				} else {
+					Rpl = Tool.forMat(sq2.setHorizontalDistance());
+				}
+
+				if (Double.isNaN(sq2.setTwoSpan())) {
+					f = 6;
+					TRpl = 0.0;
+				} else {
+					TRpl = Tool.forMat(sq2.setTwoSpan());
+				}
+
+				if (Double.isNaN(sq2.setWindDeviation())) {
+					z = 7;
+					WDD = 0.0;
+				} else {
+					WDD = Tool.forMat(sq2.setWindDeviation());
+				}
+
+				if (k == 1 && a != 2 && b != 3 && c != 4 && d != 5 && f != 6 && z != 7 && x != 8) {
+					JOptionPane.showMessageDialog(null, "跨越架的最小宽度参数错误", "提示", JOptionPane.WARNING_MESSAGE);
+				} else if (k != 1 && a == 2 && b != 3 && c != 4 && d != 5 && f != 6 && z != 7 && x != 8) {
+					JOptionPane.showMessageDialog(null, "跨越架的最小跨距错误", "提示", JOptionPane.WARNING_MESSAGE);
+				} else if (k != 1 && a != 2 && b == 3 && c != 4 && d != 5 && f != 6 && z != 7 && x != 8) {
+					JOptionPane.showMessageDialog(null, "拉线位置引起的跨距参数错误", "提示", JOptionPane.WARNING_MESSAGE);
+				} else if (k != 1 && a != 2 && b != 3 && c == 4 && d != 5 && f != 6 && z != 7 && x != 8) {
+					JOptionPane.showMessageDialog(null, "拉线至运行线路最小安全距离要求的跨距参数错误", "提示", JOptionPane.WARNING_MESSAGE);
+				} else if (k != 1 && a != 2 && b != 3 && c != 4 && d == 5 && f != 6 && z != 7 && x != 8) {
+					JOptionPane.showMessageDialog(null, "运行电力线与在建线路的交叉角引起的跨距参数错误", "提示", JOptionPane.WARNING_MESSAGE);
+				} else if (k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && f == 6 && z != 7 && x != 8) {
+					JOptionPane.showMessageDialog(null, "两幅跨越架间的跨距参数错误", "提示", JOptionPane.WARNING_MESSAGE);
+				} else if (k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && f != 6 && z == 7 && x != 8) {
+					JOptionPane.showMessageDialog(null, "风偏计算参数错误", "提示", JOptionPane.WARNING_MESSAGE);
+				} else if (k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && f != 6 && z != 7 && x == 8) {
+					JOptionPane.showMessageDialog(null, "架外侧至运行电力线的水平距离参数错误", "提示", JOptionPane.WARNING_MESSAGE);
+				} else if (k != 1 && a != 2 && b != 3 && c != 4 && d != 5 && f != 6 && z != 7 && x != 8) {
+
+				} else {
+					JOptionPane.showMessageDialog(null, "多参数错误", "提示", JOptionPane.WARNING_MESSAGE);
+				}
+				two86 = Tool.forMat(sq2.setWindLoad());
+
+				oneTxt61.setText(String.format("%.2f", WLS));
+				oneTxt62.setText(String.format("%.2f", ULWP));
+				oneTxt64.setText(String.format("%.2f", HLS));
+				oneTxt65.setText(String.format("%.2f", MHC));
+				oneTxt66.setText(String.format("%.2f", MWS));
+
+				oneTxt71.setText(String.format("%.2f", MSS));
+				oneTxt72.setText(String.format("%.2f", Rpl));
+				oneTxt74.setText(String.format("%.2f", TRpl));
+				oneTxt75.setText(String.format("%.2f", WDD));
+
+				acrossEnity.WLS = WLS;
+				acrossEnity.ULWP = ULWP;
+				acrossEnity.HLS = HLS;
+				acrossEnity.MHC = MHC;
+				acrossEnity.MWS = MWS;
+
+				acrossEnity.MSS = MSS;
+				acrossEnity.Rpl = Rpl;
+				acrossEnity.TRpl = TRpl;
+				acrossEnity.WDD = WDD;
 			}
 		}
-		
-		
+
+		if (e.getActionCommand().equals("保存")) {
+			AnalysisXML.frameToXMl(acrossEnity);
+		}
+
+		if (e.getActionCommand().equals("打印")) {
+			String s1 = "  ";
+			String s2 = "      ";
+			outPutTxt = "跨越架计算: " + System.getProperty("line.separator") + s1;
+			if (oneTxt61.getText() != null) {
+				outPutTxt += "垂直载荷和均匀载荷: " + System.getProperty("line.separator") + s2 + "导线密度:  " + oneTxt1.getText()
+						+ System.getProperty("line.separator") + s2 + "风载体型系数:  " + String.valueOf(two2)
+						+ System.getProperty("line.separator") + s2 + "子导线根数:  " + oneTxt3.getText()
+						+ System.getProperty("line.separator") + s2 + "风荷调整系数:  " + oneTxt7.getText()
+						+ System.getProperty("line.separator") + s2 + "路线设计最大风速: " + oneTxt4.getText()
+						+ System.getProperty("line.separator") + s2 + "架面1m范围内的投影面积: " + oneTxt5.getText()
+						+ System.getProperty("line.separator") + s2 + "冲击系数:  " + oneTxt6.getText()
+						+ System.getProperty("line.separator") + s2 + "跨越架的垂直载荷:  " + oneTxt61.getText()
+						+ System.getProperty("line.separator") + s2 + "架面风压的均匀载荷:  " + oneTxt62.getText()
+						+ System.getProperty("line.separator") + s1;
+			}
+			if (oneTxt64.getText() != null) {
+				outPutTxt += "跨越架的水平载荷: " + System.getProperty("line.separator") + s2 + "冲击系数:  " + oneTxt6.getText()
+						+ System.getProperty("line.separator") + s2 + "导线或牵引绳对跨越架的摩擦系数: " + oneTxt21.getText()
+						+ System.getProperty("line.separator") + s1;
+			}
+			if (oneTxt65.getText() != null) {
+				outPutTxt += "竹木跨越架的安装:" + System.getProperty("line.separator") + s2 + "被跨电力线最高点的对地距离: "
+						+ oneTxt31.getText() + System.getProperty("line.separator") + s2 + "不同电压等级的电力线与封顶架面的最小垂直距离: "
+						+ oneTxt32.getText() + System.getProperty("line.separator") + s2 + "跨越架封顶网的弧垂: "
+						+ oneTxt34.getText() + System.getProperty("line.separator") + s2 + "施工线路的线间距离: "
+						+ oneTxt37.getText() + System.getProperty("line.separator") + s2 + "跨越架顶面超出施工线路的宽度: "
+						+ oneTxt39.getText() + System.getProperty("line.separator") + s2 + "施工线路与别跨电力线的交叉角: "
+						+ oneTxt41.getText() + System.getProperty("line.separator") + s2 + "被跨电力线两边线间的水平距离: "
+						+ oneTxt43.getText() + System.getProperty("line.separator") + s2
+						+ "跨越架内侧主杆或主柱外缘（金属架）至被跨电力线的最小水平距离: " + oneTxt44.getText() + System.getProperty("line.separator")
+						+ s2 + "跨越架的最小高度: " + oneTxt65.getText() + System.getProperty("line.separator") + s2
+						+ "跨越架的最小宽度: " + oneTxt66.getText() + System.getProperty("line.separator") + s2 + "跨越架顶面的最小跨距: "
+						+ oneTxt71.getText() + System.getProperty("line.separator") + s1;
+			}
+			if (oneTxt72.getText() != null) {
+				outPutTxt += "单侧跨越架: " + System.getProperty("line.separator") + s2 + "跨越家上层拉线挂点至地面的高度: "
+						+ oneTxt53.getText() + System.getProperty("line.separator") + s2 + "上拉线与运行电力线的最小安全距离: "
+						+ oneTxt54.getText() + System.getProperty("line.separator") + s2 + "拉线对地面夹角: "
+						+ oneTxt55.getText() + System.getProperty("line.separator") + s2 + "拉线与跨越架横担轴线间的水平夹角: "
+						+ oneTxt56.getText() + System.getProperty("line.separator") + s2 + "跨越架的上拉线挂点至运行电力线的垂直距离: "
+						+ oneTxt51.getText() + System.getProperty("line.separator") + s2 + "内侧上拉线与运行电力线的最小安全距离: "
+						+ oneTxt52.getText() + System.getProperty("line.separator") + s2 + "拉线至运行线路最小安全距离要求的跨距: "
+						+ oneTxt57.getText() + System.getProperty("line.separator") + s2 + "运行电力线与在建线路的交叉角引起的跨距: "
+						+ oneTxt58.getText() + System.getProperty("line.separator") + s2 + "拉线位置引起的跨距: "
+						+ oneTxt59.getText() + System.getProperty("line.separator") + s2 + "被跨越物与施工线路任一相邻杆塔的距离: "
+						+ oneTxt81.getText() + System.getProperty("line.separator") + s2 + "水平放线张力: "
+						+ oneTxt82.getText() + System.getProperty("line.separator") + s2 + "施工线路的跨越档档距跨越: "
+						+ oneTxt83.getText() + System.getProperty("line.separator") + s2 + "施工线路跨越档两端悬垂绝缘子串或滑车挂具长度: "
+						+ oneTxt84.getText() + System.getProperty("line.separator") + s2 + "施工线路跨越档两端悬垂绝缘子串或滑车挂具长度: "
+						+ oneTxt84.getText() + System.getProperty("line.separator") + s2 + "导线、地线的单位长度重量: "
+						+ oneTxt85.getText() + System.getProperty("line.separator") + s2 + "导线或地线的单位长度风荷重: "
+						+ oneTxt86.getText() + System.getProperty("line.separator") + s2 + "导线或地线直径: "
+						+ oneTxt87.getText() + System.getProperty("line.separator") + s2 + "拉线位置引起的跨距: "
+						+ String.valueOf(L1) + System.getProperty("line.separator") + s2 + "拉线至运行线路最小安全距离要求的跨距: "
+						+ String.valueOf(L2) + System.getProperty("line.separator") + s2 + "运行电力线与在建线路的交叉角引起的跨距: "
+						+ String.valueOf(L3) + System.getProperty("line.separator") + s2 + "跨越架跨越架外侧至运行电力线的水平距离: "
+						+ oneTxt72.getText() + System.getProperty("line.separator") + s2 + "两副跨越架间的跨距: "
+						+ oneTxt74.getText() + System.getProperty("line.separator") + s2 + "风偏距离: " + oneTxt75.getText()
+						+ System.getProperty("line.separator") + s1;
+			}
+//				if(highStrength.)
+			if (outPutTxt.length() == 7) {
+				JOptionPane.showConfirmDialog(null, "内容为空！");
+			} else {
+				Filewriter.printToTxt(outPutTxt);
+			}
+		}
+	}
 
 	// 添加条目选中状态改变的监听器
 	@Override
